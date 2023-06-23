@@ -16,16 +16,12 @@ const ButtonIcon = ({
 }) => {
   const meshRef = useRef();
   const [isClicked, setIsClicked] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
 
   const activeButton = useStore((state) => state.activeButton);
   const setactiveButton = useStore((state) => state.setactiveButton);
 
-  useEffect(() => {
-    // setactiveButton(id, targetPosition);
-    console.log(activeButton);
-  }, [activeButton]);
-  const { scale, handleMouseEnter, handleMouseLeave, isHovered } =
-    useHoverAnimation();
+  const { scale, handleMouseEnter, handleMouseLeave } = useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
     usePushAnimation();
 
@@ -35,13 +31,23 @@ const ButtonIcon = ({
     }
   });
 
+  useEffect(() => {
+    document.body.style.cursor = isHovered ? "pointer" : "auto";
+  }, [isHovered]);
+
   return (
     <a.mesh
       position={position}
       scale={scale}
       ref={meshRef}
-      onPointerEnter={handleMouseEnter}
-      onPointerLeave={handleMouseLeave}
+      onPointerEnter={() => {
+        handleMouseEnter();
+        setIsHovered(true);
+      }}
+      onPointerLeave={() => {
+        handleMouseLeave();
+        setIsHovered(false);
+      }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onClick={() => setactiveButton(id, targetPosition)}

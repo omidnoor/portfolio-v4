@@ -4,7 +4,7 @@ export const useStore = create((set) => ({
   isClicked: false,
   activeButton: { id: "", coordination: {} },
 
-  setActiveButton: (id, coordination) =>
+  setactiveButton: (id, coordination) =>
     set((state) => ({
       ...state,
       activeButton: { id: id, coordination: coordination },

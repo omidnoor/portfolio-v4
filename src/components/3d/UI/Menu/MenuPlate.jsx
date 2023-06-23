@@ -6,6 +6,7 @@ import {
 import ButtonIcons from "./ButtonIcons";
 import { useEffect, useRef } from "react";
 import useScaleOnResize from "../../Utils/UseScaleResize";
+import Arrows from "./Arrows";
 
 const MenuPlate = () => {
   const meshRef = useRef();
@@ -18,13 +19,14 @@ const MenuPlate = () => {
   return (
     <RoundedBox
       ref={meshRef}
-      args={[4, 0.7, 0.05]}
+      args={[4.5, 1.1, 0.05]}
       radius={0.01}
       smoothness={1}
       creaseAngle={0.1}
     >
       <meshMatcapMaterial matcap={matcap} />
       <ButtonIcons position={[0, 0, 0.03]} btnMatcap={btnMatcap} />
+      <Arrows />
     </RoundedBox>
   );
 };

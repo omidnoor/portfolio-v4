@@ -7,6 +7,7 @@ import SceneModel from "@/components/3d/Models/SceneModel";
 import TargetCamera from "@/components/3d/Utils/TargetCamera";
 import Menu from "@/components/3d/UI/Menu/Menu";
 import ResponsiveCamera from "@/components/3d/Utils/ReponsiveCamera";
+import CameraTravel from "@/components/3d/Utils/CameraTravel";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -55,6 +56,7 @@ const HomePage = () => {
           <group position={[0, -0.9, 0]}>
             <SceneModel />
             <Menu />
+            <CameraTravel />
             <TargetCamera />
           </group>
         </Suspense>
