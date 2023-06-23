@@ -24,6 +24,6 @@ const useHoverAnimation = () => {
     });
   };
 
-  return { scale, handleMouseEnter, handleMouseLeave };
+  return { scale, handleMouseEnter, handleMouseLeave, isHovered, setIsHovered };
 };
 export default useHoverAnimation;

@@ -3,24 +3,28 @@ import {
   RoundedBox,
   useMatcapTexture,
 } from "@react-three/drei";
-import Icons from "./Icons";
+import ButtonIcons from "./ButtonIcons";
+import { useEffect, useRef } from "react";
+import useScaleOnResize from "../../Utils/UseScaleResize";
 
 const MenuPlate = () => {
+  const meshRef = useRef();
+
   const [matcap, url] = useMatcapTexture("6C6F76_CBD1D7_B2BDC7_A6B0BF");
   const [btnMatcap, btnUrl] = useMatcapTexture("BA8979_DDCBCA_9A4726_892407");
+
+  useScaleOnResize(meshRef, 0.3);
+
   return (
     <RoundedBox
-      args={[2.5, 0.35, 0.05]}
+      ref={meshRef}
+      args={[4, 0.7, 0.05]}
       radius={0.01}
       smoothness={1}
       creaseAngle={0.1}
     >
       <meshMatcapMaterial matcap={matcap} />
-      {/* <MeshReflectorMaterial /> */}
-      <Icons position={[0.9, 0, 0.03]} btnMatcap={btnMatcap} />
-      {/* <Icons position={[0.5, 0, 0.03]} btnMatcap={btnMatcap} />
-      <Icons position={[0.1, 0, 0.03]} btnMatcap={btnMatcap} />
-      <Icons position={[-0.3, 0, 0.03]} btnMatcap={btnMatcap} /> */}
+      <ButtonIcons position={[0, 0, 0.03]} btnMatcap={btnMatcap} />
     </RoundedBox>
   );
 };

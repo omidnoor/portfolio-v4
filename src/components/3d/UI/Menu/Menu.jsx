@@ -18,7 +18,7 @@ const Menu = () => {
     <group>
       <mesh
         ref={meshRef}
-        position={[0, -0.7, -2]}
+        position={[0, -0.7, -1.7]}
         rotation={[-Math.PI / 4, 0, 0]}
       >
         <MenuPlate />
