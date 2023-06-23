@@ -9,6 +9,13 @@ const useCamera = () => {
   useFrame((state, delta) => {
     damp3(state.camera.position, target, 2, delta);
     dampQ(state.camera.quaternion, quaternion, 2, delta);
+
+    const distance = state.camera.position.sidtanceTo(target);
+
+    const threshold = 0.01;
+    if (threshold > distance) {
+      state.camera.position.copy(target);
+    }
   });
   return [setTarget, setQuaternion];
 };
