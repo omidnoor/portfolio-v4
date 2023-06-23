@@ -1,36 +1,51 @@
 import { RoundedBox } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
-import useScaleOnResize from "../../Utils/UseScaleResize";
-import { a, useSpring } from "@react-spring/three";
+import { a } from "@react-spring/three";
 import useHoverAnimation from "@/components/pageComponents/Projects/ProjectButtons/useHoverAnimation";
 import usePushAnimation from "../../Utils/usePushAnimation";
 import { useFrame } from "@react-three/fiber";
+import { useStore } from "@/stores/store";
+import { Quaternion } from "three";
+import { damp3, dampQ } from "maath/easing";
 
-const ButtonIcon = ({ position }) => {
-  // const [hovered, setHovered] = useState(false);
+const ButtonIcon = ({
+  id,
+  position,
+  targetPosition,
+  targetQuaternion = new Quaternion(0, 0, 0, 1),
+}) => {
   const meshRef = useRef();
+  const [isClicked, setIsClicked] = useState(false);
 
-  const { scale, handleMouseEnter, handleMouseLeave, isHovered, setIsHovered } =
+  const activeButton = useStore((state) => state.activeButton);
+  const setactiveButton = useStore((state) => state.setactiveButton);
+
+  useEffect(() => {
+    // setactiveButton(id, targetPosition);
+    console.log(activeButton);
+  }, [activeButton]);
+  const { scale, handleMouseEnter, handleMouseLeave, isHovered } =
     useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
     usePushAnimation();
-  // useScaleOnResize(meshRef, 0.3);
 
-  useFrame(() => {
+  useFrame((state, delta) => {
     if (isHovered && meshRef) {
       meshRef.current.position.z = positionScaleZ.get() * position[2];
-      // console.log(position[2], positionScaleZ.get() * position[2]);
     }
   });
+
   return (
     <a.mesh
-      position={[position[0], position[1], position[2]]}
+      position={position}
       scale={scale}
       ref={meshRef}
       onPointerEnter={handleMouseEnter}
       onPointerLeave={handleMouseLeave}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
+      onClick={() => setactiveButton(id, targetPosition)}
+      onPointerMissed={() => setIsClicked(false)}
     >
       <RoundedBox
         args={[0.3, 0.3, 0.1]}
