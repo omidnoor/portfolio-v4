@@ -7,12 +7,12 @@ const TitlePlate = ({ props, setTitle }) => {
 
   return (
     <mesh
-      position={[0, 0.65, -1.5]}
+      position={[0, -1.4, 0.01]}
       onClick={() => {
         setTitle(props.name);
       }}
     >
-      <planeGeometry args={[1.07, 0.2]} />
+      <boxGeometry args={[0.7, 0.3, 0.02]} />
       <meshMatcapMaterial matcap={matcapTexture2} />
     </mesh>
   );

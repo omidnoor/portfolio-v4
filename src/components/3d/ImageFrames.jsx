@@ -12,9 +12,7 @@ const GOLDENRATIO = 1.6;
 
 const ImageFrames = ({
   pages,
-  portal,
-  targetPosition = new Vector3(),
-  targetQuaternion = new Quaternion(),
+  // portal,
 }) => {
   const textRef = useRef();
   useFrame(
@@ -51,37 +49,6 @@ const ImageFrames = ({
     },
     [framesRef, activeFrame.name, title, isLetsTalk],
   );
-  useEffect(() => {
-    if (activeFrame.name && framesRef.current) {
-      const frame = framesRef.current.getObjectByName(activeFrame.name);
-      frame.updateWorldMatrix(true, true);
-      frame.localToWorld(targetPosition.set(0, GOLDENRATIO * 0, 22));
-      frame.getWorldQuaternion(targetQuaternion);
-    } else {
-      targetPosition.set(0, 0, 5.5);
-      targetQuaternion.identity();
-    }
-  });
-
-  useFrame((state, delta) => {
-    damp3(state.camera.position, targetPosition, 0.4, delta);
-    dampQ(state.camera.quaternion, targetQuaternion, 0.4, delta);
-    setCamera(state.camera);
-  });
-
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      const aspect = window.innerWidth / window.innerHeight;
-      // console.log(camera);
-      if (camera) {
-        camera.aspect = aspect;
-        camera.updateProjectionMatrix();
-      }
-    });
-    return () => {
-      window.removeEventListener("resize", () => {});
-    };
-  }, [window.innerWidth, window.innerHeight]);
 
   useEffect(() => {
     setActiveFrame({ name: title });
@@ -97,12 +64,7 @@ const ImageFrames = ({
   return (
     <group ref={framesRef} onClick={handleClick}>
       {pages?.map((props, index) => (
-        <ImageFrame
-          key={props.name}
-          portal={portal}
-          setTitle={setTitle}
-          {...props}
-        />
+        <ImageFrame key={props.name} setTitle={setTitle} {...props} />
       ))}
     </group>
   );

@@ -83,14 +83,28 @@ const Navigation = () => {
       },
       { collapsed: true },
     ),
-    Target1: folder(
+    HomePage: folder(
       {
-        vec10: { value: [3.7, 1.8, -9], label: "position" },
-        vec11: { value: [3.7, 1.8, -10], label: "target" },
-        "setLookAt Target1": button((get) =>
+        vec10: { value: [3.7, 1.6, -9], label: "position" },
+        vec11: { value: [3.7, 1.6, -10], label: "target" },
+        "setLookAt HomePage": button((get) =>
           cameraControlsRef.current?.setLookAt(
-            ...get("Target1.vec10"),
-            ...get("Target1.vec11"),
+            ...get("HomePage.vec10"),
+            ...get("HomePage.vec11"),
+            true,
+          ),
+        ),
+      },
+      { collapsed: true },
+    ),
+    TestemonialPage: folder(
+      {
+        vec12: { value: [9, 1.6, -3.7], label: "position" },
+        vec13: { value: [12.1, 1.6, -3.7], label: "target" },
+        "setLookAt TestemonialPage": button((get) =>
+          cameraControlsRef.current?.setLookAt(
+            ...get("TestemonialPage.vec12"),
+            ...get("TestemonialPage.vec13"),
             true,
           ),
         ),

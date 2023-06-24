@@ -10,15 +10,17 @@ import ResponsiveCamera from "@/components/3d/Utils/ReponsiveCamera";
 import CameraTravel from "@/components/3d/Utils/CameraTravel";
 import Navigation from "@/components/3d/UI/Navigation/Navigation";
 import MenuPlate from "@/components/3d/UI/Menu/MenuPlate";
+import Frames from "@/components/3d/UI/Frames/Frames";
+import ImageFrames from "@/components/3d/ImageFrames";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const pages = [
   {
     name: "Home",
-    position: [0, 1, 1],
+    position: [3.6, 2.5, -12.33],
     rotation: [0, 0, 0],
-    url: "http://localhost:3000/PageHome",
+    url: "http://localhost:3000/PageAboutMe",
   },
   {
     name: "AboutMe",
@@ -40,8 +42,8 @@ const pages = [
   },
   {
     name: "Testimonials",
-    position: [2.15, 1, 1.5],
-    rotation: [0, -Math.PI * 0.25, 0],
+    position: [12.1, 2.5, -3.7],
+    rotation: [0, -Math.PI * 0.5, 0],
     url: "http://localhost:3000/PageTestimonials",
   },
 ];
@@ -56,6 +58,7 @@ const HomePage = () => {
           <Navigation />
           <group position={[0, -0.9, 0]}>
             <SceneModel />
+            <ImageFrames pages={pages} />
             {/* <Menu /> */}
           </group>
         </Suspense>

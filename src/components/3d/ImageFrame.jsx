@@ -36,16 +36,16 @@ const ImageFrame = ({
       onPointerEnter={()=>setHoverThree(true)}
       onPointerLeave={() => setHoverThree(false)}
     >
-      <mesh scale={[1, GOLDENRATIO, 0.05]} position={[0, GOLDENRATIO / 2, 0]} {...props}>
-        <boxGeometry />
+      <mesh  position={[0, 0, 0]} {...props}>
+        <boxGeometry args={[2,2.5,0.05]} />
         <meshMatcapMaterial matcap={matcapTexture2} />
         <mesh
           ref={frameRef}
           // raycast={() => null}
-          scale={[0.9, 0.93, 0.9]}
+          
           position={[0, 0, 0.1]}
         >
-          <boxGeometry />
+          <boxGeometry  args={[1.7,2.2,0.05]}/>
           <meshStandardMaterial fog={false}  />
           {/* {!isActiveFrame && (
             <Image
