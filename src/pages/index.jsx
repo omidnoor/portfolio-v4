@@ -8,6 +8,8 @@ import TargetCamera from "@/components/3d/Utils/TargetCamera";
 import Menu from "@/components/3d/UI/Menu/Menu";
 import ResponsiveCamera from "@/components/3d/Utils/ReponsiveCamera";
 import CameraTravel from "@/components/3d/Utils/CameraTravel";
+import Navigation from "@/components/3d/UI/Navigation/Navigation";
+import MenuPlate from "@/components/3d/UI/Menu/MenuPlate";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -50,14 +52,11 @@ const HomePage = () => {
     <>
       <Layout>
         <Suspense fallback={<CustomLoader />}>
-          {/* <OrbitControls /> */}
-          {/* <PerspectiveCamera makeDefault position={[0, 0, 0]} /> */}
           <ResponsiveCamera />
+          <Navigation />
           <group position={[0, -0.9, 0]}>
             <SceneModel />
-            <Menu />
-            <CameraTravel />
-            <TargetCamera />
+            {/* <Menu /> */}
           </group>
         </Suspense>
       </Layout>
