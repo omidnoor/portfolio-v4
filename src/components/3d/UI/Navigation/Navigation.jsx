@@ -2,9 +2,9 @@ import { useStore } from "@/stores/store";
 import { CameraControls } from "@react-three/drei";
 import { act } from "@react-three/fiber";
 import { button, folder, useControls } from "leva";
-import { useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
-const Navigation = () => {
+const Navigation = ({ pages }) => {
   const cameraControlsRef = useRef(null);
   const meshRef = useRef(null);
   const {
@@ -201,11 +201,37 @@ const Navigation = () => {
   });
 
   const activeFrame = useStore((state) => state.activeFrame);
-  console.log(activeFrame);
-  const handleClick = () => {
-    console.log(activeFrame);
-    // cameraControlsRef.current?.moveTo(...activeFrame.position, true);
-  };
+  const setActiveFrame = useStore((state) => state.setActiveFrame);
+
+  const activeButton = useStore((state) => state.activeButton);
+  const setActiveButton = useStore((state) => state.setActiveButton);
+
+  const isMenuClicked = useStore((state) => state.isMenuClicked);
+  const setIsMenuClicked = useStore((state) => state.setIsMenuClicked);
+
+  useEffect(() => {
+    if (activeButton.id) {
+      const activePosition = pages.filter(
+        (page) => page.name === activeButton.id,
+      )[0].position;
+      console.log(activeButton.id);
+      cameraControlsRef.current?.setLookAt(
+        activePosition[0],
+        activePosition[1] - 1,
+        activePosition[2] + 3.3,
+        activePosition[0],
+        activePosition[1] - 1,
+        activePosition[2],
+        true,
+      );
+    }
+  }, [activeButton]);
+
+  useEffect(() => {
+    if (!activeFrame.name && !isMenuClicked) {
+      cameraControlsRef.current?.setLookAt(0, 2.5, -2, 0, 2.5, -3, true);
+    }
+  }, [activeFrame]);
 
   return (
     <>
@@ -217,11 +243,7 @@ const Navigation = () => {
         dollyToCursor={dollyToCursor}
         infinityDolly={infinityDolly}
       />
-      <mesh ref={meshRef} position={[0, 1, -5]} onClick={handleClick}>
-        <boxGeometry args={[0.3, 0.3, 0.3]} />
-        <meshStandardMaterial color="red" />
-      </mesh>
     </>
   );
 };
-export default Navigation;
+export default memo(Navigation);

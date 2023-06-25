@@ -4,6 +4,7 @@ import { a } from "@react-spring/three";
 import useCamera from "../../Utils/useCamera";
 import { Vector3 } from "three";
 import { useThree } from "@react-three/fiber";
+import { useStore } from "@/stores/store";
 
 const Arrow = ({ position, rotation }) => {
   const meshRef = useRef();
@@ -15,14 +16,10 @@ const Arrow = ({ position, rotation }) => {
     document.body.style.cursor = isHovered ? "pointer" : "auto";
   }, [isHovered]);
 
-  const [moveCamera, setCameraPosition] = useCamera();
-
   const handleClick = (e) => {
+    setIsMenuClicked(true);
     const moveAmount = 5;
     const forward = new Vector3(0, 0, -moveAmount);
-    // camera.localToWorld(forward);
-    // camera.updateWorldMatrix(true, true);
-    moveCamera(forward);
   };
 
   return (

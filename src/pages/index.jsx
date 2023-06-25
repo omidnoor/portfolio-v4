@@ -1,16 +1,11 @@
 import Layout from "@/components/3d/Layout";
-import { PerspectiveCamera } from "@react-three/drei";
-import { Suspense, useRef } from "react";
+import { Suspense } from "react";
 import CustomLoader from "@/components/utilComponents/Loader/CustomLoader";
 import { Inter } from "next/font/google";
 import SceneModel from "@/components/3d/Models/SceneModel";
-import TargetCamera from "@/components/3d/Utils/TargetCamera";
 import Menu from "@/components/3d/UI/Menu/Menu";
 import ResponsiveCamera from "@/components/3d/Utils/ReponsiveCamera";
-import CameraTravel from "@/components/3d/Utils/CameraTravel";
 import Navigation from "@/components/3d/UI/Navigation/Navigation";
-import MenuPlate from "@/components/3d/UI/Menu/MenuPlate";
-import Frames from "@/components/3d/UI/Frames/Frames";
 import ImageFrames from "@/components/3d/ImageFrames";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -84,18 +79,16 @@ const pages = [
   },
 ];
 const HomePage = () => {
-  const domContentRef = useRef(null);
-
   return (
     <>
       <Layout>
         <Suspense fallback={<CustomLoader />}>
           <ResponsiveCamera />
-          <Navigation />
+          <Navigation pages={pages} />
           <group position={[0, -0.9, 0]}>
             <SceneModel />
             <ImageFrames pages={pages} />
-            {/* <Menu /> */}
+            <Menu pages={pages} />
           </group>
         </Suspense>
       </Layout>

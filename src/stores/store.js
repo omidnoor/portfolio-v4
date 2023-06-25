@@ -13,7 +13,10 @@ export const useStore = create((set) => ({
   hoverHtml: false,
   hoverThree: false,
   GOLDENRATIO: 1.6,
+  isMenuClicked: false,
 
+  setIsMenuClicked: (isMenuClicked) =>
+    set((state) => ({ ...state, isMenuClicked })),
   setactiveButton: (id, coordination) =>
     set((state) => ({
       ...state,

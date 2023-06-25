@@ -70,7 +70,14 @@ const ImageFrames = ({ pages }) => {
   }, [isLetsTalk]);
 
   return (
-    <group ref={framesRef} onClick={handleClick}>
+    <group
+      ref={framesRef}
+      onClick={handleClick}
+      // onPointerMissed={() => {
+      //   console.log(activeFrame);
+      //   setActiveFrame({ name: "" });
+      // }}
+    >
       {pages?.map((props, index) => (
         <ImageFrame key={index} setTitle={setTitle} {...props} />
       ))}
