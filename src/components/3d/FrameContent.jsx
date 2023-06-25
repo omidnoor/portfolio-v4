@@ -20,7 +20,6 @@ const FrameContent = ({ props }) => {
   const portal = useStore((state) => state.portal);
   const setHoverHtml = useStore((state) => state.setHoverHtml);
   const ComponentToRender = componentMapping[props.name];
-
   const transitions = useTransition(isActiveFrame, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -35,37 +34,39 @@ const FrameContent = ({ props }) => {
     }
   }, [activeFrame]);
   return (
-    <Html scale={0.1} wrapperClass={styles.wrapper} transform sprite>
-      {transitions((style, item) =>
-        item ? (
-          <React.Suspense fallback={<div>Loading...</div>}>
-            <animated.div
-              className={styles.main}
-              name={props.name}
-              onMouseEnter={() => {
-                setHoverHtml(true);
-              }}
-              onMouseLeave={() => {
-                setHoverHtml(false);
-              }}
-              style={{
-                ...style,
-                width: "688px",
-                height: "890px",
-                padding: 0,
-                margin: 0,
-                overflow: "hidden",
-                backgroundColor: Deep_Blue,
-              }}
-            >
-              <iframe src={props.url} width="30px" height="60px" />
-              {/* {ComponentToRender && <ComponentToRender />} */}
-            </animated.div>
-          </React.Suspense>
-        ) : null,
-      )}
-      {/* {!isActiveFrame && <Image src={props.url} fill alt="image" />} */}
-    </Html>
+    <mesh position={[0, 0, 0.05]}>
+      <Html scale={0.1} wrapperClass={styles.wrapper} transform sprite occlude>
+        {transitions((style, item) =>
+          item ? (
+            <React.Suspense fallback={<div>Loading...</div>}>
+              <animated.div
+                className={styles.main}
+                name={props.name}
+                onMouseEnter={() => {
+                  setHoverHtml(true);
+                }}
+                onMouseLeave={() => {
+                  setHoverHtml(false);
+                }}
+                style={{
+                  ...style,
+                  width: "688px",
+                  height: "890px",
+                  padding: 0,
+                  margin: 0,
+                  overflow: "hidden",
+                  backgroundColor: Deep_Blue,
+                }}
+              >
+                <iframe src={props.url} width="30px" height="60px" />
+                {/* {ComponentToRender && <ComponentToRender />} */}
+              </animated.div>
+            </React.Suspense>
+          ) : null,
+        )}
+        {/* {!isActiveFrame && <Image src={props.url} fill alt="image" />} */}
+      </Html>
+    </mesh>
   );
 };
 export default memo(FrameContent);

@@ -35,17 +35,14 @@ const ImageFrames = ({ pages }) => {
     });
   }, []);
 
-  const handleClick = useCallback(
-    (e) => {
-      // e.stopPropagation();
-      if (e.object && framesRef.current) {
-        const frameName = e.object.name;
-        setActiveFrame({ name: frameName });
-        // setIsLetsTalk(false);
-      }
-    },
-    [framesRef, activeFrame.name, title, isLetsTalk],
-  );
+  const handleClick = useCallback((e) => {
+    // e.stopPropagation();
+    if (e.object && framesRef.current) {
+      const frameName = e.object.name;
+      setActiveFrame({ name: frameName });
+      // setIsLetsTalk(false);
+    }
+  }, []);
 
   useEffect(() => {
     window.addEventListener("resize", () => {
@@ -75,7 +72,7 @@ const ImageFrames = ({ pages }) => {
   return (
     <group ref={framesRef} onClick={handleClick}>
       {pages?.map((props, index) => (
-        <ImageFrame key={props.name} setTitle={setTitle} {...props} />
+        <ImageFrame key={index} setTitle={setTitle} {...props} />
       ))}
     </group>
   );

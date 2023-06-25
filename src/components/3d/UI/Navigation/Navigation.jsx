@@ -1,4 +1,6 @@
+import { useStore } from "@/stores/store";
 import { CameraControls } from "@react-three/drei";
+import { act } from "@react-three/fiber";
 import { button, folder, useControls } from "leva";
 import { useRef } from "react";
 
@@ -197,6 +199,14 @@ const Navigation = () => {
     dollyToCursor: { value: true, label: "dolly to cursor" },
     infinityDolly: { value: true, label: "infinity dolly" },
   });
+
+  const activeFrame = useStore((state) => state.activeFrame);
+  console.log(activeFrame);
+  const handleClick = () => {
+    console.log(activeFrame);
+    // cameraControlsRef.current?.moveTo(...activeFrame.position, true);
+  };
+
   return (
     <>
       <CameraControls
@@ -207,9 +217,9 @@ const Navigation = () => {
         dollyToCursor={dollyToCursor}
         infinityDolly={infinityDolly}
       />
-      <mesh ref={meshRef} position={[-5, 1, -5]}>
-        {/* <boxGeometry />
-        <meshStandardMaterial color="red" /> */}
+      <mesh ref={meshRef} position={[0, 1, -5]} onClick={handleClick}>
+        <boxGeometry args={[0.3, 0.3, 0.3]} />
+        <meshStandardMaterial color="red" />
       </mesh>
     </>
   );

@@ -61,15 +61,15 @@ const Projects = () => {
           <animated.div
             className={styles.page}
             {...handleDrag()}
-            key={pages[i].title}
+            key={i}
             style={{ display, x }}
           >
             <animated.div
-              key={pages[i].title}
+              key={i * i + 1}
               style={{ scale, backgroundImage: `url(${pages[i].link})` }}
               className={styles.projects}
             />
-            <ProjectPlate index={i} pages={pages} />
+            <ProjectPlate key={i} index={i} pages={pages} />
           </animated.div>
         ))}
       </div>

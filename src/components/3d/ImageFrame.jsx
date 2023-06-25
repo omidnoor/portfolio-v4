@@ -41,7 +41,7 @@ const ImageFrame = ({
         <meshMatcapMaterial matcap={matcapTexture2} />
         <mesh
           ref={frameRef}
-          // raycast={() => null}
+          raycast={() => null}
           
           position={[0, 0, 0.05]}
         >
