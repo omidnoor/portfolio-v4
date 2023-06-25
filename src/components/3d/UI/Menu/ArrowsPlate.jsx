@@ -1,3 +1,5 @@
+import { memo } from "react";
+
 const ArrowsPlate = () => {
   return (
     <mesh position={[-1, 0, 0.05]}>
@@ -6,4 +8,4 @@ const ArrowsPlate = () => {
     </mesh>
   );
 };
-export default ArrowsPlate;
+export default memo(ArrowsPlate);

@@ -1,5 +1,5 @@
 import { PerspectiveCamera } from "@react-three/drei";
-import { useEffect, useRef } from "react";
+import { memo, useEffect, useRef } from "react";
 
 const ResponsiveCamera = () => {
   const cameraRef = useRef();
@@ -27,4 +27,4 @@ const ResponsiveCamera = () => {
   return <PerspectiveCamera ref={cameraRef} makeDefault position={[0, 0, 0]} />;
 };
 
-export default ResponsiveCamera;
+export default memo(ResponsiveCamera);

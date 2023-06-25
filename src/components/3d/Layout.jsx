@@ -1,4 +1,5 @@
 import { Canvas } from "@react-three/fiber";
+import { memo } from "react";
 
 const Layout = ({ children }) => {
   return (

@@ -17,9 +17,7 @@ const FrameContent = ({ props }) => {
   const [isActiveFrame, setIsActiveFrame] = useState(false);
 
   const activeFrame = useStore((state) => state.activeFrame);
-  const portal = useStore((state) => state.portal);
   const setHoverHtml = useStore((state) => state.setHoverHtml);
-  const ComponentToRender = componentMapping[props.name];
   const transitions = useTransition(isActiveFrame, {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -33,6 +31,7 @@ const FrameContent = ({ props }) => {
       setIsActiveFrame(false);
     }
   }, [activeFrame]);
+
   return (
     <mesh position={[0, 0, 0.05]}>
       <Html scale={0.1} wrapperClass={styles.wrapper} transform sprite occlude>

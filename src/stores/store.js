@@ -17,7 +17,7 @@ export const useStore = create((set) => ({
 
   setIsMenuClicked: (isMenuClicked) =>
     set((state) => ({ ...state, isMenuClicked })),
-  setactiveButton: (id, coordination) =>
+  setActiveButton: (id, coordination) =>
     set((state) => ({
       ...state,
       activeButton: { id: id, coordination: coordination },

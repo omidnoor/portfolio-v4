@@ -207,28 +207,49 @@ const Navigation = ({ pages }) => {
   const setActiveButton = useStore((state) => state.setActiveButton);
 
   const isMenuClicked = useStore((state) => state.isMenuClicked);
-  const setIsMenuClicked = useStore((state) => state.setIsMenuClicked);
 
   useEffect(() => {
     if (activeButton.id) {
-      const activePosition = pages.filter(
-        (page) => page.name === activeButton.id,
-      )[0].position;
-      console.log(activeButton.id);
-      cameraControlsRef.current?.setLookAt(
-        activePosition[0],
-        activePosition[1] - 1,
-        activePosition[2] + 3.3,
-        activePosition[0],
-        activePosition[1] - 1,
-        activePosition[2],
-        true,
-      );
+      const active = pages.filter((page) => page.name === activeButton.id)[0];
+      const activePosition = active?.position;
+      const activeRotation = active?.rotation;
+      if (activePosition) {
+        cameraControlsRef.current?.setLookAt(
+          activePosition[0] +
+            (activeRotation[1] !== 0
+              ? (3.3 * activeRotation[1]) / Math.abs(activeRotation[1])
+              : 0),
+          activePosition[1] - 1,
+          activePosition[2] + (activeRotation[1] === 0 ? 3.3 : 0),
+          activePosition[0],
+          activePosition[1] - 1,
+          activePosition[2],
+          true,
+        );
+        console.log(
+          activeRotation[1] !== 0
+            ? (3.3 * activeRotation[1]) / Math.abs(activeRotation[1])
+            : 0,
+          activeRotation[1] === 0 ? 3.3 : 0,
+        );
+      }
+    }
+  }, [activeButton]);
+
+  useEffect(() => {
+    if (activeButton.id) {
+      cameraControlsRef.current?.addEventListener("sleep", () => {
+        setActiveFrame({ name: activeButton.id });
+      });
+      return () => {
+        cameraControlsRef.current?.removeEventListener("sleep");
+      };
     }
   }, [activeButton]);
 
   useEffect(() => {
     if (!activeFrame.name && !isMenuClicked) {
+      setActiveButton({ id: "", coordination: {} });
       cameraControlsRef.current?.setLookAt(0, 2.5, -2, 0, 2.5, -3, true);
     }
   }, [activeFrame]);
@@ -246,4 +267,4 @@ const Navigation = ({ pages }) => {
     </>
   );
 };
-export default memo(Navigation);
+export default Navigation;

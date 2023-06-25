@@ -1,3 +1,4 @@
+import { memo } from "react";
 import ButtonIcon from "./ButtonIcon";
 import { Vector3 } from "three";
 
@@ -21,15 +22,15 @@ const ButtonIcons = ({ btnMatcap, position }) => {
       />
       <ButtonIcon
         position={[0.7, 0, 0.1]}
-        id="Testimonial"
+        id="Testimonials"
         targetPosition={new Vector3(20, 2.5, 10)}
       />
       <ButtonIcon
         position={[0.3, 0, 0.1]}
-        id="Projects"
+        id="Project1"
         targetPosition={new Vector3(-20, 2.5, 10)}
       />
     </group>
   );
 };
-export default ButtonIcons;
+export default memo(ButtonIcons);

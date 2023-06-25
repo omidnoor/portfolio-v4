@@ -1,5 +1,5 @@
 import { RoundedBox } from "@react-three/drei";
-import { useEffect, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { a } from "@react-spring/three";
 import useHoverAnimation from "@/components/pageComponents/Projects/ProjectButtons/useHoverAnimation";
 import usePushAnimation from "../../Utils/usePushAnimation";
@@ -19,7 +19,7 @@ const ButtonIcon = ({
   const [isHovered, setIsHovered] = useState(false);
 
   const activeButton = useStore((state) => state.activeButton);
-  const setactiveButton = useStore((state) => state.setactiveButton);
+  const setActiveButton = useStore((state) => state.setActiveButton);
 
   const { scale, handleMouseEnter, handleMouseLeave } = useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
@@ -50,7 +50,7 @@ const ButtonIcon = ({
       }}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
-      onClick={() => setactiveButton(id, targetPosition)}
+      onClick={() => setActiveButton(id, targetPosition)}
       onPointerMissed={() => setIsClicked(false)}
     >
       <RoundedBox
@@ -64,4 +64,4 @@ const ButtonIcon = ({
     </a.mesh>
   );
 };
-export default ButtonIcon;
+export default memo(ButtonIcon);

@@ -26,8 +26,6 @@ const ImageFrames = ({ pages }) => {
 
   const activeFrame = useStore((state) => state.activeFrame);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
-  const isLetsTalk = useStore((state) => state.isLetsTalk);
-  const setIsLetsTalk = useStore((state) => state.setIsLetsTalk);
 
   useEffect(() => {
     pages.map((page) => {
@@ -44,30 +42,23 @@ const ImageFrames = ({ pages }) => {
     }
   }, []);
 
-  useEffect(() => {
-    window.addEventListener("resize", () => {
-      const aspect = window.innerWidth / window.innerHeight;
-      // console.log(camera);
-      if (camera) {
-        camera.aspect = aspect;
-        camera.updateProjectionMatrix();
-      }
-    });
-    return () => {
-      window.removeEventListener("resize", () => {});
-    };
-  }, [window.innerWidth, window.innerHeight]);
+  // useEffect(() => {
+  //   window.addEventListener("resize", () => {
+  //     const aspect = window.innerWidth / window.innerHeight;
+  //     // console.log(camera);
+  //     if (camera) {
+  //       camera.aspect = aspect;
+  //       camera.updateProjectionMatrix();
+  //     }
+  //   });
+  //   return () => {
+  //     window.removeEventListener("resize", () => {});
+  //   };
+  // }, [window.innerWidth, window.innerHeight]);
 
   useEffect(() => {
     setActiveFrame({ name: title });
   }, [title]);
-
-  useEffect(() => {
-    if (isLetsTalk) {
-      setActiveFrame({ name: "ContactMe" });
-    }
-    setIsLetsTalk(false);
-  }, [isLetsTalk]);
 
   return (
     <group
@@ -84,4 +75,4 @@ const ImageFrames = ({ pages }) => {
     </group>
   );
 };
-export default memo(ImageFrames);
+export default ImageFrames;

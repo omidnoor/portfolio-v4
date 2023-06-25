@@ -20,11 +20,7 @@ const ImageFrame = ({
   const frameRef = useRef(null);
 
   const setActiveFrame = useStore((state) => state.setActiveFrame);
-  const activeFrame = useStore((state) => state.activeFrame);
   const setHoverThree = useStore((state) => state.setHoverThree);
-  const hoverThree = useStore((state) => state.hoverThree);
-  const hoverHtml = useStore((state) => state.hoverHtml);
-  const GOLDENRATIO = useStore((state) => state.GOLDENRATIO);
 
   // useCursor(hoverThree || hoverHtml);
 
@@ -63,4 +59,4 @@ const ImageFrame = ({
     </group>
   );
 };
-export default memo(ImageFrame);
+export default ImageFrame;

@@ -1,5 +1,5 @@
 import { useThree } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { memo, useCallback, useEffect, useRef } from "react";
 
 import MenuPlate from "./MenuPlate";
 import { useStore } from "@/stores/store";
@@ -17,9 +17,9 @@ const Menu = ({ pages }) => {
     };
   }, [camera]);
 
-  const handleClick = () => {
+  const handleClick = useCallback(() => {
     setIsMenuClicked(true);
-  };
+  }, []);
 
   return (
     <group>

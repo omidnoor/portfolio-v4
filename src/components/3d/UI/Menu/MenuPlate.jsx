@@ -1,6 +1,6 @@
 import { RoundedBox, useMatcapTexture } from "@react-three/drei";
 import ButtonIcons from "./ButtonIcons";
-import { useRef } from "react";
+import { memo, useRef } from "react";
 import Arrows from "./Arrows";
 
 const MenuPlate = () => {
@@ -20,7 +20,6 @@ const MenuPlate = () => {
     >
       <meshMatcapMaterial matcap={matcap} />
       <ButtonIcons position={[0, 0, 0.03]} btnMatcap={btnMatcap} />
-      {/* <Arrows /> */}
     </RoundedBox>
   );
 };
