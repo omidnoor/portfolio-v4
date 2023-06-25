@@ -10,10 +10,7 @@ import { PerspectiveCamera, RenderTexture, Text } from "@react-three/drei";
 
 const GOLDENRATIO = 1.6;
 
-const ImageFrames = ({
-  pages,
-  // portal,
-}) => {
+const ImageFrames = ({ pages }) => {
   const textRef = useRef();
   useFrame(
     (state) =>
@@ -49,6 +46,20 @@ const ImageFrames = ({
     },
     [framesRef, activeFrame.name, title, isLetsTalk],
   );
+
+  useEffect(() => {
+    window.addEventListener("resize", () => {
+      const aspect = window.innerWidth / window.innerHeight;
+      // console.log(camera);
+      if (camera) {
+        camera.aspect = aspect;
+        camera.updateProjectionMatrix();
+      }
+    });
+    return () => {
+      window.removeEventListener("resize", () => {});
+    };
+  }, [window.innerWidth, window.innerHeight]);
 
   useEffect(() => {
     setActiveFrame({ name: title });

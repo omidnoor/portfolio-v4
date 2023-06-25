@@ -7,7 +7,7 @@ const TitlePlate = ({ props, setTitle }) => {
 
   return (
     <mesh
-      position={[0, -1.4, 0.01]}
+      position={[0, -1.45, 0]}
       onClick={() => {
         setTitle(props.name);
       }}

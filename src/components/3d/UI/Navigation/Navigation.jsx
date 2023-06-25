@@ -85,12 +85,14 @@ const Navigation = () => {
     ),
     HomePage: folder(
       {
-        vec10: { value: [3.7, 1.6, -9], label: "position" },
-        vec11: { value: [3.7, 1.6, -10], label: "target" },
         "setLookAt HomePage": button((get) =>
           cameraControlsRef.current?.setLookAt(
-            ...get("HomePage.vec10"),
-            ...get("HomePage.vec11"),
+            3.6,
+            1.5,
+            -9,
+            3.6,
+            1.5,
+            -12.33,
             true,
           ),
         ),
@@ -99,12 +101,85 @@ const Navigation = () => {
     ),
     TestemonialPage: folder(
       {
-        vec12: { value: [9, 1.6, -3.7], label: "position" },
-        vec13: { value: [12.1, 1.6, -3.7], label: "target" },
         "setLookAt TestemonialPage": button((get) =>
           cameraControlsRef.current?.setLookAt(
-            ...get("TestemonialPage.vec12"),
-            ...get("TestemonialPage.vec13"),
+            9,
+            1.5,
+            -3.7,
+            12.35,
+            1.5,
+            -3.7,
+            true,
+          ),
+        ),
+      },
+      { collapsed: true },
+    ),
+    ContactPage: folder(
+      {
+        "setLookAt ContactPage": button((get) =>
+          cameraControlsRef.current?.setLookAt(
+            9,
+            1.5,
+            -8.6,
+            12.37,
+            1.5,
+            -8.6,
+            true,
+          ),
+        ),
+      },
+      { collapsed: true },
+    ),
+    ProjectsPage: folder(
+      {
+        "setLookAt Project1Page": button((get) =>
+          cameraControlsRef.current?.setLookAt(
+            -10,
+            1.5,
+            -22,
+            -10,
+            1.5,
+            -25,
+            true,
+          ),
+        ),
+        "setLookAt Project2Page": button((get) =>
+          cameraControlsRef.current?.setLookAt(
+            -6,
+            1.5,
+            -22,
+            -6,
+            1.5,
+            -25,
+            true,
+          ),
+        ),
+        "setLookAt Project3Page": button((get) =>
+          cameraControlsRef.current?.setLookAt(
+            -2,
+            1.5,
+            -22,
+            -2,
+            1.5,
+            -25,
+            true,
+          ),
+        ),
+        "setLookAt Project4Page": button((get) =>
+          cameraControlsRef.current?.setLookAt(2, 1.5, -22, 2, 1.5, -25, true),
+        ),
+        "setLookAt Project5Page": button((get) =>
+          cameraControlsRef.current?.setLookAt(6, 1.5, -22, 6, 1.5, -25, true),
+        ),
+        "setLookAt Project6Page": button((get) =>
+          cameraControlsRef.current?.setLookAt(
+            10,
+            1.5,
+            -22,
+            10,
+            1.5,
+            -25,
             true,
           ),
         ),
@@ -116,11 +191,11 @@ const Navigation = () => {
     minDistance: { value: 0 },
     enabled: { value: true, label: "controls on" },
     verticalDragToForward: {
-      value: false,
+      value: true,
       label: "vert. drag to move forward",
     },
-    dollyToCursor: { value: false, label: "dolly to cursor" },
-    infinityDolly: { value: false, label: "infinity dolly" },
+    dollyToCursor: { value: true, label: "dolly to cursor" },
+    infinityDolly: { value: true, label: "infinity dolly" },
   });
   return (
     <>
@@ -133,8 +208,8 @@ const Navigation = () => {
         infinityDolly={infinityDolly}
       />
       <mesh ref={meshRef} position={[-5, 1, -5]}>
-        <boxGeometry />
-        <meshStandardMaterial color="red" />
+        {/* <boxGeometry />
+        <meshStandardMaterial color="red" /> */}
       </mesh>
     </>
   );

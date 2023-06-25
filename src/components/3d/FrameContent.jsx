@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useTransition, animated } from "react-spring";
 
 import styles from "./content-embed.module.scss";
@@ -68,4 +68,4 @@ const FrameContent = ({ props }) => {
     </Html>
   );
 };
-export default FrameContent;
+export default memo(FrameContent);

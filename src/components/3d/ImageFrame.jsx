@@ -43,7 +43,7 @@ const ImageFrame = ({
           ref={frameRef}
           // raycast={() => null}
           
-          position={[0, 0, 0.1]}
+          position={[0, 0, 0.05]}
         >
           <boxGeometry  args={[1.7,2.2,0.05]}/>
           <meshStandardMaterial fog={false}  />
