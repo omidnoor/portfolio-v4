@@ -1,4 +1,3 @@
-import { RoundedBox } from "@react-three/drei";
 import { memo, useEffect, useRef, useState } from "react";
 import { a } from "@react-spring/three";
 import useHoverAnimation from "@/components/pageComponents/Projects/ProjectButtons/useHoverAnimation";
@@ -6,7 +5,16 @@ import usePushAnimation from "../../Utils/usePushAnimation";
 import { useFrame } from "@react-three/fiber";
 import { useStore } from "@/stores/store";
 import { Quaternion } from "three";
-import { damp3, dampQ } from "maath/easing";
+import HomeModel from "./models/HomeModel";
+import {
+  Center,
+  MeshReflectorMaterial,
+  RoundedBox,
+  useMatcapTexture,
+} from "@react-three/drei";
+import AboutMeModel from "./models/AboutMeModel";
+import ContactMeModel from "./models/ContactMeModel";
+import ProjectModel from "./models/ProjectModel";
 
 const ButtonIcon = ({
   id,
@@ -18,8 +26,9 @@ const ButtonIcon = ({
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const activeButton = useStore((state) => state.activeButton);
   const setActiveButton = useStore((state) => state.setActiveButton);
+
+  const [btnMatcap, btnUrl] = useMatcapTexture("685B57_BEB1B1_9B99A4_1E1D1D");
 
   const { scale, handleMouseEnter, handleMouseLeave } = useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
@@ -53,14 +62,18 @@ const ButtonIcon = ({
       onClick={() => setActiveButton(id, targetPosition)}
       onPointerMissed={() => setIsClicked(false)}
     >
-      <RoundedBox
-        args={[0.3, 0.3, 0.1]}
+      {/* <RoundedBox
+        args={[0.1, 0.1, 0.01]}
         radius={0.01}
         smoothness={1}
         creaseAngle={0.1}
       >
-        <meshStandardMaterial roughness={0} metalness={0.7} color={"#5cceee"} />
-      </RoundedBox>
+        <MeshReflectorMaterial castShadow receiveShadow />
+      </RoundedBox> */}
+      {id === "Home" && <HomeModel btnMatcap={btnMatcap} />}
+      {id === "About Me" && <AboutMeModel btnMatcap={btnMatcap} />}
+      {id === "Contact Me" && <ContactMeModel btnMatcap={btnMatcap} />}
+      {id === "Project1" && <ProjectModel btnMatcap={btnMatcap} />}
     </a.mesh>
   );
 };

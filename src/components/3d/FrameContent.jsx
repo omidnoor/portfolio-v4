@@ -57,7 +57,7 @@ const FrameContent = ({ props }) => {
                   backgroundColor: Deep_Blue,
                 }}
               >
-                <iframe src={props.url} width="30px" height="60px" />
+                <iframe src={props.url} />
                 {/* {ComponentToRender && <ComponentToRender />} */}
               </animated.div>
             </React.Suspense>
