@@ -21,7 +21,25 @@ const CustomLoader = () => {
     <Html center>
       <h1>Loading...</h1>
 
-      {active && <span style={{ color: "red" }}>{progress.toFixed(0)} %</span>}
+      {active && (
+        <div
+          style={{
+            width: "100%",
+            height: "5px",
+            background: "#ccc",
+            position: "absolute",
+            top: "0",
+          }}
+        >
+          <div
+            style={{
+              width: `${progress}%`,
+              height: "5px",
+              background: "#4caf50",
+            }}
+          ></div>
+        </div>
+      )}
     </Html>
   );
 };

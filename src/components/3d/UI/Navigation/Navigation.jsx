@@ -3,8 +3,9 @@ import { CameraControls } from "@react-three/drei";
 import { act } from "@react-three/fiber";
 import { button, folder, useControls } from "leva";
 import { memo, useEffect, useRef } from "react";
+import { pages } from "@/stores/data";
 
-const Navigation = ({ pages }) => {
+const Navigation = () => {
   const cameraControlsRef = useRef(null);
   const meshRef = useRef(null);
   // const {
@@ -207,6 +208,18 @@ const Navigation = ({ pages }) => {
   const setActiveButton = useStore((state) => state.setActiveButton);
 
   const isMenuClicked = useStore((state) => state.isMenuClicked);
+  const setIsMenuClicked = useStore((state) => state.setIsMenuClicked);
+  // console.log(activeFrame);
+  useEffect(() => {
+    cameraControlsRef.current?.setLookAt(0, 2.5, -3, 0, 2.5, -3, true);
+  }, []);
+
+  useEffect(() => {
+    if (!activeFrame?.name && !isMenuClicked) {
+      setActiveButton({ id: "", coordination: {} });
+      cameraControlsRef.current?.setLookAt(0, 2.5, -2, 0, 2.5, -3, true);
+    }
+  }, [activeFrame]);
 
   useEffect(() => {
     if (activeButton.id) {
@@ -226,40 +239,34 @@ const Navigation = ({ pages }) => {
           activePosition[2],
           true,
         );
-        console.log(
-          activeRotation[1] !== 0
-            ? (3.3 * activeRotation[1]) / Math.abs(activeRotation[1])
-            : 0,
-          activeRotation[1] === 0 ? 3.3 : 0,
-        );
       }
     }
   }, [activeButton]);
 
   useEffect(() => {
     if (activeButton.id) {
-      cameraControlsRef.current?.addEventListener("sleep", () => {
+      const handleSleep = () => {
         setActiveFrame({ name: activeButton.id });
-      });
+      };
+
+      cameraControlsRef.current?.addEventListener("sleep", handleSleep);
+
       return () => {
-        cameraControlsRef.current?.removeEventListener("sleep");
+        cameraControlsRef.current?.removeEventListener("sleep", handleSleep);
       };
     }
   }, [activeButton]);
 
   useEffect(() => {
-    if (!activeFrame.name && !isMenuClicked) {
-      setActiveButton({ id: "", coordination: {} });
-      cameraControlsRef.current?.setLookAt(0, 2.5, -2, 0, 2.5, -3, true);
-    }
-  }, [activeFrame]);
+    if (isMenuClicked) setIsMenuClicked(false);
+  }, [activeButton]);
 
   return (
     <>
       <CameraControls
         ref={cameraControlsRef}
+        enabled={true}
         // minDistance={minDistance}
-        // enabled={enabled}
         // verticalDragToForward={verticalDragToForward}
         // dollyToCursor={dollyToCursor}
         // infinityDolly={infinityDolly}
@@ -267,4 +274,4 @@ const Navigation = ({ pages }) => {
     </>
   );
 };
-export default Navigation;
+export default memo(Navigation);

@@ -10,7 +10,7 @@ const useHoverAnimation = () => {
     setScale({
       //   y: -20,
       scale: 1.05,
-      // loop: { reverse: true },
+      loop: { reverse: true },
       config: { tension: 100, friction: 10 },
     });
   };

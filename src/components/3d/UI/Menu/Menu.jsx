@@ -3,9 +3,8 @@ import { memo, useCallback, useEffect, useRef } from "react";
 
 import MenuPlate from "./MenuPlate";
 import { useStore } from "@/stores/store";
-import { Center } from "@react-three/drei";
 
-const Menu = ({ pages }) => {
+const Menu = () => {
   const { camera } = useThree();
   const meshRef = useRef();
 
@@ -21,13 +20,16 @@ const Menu = ({ pages }) => {
   const handleClick = useCallback(() => {
     setIsMenuClicked(true);
   }, []);
+  const handleMissed = useCallback(() => {
+    setIsMenuClicked(false);
+  }, []);
 
   return (
     <group>
       <mesh
         scale={0.4}
         onClick={handleClick}
-        onPointerMissed={() => setIsMenuClicked(false)}
+        onPointerMissed={handleMissed}
         ref={meshRef}
         position={[0, -0.8, -2]}
         rotation={[-Math.PI / 4, 0, 0]}
@@ -37,4 +39,4 @@ const Menu = ({ pages }) => {
     </group>
   );
 };
-export default Menu;
+export default memo(Menu);

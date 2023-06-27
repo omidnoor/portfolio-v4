@@ -2,9 +2,9 @@ import { memo } from "react";
 import ButtonIcon from "./ButtonIcon";
 import { Vector3 } from "three";
 
-const ButtonIcons = ({ btnMatcap, position }) => {
+const ButtonIcons = () => {
   return (
-    <group position={position} rotation={[Math.PI, 0, 0]} scale={0.6}>
+    <group position={[0, 0, 0.04]} rotation={[Math.PI, 0, 0]} scale={0.6}>
       <ButtonIcon
         position={[0, 0, 0.1]}
         id="Home"

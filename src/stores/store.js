@@ -14,7 +14,9 @@ export const useStore = create((set) => ({
   hoverThree: false,
   GOLDENRATIO: 1.6,
   isMenuClicked: false,
+  project: null,
 
+  setProject: (project) => set((state) => ({ ...state, project })),
   setIsMenuClicked: (isMenuClicked) =>
     set((state) => ({ ...state, isMenuClicked })),
   setActiveButton: (id, coordination) =>
