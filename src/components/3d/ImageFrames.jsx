@@ -5,12 +5,11 @@ import { memo } from "react";
 import { pages } from "@/stores/data";
 
 const ImageFrames = () => {
-  const [pagesName, setPagesName] = useState([]);
-
   const framesRef = useRef({});
   const isMenuClicked = useStore((state) => state.isMenuClicked);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
-
+  const activeFrame = useStore((state) => state.activeFrame);
+  // console.log(isMenuClicked);
   return (
     <group
       ref={framesRef}

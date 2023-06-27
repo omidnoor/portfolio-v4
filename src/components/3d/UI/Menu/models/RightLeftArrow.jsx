@@ -7,14 +7,15 @@ import { memo, useCallback, useEffect, useRef, useState } from "react";
 import { a } from "@react-spring/three";
 
 const RightLeftArrow = ({ matcap, rotation, position }) => {
+  const { nodes } = useGLTF("./models/arrow.glb");
   const meshRef = useRef();
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const setActiveButton = useStore((state) => state.setActiveButton);
   const activeFrame = useStore((state) => state.activeFrame);
-
-  const [btnMatcap, btnUrl] = useMatcapTexture("8CAEBC_3A4443_506463_DAEFEF");
+  const setActiveFrame = useStore((state) => state.setActiveFrame);
+  const project = useStore((state) => state.project);
+  const setProject = useStore((state) => state.setProject);
 
   const { scale, handleMouseEnter, handleMouseLeave } = useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
@@ -27,6 +28,12 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
     if (meshRef) meshRef.current.scale.z = 0.1;
   });
 
+  useEffect(() => {
+    // if (!activeFrame.name) setProject(1);
+    // if (activeFrame.name === "Project1") setProject(1);
+  }, [activeFrame]);
+
+  console.log(activeFrame.name, project);
   useEffect(() => {
     document.body.style.cursor = isHovered ? "pointer" : "auto";
   }, [isHovered]);
@@ -45,14 +52,25 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
     setIsClicked(false);
   }, []);
 
-  const { nodes } = useGLTF("./models/arrow.glb");
-
   const handleClick = () => {
-    if (activeFrame.name === "Project1") {
-      if (project > 6) return;
-      if (!project) return;
-      if (project === 1) {
-        setProject((prev) => prev + 1);
+    setIsClicked(true);
+    if (!activeFrame.name) return;
+    if (activeFrame.name.includes("Project")) {
+      if (project > 6) {
+        setActiveFrame("Project1");
+        setProject(1);
+      }
+      if (project < 1) return;
+      console.log(project);
+      if (position[0] > 0 && project <= 6) setProject(project + 1);
+      if (position[0] > 0 && project === 6) setProject(1);
+      if (position[0] < 0 && project > 1) {
+        setProject(project - 1);
+        // setActiveFrame(`Project${project}`);
+      }
+      if (position[0] < 0 && project === 1) {
+        // setActiveFrame(`Project6`);
+        setProject(6);
       }
     }
   };
@@ -60,6 +78,7 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
   return (
     <a.mesh
       scale={scale}
+      transparent={true}
       geometry={nodes.uploads_files_2310869_UI_Icons085.geometry}
       position={position}
       rotation={rotation}

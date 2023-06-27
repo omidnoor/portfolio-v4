@@ -2,7 +2,7 @@ import { create } from "zustand";
 
 export const useStore = create((set) => ({
   isClicked: false,
-  activeButton: { id: "", coordination: {} },
+  activeButton: { name: "" },
   activeFrame: { name: "" },
   frameEvent: null,
   portal: null,
@@ -14,15 +14,15 @@ export const useStore = create((set) => ({
   hoverThree: false,
   GOLDENRATIO: 1.6,
   isMenuClicked: false,
-  project: null,
+  project: 1,
 
   setProject: (project) => set((state) => ({ ...state, project })),
   setIsMenuClicked: (isMenuClicked) =>
     set((state) => ({ ...state, isMenuClicked })),
-  setActiveButton: (id, coordination) =>
+  setActiveButton: (name) =>
     set((state) => ({
       ...state,
-      activeButton: { id: id, coordination: coordination },
+      activeButton: { name: name },
     })),
   setIsClicked: (isClicked) => set((state) => ({ ...state, isClicked })),
 

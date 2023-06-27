@@ -11,7 +11,7 @@ import AboutMeModel from "./models/AboutMeModel";
 import ContactMeModel from "./models/ContactMeModel";
 import ProjectModel from "./models/ProjectModel";
 
-const ButtonIcon = ({ id, position, targetPosition }) => {
+const ButtonIcon = ({ name, position }) => {
   const meshRef = useRef();
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
@@ -26,7 +26,6 @@ const ButtonIcon = ({ id, position, targetPosition }) => {
 
   useEffect(() => {
     if (meshRef.current) {
-      console.log(meshRef.current);
       meshRef.current?.geometry.computeBoundingBox();
       meshRef.current?.geometry.center();
       const offset = meshRef.current?.geometry.boundingBox
@@ -57,8 +56,8 @@ const ButtonIcon = ({ id, position, targetPosition }) => {
   }, []);
 
   const handleClick = useCallback(() => {
-    setActiveButton(id, targetPosition);
-  }, [id, targetPosition]);
+    setActiveButton(name);
+  }, [name]);
 
   const handleMissed = useCallback(() => {
     setIsClicked(false);
@@ -76,10 +75,10 @@ const ButtonIcon = ({ id, position, targetPosition }) => {
       onClick={handleClick}
       onPointerMissed={handleMissed}
     >
-      {id === "Home" && <HomeModel btnMatcap={btnMatcap} />}
-      {id === "About Me" && <AboutMeModel btnMatcap={btnMatcap} />}
-      {id === "Contact Me" && <ContactMeModel btnMatcap={btnMatcap} />}
-      {id === "Project1" && <ProjectModel btnMatcap={btnMatcap} />}
+      {name === "Home" && <HomeModel btnMatcap={btnMatcap} />}
+      {name === "About Me" && <AboutMeModel btnMatcap={btnMatcap} />}
+      {name === "Contact Me" && <ContactMeModel btnMatcap={btnMatcap} />}
+      {name === "Project1" && <ProjectModel btnMatcap={btnMatcap} />}
     </a.mesh>
   );
 };

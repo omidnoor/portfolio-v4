@@ -9,7 +9,8 @@ const Menu = () => {
   const meshRef = useRef();
 
   const setIsMenuClicked = useStore((state) => state.setIsMenuClicked);
-
+  const isMenuClicked = useStore((state) => state.isMenuClicked);
+  // console.log(isMenuClicked);
   useEffect(() => {
     camera.add(meshRef.current);
     return () => {

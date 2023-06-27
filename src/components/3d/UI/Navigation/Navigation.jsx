@@ -4,6 +4,7 @@ import { act } from "@react-three/fiber";
 import { button, folder, useControls } from "leva";
 import { memo, useEffect, useRef } from "react";
 import { pages } from "@/stores/data";
+import PageProjects from "@/pages/PageProjects";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
@@ -207,6 +208,8 @@ const Navigation = () => {
   const activeButton = useStore((state) => state.activeButton);
   const setActiveButton = useStore((state) => state.setActiveButton);
 
+  const project = useStore((state) => state.project);
+
   const isMenuClicked = useStore((state) => state.isMenuClicked);
   const setIsMenuClicked = useStore((state) => state.setIsMenuClicked);
   // console.log(activeFrame);
@@ -216,14 +219,14 @@ const Navigation = () => {
 
   useEffect(() => {
     if (!activeFrame?.name && !isMenuClicked) {
-      setActiveButton({ id: "", coordination: {} });
+      setActiveButton({ name: "" });
       cameraControlsRef.current?.setLookAt(0, 2.5, -2, 0, 2.5, -3, true);
     }
   }, [activeFrame]);
 
   useEffect(() => {
-    if (activeButton.id) {
-      const active = pages.filter((page) => page.name === activeButton.id)[0];
+    if (activeButton.name) {
+      const active = pages.filter((page) => page.name === activeButton.name)[0];
       const activePosition = active?.position;
       const activeRotation = active?.rotation;
       if (activePosition) {
@@ -244,9 +247,9 @@ const Navigation = () => {
   }, [activeButton]);
 
   useEffect(() => {
-    if (activeButton.id) {
+    if (activeButton.name) {
       const handleSleep = () => {
-        setActiveFrame({ name: activeButton.id });
+        setActiveFrame({ name: activeButton.name });
       };
 
       cameraControlsRef.current?.addEventListener("sleep", handleSleep);
@@ -258,8 +261,30 @@ const Navigation = () => {
   }, [activeButton]);
 
   useEffect(() => {
-    if (isMenuClicked) setIsMenuClicked(false);
-  }, [activeButton]);
+    const active = pages.filter((page) => page.name === `Project${project}`)[0];
+    const activePosition = active?.position;
+    const activeRotation = active?.rotation;
+    if (project > 1 && project <= 6) {
+      setActiveButton(`Project${project}`);
+
+      cameraControlsRef.current?.setLookAt(
+        activePosition[0] +
+          (activeRotation[1] !== 0
+            ? (3.3 * activeRotation[1]) / Math.abs(activeRotation[1])
+            : 0),
+        activePosition[1] - 1,
+        activePosition[2] + (activeRotation[1] === 0 ? 3.3 : 0),
+        activePosition[0],
+        activePosition[1] - 1,
+        activePosition[2],
+        true,
+      );
+    }
+  }, [project]);
+
+  // useEffect(() => {
+  //   if (isMenuClicked) setIsMenuClicked(false);
+  // }, [activeButton]);
 
   return (
     <>
