@@ -4,7 +4,7 @@ import useHoverAnimation from "@/components/pageComponents/Projects/ProjectButto
 import usePushAnimation from "../../Utils/usePushAnimation";
 import { useFrame } from "@react-three/fiber";
 import { useStore } from "@/stores/store";
-import { Quaternion } from "three";
+import { Quaternion, Vector3 } from "three";
 import HomeModel from "./models/HomeModel";
 import { useMatcapTexture } from "@react-three/drei";
 import AboutMeModel from "./models/AboutMeModel";
@@ -23,6 +23,18 @@ const ButtonIcon = ({ id, position, targetPosition }) => {
   const { scale, handleMouseEnter, handleMouseLeave } = useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
     usePushAnimation();
+
+  useEffect(() => {
+    if (meshRef.current) {
+      console.log(meshRef.current);
+      meshRef.current?.geometry.computeBoundingBox();
+      meshRef.current?.geometry.center();
+      const offset = meshRef.current?.geometry.boundingBox
+        .getCenter(new Vector3())
+        .negate();
+      meshRef.current?.position.add(offset);
+    }
+  }, []);
 
   useFrame(() => {
     if (isHovered && meshRef) {
@@ -53,24 +65,22 @@ const ButtonIcon = ({ id, position, targetPosition }) => {
   }, []);
 
   return (
-    <group>
-      <a.mesh
-        position={position}
-        scale={[scale.get(), scale.get(), scale.get()]}
-        ref={meshRef}
-        onPointerEnter={handlePointerEnter}
-        onPointerLeave={handlePointerLeave}
-        onPointerDown={handlePointerDown}
-        onPointerUp={handlePointerUp}
-        onClick={handleClick}
-        onPointerMissed={handleMissed}
-      >
-        {id === "Home" && <HomeModel btnMatcap={btnMatcap} />}
-        {id === "About Me" && <AboutMeModel btnMatcap={btnMatcap} />}
-        {id === "Contact Me" && <ContactMeModel btnMatcap={btnMatcap} />}
-        {id === "Project1" && <ProjectModel btnMatcap={btnMatcap} />}
-      </a.mesh>
-    </group>
+    <a.mesh
+      position={position}
+      scale={scale}
+      ref={meshRef}
+      onPointerEnter={handlePointerEnter}
+      onPointerLeave={handlePointerLeave}
+      onPointerDown={handlePointerDown}
+      onPointerUp={handlePointerUp}
+      onClick={handleClick}
+      onPointerMissed={handleMissed}
+    >
+      {id === "Home" && <HomeModel btnMatcap={btnMatcap} />}
+      {id === "About Me" && <AboutMeModel btnMatcap={btnMatcap} />}
+      {id === "Contact Me" && <ContactMeModel btnMatcap={btnMatcap} />}
+      {id === "Project1" && <ProjectModel btnMatcap={btnMatcap} />}
+    </a.mesh>
   );
 };
 export default memo(ButtonIcon);

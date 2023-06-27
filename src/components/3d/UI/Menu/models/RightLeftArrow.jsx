@@ -23,8 +23,8 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
   useFrame(() => {
     if (isHovered && meshRef) {
       meshRef.current.position.z = (positionScaleZ.get() - 0.1) * position[2];
-      console.log(positionScaleZ.get());
     }
+    if (meshRef) meshRef.current.scale.z = 0.1;
   });
 
   useEffect(() => {
@@ -59,7 +59,7 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
 
   return (
     <a.mesh
-      scale={[scale.get(), scale.get(), 0.2]}
+      scale={scale}
       geometry={nodes.uploads_files_2310869_UI_Icons085.geometry}
       position={position}
       rotation={rotation}

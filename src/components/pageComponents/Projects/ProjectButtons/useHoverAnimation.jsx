@@ -9,8 +9,7 @@ const useHoverAnimation = () => {
     setIsHovered(true);
     setScale({
       //   y: -20,
-      scale: 1.05,
-      loop: { reverse: true },
+      scale: 1.02,
       config: { tension: 100, friction: 10 },
     });
   };
@@ -19,7 +18,6 @@ const useHoverAnimation = () => {
     setIsHovered(false);
     setScale({
       scale: 1,
-      loop: false,
       config: { tension: 500, friction: 10 },
     });
   };
