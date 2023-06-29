@@ -14,39 +14,22 @@ const componentMapping = {
 };
 
 const FrameContent = ({ props }) => {
-  const [isActiveFrame, setIsActiveFrame] = useState(false);
-
-  const activeFrame = useStore((state) => state.activeFrame);
-  const setHoverHtml = useStore((state) => state.setHoverHtml);
-  const transitions = useTransition(isActiveFrame, {
+  const activeFrames = useStore((state) => state.activeFrames);
+  const transitions = useTransition(activeFrames.includes(props.name), {
     from: { opacity: 0 },
     enter: { opacity: 1 },
-    config: { tension: 100, friction: 100 },
+    config: { tension: 1, friction: 1 },
   });
-
-  useEffect(() => {
-    if (activeFrame.name === props.name) {
-      setIsActiveFrame(true);
-    } else {
-      setIsActiveFrame(false);
-    }
-  }, [activeFrame]);
 
   return (
     <mesh position={[0, 0, 0.05]}>
-      <Html scale={0.1} wrapperClass={styles.wrapper} transform sprite occlude>
+      <Html scale={0.1} wrapperClass={styles.wrapper} transform occlude>
         {transitions((style, item) =>
           item ? (
             <React.Suspense fallback={<div>Loading...</div>}>
               <animated.div
                 className={styles.main}
                 name={props.name}
-                onMouseEnter={() => {
-                  setHoverHtml(true);
-                }}
-                onMouseLeave={() => {
-                  setHoverHtml(false);
-                }}
                 style={{
                   ...style,
                   width: "688px",
@@ -63,7 +46,6 @@ const FrameContent = ({ props }) => {
             </React.Suspense>
           ) : null,
         )}
-        {/* {!isActiveFrame && <Image src={props.url} fill alt="image" />} */}
       </Html>
     </mesh>
   );

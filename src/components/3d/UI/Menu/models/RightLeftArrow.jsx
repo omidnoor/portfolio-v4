@@ -11,6 +11,7 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
   const meshRef = useRef();
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [projectNum, setProjectNum] = useState(1);
 
   const activeFrame = useStore((state) => state.activeFrame);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
@@ -33,7 +34,6 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
     // if (activeFrame.name === "Project1") setProject(1);
   }, [activeFrame]);
 
-  console.log(activeFrame.name, project);
   useEffect(() => {
     document.body.style.cursor = isHovered ? "pointer" : "auto";
   }, [isHovered]);
@@ -52,28 +52,51 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
     setIsClicked(false);
   }, []);
 
-  const handleClick = () => {
+  useEffect(() => {}, []);
+
+  // const handleClick = () => {
+  //   setIsClicked(true);
+  //   if (!activeFrame.name) return;
+  //   if (activeFrame.name.includes("Project")) {
+  //     if (project > 6) {
+  //       setActiveFrame({ name: "Project1" });
+  //       setProject(1);
+  //     }
+  //     if (project < 1) return;
+  //     if (position[0] > 0 && project <= 6) setProject(project + 1);
+  //     if (position[0] > 0 && project === 6) setProject(1);
+  //     if (position[0] < 0 && project > 1) {
+  //       setProject(project - 1);
+  //       // setActiveFrame(`Project${project}`);
+  //     }
+  //     if (position[0] < 0 && project === 1) {
+  //       // setActiveFrame(`Project6`);
+  //       setProject(6);
+  //     }
+  //   }
+  // };
+  const handleClick = useCallback(() => {
     setIsClicked(true);
-    if (!activeFrame.name) return;
-    if (activeFrame.name.includes("Project")) {
-      if (project > 6) {
-        setActiveFrame("Project1");
-        setProject(1);
-      }
-      if (project < 1) return;
-      console.log(project);
-      if (position[0] > 0 && project <= 6) setProject(project + 1);
-      if (position[0] > 0 && project === 6) setProject(1);
-      if (position[0] < 0 && project > 1) {
-        setProject(project - 1);
-        // setActiveFrame(`Project${project}`);
-      }
-      if (position[0] < 0 && project === 1) {
-        // setActiveFrame(`Project6`);
-        setProject(6);
-      }
-    }
-  };
+
+    // If not the right type of frame, do nothing
+    if (!activeFrame.name || !activeFrame.name.includes("Project")) return;
+
+    const currentProject = useStore.getState().project;
+    const newProject =
+      position[0] > 0
+        ? currentProject < 6
+          ? currentProject + 1
+          : 1
+        : currentProject > 1
+        ? currentProject - 1
+        : 6;
+
+    // Update the global state with the new project number
+    setProject(newProject);
+
+    // Update activeFrame based on new project number
+    setActiveFrame({ name: `Project${newProject}` });
+  }, [activeFrame, position, setProject, setActiveFrame]);
 
   return (
     <a.mesh

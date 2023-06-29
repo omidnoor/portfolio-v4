@@ -16,7 +16,8 @@ const ButtonIcon = ({ name, position }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const setActiveButton = useStore((state) => state.setActiveButton);
+  // const setActiveButton = useStore((state) => state.setActiveButton);
+  const setActiveFrame = useStore((state) => state.setActiveFrame);
 
   const [btnMatcap, btnUrl] = useMatcapTexture("8CAEBC_3A4443_506463_DAEFEF");
 
@@ -56,7 +57,8 @@ const ButtonIcon = ({ name, position }) => {
   }, []);
 
   const handleClick = useCallback(() => {
-    setActiveButton(name);
+    // setActiveButton({ name: name });
+    setActiveFrame({ name: name });
   }, [name]);
 
   const handleMissed = useCallback(() => {
