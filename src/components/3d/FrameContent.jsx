@@ -5,6 +5,7 @@ import styles from "./content-embed.module.scss";
 import { Html } from "@react-three/drei";
 import { useStore } from "@/stores/store";
 import { Deep_Blue } from "../utilComponents/variables/colors";
+import { Suspense } from "react";
 
 const componentMapping = {
   Home: React.lazy(() => import("@/pages/PageHome")),
@@ -26,7 +27,7 @@ const FrameContent = ({ props }) => {
       <Html scale={0.1} wrapperClass={styles.wrapper} transform occlude>
         {transitions((style, item) =>
           item ? (
-            <React.Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<div>Loading...</div>}>
               <animated.div
                 className={styles.main}
                 name={props.name}
@@ -43,7 +44,7 @@ const FrameContent = ({ props }) => {
                 <iframe src={props.url} />
                 {/* {ComponentToRender && <ComponentToRender />} */}
               </animated.div>
-            </React.Suspense>
+            </Suspense>
           ) : null,
         )}
       </Html>

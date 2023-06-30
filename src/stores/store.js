@@ -6,7 +6,24 @@ export const useStore = create((set) => ({
   htmlClicked: false,
   isLetsTalk: false,
   isMenuClicked: false,
+  isSceneClicked: false,
   project: 1,
+  activeButton: { name: "" },
+  activeMenuButton: "",
+
+  setActiveMenuButton: (name) =>
+    set((state) => ({ ...state, activeMenuButton: name })),
+  setIsSceneClicked: (isSceneClicked) =>
+    set((state) => ({ ...state, isSceneClicked })),
+  setActiveButton: (name) =>
+    set((state) => {
+      return { ...state, activeButton: name };
+    }),
+
+  setActiveFrame: (name) =>
+    set((state) => {
+      return { ...state, activeFrame: name };
+    }),
 
   setActiveFrames: (frames) =>
     set((state) => ({
@@ -18,11 +35,6 @@ export const useStore = create((set) => ({
 
   setIsMenuClicked: (isMenuClicked) =>
     set((state) => ({ ...state, isMenuClicked })),
-
-  setActiveFrame: (frame) =>
-    set((state) => {
-      return { ...state, activeFrame: frame };
-    }),
 
   setHtmlClicked: (htmlClicked) => set((state) => ({ ...state, htmlClicked })),
 

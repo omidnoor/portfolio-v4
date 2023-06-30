@@ -17,6 +17,7 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
   const setActiveFrame = useStore((state) => state.setActiveFrame);
   const project = useStore((state) => state.project);
   const setProject = useStore((state) => state.setProject);
+  const setActiveButton = useStore((state) => state.setActiveButton);
 
   const { scale, handleMouseEnter, handleMouseLeave } = useHoverAnimation();
   const { positionScaleZ, handlePointerDown, handlePointerUp } =
@@ -28,11 +29,6 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
     }
     if (meshRef) meshRef.current.scale.z = 0.1;
   });
-
-  useEffect(() => {
-    // if (!activeFrame.name) setProject(1);
-    // if (activeFrame.name === "Project1") setProject(1);
-  }, [activeFrame]);
 
   useEffect(() => {
     document.body.style.cursor = isHovered ? "pointer" : "auto";
@@ -52,51 +48,28 @@ const RightLeftArrow = ({ matcap, rotation, position }) => {
     setIsClicked(false);
   }, []);
 
-  useEffect(() => {}, []);
-
-  // const handleClick = () => {
-  //   setIsClicked(true);
-  //   if (!activeFrame.name) return;
-  //   if (activeFrame.name.includes("Project")) {
-  //     if (project > 6) {
-  //       setActiveFrame({ name: "Project1" });
-  //       setProject(1);
-  //     }
-  //     if (project < 1) return;
-  //     if (position[0] > 0 && project <= 6) setProject(project + 1);
-  //     if (position[0] > 0 && project === 6) setProject(1);
-  //     if (position[0] < 0 && project > 1) {
-  //       setProject(project - 1);
-  //       // setActiveFrame(`Project${project}`);
-  //     }
-  //     if (position[0] < 0 && project === 1) {
-  //       // setActiveFrame(`Project6`);
-  //       setProject(6);
-  //     }
-  //   }
-  // };
   const handleClick = useCallback(() => {
     setIsClicked(true);
 
-    // If not the right type of frame, do nothing
     if (!activeFrame.name || !activeFrame.name.includes("Project")) return;
 
-    const currentProject = useStore.getState().project;
+    // Calculate the new project number based on the current position and project
     const newProject =
       position[0] > 0
-        ? currentProject < 6
-          ? currentProject + 1
+        ? project < 6
+          ? project + 1
           : 1
-        : currentProject > 1
-        ? currentProject - 1
+        : project > 1
+        ? project - 1
         : 6;
 
-    // Update the global state with the new project number
+    // Set the new project number in the global state
     setProject(newProject);
 
-    // Update activeFrame based on new project number
-    setActiveFrame({ name: `Project${newProject}` });
-  }, [activeFrame, position, setProject, setActiveFrame]);
+    // Optionally update activeFrame based on new project
+    // setActiveFrame({ name: `Project${newProject}` });
+    // setActiveButton({ name: `Project${newProject}` });
+  }, [activeFrame, position, project, setProject, setActiveFrame]);
 
   return (
     <a.mesh

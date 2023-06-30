@@ -21,6 +21,7 @@ const Menu = () => {
   const handleClick = useCallback(() => {
     setIsMenuClicked(true);
   }, []);
+
   const handleMissed = useCallback(() => {
     setIsMenuClicked(false);
   }, []);

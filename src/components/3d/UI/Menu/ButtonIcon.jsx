@@ -16,7 +16,8 @@ const ButtonIcon = ({ name, position }) => {
   const [isClicked, setIsClicked] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  // const setActiveButton = useStore((state) => state.setActiveButton);
+  const activeButton = useStore((state) => state.activeButton);
+  const setActiveButton = useStore((state) => state.setActiveButton);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
 
   const [btnMatcap, btnUrl] = useMatcapTexture("8CAEBC_3A4443_506463_DAEFEF");
@@ -56,10 +57,11 @@ const ButtonIcon = ({ name, position }) => {
     setIsHovered(false);
   }, []);
 
-  const handleClick = useCallback(() => {
-    // setActiveButton({ name: name });
+  const handleClick = useCallback((e) => {
+    e.stopPropagation();
+    setActiveButton({ name: name });
     setActiveFrame({ name: name });
-  }, [name]);
+  }, []);
 
   const handleMissed = useCallback(() => {
     setIsClicked(false);
@@ -74,7 +76,7 @@ const ButtonIcon = ({ name, position }) => {
       onPointerLeave={handlePointerLeave}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
-      onClick={handleClick}
+      onClick={(e) => handleClick(e)}
       onPointerMissed={handleMissed}
     >
       {name === "Home" && <HomeModel btnMatcap={btnMatcap} />}

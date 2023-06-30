@@ -1,0 +1,18 @@
+@import "@/styles/variables.scss";
+
+.container {
+  position: absolute;
+  height: 70px;
+  width: 100%;
+  bottom: 0;
+  background: $tertiary-glow;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1;
+}
+
+.menu {
+  width: 100%;
+  display: flex;
+}

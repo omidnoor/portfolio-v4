@@ -1,8 +1,10 @@
+import { useStore } from "@/stores/store";
 import { useGLTF } from "@react-three/drei";
-import { memo } from "react";
+import { memo, useCallback } from "react";
 
 const ContactMeModel = ({ btnMatcap }) => {
   const { nodes } = useGLTF("./models/contactme.glb");
+
   return (
     <mesh
       geometry={nodes.uploads_files_2310869_UI_Icons170.geometry}

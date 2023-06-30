@@ -1,3 +1,4 @@
+import { useStore } from "@/stores/store";
 import { useGLTF } from "@react-three/drei";
 import { memo, useEffect } from "react";
 
