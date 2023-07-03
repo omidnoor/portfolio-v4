@@ -10,16 +10,23 @@ export const useStore = create((set) => ({
   project: 1,
   activeButton: { name: "" },
   activeMenuButton: "",
-  geoNormalArray: [{ name: "", normal: [0, 0, 0] }],
+  geoNormalArray: [{}],
+  arrowButton: "",
+  arrowCount: 0,
 
+  setArrowCount: (count) => set((state) => ({ ...state, arrowCount: count })),
+  setArrowButton: (name) => set((state) => ({ ...state, arrowButton: name })),
   setGeoNormalArray: (name, normal) =>
     set((state) => {
-      const newObject = { name: name, normal: normal };
-      const newArray = [...state.geoNormalArray, newObject];
-      return {
-        ...state,
-        geoNormalArray: newArray,
-      };
+      if (!state.geoNormalArray.some((item) => item.name === name)) {
+        const newObject = { name: name, normal: normal };
+        const newArray = [...state.geoNormalArray, newObject];
+        return {
+          ...state,
+          geoNormalArray: newArray,
+        };
+      }
+      return state;
     }),
   setActiveMenuButton: (name) =>
     set((state) => ({ ...state, activeMenuButton: name })),

@@ -14,7 +14,7 @@ const Card = ({ page }) => {
   };
 
   useEffect(() => {
-    setActiveMenuButton("");
+    // setActiveMenuButton("");
   }, [isSceneClicked]);
 
   return (

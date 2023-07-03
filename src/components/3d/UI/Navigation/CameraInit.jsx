@@ -1,15 +1,24 @@
 import { useStore } from "@/stores/store";
 import { useEffect } from "react";
+import { cameraInitCoor, camerainitLookAt } from "@/stores/variables";
 
 const CameraInit = ({ cameraControlsRef }) => {
   const isSceneClicked = useStore((state) => state.isSceneClicked);
 
   useEffect(() => {
-    cameraControlsRef.current?.setLookAt(0, 2.5, -3, 0, 2.5, -3, true);
+    cameraControlsRef.current?.setLookAt(
+      ...cameraInitCoor,
+      ...camerainitLookAt,
+      true,
+    );
   }, []);
 
   useEffect(() => {
-    cameraControlsRef.current?.setLookAt(0, 2.5, -2, 0, 2.5, -3, true);
+    cameraControlsRef.current?.setLookAt(
+      ...cameraInitCoor,
+      ...camerainitLookAt,
+      true,
+    );
   }, [isSceneClicked]);
   return null;
 };

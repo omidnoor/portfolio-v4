@@ -4,21 +4,24 @@ import { Dock } from "./Dock/Dock";
 import { DockCard } from "./DockCard/DockCard";
 import { DockDivider } from "./DockDivider/DockDivider";
 import { pages } from "@/stores/data";
+import DockArrow from "./Card/DockArrow";
 
 export default function DockMenu() {
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
-
   return (
     <Dock>
-      {pages.map((page, index) =>
-        page.url ? (
-          <DockCard key={page.name}>
-            <Card page={page} />
-          </DockCard>
-        ) : (
-          <DockDivider key={index} />
-        ),
-      )}
+      <DockCard>
+        <DockArrow type="left" />
+      </DockCard>
+      <DockDivider />
+      {pages.map((page, index) => (
+        <DockCard key={page.name}>
+          <Card page={page} />
+        </DockCard>
+      ))}
+      <DockDivider />
+      <DockCard>
+        <DockArrow type="right" />
+      </DockCard>
     </Dock>
   );
 }

@@ -6,22 +6,27 @@ import { pages } from "@/stores/data";
 
 const ImageFrames = () => {
   const framesRef = useRef({});
-  const isMenuClicked = useStore((state) => state.isMenuClicked);
+  const isSceneClicked = useStore((state) => state.isSceneClicked);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
   const activeFrame = useStore((state) => state.activeFrame);
-  // console.log(isMenuClicked);
+
   return (
     <group
       ref={framesRef}
       onPointerMissed={() => {
-        if (!isMenuClicked) {
+        if (isSceneClicked) {
           setActiveFrame({ name: "" });
         }
       }}
     >
-      {pages?.map((props, index) => (
-        <ImageFrame key={index} {...props} />
-      ))}
+      {pages?.map((props, index) => {
+        if (!props.sub) return <ImageFrame key={index} {...props} />;
+        if (props.sub) {
+          return props.sub.map((subProps, subIndex) => {
+            return <ImageFrame key={`${index}-${subIndex}`} {...subProps} />;
+          });
+        }
+      })}
     </group>
   );
 };

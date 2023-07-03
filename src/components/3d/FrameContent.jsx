@@ -17,21 +17,24 @@ const componentMapping = {
 
 const FrameContent = ({ props, frameRef }) => {
   const activeFrames = useStore((state) => state.activeFrames);
+  const geoNormalArray = useStore((state) => state.geoNormalArray);
+  const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
   const transitions = useTransition(activeFrames.includes(props.name), {
     from: { opacity: 0 },
     enter: { opacity: 1 },
     config: { tension: 1, friction: 1 },
   });
 
-  const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
-
   useEffect(() => {
     if (frameRef.current) {
       const normal = normals(frameRef.current);
-      setGeoNormalArray(props.name, normal);
+      const exists = geoNormalArray.some((item) => item.name === props.name);
+      if (!exists) {
+        setGeoNormalArray(props.name, normal);
+      }
     }
   }, []);
-  // console.log(geoRefArray);
+
   return (
     <mesh position={[0, 0, 0.05]}>
       <Html scale={0.1} wrapperClass={styles.wrapper} transform occlude>
@@ -51,6 +54,7 @@ const FrameContent = ({ props, frameRef }) => {
                   backgroundColor: Deep_Blue,
                 }}
               >
+                <iframe src={props.sub.url} />
                 <iframe src={props.url} />
                 {/* {ComponentToRender && <ComponentToRender />} */}
               </animated.div>
