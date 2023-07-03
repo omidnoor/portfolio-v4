@@ -10,7 +10,17 @@ export const useStore = create((set) => ({
   project: 1,
   activeButton: { name: "" },
   activeMenuButton: "",
+  geoNormalArray: [{ name: "", normal: [0, 0, 0] }],
 
+  setGeoNormalArray: (name, normal) =>
+    set((state) => {
+      const newObject = { name: name, normal: normal };
+      const newArray = [...state.geoNormalArray, newObject];
+      return {
+        ...state,
+        geoNormalArray: newArray,
+      };
+    }),
   setActiveMenuButton: (name) =>
     set((state) => ({ ...state, activeMenuButton: name })),
   setIsSceneClicked: (isSceneClicked) =>

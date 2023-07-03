@@ -10,7 +10,7 @@ const ResponsiveCamera = () => {
         const aspect = window.innerWidth / window.innerHeight;
         cameraRef.current.aspect = aspect;
 
-        // cameraRef.current.fov = 55;
+        cameraRef.current.fov = 30;
         cameraRef.current.updateProjectionMatrix();
       }
     };

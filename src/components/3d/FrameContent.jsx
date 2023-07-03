@@ -6,6 +6,7 @@ import { Html } from "@react-three/drei";
 import { useStore } from "@/stores/store";
 import { Deep_Blue } from "../utilComponents/variables/colors";
 import { Suspense } from "react";
+import { normals } from "./Utils/Normals";
 
 const componentMapping = {
   Home: React.lazy(() => import("@/pages/PageHome")),
@@ -14,7 +15,7 @@ const componentMapping = {
   Projects: React.lazy(() => import("@/pages/PageProjects")),
 };
 
-const FrameContent = ({ props }) => {
+const FrameContent = ({ props, frameRef }) => {
   const activeFrames = useStore((state) => state.activeFrames);
   const transitions = useTransition(activeFrames.includes(props.name), {
     from: { opacity: 0 },
@@ -22,6 +23,15 @@ const FrameContent = ({ props }) => {
     config: { tension: 1, friction: 1 },
   });
 
+  const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
+
+  useEffect(() => {
+    if (frameRef.current) {
+      const normal = normals(frameRef.current);
+      setGeoNormalArray(props.name, normal);
+    }
+  }, []);
+  // console.log(geoRefArray);
   return (
     <mesh position={[0, 0, 0.05]}>
       <Html scale={0.1} wrapperClass={styles.wrapper} transform occlude>

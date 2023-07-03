@@ -12,7 +12,6 @@ const HomePage = () => {
   return (
     <>
       <Menu />
-      <ProjectsMenu />
       <Layout>
         <ResponsiveCamera />
         <Suspense fallback={<CustomLoader />}>

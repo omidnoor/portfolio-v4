@@ -2,8 +2,8 @@
 
 .container {
   position: absolute;
-  width: 20%;
-  height: calc(100% - 300px);
+  width: 200px;
+  height: 400px;
   //   left: -145px;
   //   left: 0;
   background: $tertiary-glow;
@@ -25,5 +25,16 @@
   h2 {
     margin-top: 2rem;
     color: #080c36c4;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #080c36c4;
   }
+}
+
+.projectPrev {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
 }

@@ -9,12 +9,25 @@ const Navigation = () => {
   const cameraControlsRef = useRef(null);
 
   const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
+  const geoNormalArray = useStore((state) => state.geoNormalArray);
+
   useEffect(() => {
     const active = pages.find((page) => page.name === activeMenuButton);
-    const activePosition = active?.position;
-    const activeRotation = active?.rotation;
+    const normal = geoNormalArray.find((geo) => geo.name === active?.name);
+    const offset = 0.85;
+    const dist = 5;
 
-    setCameraLookAt(cameraControlsRef, activePosition, activeRotation);
+    const activePosition = active?.position;
+    setCameraLookAt(
+      cameraControlsRef,
+      activePosition,
+      normal?.normal,
+      offset,
+      dist,
+    );
+
+    if (!activeMenuButton) setActiveMenuButton("");
   }, [activeMenuButton]);
 
   return (
