@@ -7,6 +7,7 @@ import { useStore } from "@/stores/store";
 import { Deep_Blue } from "../utilComponents/variables/colors";
 import { Suspense } from "react";
 import { normals } from "./Utils/Normals";
+import { pages } from "@/stores/data";
 
 const componentMapping = {
   Home: React.lazy(() => import("@/pages/PageHome")),
@@ -30,7 +31,7 @@ const FrameContent = ({ props, frameRef }) => {
       const normal = normals(frameRef.current);
       const exists = geoNormalArray.some((item) => item.name === props.name);
       if (!exists) {
-        setGeoNormalArray(props.name, normal);
+        setGeoNormalArray(props.name || pages.name, normal);
       }
     }
   }, []);
@@ -54,7 +55,7 @@ const FrameContent = ({ props, frameRef }) => {
                   backgroundColor: Deep_Blue,
                 }}
               >
-                <iframe src={props.sub.url} />
+                {/* <iframe src={props.sub.url} /> */}
                 <iframe src={props.url} />
                 {/* {ComponentToRender && <ComponentToRender />} */}
               </animated.div>

@@ -6,7 +6,6 @@ import CameraInit from "./CameraInit";
 import { setCameraLookAt } from "@/components/3d/UI/Navigation/setCameraLookAt";
 import { offset, dist } from "@/stores/variables";
 import { subNavigation } from "./subNavigation";
-import { clone } from "lodash";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
@@ -25,7 +24,6 @@ const Navigation = () => {
     if (!activeMenuButton) setActiveMenuButton("");
     const active = pages.find((page) => page.name === activeMenuButton);
     const normal = geoNormalArray.find((geo) => geo.name === active?.name);
-
     const activePosition = active?.position;
     setCameraLookAt(
       cameraControlsRef,
@@ -37,18 +35,37 @@ const Navigation = () => {
   }, [activeMenuButton]);
 
   useEffect(() => {
-    console.log(geoNormalArray);
     const active = pages.find((page) => page.name === activeMenuButton);
-    const normal = geoNormalArray.find((geo) => geo.name === active?.name);
-    if (!!active?.sub) {
+    if (active?.sub) {
+      // console.log(active.sub);
+      let normal = geoNormalArray
+        .filter((geo) =>
+          active.sub.some((subItem) => subItem.name === geo.name),
+        )
+        .map((item) => item.normal);
       const subPosition = active.sub[arrowCount % active.sub.length]?.position;
-      setCameraLookAt(
-        cameraControlsRef,
-        subPosition,
-        normal?.normal,
-        offset,
-        dist,
+      normal = normal[arrowCount % active.sub.length];
+      setCameraLookAt(cameraControlsRef, subPosition, normal, offset, dist);
+    }
+  }, []);
+
+  useEffect(() => {
+    const active = pages.find((page) => page.name === activeMenuButton);
+    if (active?.sub) {
+      // console.log(active.sub);
+      let normal = geoNormalArray
+        .filter((geo) =>
+          active.sub.some((subItem) => subItem.name === geo.name),
+        )
+        .map((item) => item.normal);
+      const subPosition =
+        active.sub[Math.abs(arrowCount % active.sub.length)]?.position;
+      normal = normal[Math.abs(arrowCount % active.sub.length)];
+      console.log(
+        active.sub[Math.abs(arrowCount % active.sub.length)],
+        Math.abs(arrowCount % active.sub.length),
       );
+      setCameraLookAt(cameraControlsRef, subPosition, normal, offset, dist);
     }
   }, [arrowCount]);
 

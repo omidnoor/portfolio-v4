@@ -27,14 +27,14 @@ const ImageFrame = ({...props}) => {
         </mesh>
       </mesh>
       { <mesh  position={[0, 0, 0]} {...props}>
-        <boxGeometry   args={[2,2.5,0.05]} />
+        <boxGeometry args={[2,2.5,0.05]} />
         <meshMatcapMaterial matcap={matcapTexture2} />
         <mesh
           ref={frameRef}
           position={[0, 0, 0.05]}
         >
           <planeGeometry args={[1.7,2.2]}/>
-          <meshStandardMaterial  />
+          <meshStandardMaterial/>
 
           <FrameContent frameRef={frameRef} props={...props}/>
           {/* <FrameTitle props={...props}/>

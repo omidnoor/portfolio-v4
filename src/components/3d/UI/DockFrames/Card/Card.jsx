@@ -25,8 +25,6 @@ const Card = ({ page }) => {
           <img className={styles.card__img} src={page.imageUrl} alt="" />
         </>
       )}
-      {page.name === "arrow-right" && <BiRightArrow size={30} fill="#cdfdc4" />}
-      {page.name === "arrow-left" && <BiLeftArrow size={30} fill="#cdfdc4" />}
     </div>
   );
 };

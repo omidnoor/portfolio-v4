@@ -37,7 +37,7 @@ export const pages = [
   },
   {
     name: "Projects",
-    position: [-19, 2.5, 25],
+    position: [-19, 2.5, 15],
     rotation: [0, -Math.PI * 1, 0],
     imageUrl:
       "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
