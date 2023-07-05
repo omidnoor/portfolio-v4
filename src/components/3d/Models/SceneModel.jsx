@@ -11,10 +11,10 @@ const SceneModel = () => {
   const isSceneClicked = useStore((state) => state.isSceneClicked);
 
   const handleClick = (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     setIsSceneClicked(!isSceneClicked);
   };
-
+  console.log(isSceneClicked);
   return (
     <mesh scale={worldScale} onPointerDown={handleClick}>
       <primitive object={model.scene} />

@@ -14,18 +14,18 @@ const Card = ({ page }) => {
   };
 
   useEffect(() => {
-    // setActiveMenuButton("");
+    setActiveMenuButton("");
   }, [isSceneClicked]);
 
   return (
-    <div className={styles.card} onClick={handleClick}>
+    <>
       {page.name !== "arrow-right" && page.name !== "arrow-left" && (
-        <>
+        <div className={styles.card} onClick={handleClick}>
           <img className={styles.card__blur} src={page.imageUrl} alt="" />
           <img className={styles.card__img} src={page.imageUrl} alt="" />
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 export default Card;

@@ -27,7 +27,6 @@ const FrameContent = ({ props, frameRef }) => {
     config: { tension: 1, friction: 1 },
   });
 
-  console.log(frameRef);
   useEffect(() => {
     if (frameRef.current) {
       const normal = normals(frameRef.current);
@@ -40,15 +39,13 @@ const FrameContent = ({ props, frameRef }) => {
 
   return (
     <Html
-      // scale={worldScale}
       position={[0, 0, 2.05]}
       wrapperClass={styles.wrapper}
       transform
       occlude
     >
-      <h1>{props.name}</h1>
       <div className={styles.main} name={props.name}>
-        {/* <iframe src={props.url} /> */}
+        <iframe src={props.url} />
       </div>
     </Html>
   );

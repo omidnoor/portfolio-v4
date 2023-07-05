@@ -9,6 +9,7 @@ const ImageFrames = () => {
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
   const activeFrame = useStore((state) => state.activeFrame);
+  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
   useEffect(() => {
     framesRef.current.frustumCulled = false;
   }, []);
@@ -18,6 +19,7 @@ const ImageFrames = () => {
       onPointerMissed={() => {
         if (isSceneClicked) {
           setActiveFrame({ name: "" });
+          setActiveMenuButton("");
         }
       }}
     >

@@ -9,7 +9,6 @@ import { worldScale } from "@/stores/variables";
 const ImageFrame = ({ ...props }) => {
   const frameRef = useRef(null);
   const [matcapTexture2] = useMatcapTexture("221917_928380_5F504D_7C746C", 256);
-console.log(frameRef);
   return (
     <mesh ref={frameRef}  position={[0, 0, 0]} {...props}>
       <boxGeometry  args={[2*worldScale, 2.5*worldScale, 2]} />
