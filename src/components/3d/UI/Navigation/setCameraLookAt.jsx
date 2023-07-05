@@ -2,7 +2,7 @@ import { Vector3 } from "three";
 
 export const setCameraLookAt = (
   cameraControlsRef,
-  position = [0, 2.5, -5],
+  position = [0, 25, -50],
   normal = new Vector3(0, 0, 1),
   offset = 1,
   dist = 5,

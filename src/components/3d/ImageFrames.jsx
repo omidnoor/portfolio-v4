@@ -9,7 +9,9 @@ const ImageFrames = () => {
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const setActiveFrame = useStore((state) => state.setActiveFrame);
   const activeFrame = useStore((state) => state.activeFrame);
-
+  useEffect(() => {
+    framesRef.current.frustumCulled = false;
+  }, []);
   return (
     <group
       ref={framesRef}

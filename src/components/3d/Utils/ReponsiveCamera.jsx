@@ -10,18 +10,16 @@ const ResponsiveCamera = () => {
       if (cameraRef.current) {
         const aspect = window.innerWidth / window.innerHeight;
         cameraRef.current.aspect = aspect;
-        cameraRef.current.position.set(0, 2, -2);
+        // cameraRef.current.position.set(0, 2, -2);
 
         cameraRef.current.fov = 30;
+        cameraRef.current.max = 2000;
         cameraRef.current.updateProjectionMatrix();
       }
     };
-    // Initial update
     handleResize();
-    // Attach event listener
     window.addEventListener("resize", handleResize);
 
-    // Clean up event listener on unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };

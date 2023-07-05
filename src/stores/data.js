@@ -1,7 +1,7 @@
 export const pages = [
   {
     name: "Home",
-    position: [3.6, 2.5, -12.33],
+    position: [36, 25, -123],
     rotation: [0, 0, 0],
     imageUrl:
       "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -10,7 +10,7 @@ export const pages = [
   },
   {
     name: "About Me",
-    position: [0.15, 2.5, 18],
+    position: [1, 25, 180],
     rotation: [0, Math.PI * 0.5, 0],
     imageUrl:
       "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -19,7 +19,7 @@ export const pages = [
   },
   {
     name: "Contact Me",
-    position: [12.37, 2.5, -8.6],
+    position: [123, 25, -86],
     rotation: [0, -Math.PI * 0.5, 0],
     imageUrl:
       "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -28,7 +28,7 @@ export const pages = [
   },
   {
     name: "Testimonials",
-    position: [12.35, 2.5, -3.7],
+    position: [123, 25, -37],
     rotation: [0, -Math.PI * 0.5, 0],
     imageUrl:
       "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -37,7 +37,7 @@ export const pages = [
   },
   {
     name: "Projects",
-    position: [-19, 2.5, 15],
+    position: [-190, 25, 150],
     rotation: [0, -Math.PI * 1, 0],
     imageUrl:
       "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -45,7 +45,7 @@ export const pages = [
     sub: [
       {
         name: "Project1",
-        position: [-25, 2.5, 22],
+        position: [-250, 25, 220],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/12.-Tumbleweed-p-130x130q80.jpeg",
@@ -53,7 +53,7 @@ export const pages = [
       },
       {
         name: "Project2",
-        position: [-19, 2.5, 25],
+        position: [-190, 25, 250],
         rotation: [0, Math.PI * 1, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/15.-Perfume_1-p-130x130q80.jpeg",
@@ -61,7 +61,7 @@ export const pages = [
       },
       {
         name: "Project3",
-        position: [-25, 2.5, 15],
+        position: [-250, 25, 150],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
@@ -69,7 +69,7 @@ export const pages = [
       },
       {
         name: "Project4",
-        position: [-25, 2.5, -15],
+        position: [-250, 25, -150],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -77,7 +77,7 @@ export const pages = [
       },
       {
         name: "Project5",
-        position: [-25, 2.5, -22],
+        position: [-250, 25, -220],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/04.-Hopbush_1-p-130x130q80.jpeg",
@@ -85,7 +85,7 @@ export const pages = [
       },
       {
         name: "Project6",
-        position: [-19, 2.5, -25],
+        position: [-190, 25, -250],
         rotation: [0, Math.PI * 0, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/09.-Light-Sky-Blue-p-130x130q80.jpeg",

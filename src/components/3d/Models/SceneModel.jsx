@@ -1,5 +1,6 @@
 import { useGLTF } from "@react-three/drei";
 import { useStore } from "@/stores/store";
+import { worldScale } from "@/stores/variables";
 
 useGLTF.preload("./models/SceneModel.glb");
 
@@ -15,7 +16,7 @@ const SceneModel = () => {
   };
 
   return (
-    <mesh onPointerDown={handleClick}>
+    <mesh scale={worldScale} onPointerDown={handleClick}>
       <primitive object={model.scene} />
     </mesh>
   );

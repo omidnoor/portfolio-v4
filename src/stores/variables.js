@@ -1,4 +1,5 @@
-export const cameraInitCoor = [0, 2.5, -2];
-export const camerainitLookAt = [0, 2.5, -3];
-export const offset = 0.85;
-export const dist = 5;
+export const cameraInitCoor = [0, 25, -20];
+export const camerainitLookAt = [0, 25, -30];
+export const offset = 1;
+export const dist = 60;
+export const worldScale = 10;

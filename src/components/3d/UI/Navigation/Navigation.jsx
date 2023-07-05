@@ -25,6 +25,7 @@ const Navigation = () => {
     const active = pages.find((page) => page.name === activeMenuButton);
     const normal = geoNormalArray.find((geo) => geo.name === active?.name);
     const activePosition = active?.position;
+    console.log(geoNormalArray);
     setCameraLookAt(
       cameraControlsRef,
       activePosition,
@@ -61,17 +62,17 @@ const Navigation = () => {
       const subPosition =
         active.sub[Math.abs(arrowCount % active.sub.length)]?.position;
       normal = normal[Math.abs(arrowCount % active.sub.length)];
-      console.log(
-        active.sub[Math.abs(arrowCount % active.sub.length)],
-        Math.abs(arrowCount % active.sub.length),
-      );
+      // console.log(
+      //   active.sub[Math.abs(arrowCount % active.sub.length)],
+      //   Math.abs(arrowCount % active.sub.length),
+      // );
       setCameraLookAt(cameraControlsRef, subPosition, normal, offset, dist);
     }
   }, [arrowCount]);
 
   return (
     <>
-      {/* <CameraInit cameraControlsRef={cameraControlsRef} /> */}
+      <CameraInit cameraControlsRef={cameraControlsRef} />
       <CameraControls ref={cameraControlsRef} enabled={true} />
     </>
   );

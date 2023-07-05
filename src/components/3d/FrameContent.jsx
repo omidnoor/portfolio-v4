@@ -8,6 +8,7 @@ import { Deep_Blue } from "../utilComponents/variables/colors";
 import { Suspense } from "react";
 import { normals } from "./Utils/Normals";
 import { pages } from "@/stores/data";
+import { worldScale } from "@/stores/variables";
 
 const componentMapping = {
   Home: React.lazy(() => import("@/pages/PageHome")),
@@ -26,6 +27,7 @@ const FrameContent = ({ props, frameRef }) => {
     config: { tension: 1, friction: 1 },
   });
 
+  console.log(frameRef);
   useEffect(() => {
     if (frameRef.current) {
       const normal = normals(frameRef.current);
@@ -37,33 +39,18 @@ const FrameContent = ({ props, frameRef }) => {
   }, []);
 
   return (
-    <mesh position={[0, 0, 0.05]}>
-      <Html scale={0.1} wrapperClass={styles.wrapper} transform occlude>
-        {transitions((style, item) =>
-          item ? (
-            <Suspense fallback={<div>Loading...</div>}>
-              <animated.div
-                className={styles.main}
-                name={props.name}
-                style={{
-                  ...style,
-                  width: "688px",
-                  height: "890px",
-                  padding: 0,
-                  margin: 0,
-                  overflow: "hidden",
-                  backgroundColor: Deep_Blue,
-                }}
-              >
-                {/* <iframe src={props.sub.url} /> */}
-                <iframe src={props.url} />
-                {/* {ComponentToRender && <ComponentToRender />} */}
-              </animated.div>
-            </Suspense>
-          ) : null,
-        )}
-      </Html>
-    </mesh>
+    <Html
+      // scale={worldScale}
+      position={[0, 0, 2.05]}
+      wrapperClass={styles.wrapper}
+      transform
+      occlude
+    >
+      <h1>{props.name}</h1>
+      <div className={styles.main} name={props.name}>
+        {/* <iframe src={props.url} /> */}
+      </div>
+    </Html>
   );
 };
 export default FrameContent;

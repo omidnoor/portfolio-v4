@@ -1,3 +1,4 @@
+import { worldScale } from "@/stores/variables";
 import { Canvas } from "@react-three/fiber";
 import { memo } from "react";
 
