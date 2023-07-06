@@ -8,20 +8,22 @@ import DockArrow from "./Card/DockArrow";
 
 export default function DockMenu() {
   return (
-    <Dock>
-      <DockCard>
-        <DockArrow type="left" />
-      </DockCard>
-      <DockDivider />
-      {pages.map((page, index) => (
-        <DockCard key={page.name}>
-          <Card page={page} />
+    <>
+      <Dock>
+        <DockCard>
+          <DockArrow type="left" />
         </DockCard>
-      ))}
-      <DockDivider />
-      <DockCard>
-        <DockArrow type="right" />
-      </DockCard>
-    </Dock>
+        <DockDivider />
+        {pages.map((page, index) => (
+          <DockCard key={page.name}>
+            <Card page={page} />
+          </DockCard>
+        ))}
+        <DockDivider />
+        <DockCard>
+          <DockArrow type="right" />
+        </DockCard>
+      </Dock>
+    </>
   );
 }

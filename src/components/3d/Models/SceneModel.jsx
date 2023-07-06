@@ -14,7 +14,7 @@ const SceneModel = () => {
     // e.stopPropagation();
     setIsSceneClicked(!isSceneClicked);
   };
-  console.log(isSceneClicked);
+
   return (
     <mesh scale={worldScale} onPointerDown={handleClick}>
       <primitive object={model.scene} />

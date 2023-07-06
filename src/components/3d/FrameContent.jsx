@@ -9,6 +9,7 @@ import { Suspense } from "react";
 import { normals } from "./Utils/Normals";
 import { pages } from "@/stores/data";
 import { worldScale } from "@/stores/variables";
+import Image from "next/image";
 
 const componentMapping = {
   Home: React.lazy(() => import("@/pages/PageHome")),
@@ -45,7 +46,15 @@ const FrameContent = ({ props, frameRef }) => {
       occlude
     >
       <div className={styles.main} name={props.name}>
-        <iframe src={props.url} />
+        {props.url && <iframe src={props.url} />}
+        {props.contentUrl && (
+          <Image
+            src={props.contentUrl}
+            width={700}
+            height={900}
+            alt="project content image"
+          />
+        )}
       </div>
     </Html>
   );

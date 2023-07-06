@@ -6,13 +6,13 @@ import ResponsiveCamera from "@/components/3d/Utils/ReponsiveCamera";
 import Navigation from "@/components/3d/UI/Navigation/Navigation";
 import ImageFrames from "@/components/3d/ImageFrames";
 import Menu from "@/components/utilComponents/UI/Menu/Menu";
+import Plate from "@/components/3d/UI/Plate/Plate";
 
 const HomePage = () => {
   return (
     <>
       <Menu />
       <Layout>
-        {/* <ResponsiveCamera /> */}
         <Suspense fallback={<CustomLoader />}>
           <Navigation />
           <group position={[0, 0, 0]}>

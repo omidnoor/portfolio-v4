@@ -14,6 +14,15 @@ export const useStore = create((set) => ({
   arrowButton: "",
   arrowCount: 0,
 
+  dockHovered: false,
+  setDockHovered: (value) => set((state) => ({ dockHovered: value })),
+  dockWidth: 0,
+  setDockWidth: (width) => set((state) => ({ dockWidth: width })),
+  dockDisabled: false,
+  setDockDisabled: () => {},
+  setIsDockZooming: () => {},
+  dockZoomLevel: false,
+
   setArrowCount: (count) => set((state) => ({ ...state, arrowCount: count })),
   setArrowButton: (name) => set((state) => ({ ...state, arrowButton: name })),
   setGeoNormalArray: (name, normal) =>

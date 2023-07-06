@@ -6,6 +6,7 @@ import { useMousePosition } from "../Hooks/useMousePosition";
 import { useWindowResize } from "../Hooks/useWindowResize";
 import { useEffect } from "react";
 import { animated } from "react-spring";
+import { pages } from "@/stores/data";
 
 import styles from "./styles.module.scss";
 
@@ -21,8 +22,9 @@ export const DockCard = ({ children }) => {
 
   const size = useSpringValue(INITIAL_WIDTH, {
     config: {
-      mass: 0.1,
-      tension: 100,
+      mass: 1,
+      tension: 220,
+      friction: 100,
     },
   });
 
@@ -30,7 +32,8 @@ export const DockCard = ({ children }) => {
   const y = useSpringValue(0, {
     config: {
       friction: 29,
-      tension: 238,
+      tension: 320,
+      friction: 100,
     },
   });
 
@@ -50,7 +53,7 @@ export const DockCard = ({ children }) => {
             INITIAL_WIDTH +
             36 *
               Math.cos((((mouseX - elCenterX) / dock.width) * Math.PI) / 2) **
-                30;
+                12;
           if (dock.hovered) {
             size.start(transformedValue);
           }
@@ -76,7 +79,8 @@ export const DockCard = ({ children }) => {
   const timeoutRef = useRef();
   const isAnimating = useRef(false);
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
     if (!isAnimating.current) {
       isAnimating.current = true;
       opacity.start(0.5);
@@ -114,9 +118,10 @@ export const DockCard = ({ children }) => {
   return (
     <div className={styles["dock-card-container"]}>
       <animated.button
+        // disabled={true}
         ref={cardRef}
         className={styles["dock-card"]}
-        onClick={handleClick}
+        onClick={(e) => handleClick(e)}
         style={{
           width: size,
           height: size,

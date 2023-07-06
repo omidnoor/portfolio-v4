@@ -17,7 +17,7 @@ const ProjectPrev = () => {
     <div className={styles.projectPrev}>
       {pages[4].sub.map((item, index) => (
         <>
-          {console.log(item.imageUrl)}
+          {/* {console.log(item.imageUrl)} */}
           <Image src={item.imageUrl} width={160} height={200} />
         </>
       ))}

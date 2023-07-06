@@ -15,11 +15,13 @@ export const DOCK_ZOOM_LIMIT = [-100, 50];
 export const Dock = ({ children }) => {
   const [hovered, setHovered] = useState(false);
   const [width, setWidth] = useState(0);
+  const [disabled, setDisabled] = useState(false);
   const isZooming = useRef(false);
   const dockRef = useRef();
 
   const setIsZooming = useCallback((value) => {
     isZooming.current = value;
+    console.log(value);
     setHovered(!value);
   }, []);
 
@@ -34,16 +36,20 @@ export const Dock = ({ children }) => {
   });
 
   return (
-    <DockContext.Provider value={{ hovered, setIsZooming, width, zoomLevel }}>
+    <DockContext.Provider
+      value={{ hovered, setIsZooming, width, disabled, setDisabled, zoomLevel }}
+    >
       <animated.div
         ref={dockRef}
         className={styles.dock}
-        onMouseOver={() => {
+        onMouseOver={(e) => {
+          // e.stopPropagation();
           if (!isZooming.current) {
             setHovered(true);
           }
         }}
-        onMouseOut={() => {
+        onMouseOut={(e) => {
+          // e.stopPropagation();
           setHovered(false);
         }}
         style={{
