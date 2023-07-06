@@ -10,13 +10,11 @@ const ImageFrame = ({ ...props }) => {
   const frameRef = useRef(null);
   const [matcapTexture2] = useMatcapTexture("221917_928380_5F504D_7C746C", 256);
   return (
-    <mesh ref={frameRef} position={[0, 0, 0]} {...props}>
-      <mesh  >
+    <mesh  ref={frameRef} position={[0, 0, 0]} {...props}>
         <boxGeometry args={[2 * worldScale, 2.5 * worldScale, 2]} />
         <meshMatcapMaterial matcap={matcapTexture2} />
         <FrameContent frameRef={frameRef} props={...props} />
-      </mesh>
-      
+        <Plate />
     </mesh>
   );
 };

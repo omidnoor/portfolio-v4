@@ -5,14 +5,15 @@ import { DockCard } from "./DockCard/DockCard";
 import { DockDivider } from "./DockDivider/DockDivider";
 import { pages } from "@/stores/data";
 import DockArrow from "./Card/DockArrow";
+import BackButton from "./Card/BackButton";
 
 export default function DockMenu() {
   return (
     <>
       <Dock>
-        <DockCard>
-          <DockArrow type="left" />
-        </DockCard>
+        {/* <DockCard> */}
+        <DockArrow type="left" />
+        {/* </DockCard> */}
         <DockDivider />
         {pages.map((page, index) => (
           <DockCard key={page.name}>
@@ -20,10 +21,11 @@ export default function DockMenu() {
           </DockCard>
         ))}
         <DockDivider />
-        <DockCard>
-          <DockArrow type="right" />
-        </DockCard>
+        {/* <DockCard> */}
+        <DockArrow type="right" />
+        {/* </DockCard> */}
       </Dock>
+      <BackButton />
     </>
   );
 }

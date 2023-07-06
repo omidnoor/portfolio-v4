@@ -22,6 +22,16 @@ const FrameContent = ({ props, frameRef }) => {
   const activeFrames = useStore((state) => state.activeFrames);
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
+  const htmlClicked = useStore((state) => state.htmlClicked);
+  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
+  const isSceneClicked = useStore((state) => state.isSceneClicked);
+  const arrowCount = useStore((state) => state.arrowCount);
+  const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const dollyCount = useStore((state) => state.dollyCount);
+  const setDollyCount = useStore((state) => state.setDollyCount);
+  const setPlateClicked = useStore((state) => state.setPlateClicked);
+  const setLastClick = useStore((state) => state.setLastClick);
+
   const transitions = useTransition(activeFrames.includes(props.name), {
     from: { opacity: 0 },
     enter: { opacity: 1 },
@@ -38,22 +48,55 @@ const FrameContent = ({ props, frameRef }) => {
     }
   }, []);
 
+  const handleClick = (e) => {
+    e.stopPropagation();
+    setHtmlClicked(true);
+    setDollyCount(1);
+    setLastClick("html");
+  };
+
+  useEffect(() => {
+    setHtmlClicked(false);
+    setDollyCount(0);
+  }, [isSceneClicked, activeMenuButton, arrowCount]);
+
+  const handleEnter = (e) => {
+    e.stopPropagation();
+    document.body.style.cursor = "pointer";
+  };
+
+  const handleLeave = (e) => {
+    e.stopPropagation();
+    document.body.style.cursor = "auto";
+  };
+
   return (
     <Html
-      position={[0, 0, 2.05]}
+      as="div"
+      position={[0, 0, 1.05]}
       wrapperClass={styles.wrapper}
       transform
       occlude
     >
-      <div className={styles.main} name={props.name}>
+      <div
+        className={styles.main}
+        name={props.name}
+        // onClick={(e) => handleClick(e)}
+      >
         {props.url && <iframe src={props.url} />}
         {props.contentUrl && (
-          <Image
-            src={props.contentUrl}
-            width={700}
-            height={900}
-            alt="project content image"
-          />
+          <div
+            onClick={(e) => handleClick(e)}
+            onMouseEnter={(e) => handleEnter(e)}
+            onMouseLeave={(e) => handleLeave(e)}
+          >
+            <Image
+              src={props.contentUrl}
+              width={700}
+              height={900}
+              alt="project content image"
+            />
+          </div>
         )}
       </div>
     </Html>

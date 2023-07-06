@@ -22,8 +22,8 @@ export const DockCard = ({ children }) => {
 
   const size = useSpringValue(INITIAL_WIDTH, {
     config: {
-      mass: 1,
-      tension: 220,
+      mass: 0.1,
+      tension: 320,
       friction: 100,
     },
   });
@@ -32,8 +32,7 @@ export const DockCard = ({ children }) => {
   const y = useSpringValue(0, {
     config: {
       friction: 29,
-      tension: 320,
-      friction: 100,
+      tension: 238,
     },
   });
 

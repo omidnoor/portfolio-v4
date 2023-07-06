@@ -15,6 +15,11 @@ const Navigation = () => {
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
   const geoNormalArray = useStore((state) => state.geoNormalArray);
+  const htmlClicked = useStore((state) => state.htmlClicked);
+  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
+  const dollyCount = useStore((state) => state.dollyCount);
+  const plateClicked = useStore((state) => state.plateClicked);
+  const lastClick = useStore((state) => state.lastClick);
 
   useEffect(() => {
     cameraControlsRef.current?.setLookAt(
@@ -66,6 +71,32 @@ const Navigation = () => {
       setCameraLookAt(cameraControlsRef, subPosition, normal, offset, dist);
     }
   }, [arrowCount, activeMenuButton]);
+
+  const truckMove = (dir) => {
+    cameraControlsRef.current?.truck((dir ? 1 : -1) * 13, 0, true);
+  };
+
+  const dollyMove = (dollyDist) => {
+    cameraControlsRef.current?.dolly(dollyDist, true);
+  };
+
+  console.log(htmlClicked, dollyCount, plateClicked);
+
+  useEffect(() => {
+    console.log(lastClick);
+    if (htmlClicked && !plateClicked) dollyMove(35);
+    if (!htmlClicked && plateClicked) {
+      truckMove(true);
+      dollyMove(50);
+    }
+    if (htmlClicked && plateClicked && lastClick === "plate") {
+      truckMove(true);
+      dollyMove(15);
+    } else if (htmlClicked && plateClicked && lastClick === "html") {
+      truckMove(false);
+      dollyMove(-15);
+    }
+  }, [plateClicked, htmlClicked, lastClick]);
 
   return (
     <CameraControls

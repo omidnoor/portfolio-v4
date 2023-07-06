@@ -13,7 +13,13 @@ export const useStore = create((set) => ({
   geoNormalArray: [{}],
   arrowButton: "",
   arrowCount: 0,
+  dollyCount: 0,
+  plateClicked: false,
+  lastClick: "",
 
+  setLastClick: (value) => set((state) => ({ lastClick: value })),
+  setPlateClicked: (value) => set((state) => ({ plateClicked: value })),
+  setDollyCount: (count) => set((state) => ({ dollyCount: count })),
   dockHovered: false,
   setDockHovered: (value) => set((state) => ({ dockHovered: value })),
   dockWidth: 0,
