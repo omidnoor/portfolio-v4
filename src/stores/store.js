@@ -16,7 +16,9 @@ export const useStore = create((set) => ({
   dollyCount: 0,
   plateClicked: false,
   lastClick: "",
+  backClicked: false,
 
+  setBackClicked: (value) => set((state) => ({ backClicked: value })),
   setLastClick: (value) => set((state) => ({ lastClick: value })),
   setPlateClicked: (value) => set((state) => ({ plateClicked: value })),
   setDollyCount: (count) => set((state) => ({ dollyCount: count })),

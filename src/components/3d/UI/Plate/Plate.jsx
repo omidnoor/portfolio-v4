@@ -1,5 +1,7 @@
 import { useStore } from "@/stores/store";
+import { MeshReflectorMaterial } from "@react-three/drei";
 import { useEffect } from "react";
+import PlateContent from "./PlateContent";
 
 const Plate = () => {
   const setPlateClicked = useStore((state) => state.setPlateClicked);
@@ -7,9 +9,7 @@ const Plate = () => {
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const arrowCount = useStore((state) => state.arrowCount);
   const setDollyCount = useStore((state) => state.setDollyCount);
-  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
   const setLastClick = useStore((state) => state.setLastClick);
-  const lastClick = useStore((state) => state.lastClick);
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -34,15 +34,26 @@ const Plate = () => {
   }, [isSceneClicked, activeMenuButton, arrowCount]);
 
   return (
-    <mesh
-      position={[15, 0, 0.05]}
-      onClick={(e) => handleClick(e)}
-      onPointerEnter={(e) => handleEnter(e)}
-      onPointerLeave={(e) => handleLeave(e)}
-    >
-      <planeGeometry args={[7, 10]} />
-      <meshBasicMaterial color="white" />
-    </mesh>
+    <>
+      <mesh
+        position={[15, 0, 0.15]}
+        onClick={(e) => handleClick(e)}
+        onPointerEnter={(e) => handleEnter(e)}
+        onPointerLeave={(e) => handleLeave(e)}
+      >
+        <planeGeometry args={[7, 10]} />
+        <meshStandardMaterial
+          color="#fcfcdc"
+          roughness={0.8}
+          metalness={0.05}
+        />
+        <PlateContent />
+      </mesh>
+      <mesh position={[15, 0, 0.1]}>
+        <planeGeometry args={[8, 11]} />
+        <MeshReflectorMaterial color="#cfcded" roughness={0} metalness={0.95} />
+      </mesh>
+    </>
   );
 };
 export default Plate;

@@ -22,14 +22,11 @@ const FrameContent = ({ props, frameRef }) => {
   const activeFrames = useStore((state) => state.activeFrames);
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
-  const htmlClicked = useStore((state) => state.htmlClicked);
   const setHtmlClicked = useStore((state) => state.setHtmlClicked);
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const dollyCount = useStore((state) => state.dollyCount);
   const setDollyCount = useStore((state) => state.setDollyCount);
-  const setPlateClicked = useStore((state) => state.setPlateClicked);
   const setLastClick = useStore((state) => state.setLastClick);
 
   const transitions = useTransition(activeFrames.includes(props.name), {

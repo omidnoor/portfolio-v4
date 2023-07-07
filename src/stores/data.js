@@ -46,6 +46,25 @@ export const pages = [
         imageUrl: "/icons/portfolio-icon-v1.png",
         url: null,
         contentUrl: "/content-images/insta-v1.jpg",
+        plate: {
+          title: "Instagram Clone App",
+          description: [
+            "use Firebase for database and storage.",
+            "style with Tailwind CSS.",
+            "authenticate using next-auth.",
+            "apply like and comment functionality.",
+            "add upload functionality and use Image tag of nextjs.",
+          ],
+          frameWorks: [
+            "Reactjs",
+            "Nextjs",
+            "Tailwind CSS",
+            "Recoil",
+            "Material-UI",
+          ],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+        },
       },
       {
         name: "Project2",
@@ -55,6 +74,13 @@ export const pages = [
           "https://products.ls.graphics/mesh-gradients/images/15.-Perfume_1-p-130x130q80.jpeg",
         url: null,
         contentUrl: "/content-images/metal-plate-scifi-utopai-v1.jpg",
+        plate: {
+          title: "Project1",
+          description: "This is a description of the project",
+          frameWorks: ["Reactjs", "Nextjs", "Redux", "Material-UI"],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+        },
       },
       {
         name: "Project3",
@@ -63,6 +89,13 @@ export const pages = [
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
         url: "http://localhost:3000/PageProjects",
+        plate: {
+          title: "Project1",
+          description: "This is a description of the project",
+          frameWorks: ["Reactjs", "Nextjs", "Redux", "Material-UI"],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+        },
       },
       {
         name: "Project4",
@@ -71,6 +104,13 @@ export const pages = [
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
         url: "http://localhost:3000/PageProjects",
+        plate: {
+          title: "Project1",
+          description: "This is a description of the project",
+          frameWorks: ["Reactjs", "Nextjs", "Redux", "Material-UI"],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+        },
       },
       {
         name: "Project5",
@@ -79,6 +119,13 @@ export const pages = [
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/04.-Hopbush_1-p-130x130q80.jpeg",
         url: "http://localhost:3000/PageProjects",
+        plate: {
+          title: "Project1",
+          description: "This is a description of the project",
+          frameWorks: ["Reactjs", "Nextjs", "Redux", "Material-UI"],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+        },
       },
       {
         name: "Project6",
@@ -87,6 +134,13 @@ export const pages = [
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/09.-Light-Sky-Blue-p-130x130q80.jpeg",
         url: "http://localhost:3000/PageProjects",
+        plate: {
+          title: "Project1",
+          description: "This is a description of the project",
+          frameWorks: ["Reactjs", "Nextjs", "Redux", "Material-UI"],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+        },
       },
     ],
   },

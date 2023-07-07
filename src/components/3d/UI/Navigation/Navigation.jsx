@@ -10,14 +10,10 @@ const Navigation = () => {
   const cameraControlsRef = useRef(null);
 
   const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const arrowButton = useStore((state) => state.arrowButton);
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const htmlClicked = useStore((state) => state.htmlClicked);
-  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
-  const dollyCount = useStore((state) => state.dollyCount);
   const plateClicked = useStore((state) => state.plateClicked);
   const lastClick = useStore((state) => state.lastClick);
 
@@ -80,10 +76,7 @@ const Navigation = () => {
     cameraControlsRef.current?.dolly(dollyDist, true);
   };
 
-  console.log(htmlClicked, dollyCount, plateClicked);
-
   useEffect(() => {
-    console.log(lastClick);
     if (htmlClicked && !plateClicked) dollyMove(35);
     if (!htmlClicked && plateClicked) {
       truckMove(true);

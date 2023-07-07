@@ -44,22 +44,12 @@
   }
 }
 
-.arrow {
-  // z-index: 10;
-  // display: flex;
-  // position: absolute;
-  // justify-content: space-around;
-  // align-items: center;
-  // width: 100%;
-  // left: 20px;
-  // top: 50%;
-  // transform: translate(-50%, -50%);
-}
-
 .backButton {
   position: absolute;
   bottom: 70px;
   left: 10px;
+  transition: all 0.2 ease-in;
+  z-index: 200;
   &:hover {
     cursor: pointer;
   }
