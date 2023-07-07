@@ -1,28 +1,44 @@
 import { Html } from "@react-three/drei";
 import { pages } from "@/stores/data";
 import { useStore } from "@/stores/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
 
-let activeSub;
-
 const PlateContent = () => {
+  const [activeSub, setActiveSub] = useState(null);
+
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const activeFrame = useStore((state) => state.activeFrame);
   const arrowCount = useStore((state) => state.arrowCount);
+  const setPlateClicked = useStore((state) => state.setPlateClicked);
+  const isSceneClicked = useStore((state) => state.isSceneClicked);
+  const setDollyCount = useStore((state) => state.setDollyCount);
+  const setLastClick = useStore((state) => state.setLastClick);
+
   const active = pages.find((page) => page.name === activeMenuButton);
-  useEffect(() => {
-    if (active?.sub) {
-      const activeSub = active.sub[arrowCount];
-    }
-  }, [activeMenuButton]);
 
   const handleClick = (e) => {
     e.stopPropagation();
+    setPlateClicked(true);
+    setDollyCount(1);
+    setLastClick("plate");
   };
-  console.log(active?.sub[arrowCount]?.plate?.deployUrl);
+
+  useEffect(() => {
+    setPlateClicked(false);
+    setDollyCount(0);
+  }, [isSceneClicked, activeMenuButton, arrowCount]);
+
+  useEffect(() => {
+    if (active?.sub) {
+      setActiveSub(active.sub[arrowCount]);
+    } else {
+      setActiveSub(null);
+    }
+  }, [activeMenuButton, active, arrowCount]);
+
   return (
     <Html
       position={[0, 0, 0.1]}
@@ -30,36 +46,49 @@ const PlateContent = () => {
       transform
       occlude
     >
-      <div className={styles.container} onClick={handleClick}>
-        <div className={styles.name}>
-          <p>Name: </p>
-          <h3>{active?.sub[arrowCount]?.plate.title}</h3>
-        </div>
-
-        <div className={styles.lib}>
-          <p>Frameworks / Libraries:</p>
-          <ul>
-            {active?.sub[arrowCount]?.plate?.frameWorks?.map((frame, index) => (
-              <li key={index}> {frame}</li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.description}>
-          <p>Description: </p>
-          <ul>
-            {active?.sub[arrowCount]?.plate?.description.map((item, index) => (
-              <li key={index}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div className={styles.links}>
-          <Link href={active?.sub[arrowCount]?.plate?.deployUrl || `/`}>
-            <FaLink />
-          </Link>
-          <Link href={active?.sub[arrowCount]?.plate?.deployUrl || `/`}>
-            <FaGithub />
-          </Link>
-        </div>
+      <div
+        className={styles.container}
+        onClick={handleClick}
+        // onMouseEnter={handleEnter}
+        // onMouseLeave={handleLeave}
+      >
+        {!!activeSub && (
+          <>
+            <div className={styles.name}>
+              <p>Name: </p>
+              <h3>{active?.sub[arrowCount]?.plate?.title}</h3>
+            </div>
+            {active?.sub[arrowCount]?.plate?.frameWorks && (
+              <div className={styles.lib}>
+                <p>Frameworks / Libraries:</p>
+                <ul>
+                  {active?.sub[arrowCount]?.plate?.frameWorks?.map(
+                    (frame, index) => (
+                      <li key={index}> {frame}</li>
+                    ),
+                  )}
+                </ul>
+              </div>
+            )}
+            <div className={styles.description}>
+              <p>Description: </p>
+              <ul>
+                {active?.sub[arrowCount]?.plate?.description &&
+                  active?.sub[arrowCount]?.plate?.description?.map(
+                    (item, index) => <li key={index}>{item}</li>,
+                  )}
+              </ul>
+            </div>
+            <div className={styles.links}>
+              <Link href={active?.sub[arrowCount]?.plate?.deployUrl || `/`}>
+                <FaLink />
+              </Link>
+              <Link href={active?.sub[arrowCount]?.plate?.deployUrl || `/`}>
+                <FaGithub />
+              </Link>
+            </div>
+          </>
+        )}
       </div>
     </Html>
   );
