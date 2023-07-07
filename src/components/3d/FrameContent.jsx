@@ -66,37 +66,41 @@ const FrameContent = ({ props, frameRef }) => {
     e.stopPropagation();
     document.body.style.cursor = "auto";
   };
-
+  console.log(props.name === "Home");
   return (
-    <Html
-      as="div"
-      position={[0, 0, 1.05]}
-      wrapperClass={styles.wrapper}
-      transform
-      occlude
-    >
-      <div
-        className={styles.main}
-        name={props.name}
-        // onClick={(e) => handleClick(e)}
-      >
-        {props.url && <iframe src={props.url} />}
-        {props.contentUrl && (
+    <>
+      {props.name !== "Home" && (
+        <Html
+          as="div"
+          position={[0, 0, 1.05]}
+          wrapperClass={styles.wrapper}
+          transform
+          occlude
+        >
           <div
-            onClick={(e) => handleClick(e)}
-            onMouseEnter={(e) => handleEnter(e)}
-            onMouseLeave={(e) => handleLeave(e)}
+            className={styles.main}
+            name={props.name}
+            // onClick={(e) => handleClick(e)}
           >
-            <Image
-              src={props.contentUrl}
-              width={700}
-              height={900}
-              alt="project content image"
-            />
+            {props.url && <iframe src={props.url} />}
+            {props.contentUrl && (
+              <div
+                onClick={(e) => handleClick(e)}
+                onMouseEnter={(e) => handleEnter(e)}
+                onMouseLeave={(e) => handleLeave(e)}
+              >
+                <Image
+                  src={props.contentUrl}
+                  width={700}
+                  height={900}
+                  alt="project content image"
+                />
+              </div>
+            )}
           </div>
-        )}
-      </div>
-    </Html>
+        </Html>
+      )}
+    </>
   );
 };
 export default FrameContent;

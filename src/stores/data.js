@@ -1,7 +1,7 @@
 export const pages = [
   {
     name: "Home",
-    position: [36, 25, -123],
+    position: [0, 25, -50],
     rotation: [0, 0, 0],
     imageUrl: "/icons/home-icon-v1.png",
     url: "http://localhost:3000/PageHome",

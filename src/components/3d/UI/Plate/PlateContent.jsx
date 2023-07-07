@@ -58,7 +58,7 @@ const PlateContent = () => {
               <p>Name: </p>
               <h3>{active?.sub[arrowCount]?.plate?.title}</h3>
             </div>
-            {active?.sub[arrowCount]?.plate?.frameWorks && (
+            {active?.sub && active?.sub[arrowCount]?.plate?.frameWorks && (
               <div className={styles.lib}>
                 <p>Frameworks / Libraries:</p>
                 <ul>
@@ -73,7 +73,8 @@ const PlateContent = () => {
             <div className={styles.description}>
               <p>Description: </p>
               <ul>
-                {active?.sub[arrowCount]?.plate?.description &&
+                {active?.sub &&
+                  active?.sub[arrowCount]?.plate?.description &&
                   active?.sub[arrowCount]?.plate?.description?.map(
                     (item, index) => <li key={index}>{item}</li>,
                   )}
