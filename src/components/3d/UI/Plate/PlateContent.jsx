@@ -40,7 +40,7 @@ const PlateContent = () => {
           <p>Frameworks / Libraries:</p>
           <ul>
             {active?.sub[arrowCount]?.plate?.frameWorks?.map((frame, index) => (
-              <li key={index}> &ndash; {frame}</li>
+              <li key={index}> {frame}</li>
             ))}
           </ul>
         </div>
@@ -48,7 +48,7 @@ const PlateContent = () => {
           <p>Description: </p>
           <ul>
             {active?.sub[arrowCount]?.plate?.description.map((item, index) => (
-              <li key={index}>&ndash; {item}</li>
+              <li key={index}>{item}</li>
             ))}
           </ul>
         </div>

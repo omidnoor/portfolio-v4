@@ -41,7 +41,7 @@ const Plate = () => {
         onPointerEnter={(e) => handleEnter(e)}
         onPointerLeave={(e) => handleLeave(e)}
       >
-        <planeGeometry args={[7, 10]} />
+        <planeGeometry args={[8.5, 11.5]} />
         <meshStandardMaterial
           color="#fcfcdc"
           roughness={0.8}
@@ -50,7 +50,7 @@ const Plate = () => {
         <PlateContent />
       </mesh>
       <mesh position={[15, 0, 0.1]}>
-        <planeGeometry args={[8, 11]} />
+        <planeGeometry args={[9.5, 12.5]} />
         <MeshReflectorMaterial color="#cfcded" roughness={0} metalness={0.95} />
       </mesh>
     </>
