@@ -9,18 +9,24 @@ import { animated } from "react-spring";
 import { pages } from "@/stores/data";
 
 import styles from "./styles.module.scss";
+import { useThree } from "@react-three/fiber";
 
-const INITIAL_WIDTH = 48;
+// let initialWidth;
 
 export const DockCard = ({ children }) => {
   const cardRef = useRef();
-  /**
-   * This doesn't need to be real time, think of it as a static
-   * value of where the card should go to at the end.
-   */
-  const [elCenterX, setElCenterX] = useState(0);
+  const [initialWidth, setInitialWidth] = useState(40);
 
-  const size = useSpringValue(INITIAL_WIDTH, {
+  const [elCenterX, setElCenterX] = useState(0);
+  const dock = useDock();
+
+  useWindowResize(() => {
+    const { x } = cardRef.current.getBoundingClientRect();
+
+    setElCenterX(x + initialWidth / 4);
+  });
+  console.log(elCenterX);
+  const size = useSpringValue(initialWidth, {
     config: {
       mass: 0.1,
       tension: 320,
@@ -36,23 +42,18 @@ export const DockCard = ({ children }) => {
     },
   });
 
-  const dock = useDock();
   // console.log(dock.width);
 
-  /**
-   * This is just an abstraction around a `useSpring` hook, if you wanted you could do this
-   * in the hook above, but these abstractions are useful to demonstrate!
-   */
   useMousePosition(
     {
       onChange: ({ value }) => {
         const mouseX = value.x;
         if (dock.width > 0) {
           const transformedValue =
-            INITIAL_WIDTH +
-            36 *
+            initialWidth +
+            20 *
               Math.cos((((mouseX - elCenterX) / dock.width) * Math.PI) / 2) **
-                12;
+                100;
           if (dock.hovered) {
             size.start(transformedValue);
           }
@@ -64,15 +65,9 @@ export const DockCard = ({ children }) => {
 
   useIsomorphicLayoutEffect(() => {
     if (!dock.hovered) {
-      size.start(INITIAL_WIDTH);
+      size.start(initialWidth);
     }
   }, [dock.hovered]);
-
-  useWindowResize(() => {
-    const { x } = cardRef.current.getBoundingClientRect();
-
-    setElCenterX(x + INITIAL_WIDTH / 2);
-  });
 
   const timesLooped = useRef(0);
   const timeoutRef = useRef();
@@ -86,7 +81,7 @@ export const DockCard = ({ children }) => {
 
       timesLooped.current = 0;
 
-      y.start(-INITIAL_WIDTH / 2, {
+      y.start(-initialWidth / 4, {
         loop: () => {
           if (1 === timesLooped.current++) {
             timeoutRef.current = setTimeout(() => {

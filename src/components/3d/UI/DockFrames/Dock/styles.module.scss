@@ -13,4 +13,7 @@
   border-radius: 12px;
   transform-origin: center bottom;
   z-index: 100;
+  @media (max-width: 500px) {
+    gap: 10px;
+  }
 }
