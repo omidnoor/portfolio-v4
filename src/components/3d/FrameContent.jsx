@@ -72,6 +72,7 @@ const FrameContent = ({ props, frameRef }) => {
         <Html
           as="div"
           position={[0, 0, 1.05]}
+          zIndexRange={[0, 0]}
           wrapperClass={styles.wrapper}
           transform
           occlude
