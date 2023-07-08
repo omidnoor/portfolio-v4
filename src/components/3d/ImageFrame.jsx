@@ -11,7 +11,7 @@ import { Dark_Purple, Sand_Color } from "../utilComponents/variables/colors";
 const ImageFrame = ({ ...props }) => {
   
   const frameRef = useRef(null);
-  const [matcapTexture2] = useMatcapTexture("2D2D2F_C6C2C5_727176_94949B", 256);
+  const [matcapTexture2] = useMatcapTexture("1B1B1B_515151_7E7E7E_6C6C6C", 256);
   return (
     <>
     
@@ -22,11 +22,11 @@ const ImageFrame = ({ ...props }) => {
         <Plate />
     </mesh>)}
     {props.name === "Home" && (
-        <mesh scale={worldScale} position={[0, 0, -50]}>
+        <mesh scale={worldScale} position={[0, 0, -105]}>
           <mesh position={[0,0,-1]}>
           <planeGeometry args={[11, 8]} />
-          {/* <meshMatcapMaterial matcap={matcapTexture2} /> */}
-          <MeshReflectorMaterial roughness={0.8} color={Dark_Purple} metalness={1} />
+          <meshMatcapMaterial matcap={matcapTexture2} />
+          {/* <MeshReflectorMaterial roughness={0.8} color={"#000015"} metalness={1} /> */}
           </mesh>
           <Welcome/>
         </mesh>

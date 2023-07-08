@@ -1,9 +1,15 @@
 import { Bloom, EffectComposer } from "@react-three/postprocessing";
 import { BlurPass, Resizer, KernelSize, Resolution } from "postprocessing";
+import { DepthOfField } from "@react-three/postprocessing";
 
 const Effect = () => {
   return (
     <EffectComposer multisampling={8}>
+      <DepthOfField
+        focusDistance={0} // where to focus
+        focalLength={0.13} // focal length
+        bokehScale={1} // bokeh size
+      />
       {/* <Bloom
         intensity={3} // The bloom intensity.
         blurPass={undefined} // A blur pass.

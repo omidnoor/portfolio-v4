@@ -56,7 +56,7 @@ const PlateContent = () => {
           <>
             <div className={styles.name}>
               <p>Name: </p>
-              <h3>{active?.sub[arrowCount]?.plate?.title}</h3>
+              <h3>{active?.sub && active?.sub[arrowCount]?.plate?.title}</h3>
             </div>
             {active?.sub && active?.sub[arrowCount]?.plate?.frameWorks && (
               <div className={styles.lib}>
@@ -74,17 +74,26 @@ const PlateContent = () => {
               <p>Description: </p>
               <ul>
                 {active?.sub &&
-                  active?.sub[arrowCount]?.plate?.description &&
                   active?.sub[arrowCount]?.plate?.description?.map(
                     (item, index) => <li key={index}>{item}</li>,
                   )}
               </ul>
             </div>
             <div className={styles.links}>
-              <Link href={active?.sub[arrowCount]?.plate?.deployUrl || `/`}>
+              <Link
+                href={
+                  (active?.sub && active?.sub[arrowCount]?.plate?.deployUrl) ||
+                  `/`
+                }
+              >
                 <FaLink />
               </Link>
-              <Link href={active?.sub[arrowCount]?.plate?.deployUrl || `/`}>
+              <Link
+                href={
+                  (active?.sub && active?.sub[arrowCount]?.plate?.deployUrl) ||
+                  `/`
+                }
+              >
                 <FaGithub />
               </Link>
             </div>

@@ -34,7 +34,7 @@ const Navigation = () => {
       activePosition,
       normal?.normal,
       offset,
-      dist,
+      active?.name === "Home" ? dist - 20 : dist,
     );
   }, [activeMenuButton]);
 
@@ -96,10 +96,13 @@ const Navigation = () => {
       cameraUp={[-20, 25, 50]}
       ref={cameraControlsRef}
       enabled={true}
-      makeDefault={true}
-      verticalDragToForward={true}
-      dollyToCursor={true}
-      infinityDolly={true}
+      makeDefault={false}
+      verticalDragToForward={false}
+      dollyToCursor={false}
+      dollyDragInverted={false}
+      infinityDolly={false}
+      minZoom={10}
+      maxZoom={20}
     />
   );
 };
