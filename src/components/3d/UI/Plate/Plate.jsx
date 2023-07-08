@@ -3,7 +3,7 @@ import { MeshReflectorMaterial } from "@react-three/drei";
 import { useEffect } from "react";
 import PlateContent from "./PlateContent";
 
-const Plate = () => {
+const Plate = ({ matcapTexture }) => {
   return (
     <group>
       <mesh position={[15, 0, 0.15]}>
@@ -17,7 +17,7 @@ const Plate = () => {
       </mesh>
       <mesh position={[15, 0, 0.1]}>
         <planeGeometry args={[9.5, 12.5]} />
-        <MeshReflectorMaterial color="#cfcded" roughness={0} metalness={0.95} />
+        <meshMatcapMaterial matcap={matcapTexture} />
       </mesh>
     </group>
   );

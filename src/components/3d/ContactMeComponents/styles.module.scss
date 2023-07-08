@@ -7,65 +7,86 @@
   font-style: normal;
 }
 
-.content {
-  width: 400px;
-  height: 600px;
-  background: $tertiary-glow;
+// .content {
+
+.wrapper {
+  width: 700px;
+  height: 900px;
+  background: #003163ea;
   /* background: red; */
   padding: 0;
   font-family: $font-inter;
+  padding: 10px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* transform-origin: top left; */
 
-  .wrapper {
-    padding: 10px;
-    height: 100%;
+  .form {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    /* transform-origin: top left; */
 
-    .form {
-      width: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
+    input,
+    textarea,
+    label {
+      margin: 0 auto;
+      width: min(500px, 95%);
+    }
+    input {
+      height: 70px;
+    }
+    label {
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+    }
 
-      input,
-      textarea,
-      label {
-        margin: 0 auto;
-        width: min(300px, 95%);
-      }
-      input {
-        height: 50px;
-      }
-      label {
-        margin-bottom: 0.5rem;
-        margin-top: 1rem;
-      }
-
-      .input,
-      .textarea {
-        &::placeholder,
-        &::-webkit-input-placeholder,
-        &::-moz-placeholder,
-        &:-moz-placeholder,
-        &::-ms-input-placeholder {
-          padding-left: 1rem;
-          font-family: $font-inter;
-        }
+    .input,
+    .textarea {
+      &::placeholder,
+      &::-webkit-input-placeholder,
+      &::-moz-placeholder,
+      &:-moz-placeholder,
+      &::-ms-input-placeholder {
+        padding-left: 1rem;
         font-family: $font-inter;
-        background-color: #ffffef;
-        border: none;
-        color: #000;
-        font-size: 16px;
-        padding: 0.5rem;
       }
+      font-family: $font-inter;
+      background-color: #ffffef;
+      border: none;
+      color: #000;
+      font-size: 16px;
+      padding: 0.5rem;
+    }
 
-      .textarea {
-        resize: none;
-        height: 230px;
+    .textarea {
+      resize: none;
+      height: 230px;
+    }
+
+    .button {
+      margin: 0 auto;
+      width: min(500px, 95%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 36px;
+      button {
+        padding: 15px 0;
+        width: 100%;
+        background-color: rgb(221, 217, 0);
+        font-size: 24px;
+        color: #000;
+        font-weight: 600;
+        border: none;
+        :hover {
+          cursor: pointer;
+        }
       }
     }
   }
 }
+// }

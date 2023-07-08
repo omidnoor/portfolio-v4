@@ -4,7 +4,8 @@ export const pages = [
     position: [0, 25, -105],
     rotation: [0, 0, 0],
     imageUrl: "/icons/home-icon-v1.png",
-    url: "http://localhost:3000/PageHome",
+    url: null,
+    componentUrl: null,
     sub: null,
   },
   {
@@ -13,6 +14,7 @@ export const pages = [
     rotation: [0, Math.PI * 0.5, 0],
     imageUrl: "/icons/about-icon-v1.png",
     url: "http://localhost:3000/PageAboutMe",
+    componentUrl: null,
     sub: null,
   },
   {
@@ -20,7 +22,8 @@ export const pages = [
     position: [123, 25, -86],
     rotation: [0, -Math.PI * 0.5, 0],
     imageUrl: "/icons/contact-icon-v1.png",
-    url: "http://localhost:3000/PageContactMe",
+    url: null,
+    componentUrl: "@/components/pageComponents/aboutMe/AboutMe",
     sub: null,
   },
   // {
@@ -38,6 +41,7 @@ export const pages = [
     rotation: [0, -Math.PI * 1, 0],
     imageUrl: "/icons/portfolio-icon-v1.png",
     url: "http://localhost:3000/PageProjects",
+    componentUrl: null,
     sub: [
       {
         name: "Project1",

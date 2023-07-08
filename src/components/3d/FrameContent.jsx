@@ -8,8 +8,8 @@ import { Deep_Blue } from "../utilComponents/variables/colors";
 import { Suspense } from "react";
 import { normals } from "./Utils/Normals";
 import { pages } from "@/stores/data";
-import { worldScale } from "@/stores/variables";
 import Image from "next/image";
+import ContactForm from "./ContactMeComponents/ContactForm";
 
 const componentMapping = {
   Home: React.lazy(() => import("@/pages/PageHome")),
@@ -66,7 +66,6 @@ const FrameContent = ({ props, frameRef }) => {
     e.stopPropagation();
     document.body.style.cursor = "auto";
   };
-  console.log(props.name === "Home");
   return (
     <>
       {props.name !== "Home" && (
@@ -97,6 +96,7 @@ const FrameContent = ({ props, frameRef }) => {
                 />
               </div>
             )}
+            {props.name === "Contact Me" && <ContactForm />}
           </div>
         </Html>
       )}

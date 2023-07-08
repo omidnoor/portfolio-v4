@@ -34,7 +34,11 @@ const Navigation = () => {
       activePosition,
       normal?.normal,
       offset,
-      active?.name === "Home" ? dist - 20 : dist,
+      active?.name === "Home"
+        ? dist - 20
+        : active?.name === "Contact Me"
+        ? dist - 45
+        : dist,
     );
   }, [activeMenuButton]);
 
@@ -70,6 +74,7 @@ const Navigation = () => {
 
   const truckMove = (dir) => {
     cameraControlsRef.current?.truck((dir ? 1 : -1) * 13, 0, true);
+    // setCameraLookAt(cameraControlsRef, subPosition, normal, offset, dist);
   };
 
   const dollyMove = (dollyDist) => {
@@ -93,7 +98,7 @@ const Navigation = () => {
 
   return (
     <CameraControls
-      cameraUp={[-20, 25, 50]}
+      // cameraUp={[-20, 25, 50]}
       ref={cameraControlsRef}
       enabled={true}
       makeDefault={false}
@@ -101,8 +106,8 @@ const Navigation = () => {
       dollyToCursor={false}
       dollyDragInverted={false}
       infinityDolly={false}
-      minZoom={10}
-      maxZoom={20}
+      // minZoom={10}
+      // maxZoom={20}
     />
   );
 };
