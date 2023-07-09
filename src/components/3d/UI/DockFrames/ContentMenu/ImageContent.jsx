@@ -4,10 +4,16 @@ import { iconsSize } from "@/stores/variables";
 import { animated, useSpring } from "react-spring";
 
 import styles from "./styles.module.scss";
+import { useEffect } from "react";
 
 const ImageContent = () => {
   const setImageClicked = useStore((state) => state.setImageClicked);
   const imageClicked = useStore((state) => state.imageClicked);
+  const setDollyCount = useStore((state) => state.setDollyCount);
+  const isSceneClicked = useStore((state) => state.isSceneClicked);
+  const arrowCount = useStore((state) => state.arrowCount);
+  const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const setLastClick = useStore((state) => state.setLastClick);
 
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
@@ -19,9 +25,16 @@ const ImageContent = () => {
   }));
 
   const handleClick = (e) => {
-    e.stopPropagation();
-    setImageClicked(!imageClicked);
+    // e.stopPropagation();
+    setImageClicked(true);
+    setDollyCount(1);
+    setLastClick("html");
   };
+
+  useEffect(() => {
+    setImageClicked(false);
+    setDollyCount(0);
+  }, [isSceneClicked, activeMenuButton, arrowCount]);
 
   const handleEnter = () => {
     api.start({ scale: 1.2 });

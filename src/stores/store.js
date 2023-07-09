@@ -19,7 +19,9 @@ export const useStore = create((set) => ({
   backClicked: false,
   imageClicked: false,
   noteClicked: false,
+  isContentIcons: false,
 
+  setIsContentIcons: (value) => set((state) => ({ isContentIcons: value })),
   setNoteClicked: (value) => set((state) => ({ noteClicked: value })),
   setImageClicked: (value) => set((state) => ({ imageClicked: value })),
   setBackClicked: (value) => set((state) => ({ backClicked: value })),

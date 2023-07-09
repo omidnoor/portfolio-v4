@@ -16,6 +16,11 @@ const Navigation = () => {
   const htmlClicked = useStore((state) => state.htmlClicked);
   const plateClicked = useStore((state) => state.plateClicked);
   const lastClick = useStore((state) => state.lastClick);
+  const setNoteClicked = useStore((state) => state.setNoteClicked);
+  const noteClicked = useStore((state) => state.noteClicked);
+  const setImageClicked = useStore((state) => state.setImageClicked);
+  const imageClicked = useStore((state) => state.imageClicked);
+  const backClicked = useStore((state) => state.backClicked);
 
   useEffect(() => {
     cameraControlsRef.current?.setLookAt(
@@ -23,7 +28,7 @@ const Navigation = () => {
       ...camerainitLookAt,
       true,
     );
-  }, [isSceneClicked, activeMenuButton]);
+  }, [isSceneClicked, activeMenuButton, backClicked]);
 
   useEffect(() => {
     const active = pages.find((page) => page.name === activeMenuButton);
@@ -68,19 +73,29 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    if (htmlClicked && !plateClicked) dollyMove(35);
-    if (!htmlClicked && plateClicked) {
-      truckMove(true);
-      dollyMove(50);
+    if (activeMenuButton === "Projects") {
+      if ((htmlClicked && !plateClicked) || (imageClicked && !noteClicked))
+        dollyMove(35);
+
+      if ((!htmlClicked && plateClicked) || (!imageClicked && noteClicked)) {
+        truckMove(true);
+        dollyMove(50);
+      }
+      if (
+        (htmlClicked && plateClicked && lastClick === "plate") ||
+        (imageClicked && noteClicked && lastClick === "plate")
+      ) {
+        truckMove(true);
+        dollyMove(15);
+      } else if (
+        (htmlClicked && plateClicked && lastClick === "html") ||
+        (imageClicked && noteClicked && lastClick === "html")
+      ) {
+        truckMove(false);
+        dollyMove(-15);
+      }
     }
-    if (htmlClicked && plateClicked && lastClick === "plate") {
-      truckMove(true);
-      dollyMove(15);
-    } else if (htmlClicked && plateClicked && lastClick === "html") {
-      truckMove(false);
-      dollyMove(-15);
-    }
-  }, [plateClicked, htmlClicked, lastClick]);
+  }, [plateClicked, htmlClicked, lastClick, imageClicked, noteClicked]);
 
   return (
     <CameraControls

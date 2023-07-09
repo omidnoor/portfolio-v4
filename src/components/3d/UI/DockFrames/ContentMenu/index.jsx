@@ -1,15 +1,52 @@
 import ImageContent from "./ImageContent";
-import { useSpring } from "react-spring";
+import { useSpring, animated } from "react-spring";
 import NoteContent from "./NoteContent";
 
 import styles from "./styles.module.scss";
+import { useStore } from "@/stores/store";
+import { useEffect } from "react";
 
 const ContentMenu = () => {
+  const setIsContentIcons = useStore((state) => state.setIsContentIcons);
+  const isContentIcons = useStore((state) => state.isContentIcons);
+  const activeMenuButton = useStore((state) => state.activeMenuButton);
+
+  const [props, api] = useSpring(() => ({
+    from: { y: 10, opacity: 1 },
+    config: {
+      mass: 0.1,
+      friction: 29,
+      tension: 238,
+    },
+  }));
+
+  useEffect(() => {
+    if (activeMenuButton) {
+      setIsContentIcons(true);
+    } else {
+      setIsContentIcons(false);
+    }
+  }, [activeMenuButton]);
+
+  useEffect(() => {
+    if (isContentIcons) {
+      api.start({ y: 0, opacity: 1 });
+    } else {
+      api.start({ y: 10, opacity: 0 });
+    }
+  }, [isContentIcons, api]);
+
   return (
-    <div className={styles.container}>
+    <animated.div
+      className={styles.container}
+      style={{
+        transform: props.y.to((y) => `translate3d(-50%,${y}px,0)`),
+        opacity: props.opacity,
+      }}
+    >
       <ImageContent />
       <NoteContent />
-    </div>
+    </animated.div>
   );
 };
 export default ContentMenu;

@@ -4,10 +4,16 @@ import { iconsSize } from "@/stores/variables";
 import { animated, useSpring } from "react-spring";
 
 import styles from "./styles.module.scss";
+import { useEffect } from "react";
 
 const NoteContent = () => {
   const setNoteClicked = useStore((state) => state.setNoteClicked);
   const noteClicked = useStore((state) => state.noteClicked);
+  const setDollyCount = useStore((state) => state.setDollyCount);
+  const isSceneClicked = useStore((state) => state.isSceneClicked);
+  const arrowCount = useStore((state) => state.arrowCount);
+  const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const setLastClick = useStore((state) => state.setLastClick);
 
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
@@ -19,17 +25,24 @@ const NoteContent = () => {
   }));
 
   const handleClick = (e) => {
-    e.stopPropagation();
-    setNoteClicked(!noteClicked);
+    // e.stopPropagation();
+    setNoteClicked(true);
+    setDollyCount(1);
+    setLastClick("plate");
   };
 
+  useEffect(() => {
+    setNoteClicked(false);
+    setDollyCount(0);
+  }, [isSceneClicked, activeMenuButton, arrowCount]);
+
   const handleEnter = (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     api.start({ scale: 1.2 });
   };
 
   const handleLeave = (e) => {
-    e.stopPropagation();
+    // e.stopPropagation();
     api.start({ scale: 1 });
   };
 

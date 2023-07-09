@@ -21,7 +21,6 @@ export const Dock = ({ children }) => {
 
   const setIsZooming = useCallback((value) => {
     isZooming.current = value;
-    console.log(value);
     setHovered(!value);
   }, []);
 
