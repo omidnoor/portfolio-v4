@@ -3,6 +3,7 @@ import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 import { useEffect } from "react";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
+import { iconsSize } from "@/stores/variables";
 
 const Card = ({ page }) => {
   const activeMenuButton = useStore((state) => state.activeMenuButton);
@@ -24,15 +25,15 @@ const Card = ({ page }) => {
       {page.name !== "arrow-right" && page.name !== "arrow-left" && (
         <div className={styles.card} onClick={handleClick}>
           <Image
-            width={200}
-            height={200}
+            width={iconsSize}
+            height={iconsSize}
             className={styles.card__blur}
             src={page.imageUrl}
             alt=""
           />
           <Image
-            width={200}
-            height={200}
+            width={iconsSize}
+            height={iconsSize}
             className={styles.card__img}
             src={page.imageUrl}
             alt=""

@@ -19,50 +19,22 @@ export const Dock = ({ children }) => {
   const isZooming = useRef(false);
   const dockRef = useRef();
 
-  const setIsZooming = useCallback((value) => {
-    isZooming.current = value;
-    setHovered(!value);
-  }, []);
-
-  const zoomLevel = useSpringValue(1, {
-    onChange: () => {
-      setWidth(dockRef.current.clientWidth);
-    },
-  });
-
-  useWindowResize(() => {
-    setWidth(dockRef.current.clientWidth);
-  });
-
   return (
-    <DockContext.Provider
-      value={{ hovered, setIsZooming, width, disabled, setDisabled, zoomLevel }}
+    <animated.div
+      ref={dockRef}
+      className={styles.dock}
+      onMouseOver={(e) => {
+        // e.stopPropagation();
+        if (!isZooming.current) {
+          setHovered(true);
+        }
+      }}
+      onMouseOut={(e) => {
+        // e.stopPropagation();
+        setHovered(false);
+      }}
     >
-      <animated.div
-        ref={dockRef}
-        className={styles.dock}
-        onMouseOver={(e) => {
-          // e.stopPropagation();
-          if (!isZooming.current) {
-            setHovered(true);
-          }
-        }}
-        onMouseOut={(e) => {
-          // e.stopPropagation();
-          setHovered(false);
-        }}
-        style={{
-          x: "-50%",
-          scale: zoomLevel
-            .to({
-              range: [DOCK_ZOOM_LIMIT[0], 1, DOCK_ZOOM_LIMIT[1]],
-              output: [2, 1, 0.5],
-            })
-            .to((value) => clamp(0.5, 2, value)),
-        }}
-      >
-        {children}
-      </animated.div>
-    </DockContext.Provider>
+      {children}
+    </animated.div>
   );
 };

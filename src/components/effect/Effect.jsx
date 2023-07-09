@@ -7,8 +7,8 @@ const Effect = () => {
     <EffectComposer multisampling={8}>
       <DepthOfField
         focusDistance={0} // where to focus
-        focalLength={0.13} // focal length
-        bokehScale={1} // bokeh size
+        focalLength={0.12} // focal length
+        bokehScale={2} // bokeh size
       />
       {/* <Bloom
         intensity={3} // The bloom intensity.

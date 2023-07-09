@@ -10,24 +10,22 @@ import ContentMenu from "./ContentMenu";
 
 export default function DockMenu() {
   return (
-    <>
-      <Dock>
-        {/* <DockCard> */}
+    <Dock>
+      <DockCard>
         <DockArrow type="left" />
-        {/* </DockCard> */}
-        <DockDivider />
-        {pages.map((page, index) => (
-          <DockCard key={page.name}>
-            <Card page={page} />
-          </DockCard>
-        ))}
-        <DockDivider />
-        {/* <DockCard> */}
+      </DockCard>
+      <DockDivider />
+      {pages.map((page, index) => (
+        <DockCard key={page.name}>
+          <Card page={page} />
+        </DockCard>
+      ))}
+      <DockDivider />
+      <DockCard>
         <DockArrow type="right" />
-        {/* </DockCard> */}
-      </Dock>
+      </DockCard>
       <BackButton />
       <ContentMenu />
-    </>
+    </Dock>
   );
 }

@@ -9,10 +9,16 @@ const SceneModel = () => {
 
   const setIsSceneClicked = useStore((state) => state.setIsSceneClicked);
   const isSceneClicked = useStore((state) => state.isSceneClicked);
+  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
+  const setImageClicked = useStore((state) => state.setImageClicked);
+  const setNoteClicked = useStore((state) => state.setNoteClicked);
 
   const handleClick = (e) => {
     e.stopPropagation();
     setIsSceneClicked(!isSceneClicked);
+    setActiveMenuButton("");
+    setImageClicked(false);
+    setNoteClicked(false);
   };
 
   return (

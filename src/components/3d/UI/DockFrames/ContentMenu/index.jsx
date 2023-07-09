@@ -10,6 +10,7 @@ const ContentMenu = () => {
   const setIsContentIcons = useStore((state) => state.setIsContentIcons);
   const isContentIcons = useStore((state) => state.isContentIcons);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const isSceneClicked = useStore((state) => state.isSceneClicked);
 
   const [props, api] = useSpring(() => ({
     from: { y: 10, opacity: 1 },
@@ -21,12 +22,12 @@ const ContentMenu = () => {
   }));
 
   useEffect(() => {
-    if (activeMenuButton) {
+    if (activeMenuButton === "Projects" || activeMenuButton === "About Me") {
       setIsContentIcons(true);
     } else {
       setIsContentIcons(false);
     }
-  }, [activeMenuButton]);
+  }, [activeMenuButton, isSceneClicked]);
 
   useEffect(() => {
     if (isContentIcons) {

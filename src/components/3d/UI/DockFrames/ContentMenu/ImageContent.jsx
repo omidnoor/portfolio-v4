@@ -49,7 +49,11 @@ const ImageContent = () => {
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       onClick={handleClick}
-      style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
+      style={{
+        transform: props.scale?.to((s) => `scale(${s})`),
+        width: "60px",
+        height: "60px",
+      }}
       className={styles.card}
     >
       <Image

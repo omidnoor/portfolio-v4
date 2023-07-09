@@ -3,10 +3,15 @@ import styles from "./styles.module.scss";
 import { useSpring, animated } from "react-spring";
 import { useStore } from "@/stores/store";
 import { iconsSize } from "@/stores/variables";
+import { useEffect } from "react";
 
 const BackButton = () => {
   const setBackClicked = useStore((state) => state.setBackClicked);
   const backClicked = useStore((state) => state.backClicked);
+  const setImageClicked = useStore((state) => state.setImageClicked);
+  const setNoteClicked = useStore((state) => state.setNoteClicked);
+  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
+
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
     config: {
@@ -20,6 +25,12 @@ const BackButton = () => {
     // e.stopPropagation();
     setBackClicked(!backClicked);
   };
+
+  useEffect(() => {
+    setImageClicked(false);
+    setNoteClicked(false);
+    setActiveMenuButton("");
+  }, [backClicked]);
 
   const handleEnter = () => {
     api.start({ scale: 1.2 });

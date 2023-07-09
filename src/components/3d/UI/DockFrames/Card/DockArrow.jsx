@@ -5,6 +5,7 @@ import { useEffect } from "react";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 import { pages } from "@/stores/data";
 import { useDock } from "../Dock/DockContext";
+import { iconsSize } from "@/stores/variables";
 
 const DockArrow = ({ type }) => {
   const arrowButton = useStore((state) => state.arrowButton);
@@ -37,19 +38,41 @@ const DockArrow = ({ type }) => {
 
   return (
     <div className={styles.card} onClick={handleClick}>
-      {type === "right" && (
-        <BiRightArrow
-          size={30}
-          fill={!dock.disabled ? "#cdfdc4" : "#999"}
-          cursor={!dock.disabled ? "pointer" : "auto"}
-        />
-      )}
       {type === "left" && (
-        <BiLeftArrow
-          size={30}
-          fill={!dock.disabled ? "#cdfdc4" : "#999"}
-          cursor={!dock.disabled ? "pointer" : "auto"}
-        />
+        <>
+          <Image
+            src="/icons/arrow-left.png"
+            width={iconsSize}
+            height={iconsSize}
+            className={styles.card__blur}
+            alt="left"
+          />
+          <Image
+            src="/icons/arrow-left.png"
+            width={iconsSize}
+            height={iconsSize}
+            className={styles.card__img}
+            alt="left"
+          />
+        </>
+      )}
+      {type === "right" && (
+        <>
+          <Image
+            src="/icons/arrow-right.png"
+            width={iconsSize}
+            height={iconsSize}
+            className={styles.card__blur}
+            alt="right"
+          />
+          <Image
+            src="/icons/arrow-right.png"
+            width={iconsSize}
+            height={iconsSize}
+            className={styles.card__img}
+            alt="right"
+          />
+        </>
       )}
     </div>
   );

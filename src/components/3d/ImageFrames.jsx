@@ -10,6 +10,10 @@ const ImageFrames = () => {
   const setActiveFrame = useStore((state) => state.setActiveFrame);
   const activeFrame = useStore((state) => state.activeFrame);
   const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
+  const setBackClicked = useStore((state) => state.setBackClicked);
+  const setImageClicked = useStore((state) => state.setImageClicked);
+  const setNoteClicked = useStore((state) => state.setNoteClicked);
+
   useEffect(() => {
     framesRef.current.frustumCulled = false;
   }, []);
@@ -20,6 +24,9 @@ const ImageFrames = () => {
         if (isSceneClicked) {
           setActiveFrame({ name: "" });
           setActiveMenuButton("");
+          setBackClicked(false);
+          setImageClicked(false);
+          setNoteClicked(false);
         }
       }}
     >

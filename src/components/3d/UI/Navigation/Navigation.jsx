@@ -42,7 +42,7 @@ const Navigation = () => {
       active?.name === "Home"
         ? dist - 20
         : active?.name === "Contact Me"
-        ? dist - 45
+        ? dist - 47
         : dist,
     );
   }, [activeMenuButton]);
@@ -73,7 +73,7 @@ const Navigation = () => {
   };
 
   useEffect(() => {
-    if (activeMenuButton === "Projects") {
+    if (activeMenuButton === "Projects" || activeMenuButton === "About Me") {
       if ((htmlClicked && !plateClicked) || (imageClicked && !noteClicked))
         dollyMove(35);
 
