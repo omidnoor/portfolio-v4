@@ -50,20 +50,6 @@ const Navigation = () => {
           active.sub.some((subItem) => subItem.name === geo.name),
         )
         .map((item) => item.normal);
-      const subPosition = active.sub[arrowCount % active.sub.length]?.position;
-      normal = normal[arrowCount % active.sub.length];
-      setCameraLookAt(cameraControlsRef, subPosition, normal, offset, dist);
-    }
-  }, []);
-
-  useEffect(() => {
-    const active = pages.find((page) => page.name === activeMenuButton);
-    if (active?.sub) {
-      let normal = geoNormalArray
-        .filter((geo) =>
-          active.sub.some((subItem) => subItem.name === geo.name),
-        )
-        .map((item) => item.normal);
       const subPosition =
         active.sub[Math.abs(arrowCount % active.sub.length)]?.position;
       normal = normal[Math.abs(arrowCount % active.sub.length)];

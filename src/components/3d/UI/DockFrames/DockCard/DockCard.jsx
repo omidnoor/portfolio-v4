@@ -6,12 +6,7 @@ import { useMousePosition } from "../Hooks/useMousePosition";
 import { useWindowResize } from "../Hooks/useWindowResize";
 import { useEffect } from "react";
 import { animated } from "react-spring";
-import { pages } from "@/stores/data";
-
 import styles from "./styles.module.scss";
-import { useThree } from "@react-three/fiber";
-
-// let initialWidth;
 
 export const DockCard = ({ children }) => {
   const cardRef = useRef();
@@ -25,7 +20,7 @@ export const DockCard = ({ children }) => {
 
     setElCenterX(x + initialWidth / 4);
   });
-  console.log(elCenterX);
+
   const size = useSpringValue(initialWidth, {
     config: {
       mass: 0.1,

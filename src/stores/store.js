@@ -17,7 +17,11 @@ export const useStore = create((set) => ({
   plateClicked: false,
   lastClick: "",
   backClicked: false,
+  imageClicked: false,
+  noteClicked: false,
 
+  setNoteClicked: (value) => set((state) => ({ noteClicked: value })),
+  setImageClicked: (value) => set((state) => ({ imageClicked: value })),
   setBackClicked: (value) => set((state) => ({ backClicked: value })),
   setLastClick: (value) => set((state) => ({ lastClick: value })),
   setPlateClicked: (value) => set((state) => ({ plateClicked: value })),

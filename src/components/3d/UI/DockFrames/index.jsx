@@ -6,6 +6,7 @@ import { DockDivider } from "./DockDivider/DockDivider";
 import { pages } from "@/stores/data";
 import DockArrow from "./Card/DockArrow";
 import BackButton from "./Card/BackButton";
+import ContentMenu from "./ContentMenu";
 
 export default function DockMenu() {
   return (
@@ -26,6 +27,7 @@ export default function DockMenu() {
         {/* </DockCard> */}
       </Dock>
       <BackButton />
+      <ContentMenu />
     </>
   );
 }

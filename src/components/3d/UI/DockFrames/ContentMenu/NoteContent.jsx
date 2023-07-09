@@ -1,12 +1,14 @@
-import Image from "next/image";
-import styles from "./styles.module.scss";
-import { useSpring, animated } from "react-spring";
 import { useStore } from "@/stores/store";
+import Image from "next/image";
 import { iconsSize } from "@/stores/variables";
+import { animated, useSpring } from "react-spring";
 
-const BackButton = () => {
-  const setBackClicked = useStore((state) => state.setBackClicked);
-  const backClicked = useStore((state) => state.backClicked);
+import styles from "./styles.module.scss";
+
+const NoteContent = () => {
+  const setNoteClicked = useStore((state) => state.setNoteClicked);
+  const noteClicked = useStore((state) => state.noteClicked);
+
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
     config: {
@@ -17,42 +19,41 @@ const BackButton = () => {
   }));
 
   const handleClick = (e) => {
-    // e.stopPropagation();
-    setBackClicked(!backClicked);
+    e.stopPropagation();
+    setNoteClicked(!noteClicked);
   };
 
-  const handleEnter = () => {
+  const handleEnter = (e) => {
+    e.stopPropagation();
     api.start({ scale: 1.2 });
   };
 
-  const handleLeave = () => {
+  const handleLeave = (e) => {
+    e.stopPropagation();
     api.start({ scale: 1 });
   };
 
   return (
     <animated.div
-      className={styles.backButton}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       onClick={handleClick}
       style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
-      // className={` ${styles.buttonBack}`}
+      className={styles.card}
     >
       <Image
+        className={styles.card__img}
+        src="/icons/notes.png"
         width={iconsSize}
         height={iconsSize}
-        className={styles.card__blur}
-        src="/icons/back-icon-v1.png"
-        alt=""
       />
       <Image
+        className={styles.card__blur}
+        src="/icons/notes.png"
         width={iconsSize}
         height={iconsSize}
-        className={styles.card__img}
-        src="/icons/back-icon-v1.png"
-        alt=""
       />
     </animated.div>
   );
 };
-export default BackButton;
+export default NoteContent;

@@ -1,12 +1,14 @@
-import Image from "next/image";
-import styles from "./styles.module.scss";
-import { useSpring, animated } from "react-spring";
 import { useStore } from "@/stores/store";
+import Image from "next/image";
 import { iconsSize } from "@/stores/variables";
+import { animated, useSpring } from "react-spring";
 
-const BackButton = () => {
-  const setBackClicked = useStore((state) => state.setBackClicked);
-  const backClicked = useStore((state) => state.backClicked);
+import styles from "./styles.module.scss";
+
+const ImageContent = () => {
+  const setImageClicked = useStore((state) => state.setImageClicked);
+  const imageClicked = useStore((state) => state.imageClicked);
+
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
     config: {
@@ -17,8 +19,8 @@ const BackButton = () => {
   }));
 
   const handleClick = (e) => {
-    // e.stopPropagation();
-    setBackClicked(!backClicked);
+    e.stopPropagation();
+    setImageClicked(!imageClicked);
   };
 
   const handleEnter = () => {
@@ -31,28 +33,25 @@ const BackButton = () => {
 
   return (
     <animated.div
-      className={styles.backButton}
       onMouseEnter={handleEnter}
       onMouseLeave={handleLeave}
       onClick={handleClick}
       style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
-      // className={` ${styles.buttonBack}`}
+      className={styles.card}
     >
       <Image
+        className={styles.card__img}
+        src="/icons/image.png"
         width={iconsSize}
         height={iconsSize}
-        className={styles.card__blur}
-        src="/icons/back-icon-v1.png"
-        alt=""
       />
       <Image
+        className={styles.card__blur}
+        src="/icons/image.png"
         width={iconsSize}
         height={iconsSize}
-        className={styles.card__img}
-        src="/icons/back-icon-v1.png"
-        alt=""
       />
     </animated.div>
   );
 };
-export default BackButton;
+export default ImageContent;
