@@ -46,7 +46,6 @@ const ImageFrame = ({ ...props }) => {
   const plateRef = useRef(null);
   const [matcapTexture] = useMatcapTexture("1B1B1B_515151_7E7E7E_6C6C6C", 256);
 
-  console.log(frameRef);
   return (
     <>
       {props.name !== "Home" && (

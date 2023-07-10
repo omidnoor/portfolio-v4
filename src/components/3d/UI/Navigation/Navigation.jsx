@@ -1,6 +1,6 @@
 import { useStore } from "@/stores/store";
 import { CameraControls } from "@react-three/drei";
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { pages } from "@/stores/data";
 import { setCameraLookAt } from "@/components/3d/UI/Navigation/setCameraLookAt";
 import { offsetY, offsetX, dist } from "@/stores/variables";
@@ -9,6 +9,17 @@ import { Vector3 } from "three";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
+  const [width, setWidth] = useState(0);
+
+  useEffect(() => {
+    const handleWidth = () => {
+      setWidth(window.innerWidth);
+    };
+    window.addEventListener("resize", handleWidth);
+    return () => {
+      window.removeEventListener("resize", handleWidth);
+    };
+  }, []);
 
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const arrowCount = useStore((state) => state.arrowCount);
@@ -62,7 +73,6 @@ const Navigation = () => {
         active.sub[Math.abs(arrowCount % active.sub.length)]?.position;
       normal = normal[Math.abs(arrowCount % active.sub.length)];
 
-      // const targetDist =
       setCameraLookAt(
         cameraControlsRef,
         subPosition,
@@ -78,7 +88,7 @@ const Navigation = () => {
           normal,
           offsetY,
           offsetX,
-          dist - 43,
+          dist - Math.max(33, Math.min(43.5, width / 14)),
         );
       } else if (plateClicked) {
         setCameraLookAt(
@@ -86,58 +96,15 @@ const Navigation = () => {
           subPosition,
           normal,
           offsetY,
-          offsetX + 13,
-          dist - 52,
+          offsetX + 15,
+          dist - Math.max(47.5, Math.min(51.5, width / 14)),
         );
       }
     }
-  }, [arrowCount, activeMenuButton, plateClicked, htmlClicked]);
-  console.log(htmlClicked, plateClicked);
-  // const truckMove = (dir) => {
-  //   cameraControlsRef.current?.truck((dir ? 1 : -1) * 13, 0, true);
-  //   // setCameraLookAt(cameraControlsRef, subPosition, normal, offsetY,offsetX, dist);
-  // };
-
-  // const dollyMove = (dollyDist) => {
-  //   cameraControlsRef.current?.dolly(dollyDist, true);
-  // };
-
-  // useEffect(() => {
-  //   const active = pages.find((page) => page.name === activeMenuButton);
-  //   console.log(active, activeMenuButton);
-
-  //   if (activeMenuButton === "Projects" || activeMenuButton === "About Me") {
-  //     const subArray =
-  //       active.sub && active.sub[Math.abs(arrowCount % active.sub.length)];
-
-  //     const ref = frameRef.find((item) => item?.name === subArray?.name);
-
-  //     if ((htmlClicked && !plateClicked) || (imageClicked && !noteClicked))
-  //     ref && cameraControlsRef.current?.fitToBox(ref, true);
-
-  //     if ((!htmlClicked && plateClicked) || (!imageClicked && noteClicked)) {
-  //       truckMove(true);
-  //       dollyMove(50);
-  //     }
-  //     if (
-  //       (htmlClicked && plateClicked && lastClick === "plate") ||
-  //       (imageClicked && noteClicked && lastClick === "plate")
-  //     ) {
-  //       truckMove(true);
-  //       dollyMove(15);
-  //     } else if (
-  //       (htmlClicked && plateClicked && lastClick === "html") ||
-  //       (imageClicked && noteClicked && lastClick === "html")
-  //     ) {
-  //       truckMove(false);
-  //       dollyMove(-15);
-  //     }
-  //   }
-  // }, [plateClicked, htmlClicked, lastClick, imageClicked, noteClicked]);
-
+  }, [arrowCount, activeMenuButton, plateClicked, htmlClicked, width]);
+  console.log(Math.max(40, Math.min(52, width / 14)));
   return (
     <CameraControls
-      // cameraUp={[-20, 25, 50]}
       ref={cameraControlsRef}
       enabled={true}
       makeDefault={false}
