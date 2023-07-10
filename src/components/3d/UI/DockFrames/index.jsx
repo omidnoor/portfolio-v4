@@ -15,6 +15,9 @@ export default function DockMenu() {
     <Suspense fallback={<CustomLoader />}>
       <Dock>
         <DockCard>
+          <BackButton />
+        </DockCard>
+        <DockCard type="left">
           <DockArrow type="left" />
         </DockCard>
         <DockDivider />
@@ -24,10 +27,9 @@ export default function DockMenu() {
           </DockCard>
         ))}
         <DockDivider />
-        <DockCard>
+        <DockCard type="right">
           <DockArrow type="right" />
         </DockCard>
-        <BackButton />
         <ContentMenu />
       </Dock>
     </Suspense>

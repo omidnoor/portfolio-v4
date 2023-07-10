@@ -12,14 +12,14 @@ const BackButton = () => {
   const setNoteClicked = useStore((state) => state.setNoteClicked);
   const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
 
-  const [props, api] = useSpring(() => ({
-    from: { scale: 1 },
-    config: {
-      mass: 1,
-      tension: 100,
-      friction: 5,
-    },
-  }));
+  // const [props, api] = useSpring(() => ({
+  //   from: { scale: 1 },
+  //   config: {
+  //     mass: 1,
+  //     tension: 100,
+  //     friction: 5,
+  //   },
+  // }));
 
   const handleClick = (e) => {
     // e.stopPropagation();
@@ -32,21 +32,21 @@ const BackButton = () => {
     setActiveMenuButton("");
   }, [backClicked]);
 
-  const handleEnter = () => {
-    api.start({ scale: 1.2 });
-  };
+  // const handleEnter = () => {
+  //   api.start({ scale: 1.2 });
+  // };
 
-  const handleLeave = () => {
-    api.start({ scale: 1 });
-  };
+  // const handleLeave = () => {
+  //   api.start({ scale: 1 });
+  // };
 
   return (
     <animated.div
-      className={styles.backButton}
-      onMouseEnter={handleEnter}
-      onMouseLeave={handleLeave}
+      className={`${styles.card}`}
+      // onMouseEnter={handleEnter}
+      // onMouseLeave={handleLeave}
       onClick={handleClick}
-      style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
+      // style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
       // className={` ${styles.buttonBack}`}
     >
       <Image

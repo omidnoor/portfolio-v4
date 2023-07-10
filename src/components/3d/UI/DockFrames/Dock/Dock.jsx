@@ -13,28 +13,5 @@ import { useCallback } from "react";
 export const DOCK_ZOOM_LIMIT = [-100, 50];
 
 export const Dock = ({ children }) => {
-  const [hovered, setHovered] = useState(false);
-  const [width, setWidth] = useState(0);
-  const [disabled, setDisabled] = useState(false);
-  const isZooming = useRef(false);
-  const dockRef = useRef();
-
-  return (
-    <animated.div
-      ref={dockRef}
-      className={styles.dock}
-      onMouseOver={(e) => {
-        // e.stopPropagation();
-        if (!isZooming.current) {
-          setHovered(true);
-        }
-      }}
-      onMouseOut={(e) => {
-        // e.stopPropagation();
-        setHovered(false);
-      }}
-    >
-      {children}
-    </animated.div>
-  );
+  return <div className={styles.dock}>{children}</div>;
 };
