@@ -15,7 +15,6 @@ export const pages = [
     imageUrl: "/icons/about-icon-v1.png",
     url: "http://localhost:3000/PageAboutMe",
     componentUrl: null,
-    sub: null,
   },
   {
     name: "Contact Me",

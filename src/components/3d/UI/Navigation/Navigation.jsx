@@ -102,7 +102,36 @@ const Navigation = () => {
       }
     }
   }, [arrowCount, activeMenuButton, plateClicked, htmlClicked, width]);
-  console.log(Math.max(40, Math.min(52, width / 14)));
+
+  useEffect(() => {
+    const active = pages.find((page) => page.name === activeMenuButton);
+    if (!active?.sub) {
+      let normal = geoNormalArray.find((geo) => geo.name === active?.name);
+      console.log(normal);
+      const position = active?.position;
+
+      if (htmlClicked) {
+        setCameraLookAt(
+          cameraControlsRef,
+          position,
+          normal.normal,
+          offsetY,
+          offsetX,
+          dist - Math.max(33, Math.min(43.5, width / 14)),
+        );
+      } else if (plateClicked) {
+        setCameraLookAt(
+          cameraControlsRef,
+          position,
+          normal.normal,
+          offsetY,
+          offsetX + 15,
+          dist - Math.max(47.5, Math.min(51.5, width / 14)),
+        );
+      }
+    }
+  }, [arrowCount, activeMenuButton, plateClicked, htmlClicked, width]);
+
   return (
     <CameraControls
       ref={cameraControlsRef}
