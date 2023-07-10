@@ -13,6 +13,9 @@ const PlateContent = () => {
   const activeFrame = useStore((state) => state.activeFrame);
   const arrowCount = useStore((state) => state.arrowCount);
   const setPlateClicked = useStore((state) => state.setPlateClicked);
+  const plateClicked = useStore((state) => state.plateClicked);
+  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
+  const htmlClicked = useStore((state) => state.htmlClicked);
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const setDollyCount = useStore((state) => state.setDollyCount);
   const setLastClick = useStore((state) => state.setLastClick);
@@ -22,8 +25,19 @@ const PlateContent = () => {
   const handleClick = (e) => {
     e.stopPropagation();
     setPlateClicked(true);
+    setHtmlClicked(false);
     setDollyCount(1);
     setLastClick("plate");
+  };
+
+  const handleEnter = (e) => {
+    e.stopPropagation();
+    document.body.style.cursor = "pointer";
+  };
+
+  const handleLeave = (e) => {
+    e.stopPropagation();
+    document.body.style.cursor = "auto";
   };
 
   useEffect(() => {
@@ -41,6 +55,7 @@ const PlateContent = () => {
 
   return (
     <Html
+      zIndexRange={[0, 0]}
       position={[0, 0, 0.1]}
       wrapperClass={styles.wrapper}
       transform
@@ -49,8 +64,8 @@ const PlateContent = () => {
       <div
         className={styles.container}
         onClick={handleClick}
-        // onMouseEnter={handleEnter}
-        // onMouseLeave={handleLeave}
+        onMouseEnter={handleEnter}
+        onMouseLeave={handleLeave}
       >
         {!!activeSub && (
           <>

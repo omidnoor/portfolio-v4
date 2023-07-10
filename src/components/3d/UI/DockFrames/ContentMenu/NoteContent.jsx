@@ -14,6 +14,8 @@ const NoteContent = () => {
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const setLastClick = useStore((state) => state.setLastClick);
+  const setPlateClicked = useStore((state) => state.setPlateClicked);
+  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
 
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
@@ -25,14 +27,17 @@ const NoteContent = () => {
   }));
 
   const handleClick = (e) => {
-    // e.stopPropagation();
-    setNoteClicked(true);
+    e.stopPropagation();
+    // setNoteClicked(true);
+    setPlateClicked(true);
+    setHtmlClicked(false);
     setDollyCount(1);
     setLastClick("plate");
   };
 
   useEffect(() => {
-    setNoteClicked(false);
+    // setNoteClicked(false);
+    setPlateClicked(false);
     setDollyCount(0);
   }, [isSceneClicked, activeMenuButton, arrowCount]);
 
@@ -59,12 +64,14 @@ const NoteContent = () => {
         src="/icons/notes.png"
         width={iconsSize}
         height={iconsSize}
+        alt="icon note"
       />
       <Image
         className={styles.card__blur}
         src="/icons/notes.png"
         width={iconsSize}
         height={iconsSize}
+        alt="icon note"
       />
     </animated.div>
   );

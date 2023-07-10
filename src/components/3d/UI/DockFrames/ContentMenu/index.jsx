@@ -44,6 +44,9 @@ const ContentMenu = () => {
         transform: props.y.to((y) => `translate3d(-50%,${y}px,0)`),
         opacity: props.opacity,
       }}
+      onMouseEnter={(e) => {
+        e.stopPropagation();
+      }}
     >
       <ImageContent />
       <NoteContent />

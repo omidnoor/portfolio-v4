@@ -11,29 +11,19 @@ import { pages } from "@/stores/data";
 import Image from "next/image";
 import ContactForm from "./ContactMeComponents/ContactForm";
 
-const componentMapping = {
-  Home: React.lazy(() => import("@/pages/PageHome")),
-  AboutMe: React.lazy(() => import("@/pages/PageAboutMe")),
-  ContactMe: React.lazy(() => import("@/pages/PageContactMe")),
-  Projects: React.lazy(() => import("@/pages/PageProjects")),
-};
-
 const FrameContent = ({ props, frameRef }) => {
   const activeFrames = useStore((state) => state.activeFrames);
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
   const setHtmlClicked = useStore((state) => state.setHtmlClicked);
+  const htmlClicked = useStore((state) => state.htmlClicked);
+  const setPlateClicked = useStore((state) => state.setPlateClicked);
+  const plateClicked = useStore((state) => state.plateClicked);
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const setDollyCount = useStore((state) => state.setDollyCount);
   const setLastClick = useStore((state) => state.setLastClick);
-
-  const transitions = useTransition(activeFrames.includes(props.name), {
-    from: { opacity: 0 },
-    enter: { opacity: 1 },
-    config: { tension: 1, friction: 1 },
-  });
 
   useEffect(() => {
     if (frameRef.current) {
@@ -48,6 +38,7 @@ const FrameContent = ({ props, frameRef }) => {
   const handleClick = (e) => {
     e.stopPropagation();
     setHtmlClicked(true);
+    setPlateClicked(false);
     setDollyCount(1);
     setLastClick("html");
   };
@@ -66,6 +57,7 @@ const FrameContent = ({ props, frameRef }) => {
     e.stopPropagation();
     document.body.style.cursor = "auto";
   };
+
   return (
     <>
       {props.name !== "Home" && (
@@ -77,11 +69,7 @@ const FrameContent = ({ props, frameRef }) => {
           transform
           occlude
         >
-          <div
-            className={styles.main}
-            name={props.name}
-            // onClick={(e) => handleClick(e)}
-          >
+          <div className={styles.main} name={props.name}>
             {props.url && <iframe src={props.url} />}
             {props.contentUrl && (
               <div

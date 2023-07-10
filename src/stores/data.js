@@ -10,7 +10,7 @@ export const pages = [
   },
   {
     name: "About Me",
-    position: [1, 25, 180],
+    position: [2, 25, 180],
     rotation: [0, Math.PI * 0.5, 0],
     imageUrl: "/icons/about-icon-v1.png",
     url: "http://localhost:3000/PageAboutMe",
@@ -45,7 +45,7 @@ export const pages = [
     sub: [
       {
         name: "Project1",
-        position: [-250, 25, 220],
+        position: [-248, 25, 218],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl: "/icons/portfolio-icon-v1.png",
         url: null,
@@ -75,7 +75,7 @@ export const pages = [
       },
       {
         name: "Project2",
-        position: [-190, 25, 250],
+        position: [-190, 25, 248],
         rotation: [0, Math.PI * 1, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/15.-Perfume_1-p-130x130q80.jpeg",
@@ -108,7 +108,7 @@ export const pages = [
       },
       {
         name: "Project3",
-        position: [-250, 25, 150],
+        position: [-248, 25, 150],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
@@ -132,7 +132,7 @@ export const pages = [
       },
       {
         name: "Project4",
-        position: [-250, 25, -150],
+        position: [-248, 25, -150],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
@@ -156,7 +156,7 @@ export const pages = [
       },
       {
         name: "Project5",
-        position: [-250, 25, -220],
+        position: [-248, 25, -218],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/04.-Hopbush_1-p-130x130q80.jpeg",
@@ -180,7 +180,7 @@ export const pages = [
       },
       {
         name: "Project6",
-        position: [-190, 25, -250],
+        position: [-190, 25, -248],
         rotation: [0, Math.PI * 0, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/09.-Light-Sky-Blue-p-130x130q80.jpeg",

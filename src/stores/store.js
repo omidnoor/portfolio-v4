@@ -20,7 +20,30 @@ export const useStore = create((set) => ({
   imageClicked: false,
   noteClicked: false,
   isContentIcons: false,
+  frameRef: [],
+  plateRef: [],
 
+  setPlateRef: (ref) =>
+    set((state) => {
+      if (!state.plateRef.some((item) => item?.name === ref?.name)) {
+        const array = [...state.plateRef, ref];
+        return {
+          plateRef: array,
+        };
+      }
+      return state;
+    }),
+
+  setFrameRef: (ref) =>
+    set((state) => {
+      if (!state.frameRef.some((item) => item?.name === ref?.name)) {
+        const array = [...state.frameRef, ref];
+        return {
+          frameRef: array,
+        };
+      }
+      return state;
+    }),
   setIsContentIcons: (value) => set((state) => ({ isContentIcons: value })),
   setNoteClicked: (value) => set((state) => ({ noteClicked: value })),
   setImageClicked: (value) => set((state) => ({ imageClicked: value })),

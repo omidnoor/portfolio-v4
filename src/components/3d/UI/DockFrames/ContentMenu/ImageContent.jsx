@@ -14,6 +14,9 @@ const ImageContent = () => {
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const setLastClick = useStore((state) => state.setLastClick);
+  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
+  const htmlClicked = useStore((state) => state.htmlClicked);
+  const setPlateClicked = useStore((state) => state.setPlateClicked);
 
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },
@@ -25,14 +28,18 @@ const ImageContent = () => {
   }));
 
   const handleClick = (e) => {
-    // e.stopPropagation();
-    setImageClicked(true);
+    e.stopPropagation();
+    // console.log(e);
+    // setImageClicked(true);
+    setHtmlClicked(true);
+    setPlateClicked(false);
     setDollyCount(1);
     setLastClick("html");
   };
 
   useEffect(() => {
-    setImageClicked(false);
+    // setImageClicked(false);
+    setHtmlClicked(false);
     setDollyCount(0);
   }, [isSceneClicked, activeMenuButton, arrowCount]);
 
@@ -51,8 +58,6 @@ const ImageContent = () => {
       onClick={handleClick}
       style={{
         transform: props.scale?.to((s) => `scale(${s})`),
-        width: "60px",
-        height: "60px",
       }}
       className={styles.card}
     >
@@ -61,12 +66,14 @@ const ImageContent = () => {
         src="/icons/image.png"
         width={iconsSize}
         height={iconsSize}
+        alt="icon image"
       />
       <Image
         className={styles.card__blur}
         src="/icons/image.png"
         width={iconsSize}
         height={iconsSize}
+        alt="icon image"
       />
     </animated.div>
   );
