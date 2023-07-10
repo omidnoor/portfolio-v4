@@ -13,7 +13,7 @@ import { a } from "@react-spring/three";
 
 const AnimatedMaterial = a(MeshDistortMaterial);
 
-const AboutSphere = ({ setBg, wordColor }) => {
+const AboutSphere = ({ setBg, wordColor, colors }) => {
   const sphere = useRef();
   const light = useRef();
   const [mode, setMode] = useState(false);
@@ -41,13 +41,14 @@ const AboutSphere = ({ setBg, wordColor }) => {
       );
     }
   });
+
   const [{ wobble, coat, color, ambient, env }] = useSpring(
     {
       wobble: down ? 13 : hovered ? 13.2 : 13,
       coat: mode && !hovered ? 0.04 : 1,
       ambient: mode && !hovered ? 1.5 : 0.5,
       env: mode && !hovered ? 0.4 : 1,
-      color: hovered ? "#2d88f0" : mode ? "#2d99f0" : "#2dbbf0",
+      color: hovered ? "#F8C069" : mode ? "#F8C069" : "#2dbbf0",
       config: (n) =>
         n === "wobble" && hovered && { mass: 3, tension: 1000, friction: 5 },
     },
@@ -77,15 +78,14 @@ const AboutSphere = ({ setBg, wordColor }) => {
         onPointerDown={() => setDown(true)}
         onPointerUp={() => {
           setDown(false);
-          // Toggle mode between dark and bright
           setMode(!mode);
           setBg({
-            background: !mode ? "#2d88f0" : "#000039",
-            fill: !mode ? "#f0f0f0" : "#000039",
+            background: !mode ? "#0f1b48" : colors.background,
+            fill: !mode ? "#0f1b48" : colors.background,
             wordColor: {
-              tech: !mode ? "#000039" : "#2dbbf0",
-              education: !mode ? "#f880cf" : "#02ff10",
-              general: !mode ? "#f0f0f0" : "#006239",
+              tech: !mode ? "#fcede0" : colors.wordColors.tech,
+              education: !mode ? "#34dfed" : colors.wordColors.education,
+              general: !mode ? "#adcf80" : colors.wordColors.general,
             },
           });
         }}

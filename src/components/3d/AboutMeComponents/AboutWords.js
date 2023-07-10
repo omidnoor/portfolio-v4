@@ -1,13 +1,19 @@
 export const wordsTech = [
-  "React.js",
-  "Next.js",
+  "ReactJS",
+  "NextJS",
   "Redux",
-  "Node",
+  "NodeJS",
+  "Data Structures",
+  "Algorithms",
+  "Algorithms",
+  "Databases",
+  "APIs",
   "Express",
   "MongoDB",
   "Javascript",
   "Web Dev",
   "CSS",
+  "SCSS",
   "HTML",
   "Git",
   "GitHub",
@@ -15,8 +21,10 @@ export const wordsTech = [
 export const wordsEducation = [
   "Mech Eng",
   "Neuroscience",
-  "Masters degree",
-  "Bachelors Degree",
+  "Web Dev",
+  "Software Dev",
+  "Masters",
+  "Bachelors",
 ];
 
 export const wordsGeneral = [

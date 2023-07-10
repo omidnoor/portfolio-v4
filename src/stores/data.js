@@ -112,7 +112,7 @@ export const pages = [
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
-        url: "http://localhost:3000/PageProjects",
+        url: null,
         plate: {
           title: "Project1",
           description: [
@@ -136,7 +136,7 @@ export const pages = [
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
-        url: "http://localhost:3000/PageProjects",
+        url: null,
         plate: {
           title: "Project1",
           description: [
@@ -160,7 +160,7 @@ export const pages = [
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/04.-Hopbush_1-p-130x130q80.jpeg",
-        url: "http://localhost:3000/PageProjects",
+        url: null,
         plate: {
           title: "Project1",
           description: [
@@ -184,7 +184,7 @@ export const pages = [
         rotation: [0, Math.PI * 0, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/09.-Light-Sky-Blue-p-130x130q80.jpeg",
-        url: "http://localhost:3000/PageProjects",
+        url: null,
         plate: {
           title: "Project1",
           description: [

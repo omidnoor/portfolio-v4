@@ -78,7 +78,7 @@ const Navigation = () => {
           normal,
           offsetY,
           offsetX,
-          dist - 35,
+          dist - 43,
         );
       } else if (plateClicked) {
         setCameraLookAt(
@@ -86,8 +86,8 @@ const Navigation = () => {
           subPosition,
           normal,
           offsetY,
-          offsetX + 15,
-          dist - 51,
+          offsetX + 13,
+          dist - 52,
         );
       }
     }

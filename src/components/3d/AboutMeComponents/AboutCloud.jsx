@@ -1,14 +1,12 @@
-import * as THREE from "three";
-
 import { useMemo } from "react";
 import AboutWord from "./AboutWord";
 import { wordsTech, wordsEducation, wordsGeneral } from "./AboutWords";
-import { useMatcapTexture } from "@react-three/drei";
+import { Spherical, Vector3 } from "three";
 
-const AboutCloud = ({ count = 4, radius = 30, wordColor }) => {
+const AboutCloud = ({ count = 17, radius = 30, wordColor }) => {
   const words = useMemo(() => {
     const temp = [];
-    const spherical = new THREE.Spherical();
+    const spherical = new Spherical();
 
     const theta = Math.PI / (count + 1);
     const phi = (2 * Math.PI) / (count * 2);
@@ -26,23 +24,23 @@ const AboutCloud = ({ count = 4, radius = 30, wordColor }) => {
         ];
       }
     };
-    // console.log(randWords("general"));
+
     let word = "";
     let wordType = "";
     for (let i = 1; i < count + 1; i++) {
       for (let j = 0; j < count * 2; j++) {
-        if (i < 5) {
+        if (i < 9) {
           word = randWords("tech");
           wordType = "tech";
-        } else if (i > 5 && i < 8) {
+        } else if (i > 9 && i < 13) {
           word = randWords("general");
           wordType = "general";
-        } else if (i > 7) {
+        } else if (i > 12) {
           word = randWords("education");
           wordType = "education";
         }
         temp.push([
-          new THREE.Vector3().setFromSpherical(
+          new Vector3().setFromSpherical(
             spherical.set(radius, theta * i, phi * j),
           ),
           word,

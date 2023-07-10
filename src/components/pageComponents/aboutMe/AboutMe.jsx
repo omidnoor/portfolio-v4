@@ -1,5 +1,7 @@
 import AboutCloud from "@/components/3d/AboutMeComponents/AboutCloud";
+import AboutMeEffect from "@/components/3d/AboutMeComponents/AboutMeEffect";
 import AboutSphere from "@/components/3d/AboutMeComponents/AboutSphere";
+import Effect from "@/components/effect/Effect";
 import CustomLoader from "@/components/utilComponents/Loader/CustomLoader";
 import { a } from "@react-spring/web";
 
@@ -12,16 +14,22 @@ import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useSpring } from "react-spring";
 
+const colors = {
+  background: "#000000",
+  fill: "#ffffff",
+  wordColors: {
+    tech: "#2dbbf0",
+    education: "#02ff10",
+    general: "#006239",
+  },
+};
+
 const AboutMe = () => {
   const [{ background, fill, wordColor }, set] = useSpring(
     {
-      background: "#000039",
-      fill: "#000039",
-      wordColor: {
-        tech: "#2dbbf0",
-        education: "#02ff10",
-        general: "#006239",
-      },
+      background: colors.background,
+      fill: colors.fill,
+      wordColor: colors.wordColors,
     },
     [],
   );
@@ -39,18 +47,14 @@ const AboutMe = () => {
       <Canvas
         // colorManagement
         dpr={[1, 2]}
-        camera={{ position: [0, 0, 55], fov: 100 }}
+        camera={{ position: [0, 0, 125], fov: 100 }}
       >
         <Suspense fallback={<CustomLoader />}>
-          <Suspense fallback={<CustomLoader />}>
-            <fog attach="fog" args={["#000066", 0, 100]} />
-          </Suspense>
-          {/* <color attach="background" args={[presetTexture]} /> */}
           <ambientLight intensity={1} />
-          {/* <pointLight position={[40, 40, 40]} intensity={1} /> */}
-          <AboutCloud count={8} radius={40} wordColor={wordColor} />
-          <AboutSphere setBg={set} wordColor={wordColor} />
+          <AboutCloud count={15} radius={60} wordColor={wordColor} />
+          <AboutSphere setBg={set} wordColor={wordColor} colors={colors} />
           <TrackballControls />
+          <AboutMeEffect />
         </Suspense>
       </Canvas>
     </a.div>
