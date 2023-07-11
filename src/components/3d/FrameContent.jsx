@@ -92,4 +92,4 @@ const FrameContent = ({ props, frameRef }) => {
     </>
   );
 };
-export default FrameContent;
+export default memo(FrameContent);

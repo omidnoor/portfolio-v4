@@ -1,6 +1,6 @@
 import { useStore } from "@/stores/store";
 import { MeshReflectorMaterial } from "@react-three/drei";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import PlateContent from "./PlateContent";
 
 const Plate = ({ matcapTexture }) => {
@@ -44,4 +44,4 @@ const Plate = ({ matcapTexture }) => {
     </group>
   );
 };
-export default Plate;
+export default memo(Plate);

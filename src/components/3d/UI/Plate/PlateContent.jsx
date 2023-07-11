@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 import { pages } from "@/stores/data";
 import { useStore } from "@/stores/store";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
@@ -118,4 +118,4 @@ const PlateContent = () => {
     </Html>
   );
 };
-export default PlateContent;
+export default memo(PlateContent);

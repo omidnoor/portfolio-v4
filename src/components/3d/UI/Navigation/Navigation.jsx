@@ -1,25 +1,51 @@
 import { useStore } from "@/stores/store";
 import { CameraControls } from "@react-three/drei";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { pages } from "@/stores/data";
-import { setCameraLookAt } from "@/components/3d/UI/Navigation/setCameraLookAt";
 import { offsetY, offsetX, dist } from "@/stores/variables";
 import { cameraInitCoor, camerainitLookAt } from "@/stores/variables";
 import { Vector3 } from "three";
+import { useWindowWidth } from "../../Utils/useWindowWidth";
+import { useHandleClicks } from "./useHandleClicks";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
-  const [width, setWidth] = useState(0);
+  const width = useWindowWidth();
+  const setCameraLookAt = useCallback(
+    (
+      cameraControlsRef,
+      position = [0, 25, -50],
+      normal = new Vector3(0, 0, 1),
+      offset1 = 1,
+      offset2 = 0,
+      dist = 50,
+    ) => {
+      const toPos = new Vector3(...position);
+      const lookAtPos = new Vector3(...position);
+      const scaledNormal = normal?.clone().multiplyScalar(dist);
 
-  useEffect(() => {
-    const handleWidth = () => {
-      setWidth(window.innerWidth);
-    };
-    window.addEventListener("resize", handleWidth);
-    return () => {
-      window.removeEventListener("resize", handleWidth);
-    };
-  }, []);
+      lookAtPos?.add(scaledNormal);
+      let cross = new Vector3(0, 1, 0);
+
+      cross.crossVectors(normal.clone().multiplyScalar(-1), cross);
+      const offsetVector = cross.clone().multiplyScalar(offset2);
+
+      toPos.add(offsetVector);
+      lookAtPos.add(offsetVector);
+
+      // console.log(cross, normal);
+      cameraControlsRef.current?.setLookAt(
+        lookAtPos.x,
+        lookAtPos.y - offset1,
+        lookAtPos.z,
+        toPos.x,
+        toPos.y - offset1,
+        toPos.z,
+        true,
+      );
+    },
+    [],
+  );
 
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const arrowCount = useStore((state) => state.arrowCount);
@@ -27,13 +53,55 @@ const Navigation = () => {
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const htmlClicked = useStore((state) => state.htmlClicked);
   const plateClicked = useStore((state) => state.plateClicked);
-  const lastClick = useStore((state) => state.lastClick);
-  const setNoteClicked = useStore((state) => state.setNoteClicked);
-  const noteClicked = useStore((state) => state.noteClicked);
-  const setImageClicked = useStore((state) => state.setImageClicked);
-  const imageClicked = useStore((state) => state.imageClicked);
   const backClicked = useStore((state) => state.backClicked);
-  const frameRef = useStore((state) => state.frameRef);
+
+  const active = useMemo(
+    () => pages.find((page) => page.name === activeMenuButton),
+    [activeMenuButton],
+  );
+
+  const normals = useMemo(
+    () =>
+      active?.sub
+        ? geoNormalArray
+            .filter((geo) =>
+              active.sub.some((subItem) => subItem.name === geo.name),
+            )
+            .map((item) => item.normal)
+        : [],
+    [geoNormalArray, active],
+  );
+
+  const subPosition = useMemo(
+    () =>
+      active?.sub
+        ? active.sub[Math.abs(arrowCount % active.sub.length)]?.position
+        : null,
+    [arrowCount, active],
+  );
+
+  const normal = useMemo(
+    () => (normals ? normals[Math.abs(arrowCount % normals.length)] : null),
+    [arrowCount, normals],
+  );
+
+  const normalAboutMe = useMemo(
+    () =>
+      activeMenuButton === "About Me"
+        ? geoNormalArray.find((geo) => geo.name === active?.name)?.normal
+        : null,
+    [activeMenuButton, geoNormalArray, active],
+  );
+
+  const normalContactMe = useMemo(() => {
+    if (activeMenuButton === "Contact Me") {
+      const contactPage = geoNormalArray.find(
+        (geo) => geo.name === "Contact Me",
+      );
+      return contactPage ? contactPage.normal : null;
+    }
+    return null;
+  }, [activeMenuButton, geoNormalArray]);
 
   useEffect(() => {
     cameraControlsRef.current?.setLookAt(
@@ -44,8 +112,6 @@ const Navigation = () => {
   }, [isSceneClicked, activeMenuButton, backClicked]);
 
   useEffect(() => {
-    const active = pages.find((page) => page.name === activeMenuButton);
-    const normal = geoNormalArray.find((geo) => geo.name === active?.name);
     const activePosition = active?.position;
     setCameraLookAt(
       cameraControlsRef,
@@ -61,9 +127,10 @@ const Navigation = () => {
     );
   }, [activeMenuButton, width]);
 
+  // useHandleClicks(cameraControlsRef, setCameraLookAt, activeMenuButton, width);
+
   useEffect(() => {
-    const active = pages.find((page) => page.name === activeMenuButton);
-    if (active?.sub) {
+    if (active?.sub && normal && subPosition) {
       let normal = geoNormalArray
         .filter((geo) =>
           active.sub.some((subItem) => subItem.name === geo.name),
@@ -101,27 +168,64 @@ const Navigation = () => {
         );
       }
     }
-  }, [arrowCount, activeMenuButton, plateClicked, htmlClicked, width]);
-
+  }, [
+    arrowCount,
+    activeMenuButton,
+    plateClicked,
+    htmlClicked,
+    width,
+    normal,
+    subPosition,
+  ]);
+  console.log(normalAboutMe, active?.position);
   useEffect(() => {
-    const active = pages.find((page) => page.name === activeMenuButton);
-    if (activeMenuButton === "About Me") {
-      let normal = geoNormalArray.find((geo) => geo.name === active?.name);
-      console.log(normal);
+    if (normalAboutMe && active?.position) {
+      // let normal = geoNormalArray.find((geo) => geo.name === active?.name);
       const position = active?.position;
 
+      setCameraLookAt(
+        cameraControlsRef,
+        position,
+        normalAboutMe,
+        offsetY,
+        offsetX,
+        dist,
+      );
       if (htmlClicked || plateClicked) {
         setCameraLookAt(
           cameraControlsRef,
           position,
-          normal.normal,
+          normalAboutMe,
           offsetY,
           offsetX + (plateClicked ? 21 : 0),
           dist - Math.max(33, Math.min(43.5, width / 14)),
         );
       }
     }
-  }, [arrowCount, activeMenuButton, plateClicked, htmlClicked, width]);
+  }, [
+    arrowCount,
+    activeMenuButton,
+    plateClicked,
+    htmlClicked,
+    width,
+    normalAboutMe,
+    active,
+  ]);
+
+  useEffect(() => {
+    if (normalContactMe && active?.position) {
+      // let normal = geoNormalArray.find((geo) => geo.name === active?.name);
+      const position = active?.position;
+      setCameraLookAt(
+        cameraControlsRef,
+        position,
+        normalContactMe,
+        offsetY,
+        offsetX,
+        dist - Math.max(33, Math.min(43.5, width / 14)),
+      );
+    }
+  }, [activeMenuButton, normalContactMe, width, normalContactMe]);
 
   return (
     <CameraControls

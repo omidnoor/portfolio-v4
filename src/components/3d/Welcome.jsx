@@ -9,7 +9,7 @@ import {
 import { useThree } from "@react-three/fiber";
 import Effect from "../effect/Effect";
 import { Sand_Color } from "../utilComponents/variables/colors";
-import { useEffect, useState } from "react";
+import { memo, useEffect, useState } from "react";
 import * as THREE from "three";
 
 const Welcome = ({ position, margin = 0.5 }) => {
@@ -35,7 +35,7 @@ const Welcome = ({ position, margin = 0.5 }) => {
   return (
     <group>
       <Text
-        font="/inter_Bold.json"
+        font="/Inter-Bold.woff"
         letterSpacing={0.01}
         fontSize={fontSize}
         position={[0, 3, -0.5]}
@@ -45,7 +45,7 @@ const Welcome = ({ position, margin = 0.5 }) => {
       </Text>
 
       <Text
-        font="/inter_Bold.json"
+        font="/Inter-Bold.woff"
         letterSpacing={0.01}
         fontSize={fontSize}
         position={[0, 2, -0.5]}
@@ -56,7 +56,7 @@ const Welcome = ({ position, margin = 0.5 }) => {
       </Text>
 
       <Text
-        font="/inter_Bold.json"
+        font="/Inter-Bold.woff"
         letterSpacing={0.01}
         fontSize={fontSize}
         position={[0, 1, -0.5]}
@@ -67,4 +67,4 @@ const Welcome = ({ position, margin = 0.5 }) => {
     </group>
   );
 };
-export default Welcome;
+export default memo(Welcome);
