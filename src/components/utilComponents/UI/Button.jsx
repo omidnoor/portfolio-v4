@@ -4,14 +4,12 @@ import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 
 export default function ButtonUI({ children, type }) {
-  const setIsLetsTalk = useStore((state) => state.setIsLetsTalk);
+  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
 
   const hanldeClick = (e) => {
     e.stopPropagation();
     if (type === "primary") {
-      setIsLetsTalk(true);
-    } else {
-      setIsLetsTalk(false);
+      setActiveMenuButton("Contact Me");
     }
   };
 

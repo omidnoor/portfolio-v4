@@ -4,7 +4,6 @@ export const useStore = create((set) => ({
   activeFrame: { name: "" },
   activeFrames: [],
   htmlClicked: false,
-  isLetsTalk: false,
   isMenuClicked: false,
   isSceneClicked: false,
   project: 1,
@@ -100,6 +99,4 @@ export const useStore = create((set) => ({
     set((state) => ({ ...state, isMenuClicked })),
 
   setHtmlClicked: (htmlClicked) => set((state) => ({ ...state, htmlClicked })),
-
-  setIsLetsTalk: (isLetsTalk) => set((state) => ({ ...state, isLetsTalk })),
 }));

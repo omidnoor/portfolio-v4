@@ -6,8 +6,9 @@ import styles from "./styles.module.scss";
 import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
 import { animated, useSprings } from "react-spring";
+import { useAnimatedScaleOnHover } from "@/components/utilComponents/Animations/useAnimatedScaleOnHover ";
 
-const PlateContent = () => {
+const PlateContent = ({ isAboutMe }) => {
   const [activeSub, setActiveSub] = useState(null);
 
   const {
@@ -20,30 +21,7 @@ const PlateContent = () => {
     setLastClick,
   } = useStore((state) => state);
 
-  const [props, api] = useSprings(2, () => ({
-    from: { scale: 1 },
-    config: {
-      mass: 1,
-      tension: 100,
-      friction: 5,
-    },
-  }));
-
-  const handleEnterGithub = () => {
-    api.start((i) => (i === 0 ? { scale: 1.2 } : {}));
-  };
-
-  const handleLeaveGithub = () => {
-    api.start((i) => (i === 0 ? { scale: 1 } : {}));
-  };
-
-  const handleEnterLink = () => {
-    api.start((i) => (i === 1 ? { scale: 1.2 } : {}));
-  };
-
-  const handleLeaveLink = () => {
-    api.start((i) => (i === 1 ? { scale: 1 } : {}));
-  };
+  const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
 
   const active = pages.find((page) => page.name === activeMenuButton);
 
@@ -88,9 +66,15 @@ const PlateContent = () => {
       wrapperClass={styles.wrapper}
       transform
       occlude
+      style={{
+        backgroundImage: `url("/textures/bg-gradients-v1.jpg")`,
+        width: isAboutMe ? "700px" : "338px",
+        height: isAboutMe ? "900px" : "456px",
+      }}
     >
       <div
         className={styles.container}
+        // style={{ backgroundImage: `url("/textures/bg-gradients-v1.jpg")` }}
         onClick={handleClick}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
@@ -132,8 +116,8 @@ const PlateContent = () => {
             </div>
             <div className={styles.links}>
               <animated.div
-                onMouseLeave={handleLeaveLink}
-                onMouseEnter={handleEnterLink}
+                onMouseLeave={() => handleLeaveLink(1)}
+                onMouseEnter={() => handleEnterLink(1)}
                 style={{
                   transform: props[1].scale?.to((s) => `scale(${s})`),
                 }}
@@ -150,8 +134,8 @@ const PlateContent = () => {
                 </Link>
               </animated.div>
               <animated.div
-                onMouseLeave={handleLeaveGithub}
-                onMouseEnter={handleEnterGithub}
+                onMouseLeave={() => handleLeaveLink(0)}
+                onMouseEnter={() => handleEnterLink(0)}
                 style={{
                   transform: props[0].scale?.to((s) => `scale(${s})`),
                 }}

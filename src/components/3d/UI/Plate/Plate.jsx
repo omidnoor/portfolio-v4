@@ -31,7 +31,7 @@ const Plate = ({ matcapTexture }) => {
           roughness={0.8}
           metalness={0.05}
         />
-        <PlateContent />
+        <PlateContent isAboutMe={isAboutMe} />
       </mesh>
       <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
         <planeGeometry args={plateWidth} />

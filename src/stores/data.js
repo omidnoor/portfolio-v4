@@ -44,8 +44,8 @@ export const pages = [
     sub: [
       {
         name: "Project1",
-        position: [-248, 25, 218],
-        rotation: [0, Math.PI * 0.5, 0],
+        position: [-190, 25, 248],
+        rotation: [0, Math.PI * 1, 0],
         imageUrl: "/icons/portfolio-icon-v1.png",
         url: null,
         contentUrl: "/content-images/insta-v1.jpg",
@@ -74,8 +74,8 @@ export const pages = [
       },
       {
         name: "Project2",
-        position: [-190, 25, 248],
-        rotation: [0, Math.PI * 1, 0],
+        position: [-248, 25, 218],
+        rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/15.-Perfume_1-p-130x130q80.jpeg",
         url: null,
@@ -107,7 +107,7 @@ export const pages = [
       },
       {
         name: "Project3",
-        position: [-248, 25, 150],
+        position: [-248, 25, 153],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",

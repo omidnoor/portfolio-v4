@@ -7,37 +7,8 @@ import { useSprings, animated } from "react-spring";
 import { useAnimatedScaleOnHover } from "@/components/utilComponents/Animations/useAnimatedScaleOnHover ";
 
 export default function HomeCard() {
-  const [props, api] = useSprings(2, () => ({
-    from: { scale: 1 },
-    config: {
-      mass: 1,
-      tension: 100,
-      friction: 5,
-    },
-  }));
+  const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
 
-  const handleEnterGithub = (e) => {
-    e.stopPropagation();
-    api.start((i) => (i === 0 ? { scale: 1.2 } : {}));
-  };
-
-  const handleLeaveGithub = (e) => {
-    e.stopPropagation();
-    api.start((i) => (i === 0 ? { scale: 1 } : {}));
-  };
-
-  const handleEnterLink = (e) => {
-    e.stopPropagation();
-    api.start((i) => (i === 1 ? { scale: 1.2 } : {}));
-  };
-
-  const handleLeaveLink = (e) => {
-    e.stopPropagation();
-    api.start((i) => (i === 1 ? { scale: 1 } : {}));
-  };
-
-  // const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
-  // console.log(props[1].scale);
   return (
     <div className={styles.HomeCard}>
       <div className={styles.HomeCard__intro}>
@@ -72,8 +43,8 @@ export default function HomeCard() {
       <div className={styles.HomeCard__wrapper}>
         <animated.div
           className={styles.HomeCard__wrapper__socials}
-          onMouseLeave={handleLeaveGithub}
-          onMouseEnter={handleEnterGithub}
+          onMouseLeave={() => handleLeaveLink(0)}
+          onMouseEnter={() => handleEnterLink(0)}
           style={{
             transform: props[0].scale?.to((s) => `scale(${s})`),
           }}
@@ -84,8 +55,8 @@ export default function HomeCard() {
         </animated.div>
         <animated.div
           className={styles.HomeCard__wrapper__socials}
-          onMouseLeave={handleLeaveLink}
-          onMouseEnter={handleEnterLink}
+          onMouseLeave={() => handleLeaveLink(1)}
+          onMouseEnter={() => handleEnterLink(1)}
           style={{
             transform: props[1].scale?.to((s) => `scale(${s})`),
           }}
