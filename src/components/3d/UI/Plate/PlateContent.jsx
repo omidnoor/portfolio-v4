@@ -5,7 +5,7 @@ import { memo, useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
-import { useSpring, animated, useSprings } from "react-spring";
+import { animated, useSprings } from "react-spring";
 
 const PlateContent = () => {
   const [activeSub, setActiveSub] = useState(null);

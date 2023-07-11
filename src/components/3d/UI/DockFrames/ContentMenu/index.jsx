@@ -4,9 +4,10 @@ import NoteContent from "./NoteContent";
 
 import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const ContentMenu = () => {
+  const [display, setDisplay] = useState(false);
   const setIsContentIcons = useStore((state) => state.setIsContentIcons);
   const isContentIcons = useStore((state) => state.isContentIcons);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
@@ -24,8 +25,15 @@ const ContentMenu = () => {
   useEffect(() => {
     if (activeMenuButton === "Projects" || activeMenuButton === "About Me") {
       setIsContentIcons(true);
+      setDisplay(false);
+    } else if (
+      activeMenuButton === "Home" ||
+      activeMenuButton === "Contact Me"
+    ) {
+      setDisplay(true);
     } else {
       setIsContentIcons(false);
+      setDisplay(false);
     }
   }, [activeMenuButton, isSceneClicked]);
 
@@ -43,6 +51,7 @@ const ContentMenu = () => {
       style={{
         transform: props.y.to((y) => `translate3d(-50%,${y}px,0)`),
         opacity: props.opacity,
+        display: display ? "none" : "flex",
       }}
       onMouseEnter={(e) => {
         e.stopPropagation();
