@@ -6,7 +6,8 @@ import { useStore } from "@/stores/store";
 export default function ButtonUI({ children, type }) {
   const setIsLetsTalk = useStore((state) => state.setIsLetsTalk);
 
-  const hanldeClick = () => {
+  const hanldeClick = (e) => {
+    e.stopPropagation();
     if (type === "primary") {
       setIsLetsTalk(true);
     } else {

@@ -55,6 +55,8 @@ export const DockCard = ({ children, type }) => {
               : "",
           backgroundColor:
             (type === "left" || type === "right") && !hasSub ? "#555" : "",
+          cursor:
+            (type === "left" || type === "right") && !hasSub ? "auto" : "",
         }}
       >
         {children}

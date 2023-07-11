@@ -8,6 +8,7 @@
   padding: 8px;
   display: flex;
   flex-direction: column;
+  background-image: url("/textures/bg-gradients-v1.jpg");
   :hover {
     cursor: pointer;
   }
@@ -24,9 +25,6 @@
     font-weight: 600;
 
     padding: 2px 0 2px 16px;
-    li {
-      // list-style: none;
-    }
   }
 
   .lib,
