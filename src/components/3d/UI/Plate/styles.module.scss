@@ -45,9 +45,9 @@
   }
   .links {
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-end;
-    flex: 1 0 auto;
+    justify-content: center;
+    align-items: flex-start;
+    margin-top: 1rem;
     a {
       margin: 0 8px;
       svg {

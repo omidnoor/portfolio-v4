@@ -1,6 +1,6 @@
 import { useStore } from "@/stores/store";
 import ImageFrame from "./ImageFrame";
-import { useEffect, useRef, useState } from "react";
+import { Fragment, useEffect, useRef, useState } from "react";
 import { memo } from "react";
 import { pages } from "@/stores/data";
 import Plate from "./UI/Plate/Plate";
@@ -39,25 +39,25 @@ const ImageFrames = () => {
       {pages?.map((props, index) => {
         if (!props.sub) {
           return (
-            <>
-              <ImageFrame key={index} {...props} />
+            <Fragment key={index}>
+              <ImageFrame {...props} />
               {props.name === "About Me" && (
                 <mesh ref={plateRef} {...props}>
                   <Plate matcapTexture={matcapTexture} />
                 </mesh>
               )}
-            </>
+            </Fragment>
           );
         }
         if (props.sub) {
           return props.sub.map((subProps, subIndex) => {
             return (
-              <>
-                <ImageFrame key={`${index}-${subIndex}`} {...subProps} />
+              <Fragment key={`${index}-${subIndex}`}>
+                <ImageFrame {...subProps} />
                 <mesh ref={plateRef} {...subProps}>
                   <Plate matcapTexture={matcapTexture} {...subProps} />
                 </mesh>
-              </>
+              </Fragment>
             );
           });
         }

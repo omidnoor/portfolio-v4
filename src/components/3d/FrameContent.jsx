@@ -66,7 +66,11 @@ const FrameContent = ({ props, frameRef }) => {
         transform
         occlude
       >
-        <div className={styles.main} name={props.name}>
+        <div
+          className={styles.main}
+          name={props.name}
+          onClick={(e) => e.stopPropagation(e)}
+        >
           {props.name === "About Me" && <iframe src={props.url} />}
           {props.name === "Home" && <Home />}
           {props.contentUrl && (

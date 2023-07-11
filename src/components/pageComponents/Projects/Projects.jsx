@@ -65,7 +65,7 @@ const Projects = () => {
             style={{ display, x }}
           >
             <animated.div
-              key={i * i + 1}
+              key={i * i + 17}
               style={{ scale, backgroundImage: `url(${pages[i].link})` }}
               className={styles.projects}
             />
