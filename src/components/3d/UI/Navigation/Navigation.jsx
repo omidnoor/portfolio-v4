@@ -105,28 +105,19 @@ const Navigation = () => {
 
   useEffect(() => {
     const active = pages.find((page) => page.name === activeMenuButton);
-    if (!active?.sub) {
+    if (activeMenuButton === "About Me") {
       let normal = geoNormalArray.find((geo) => geo.name === active?.name);
       console.log(normal);
       const position = active?.position;
 
-      if (htmlClicked) {
+      if (htmlClicked || plateClicked) {
         setCameraLookAt(
           cameraControlsRef,
           position,
           normal.normal,
           offsetY,
-          offsetX,
+          offsetX + (plateClicked ? 21 : 0),
           dist - Math.max(33, Math.min(43.5, width / 14)),
-        );
-      } else if (plateClicked) {
-        setCameraLookAt(
-          cameraControlsRef,
-          position,
-          normal.normal,
-          offsetY,
-          offsetX + 15,
-          dist - Math.max(47.5, Math.min(51.5, width / 14)),
         );
       }
     }

@@ -1,13 +1,31 @@
 import { useStore } from "@/stores/store";
 import { MeshReflectorMaterial } from "@react-three/drei";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PlateContent from "./PlateContent";
 
 const Plate = ({ matcapTexture }) => {
+  const [isAboutMe, setIsAboutMe] = useState(false);
+  const [plateWidth, setPlateWidth] = useState([9.5, 12.5]);
+  const activeMenuButton = useStore((state) => state.activeMenuButton);
+  useEffect(() => {
+    if (activeMenuButton === "About Me") {
+      setIsAboutMe(true);
+      setPlateWidth([20, 25]);
+    } else {
+      setIsAboutMe(false);
+      setPlateWidth([9.5, 12.5]);
+    }
+  }, [activeMenuButton]);
+
   return (
     <group>
-      <mesh position={[15, 0, 0.15]}>
-        <planeGeometry args={[8.5, 11.5]} />
+      <mesh position={[isAboutMe ? 21 : 15, 0, 0.15]}>
+        <planeGeometry
+          args={[
+            plateWidth[0] - (isAboutMe ? 2 : 1),
+            plateWidth[1] - (isAboutMe ? 2 : 1),
+          ]}
+        />
         <meshStandardMaterial
           color="#fcfcdc"
           roughness={0.8}
@@ -15,8 +33,8 @@ const Plate = ({ matcapTexture }) => {
         />
         <PlateContent />
       </mesh>
-      <mesh position={[15, 0, 0.1]}>
-        <planeGeometry args={[9.5, 12.5]} />
+      <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
+        <planeGeometry args={plateWidth} />
         <meshMatcapMaterial matcap={matcapTexture} />
       </mesh>
     </group>
