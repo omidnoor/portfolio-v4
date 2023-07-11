@@ -1,14 +1,21 @@
 @import "@/styles/variables.scss";
 
+.wrapper {
+  width: 1000px;
+  height: 900px;
+  // z-index: 100;
+}
+
 .homeSection {
-  width: 100%;
-  height: 100%;
+  width: 700px;
+  height: 900px;
   padding: 0;
   margin: 0;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  background-color: #d76e6e;
 }
 
 .homeImage {
@@ -97,17 +104,17 @@
         display: flex;
         justify-content: center;
         color: var(--primary-accent-color);
-        @media (max-width: $bp-sm) {
-          font-size: var(--text-size-xxl);
-        }
+        // @media (max-width: $bp-sm) {
+        //   font-size: var(--text-size-xxl);
+        // }
       }
     }
     p {
       font-size: var(--text-size-md);
       margin-top: var(--gap-lg);
-      @media (max-width: $bp-sm) {
-        text-align: center;
-      }
+      // @media (max-width: $bp-sm) {
+      //   text-align: center;
+      // }
     }
   }
   &__actions {
@@ -119,12 +126,12 @@
     display: flex;
     justify-content: center;
     gap: var(--gap-xl);
-    @media (max-width: $bp-sm) {
-      font-size: 14px;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-      gap: var(--gap-md);
-    }
+    // @media (max-width: $bp-sm) {
+    //   font-size: 14px;
+    //   justify-content: center;
+    //   align-items: center;
+    //   flex-direction: column;
+    //   gap: var(--gap-md);
+    // }
   }
 }

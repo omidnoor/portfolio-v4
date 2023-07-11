@@ -1,7 +1,7 @@
 import { Html } from "@react-three/drei";
 import { pages } from "@/stores/data";
 import { useStore } from "@/stores/store";
-import { memo, useEffect, useState } from "react";
+import { memo, useCallback, useEffect, useState } from "react";
 import styles from "./styles.module.scss";
 import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
@@ -9,36 +9,38 @@ import { FaGithub, FaLink } from "react-icons/fa";
 const PlateContent = () => {
   const [activeSub, setActiveSub] = useState(null);
 
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const activeFrame = useStore((state) => state.activeFrame);
-  const arrowCount = useStore((state) => state.arrowCount);
-  const setPlateClicked = useStore((state) => state.setPlateClicked);
-  const plateClicked = useStore((state) => state.plateClicked);
-  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
-  const htmlClicked = useStore((state) => state.htmlClicked);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const setDollyCount = useStore((state) => state.setDollyCount);
-  const setLastClick = useStore((state) => state.setLastClick);
+  const {
+    activeMenuButton,
+    arrowCount,
+    setPlateClicked,
+    setHtmlClicked,
+    isSceneClicked,
+    setDollyCount,
+    setLastClick,
+  } = useStore((state) => state);
 
   const active = pages.find((page) => page.name === activeMenuButton);
 
-  const handleClick = (e) => {
-    e.stopPropagation();
-    setPlateClicked(true);
-    setHtmlClicked(false);
-    setDollyCount(1);
-    setLastClick("plate");
-  };
+  const handleClick = useCallback(
+    (e) => {
+      e.stopPropagation();
+      setPlateClicked(true);
+      setHtmlClicked(false);
+      setDollyCount(1);
+      setLastClick("plate");
+    },
+    [setPlateClicked, setHtmlClicked, setDollyCount, setLastClick],
+  );
 
-  const handleEnter = (e) => {
+  const handleEnter = useCallback((e) => {
     e.stopPropagation();
     document.body.style.cursor = "pointer";
-  };
+  }, []);
 
-  const handleLeave = (e) => {
+  const handleLeave = useCallback((e) => {
     e.stopPropagation();
     document.body.style.cursor = "auto";
-  };
+  }, []);
 
   useEffect(() => {
     setPlateClicked(false);
@@ -47,12 +49,12 @@ const PlateContent = () => {
 
   useEffect(() => {
     if (active?.sub) {
-      setActiveSub(active.sub[arrowCount]);
+      setActiveSub(active.sub[Math.abs(arrowCount % active.sub.length)]);
     } else {
       setActiveSub(null);
     }
   }, [activeMenuButton, active, arrowCount]);
-
+  console.log(activeSub);
   return (
     <Html
       zIndexRange={[0, 0]}
@@ -71,33 +73,43 @@ const PlateContent = () => {
           <>
             <div className={styles.name}>
               <p>Name: </p>
-              <h3>{active?.sub && active?.sub[arrowCount]?.plate?.title}</h3>
+              <h3>
+                {active?.sub &&
+                  active?.sub[Math.abs(arrowCount % active.sub.length)]?.plate
+                    ?.title}
+              </h3>
             </div>
-            {active?.sub && active?.sub[arrowCount]?.plate?.frameWorks && (
-              <div className={styles.lib}>
-                <p>Frameworks / Libraries:</p>
-                <ul>
-                  {active?.sub[arrowCount]?.plate?.frameWorks?.map(
-                    (frame, index) => (
+            {active?.sub &&
+              active?.sub[Math.abs(arrowCount % active.sub.length)]?.plate
+                ?.frameWorks && (
+                <div className={styles.lib}>
+                  <p>Frameworks / Libraries:</p>
+                  <ul>
+                    {active?.sub[
+                      Math.abs(arrowCount % active.sub.length)
+                    ]?.plate?.frameWorks?.map((frame, index) => (
                       <li key={index}> {frame}</li>
-                    ),
-                  )}
-                </ul>
-              </div>
-            )}
+                    ))}
+                  </ul>
+                </div>
+              )}
             <div className={styles.description}>
               <p>Description: </p>
               <ul>
                 {active?.sub &&
-                  active?.sub[arrowCount]?.plate?.description?.map(
-                    (item, index) => <li key={index}>{item}</li>,
-                  )}
+                  active?.sub[
+                    Math.abs(arrowCount % active.sub.length)
+                  ]?.plate?.description?.map((item, index) => (
+                    <li key={index}>{item}</li>
+                  ))}
               </ul>
             </div>
             <div className={styles.links}>
               <Link
                 href={
-                  (active?.sub && active?.sub[arrowCount]?.plate?.deployUrl) ||
+                  (active?.sub &&
+                    active?.sub[Math.abs(arrowCount % active.sub.length)]?.plate
+                      ?.deployUrl) ||
                   `/`
                 }
               >
@@ -105,7 +117,9 @@ const PlateContent = () => {
               </Link>
               <Link
                 href={
-                  (active?.sub && active?.sub[arrowCount]?.plate?.deployUrl) ||
+                  (active?.sub &&
+                    active?.sub[Math.abs(arrowCount % active.sub.length)]?.plate
+                      ?.deployUrl) ||
                   `/`
                 }
               >

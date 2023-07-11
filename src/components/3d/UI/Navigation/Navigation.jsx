@@ -120,7 +120,7 @@ const Navigation = () => {
       offsetY,
       offsetX,
       activeMenuButton === "Home"
-        ? dist - 20
+        ? dist - Math.max(33, Math.min(43.5, width / 14))
         : activeMenuButton === "Contact Me"
         ? dist - Math.max(33, Math.min(43.5, width / 14))
         : dist,

@@ -1,5 +1,4 @@
 import React, { memo, useEffect, useState } from "react";
-import { useTransition, animated } from "react-spring";
 
 import styles from "./content-embed.module.scss";
 import { Html } from "@react-three/drei";
@@ -10,15 +9,13 @@ import { normals } from "./Utils/Normals";
 import { pages } from "@/stores/data";
 import Image from "next/image";
 import ContactForm from "./ContactMeComponents/ContactForm";
+import Home from "../pageComponents/home/Home";
 
 const FrameContent = ({ props, frameRef }) => {
-  const activeFrames = useStore((state) => state.activeFrames);
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
   const setHtmlClicked = useStore((state) => state.setHtmlClicked);
-  const htmlClicked = useStore((state) => state.htmlClicked);
   const setPlateClicked = useStore((state) => state.setPlateClicked);
-  const plateClicked = useStore((state) => state.plateClicked);
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
@@ -60,35 +57,36 @@ const FrameContent = ({ props, frameRef }) => {
 
   return (
     <>
-      {props.name !== "Home" && (
-        <Html
-          as="div"
-          position={[0, 0, 1.05]}
-          zIndexRange={[0, 0]}
-          wrapperClass={styles.wrapper}
-          transform
-          occlude
-        >
-          <div className={styles.main} name={props.name}>
-            {props.url && <iframe src={props.url} />}
-            {props.contentUrl && (
-              <div
-                onClick={(e) => handleClick(e)}
-                onMouseEnter={(e) => handleEnter(e)}
-                onMouseLeave={(e) => handleLeave(e)}
-              >
-                <Image
-                  src={props.contentUrl}
-                  width={700}
-                  height={900}
-                  alt="project content image"
-                />
-              </div>
-            )}
-            {props.name === "Contact Me" && <ContactForm />}
-          </div>
-        </Html>
-      )}
+      {/* {props.name !== "Home" && ( */}
+      <Html
+        as="div"
+        position={[0, 0, 1.05]}
+        zIndexRange={[0, 0]}
+        wrapperClass={styles.wrapper}
+        transform
+        occlude
+      >
+        <div className={styles.main} name={props.name}>
+          {props.name === "About Me" && <iframe src={props.url} />}
+          {props.name === "Home" && <Home />}
+          {props.contentUrl && (
+            <div
+              onClick={(e) => handleClick(e)}
+              onMouseEnter={(e) => handleEnter(e)}
+              onMouseLeave={(e) => handleLeave(e)}
+            >
+              <Image
+                src={props.contentUrl}
+                width={700}
+                height={900}
+                alt="project content image"
+              />
+            </div>
+          )}
+          {props.name === "Contact Me" && <ContactForm />}
+        </div>
+      </Html>
+      {/* )} */}
     </>
   );
 };

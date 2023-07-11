@@ -19,28 +19,24 @@ const Plate = ({ matcapTexture }) => {
 
   return (
     <group>
-      {activeMenuButton !== "Contact Me" && (
-        <>
-          <mesh position={[isAboutMe ? 21 : 15, 0, 0.15]}>
-            <planeGeometry
-              args={[
-                plateWidth[0] - (isAboutMe ? 2 : 1),
-                plateWidth[1] - (isAboutMe ? 2 : 1),
-              ]}
-            />
-            <meshStandardMaterial
-              color="#fcfcdc"
-              roughness={0.8}
-              metalness={0.05}
-            />
-            <PlateContent />
-          </mesh>
-          <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
-            <planeGeometry args={plateWidth} />
-            <meshMatcapMaterial matcap={matcapTexture} />
-          </mesh>
-        </>
-      )}
+      <mesh position={[isAboutMe ? 21 : 15, 0, 0.15]}>
+        <planeGeometry
+          args={[
+            plateWidth[0] - (isAboutMe ? 2 : 1),
+            plateWidth[1] - (isAboutMe ? 2 : 1),
+          ]}
+        />
+        <meshStandardMaterial
+          color="#fcfcdc"
+          roughness={0.8}
+          metalness={0.05}
+        />
+        <PlateContent />
+      </mesh>
+      <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
+        <planeGeometry args={plateWidth} />
+        <meshMatcapMaterial matcap={matcapTexture} />
+      </mesh>
     </group>
   );
 };
