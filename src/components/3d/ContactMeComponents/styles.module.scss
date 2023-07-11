@@ -12,7 +12,7 @@
 .wrapper {
   width: 700px;
   height: 900px;
-  background: #003163ea;
+  background: #010c18ea;
   /* background: red; */
   padding: 0;
   font-family: $font-inter;
@@ -41,7 +41,8 @@
     }
     label {
       margin-bottom: 0.5rem;
-      margin-top: 1rem;
+      margin-top: 1.5rem;
+      font-size: 24px;
     }
 
     .input,
@@ -58,7 +59,7 @@
       background-color: #ffffef;
       border: none;
       color: #000;
-      font-size: 16px;
+      font-size: 20px;
       padding: 0.5rem;
     }
 
@@ -78,7 +79,7 @@
         padding: 15px 0;
         width: 100%;
         background-color: rgb(221, 217, 0);
-        font-size: 24px;
+        font-size: 40px;
         color: #000;
         font-weight: 600;
         border: none;
