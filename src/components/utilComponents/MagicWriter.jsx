@@ -5,8 +5,9 @@ import useTypewriter from "react-typewriter-hook";
 
 const texts = ["First text", "Second text"];
 
-const MagicWriter = ({ text1, icon1, text2, text3, icon2 }) => {
-  const texts = [text1, text2, text3];
+const MagicWriter = ({ texts }) => {
+  // const texts = [props];
+  console.log(texts);
   const [textIndex, setTextIndex] = useState(0);
   const textToShow = useTypewriter(texts[textIndex], {
     typingSpeed: 100,

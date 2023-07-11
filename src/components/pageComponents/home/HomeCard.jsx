@@ -18,9 +18,13 @@ export default function HomeCard() {
         <div className={styles.HomeCard__intro__skills}>
           <h1>
             <MagicWriter
-              text1="ReactJS/NextJS"
-              text2="Ecommerce Web"
-              text3="3D/2D Web"
+              texts={[
+                "ReactJS / NextJS",
+                "Ecommerce Web",
+                "3D/2D Web",
+                "Front-End",
+                "Back-End",
+              ]}
             />
           </h1>
         </div>

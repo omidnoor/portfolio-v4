@@ -80,12 +80,12 @@ const AboutSphere = ({ setBg, wordColor, colors }) => {
           setDown(false);
           setMode(!mode);
           setBg({
-            background: !mode ? "#0f1b48" : colors.background,
-            fill: !mode ? "#0f1b48" : colors.background,
+            background: !mode ? "#1c0200" : colors.background,
+            fill: !mode ? "#340200" : colors.background,
             wordColor: {
-              tech: !mode ? "#fcede0" : colors.wordColors.tech,
-              education: !mode ? "#34dfed" : colors.wordColors.education,
-              general: !mode ? "#adcf80" : colors.wordColors.general,
+              tech: !mode ? "#dcfcff" : colors.wordColors.tech,
+              education: !mode ? "#ced" : colors.wordColors.education,
+              general: !mode ? "#52affc" : colors.wordColors.general,
             },
           });
         }}
