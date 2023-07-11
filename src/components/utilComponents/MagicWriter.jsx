@@ -6,8 +6,6 @@ import useTypewriter from "react-typewriter-hook";
 const texts = ["First text", "Second text"];
 
 const MagicWriter = ({ texts }) => {
-  // const texts = [props];
-  console.log(texts);
   const [textIndex, setTextIndex] = useState(0);
   const textToShow = useTypewriter(texts[textIndex], {
     typingSpeed: 100,
@@ -21,22 +19,7 @@ const MagicWriter = ({ texts }) => {
       }, 2000);
     }
   }, [textToShow, textIndex]);
-  // console.log(textIndex, textToShow, texts[textIndex]);
-  return (
-    <span>
-      {textToShow}
-      {textToShow === texts[0] ? (
-        <>
-          {/* <TbBrandNextjs
-            style={{ color: "rgba(1, 200, 255)", height: "30px" }}
-          />
-          <FaReact style={{ color: "rgba(1, 200, 255)", height: "30px" }} /> */}
-        </>
-      ) : (
-        ""
-      )}
-    </span>
-  );
+  return <span>{textToShow}</span>;
 };
 
 export default MagicWriter;

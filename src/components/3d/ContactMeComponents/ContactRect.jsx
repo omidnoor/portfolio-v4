@@ -23,7 +23,7 @@ const ContactRect = ({
   const contactRef = useRef();
   useCursor(hovered && !isThereCamera);
 
-  const [matcap] = useMatcapTexture("221917_928380_5F504D_7C746C");
+  const [matcap] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C");
 
   useEffect(() => {
     // targetPosition.set(0, 10, 40);

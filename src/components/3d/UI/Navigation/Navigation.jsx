@@ -177,7 +177,6 @@ const Navigation = () => {
     normal,
     subPosition,
   ]);
-  console.log(normalAboutMe, active?.position);
   useEffect(() => {
     if (normalAboutMe && active?.position) {
       // let normal = geoNormalArray.find((geo) => geo.name === active?.name);

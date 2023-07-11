@@ -30,7 +30,7 @@ const width = useWindowWidth()
 
   const frameRef = useRef(null);
   const plateRef = useRef(null);
-  const [matcapTexture] = useMatcapTexture("1B1B1B_515151_7E7E7E_6C6C6C", 256);
+  const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
 
   return (
       <mesh ref={frameRef} {...props}>

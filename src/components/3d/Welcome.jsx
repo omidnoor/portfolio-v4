@@ -10,7 +10,6 @@ import { useThree } from "@react-three/fiber";
 import Effect from "../effect/Effect";
 import { Sand_Color } from "../utilComponents/variables/colors";
 import { memo, useEffect, useState } from "react";
-import * as THREE from "three";
 
 const Welcome = ({ position, margin = 0.5 }) => {
   // const [matcapTexture1] = useMatcapTexture("595356_CDBFC6_AA9DA3_BBB3BC", 256);

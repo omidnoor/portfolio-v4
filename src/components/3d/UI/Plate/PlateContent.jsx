@@ -54,7 +54,7 @@ const PlateContent = () => {
       setActiveSub(null);
     }
   }, [activeMenuButton, active, arrowCount]);
-  console.log(activeSub);
+
   return (
     <Html
       zIndexRange={[0, 0]}

@@ -8,7 +8,7 @@ import {
 import { SRGBColorSpace } from "three";
 
 const ThreedText = () => {
-  const [matcapTexture] = useMatcapTexture("50332C_D98D79_955F52_AA7C6C", 256);
+  const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
   matcapTexture.colorSpace = SRGBColorSpace;
   return (
     // <PresentationControls

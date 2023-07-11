@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 
 const TitlePlate = ({ props, setTitle }) => {
-  const [matcapTexture2] = useMatcapTexture("221917_928380_5F504D_7C746C", 256);
+  const [matcapTexture2] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
 
   return (
     <mesh position={[0, -1.45, 0]}>
