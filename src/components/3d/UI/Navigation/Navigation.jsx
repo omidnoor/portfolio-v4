@@ -53,13 +53,13 @@ const Navigation = () => {
       normal?.normal,
       offsetY,
       offsetX,
-      active?.name === "Home"
+      activeMenuButton === "Home"
         ? dist - 20
-        : active?.name === "Contact Me"
-        ? dist - 47
+        : activeMenuButton === "Contact Me"
+        ? dist - Math.max(33, Math.min(43.5, width / 14))
         : dist,
     );
-  }, [activeMenuButton]);
+  }, [activeMenuButton, width]);
 
   useEffect(() => {
     const active = pages.find((page) => page.name === activeMenuButton);
