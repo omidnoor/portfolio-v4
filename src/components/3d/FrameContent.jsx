@@ -71,9 +71,9 @@ const FrameContent = ({ props, frameRef }) => {
           {props.name === "Home" && <Home />}
           {props.contentUrl && (
             <div
-              onClick={(e) => handleClick(e)}
-              onMouseEnter={(e) => handleEnter(e)}
-              onMouseLeave={(e) => handleLeave(e)}
+              onClick={handleClick}
+              onMouseEnter={handleEnter}
+              onMouseLeave={handleLeave}
             >
               <Image
                 src={props.contentUrl}

@@ -1,20 +1,20 @@
 @import "@/styles/variables.scss";
 .btn {
   min-width: map-get($gap, xxl);
-  padding: 8px 32px;
-  border-radius: 50px;
-  font-weight: 600;
+  padding: 8px 32px !important;
+  font-weight: 600 !important;
   color: #fff;
   border: 2px solid $btn-primary-color !important;
-  font-size: inherit;
+  font-size: 24px !important;
 }
+
 .btnContained {
   background-color: $btn-primary-color !important;
-  color: #000 !important;
+  color: #2c2525 !important;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       background-color: transparent !important;
-      border: 2px solid $btn-primary-color;
+      border: 2px solid $btn-primary-color !important;
       color: #fff !important;
     }
   }
@@ -23,11 +23,11 @@
 .btnOutlined {
   background-color: transparent !important;
   border: 2px solid $btn-primary-color !important;
-  color: #fff !important;
+  color: #2c2525 !important;
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       background-color: $btn-primary-color !important;
-      color: #000 !important;
+      color: #fff !important;
     }
   }
 }

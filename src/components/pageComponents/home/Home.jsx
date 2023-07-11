@@ -10,8 +10,8 @@ import { worldScale } from "@/stores/variables";
 const Home = () => {
   return (
     <div className={`${styles.homeSection}`}>
-      <HomeCard />
       <HomeImage />
+      <HomeCard />
     </div>
   );
 };

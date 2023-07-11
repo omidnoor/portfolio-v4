@@ -1,11 +1,5 @@
 @import "@/styles/variables.scss";
 
-.wrapper {
-  width: 1000px;
-  height: 900px;
-  // z-index: 100;
-}
-
 .homeSection {
   width: 700px;
   height: 900px;
@@ -19,6 +13,7 @@
 }
 
 .homeImage {
+  margin-top: 48px;
   position: relative;
   z-index: 20;
   display: flex;
@@ -57,21 +52,21 @@
   flex-direction: column;
   height: 100%;
   padding-top: map-get($gap, xl);
-  gap: map-get($gap, xl);
+  // gap: map-get($gap, xl);
   color: #fff;
   &__socials {
-    margin-bottom: map-get($gap, sm);
-    padding-top: map-get($gap, xl);
+    // margin-bottom: map-get($gap, sm);
+    // padding-top: map-get($gap, xl);
     height: 100%;
     width: 100%;
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     padding-bottom: map-get($gap, xl);
-    justify-content: flex-end;
+    justify-content: center;
     gap: map-get($gap, lg);
     svg {
-      width: map-get($icon-size, xl);
-      height: map-get($icon-size, xl);
+      width: 100px;
+      height: 100px;
       hover {
         fill: aqua;
       }
@@ -118,13 +113,14 @@
     }
   }
   &__actions {
-    margin-top: var(--gap-xl);
+    // margin-top: var(--gap-xl);
     padding-top: map-get($gap, xxxxl);
     width: 100%;
-    min-width: map-get($gap, xxl);
-    min-height: map-get($gap, xxl);
+    min-width: 100px;
+    min-height: 100px;
     display: flex;
     justify-content: center;
+    align-items: center;
     gap: var(--gap-xl);
     // @media (max-width: $bp-sm) {
     //   font-size: 14px;
