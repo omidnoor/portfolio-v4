@@ -10,12 +10,20 @@ export const pages = [
   },
   {
     name: "About Me",
-    position: [2, 25, 180],
+    position: [2, 25, 200],
     rotation: [0, Math.PI * 0.5, 0],
     imageUrl: "/icons/about-icon-v1.png",
     url: "http://localhost:3000/PageAboutMe",
     componentUrl: null,
   },
+  // {
+  //   name: "Read More",
+  //   position: [2, 25, 180],
+  //   rotation: [0, Math.PI * 0.5, 0],
+  //   imageUrl: "/icons/about-icon-v1.png",
+  //   url: "http://localhost:3000/PageAboutMe",
+  //   componentUrl: null,
+  // },
   {
     name: "Contact Me",
     position: [123, 25, -86],

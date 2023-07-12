@@ -21,7 +21,13 @@ export const useStore = create((set) => ({
   isContentIcons: false,
   frameRef: [],
   plateRef: [],
+  isReadMoreOne: false,
+  isReadMoreTwo: false,
+  isReadBack: false,
 
+  setIsReadBack: (value) => set((state) => ({ isReadBack: value })),
+  setIsReadMoreOne: (value) => set((state) => ({ isReadMoreOne: value })),
+  setIsReadMoreTwo: (value) => set((state) => ({ isReadMoreTwo: value })),
   setPlateRef: (ref) =>
     set((state) => {
       if (!state.plateRef.some((item) => item?.name === ref?.name)) {

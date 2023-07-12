@@ -53,7 +53,6 @@ const Navigation = () => {
   const geoNormalArray = useStore((state) => state.geoNormalArray);
   const htmlClicked = useStore((state) => state.htmlClicked);
   const plateClicked = useStore((state) => state.plateClicked);
-  const backClicked = useStore((state) => state.backClicked);
 
   const active = useMemo(
     () => pages.find((page) => page.name === activeMenuButton),
@@ -109,7 +108,7 @@ const Navigation = () => {
       ...camerainitLookAt,
       true,
     );
-  }, [isSceneClicked, activeMenuButton, backClicked]);
+  }, [isSceneClicked, activeMenuButton]);
 
   useEffect(() => {
     const activePosition = active?.position;
