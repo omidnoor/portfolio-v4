@@ -15,7 +15,7 @@
     &:hover {
       background-color: transparent !important;
       border: 2px solid $btn-primary-color !important;
-      color: #fff !important;
+      // color: #fff !important;
     }
   }
 }
@@ -27,7 +27,7 @@
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       background-color: $btn-primary-color !important;
-      color: #fff !important;
+      // color: #fff !important;
     }
   }
 }

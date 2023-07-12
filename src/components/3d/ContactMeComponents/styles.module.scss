@@ -1,18 +1,9 @@
 @import "@/styles/variables.scss";
 
-@font-face {
-  font-family: "Inter Regular";
-  src: url("/Inter-Regular.ttf") format("truetype");
-  font-weight: normal;
-  font-style: normal;
-}
-
-// .content {
-
 .wrapper {
   width: 700px;
   height: 900px;
-  background: #010c18ea;
+  background-image: $backgrount-gradient;
   padding: 0;
   font-family: $font-inter;
   padding: 10px;
@@ -41,6 +32,7 @@
       margin-bottom: 0.5rem;
       margin-top: 1.5rem;
       font-size: 24px;
+      color: $tertiary-color;
     }
 
     .input,
@@ -56,7 +48,7 @@
       font-family: $font-inter;
       background-color: #ffffef;
       border: none;
-      color: #000;
+      color: $tertiary-color;
       font-size: 20px;
       padding: 0.5rem;
     }
@@ -74,15 +66,33 @@
       align-items: center;
       margin-top: 36px;
       button {
-        padding: 15px 0;
+        // padding: 15px 0;
         width: 100%;
-        background-color: rgb(221, 217, 0);
+        background-color: $tertiary-color;
         font-size: 40px;
-        color: #000;
+        color: #121515 !important;
         font-weight: 600;
         border: none;
-        :hover {
-          cursor: pointer;
+        cursor: pointer;
+      }
+      .btn {
+        min-width: map-get($gap, xxl);
+        padding: 8px 32px !important;
+        font-weight: 600 !important;
+        color: #fff;
+        border: 2px solid $btn-primary-color !important;
+        font-size: 24px !important;
+      }
+
+      .btnContained {
+        background-color: $btn-primary-color !important;
+        color: #2c2525 !important;
+        @media (hover: hover) and (pointer: fine) {
+          &:hover {
+            background-color: transparent !important;
+            border: 2px solid $btn-primary-color !important;
+            // color: #fff !important;
+          }
         }
       }
     }

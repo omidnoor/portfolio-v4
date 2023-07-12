@@ -1,8 +1,5 @@
-import { Html } from "@react-three/drei";
-
 import styles from "./styles.module.scss";
 import { useFormik } from "formik";
-import ButtonUI from "@/components/utilComponents/UI/Button";
 import { Button } from "@mui/material";
 
 const ContactForm = ({ setHtmlClicked = true }) => {
@@ -16,17 +13,12 @@ const ContactForm = ({ setHtmlClicked = true }) => {
       console.log(values);
     },
   });
-  // const handleSubmit = (e) => {
-  //   e.preventDefault();
-  //   console.log("form is submited");
-  // };
+
   return (
-    // <Html className={styles.content} transform sprite occlude>
     <div
       className={styles.wrapper}
       onClick={(e) => {
         e.stopPropagation();
-        // setHtmlClicked(true);
       }}
     >
       <form autoComplete="off" className={styles.form} onSubmit={handleSubmit}>
@@ -69,11 +61,17 @@ const ContactForm = ({ setHtmlClicked = true }) => {
           rows={15}
         />
         <div className={styles.button}>
-          <button type="submit">Send</button>
+          <Button
+            variant="contained"
+            color="primary"
+            className={`${styles.btn} ${styles.btnContained}`}
+            type="submit"
+          >
+            Send
+          </Button>
         </div>
       </form>
     </div>
-    // </Html>
   );
 };
 export default ContactForm;

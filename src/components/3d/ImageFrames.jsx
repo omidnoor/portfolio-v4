@@ -22,7 +22,7 @@ const ImageFrames = () => {
   useEffect(() => {
     framesRef.current.frustumCulled = false;
   }, []);
-  console.log(pages[1].position[0]);
+
   return (
     <group
       ref={framesRef}

@@ -5,50 +5,11 @@ import { useEffect, useState } from "react";
 const AboutMeContent = () => {
   const [page, setPage] = useState(0);
 
-  const setIsReadMoreOne = useStore((state) => state.setIsReadMoreOne);
-  const isReadMoreOne = useStore((state) => state.isReadMoreOne);
-  const setIsReadMoreTwo = useStore((state) => state.setIsReadMoreTwo);
-  const isReadMoreTwo = useStore((state) => state.isReadMoreTwo);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const setIsReadBack = useStore((state) => state.setIsReadBack);
-  const isReadBack = useStore((state) => state.isReadBack);
-  const htmlClicked = useStore((state) => state.htmlClicked);
   const arrowCount = useStore((state) => state.arrowCount);
 
   useEffect(() => {
     setPage(arrowCount % 3);
   }, [arrowCount]);
-
-  const handleClickOne = (e) => {
-    e.stopPropagation();
-    setIsReadMoreOne(true);
-    setIsReadMoreTwo(false);
-    setIsReadBack(false);
-  };
-
-  const handleClickTwo = (e) => {
-    e.stopPropagation();
-    setIsReadMoreTwo(true);
-    setIsReadBack(false);
-  };
-
-  const handleClickBack = (e) => {
-    e.stopPropagation();
-    setIsReadBack(true);
-    if (isReadMoreTwo) {
-      setIsReadMoreTwo(false);
-    } else if (isReadMoreOne) {
-      setIsReadMoreOne(false);
-    }
-  };
-
-  useEffect(() => {
-    if (isSceneClicked || htmlClicked) {
-      setIsReadMoreOne(false);
-      setIsReadMoreTwo(false);
-      setIsReadBack(false);
-    }
-  }, [isSceneClicked, htmlClicked]);
 
   return (
     <div onClick={(e) => e.stopPropagation(e)} className={styles.container}>

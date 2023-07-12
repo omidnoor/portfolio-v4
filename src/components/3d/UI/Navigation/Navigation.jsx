@@ -208,15 +208,7 @@ const Navigation = () => {
     normalAboutMe,
     active,
   ]);
-  console.log(
-    arrowCount,
-    activeMenuButton,
-    plateClicked,
-    htmlClicked,
-    width,
-    normalAboutMe,
-    active,
-  );
+
   useEffect(() => {
     if (normalContactMe && active?.position) {
       // let normal = geoNormalArray.find((geo) => geo.name === active?.name);
