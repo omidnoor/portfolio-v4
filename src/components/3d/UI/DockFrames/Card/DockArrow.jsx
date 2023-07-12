@@ -6,6 +6,7 @@ import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 import { pages } from "@/stores/data";
 import { useDock } from "../Dock/DockContext";
 import { iconsSize } from "@/stores/variables";
+import { useSpring, animated } from "react-spring";
 
 const DockArrow = ({ type }) => {
   const arrowButton = useStore((state) => state.arrowButton);
@@ -17,17 +18,14 @@ const DockArrow = ({ type }) => {
 
   const dock = useDock();
 
-  const handleClick = () => {
+  const handleClick = (e) => {
+    e.stopPropagation();
     setArrowButton(type);
     setArrowCount(arrowCount + (type === "left" ? -1 : 1));
   };
 
   useEffect(() => {
-    const active = pages.find((page) => page.name === activeMenuButton);
-    if (active?.sub) {
-      dock.setDisabled(false);
-    } else {
-      dock.setDisabled(true);
+    if (activeMenuButton === "About Me") {
     }
   }, [activeMenuButton]);
 
@@ -36,45 +34,74 @@ const DockArrow = ({ type }) => {
     setArrowCount(0);
   }, [isSceneClicked]);
 
+  const [props, api] = useSpring(() => ({
+    from: { scale: 1 },
+    config: {
+      mass: 1,
+      tension: 100,
+      friction: 5,
+    },
+  }));
+
+  const handleEnter = () => {
+    api.start({ scale: 1.2 });
+  };
+
+  const handleLeave = () => {
+    api.start({ scale: 1 });
+  };
+
   return (
-    <div className={styles.card} onClick={handleClick}>
-      {type === "left" && (
-        <>
-          <Image
-            src="/icons/arrow-left.png"
-            width={iconsSize}
-            height={iconsSize}
-            className={styles.card__blur}
-            alt="left"
-          />
-          <Image
-            src="/icons/arrow-left.png"
-            width={iconsSize}
-            height={iconsSize}
-            className={styles.card__img}
-            alt="left"
-          />
-        </>
-      )}
-      {type === "right" && (
-        <>
-          <Image
-            src="/icons/arrow-right.png"
-            width={iconsSize}
-            height={iconsSize}
-            className={styles.card__blur}
-            alt="right"
-          />
-          <Image
-            src="/icons/arrow-right.png"
-            width={iconsSize}
-            height={iconsSize}
-            className={styles.card__img}
-            alt="right"
-          />
-        </>
-      )}
-    </div>
+    <>
+      {(activeMenuButton === "Projects" || activeMenuButton === "About Me") &&
+        (type === "left" ? (
+          <animated.div
+            className={styles.card}
+            onClick={handleClick}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+            style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
+          >
+            <Image
+              src="/icons/arrow-left.png"
+              width={iconsSize}
+              height={iconsSize}
+              className={styles.card__blur}
+              alt="left"
+            />
+            <Image
+              src="/icons/arrow-left.png"
+              width={iconsSize}
+              height={iconsSize}
+              className={styles.card__img}
+              alt="left"
+            />
+          </animated.div>
+        ) : (
+          <animated.div
+            className={styles.card}
+            onClick={handleClick}
+            onMouseEnter={handleEnter}
+            onMouseLeave={handleLeave}
+            style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
+          >
+            <Image
+              src="/icons/arrow-right.png"
+              width={iconsSize}
+              height={iconsSize}
+              className={styles.card__blur}
+              alt="right"
+            />
+            <Image
+              src="/icons/arrow-right.png"
+              width={iconsSize}
+              height={iconsSize}
+              className={styles.card__img}
+              alt="right"
+            />
+          </animated.div>
+        ))}
+    </>
   );
 };
 export default DockArrow;

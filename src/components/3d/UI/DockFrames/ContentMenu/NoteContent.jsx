@@ -39,7 +39,7 @@ const NoteContent = () => {
     // setNoteClicked(false);
     setPlateClicked(false);
     setDollyCount(0);
-  }, [isSceneClicked, activeMenuButton, arrowCount]);
+  }, [isSceneClicked, activeMenuButton]);
 
   const handleEnter = (e) => {
     // e.stopPropagation();

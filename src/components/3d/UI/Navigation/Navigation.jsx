@@ -176,11 +176,10 @@ const Navigation = () => {
     normal,
     subPosition,
   ]);
+
   useEffect(() => {
     if (normalAboutMe && active?.position) {
-      // let normal = geoNormalArray.find((geo) => geo.name === active?.name);
       const position = active?.position;
-
       setCameraLookAt(
         cameraControlsRef,
         position,
@@ -201,7 +200,7 @@ const Navigation = () => {
       }
     }
   }, [
-    arrowCount,
+    // arrowCount,
     activeMenuButton,
     plateClicked,
     htmlClicked,
@@ -209,7 +208,15 @@ const Navigation = () => {
     normalAboutMe,
     active,
   ]);
-
+  console.log(
+    arrowCount,
+    activeMenuButton,
+    plateClicked,
+    htmlClicked,
+    width,
+    normalAboutMe,
+    active,
+  );
   useEffect(() => {
     if (normalContactMe && active?.position) {
       // let normal = geoNormalArray.find((geo) => geo.name === active?.name);

@@ -26,16 +26,13 @@ const PlateContent = ({ isAboutMe }) => {
 
   const active = pages.find((page) => page.name === activeMenuButton);
 
-  const handleClick = useCallback(
-    (e) => {
-      e.stopPropagation();
-      setPlateClicked(true);
-      setHtmlClicked(false);
-      setDollyCount(1);
-      setLastClick("plate");
-    },
-    [setPlateClicked, setHtmlClicked, setDollyCount, setLastClick],
-  );
+  const handleClick = useCallback((e) => {
+    e.stopPropagation();
+    setPlateClicked(true);
+    setHtmlClicked(false);
+    setDollyCount(1);
+    setLastClick("plate");
+  }, []);
 
   const handleEnter = useCallback((e) => {
     e.stopPropagation();
@@ -48,7 +45,7 @@ const PlateContent = ({ isAboutMe }) => {
   }, []);
 
   useEffect(() => {
-    setPlateClicked(false);
+    activeMenuButton !== "About Me" && setPlateClicked(false);
     setDollyCount(0);
   }, [isSceneClicked, activeMenuButton, arrowCount]);
 

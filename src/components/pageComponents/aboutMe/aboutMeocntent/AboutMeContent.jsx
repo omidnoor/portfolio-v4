@@ -1,8 +1,10 @@
 import { useStore } from "@/stores/store";
 import styles from "./styles.module.scss";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 const AboutMeContent = () => {
+  const [page, setPage] = useState(0);
+
   const setIsReadMoreOne = useStore((state) => state.setIsReadMoreOne);
   const isReadMoreOne = useStore((state) => state.isReadMoreOne);
   const setIsReadMoreTwo = useStore((state) => state.setIsReadMoreTwo);
@@ -11,6 +13,11 @@ const AboutMeContent = () => {
   const setIsReadBack = useStore((state) => state.setIsReadBack);
   const isReadBack = useStore((state) => state.isReadBack);
   const htmlClicked = useStore((state) => state.htmlClicked);
+  const arrowCount = useStore((state) => state.arrowCount);
+
+  useEffect(() => {
+    setPage(arrowCount % 3);
+  }, [arrowCount]);
 
   const handleClickOne = (e) => {
     e.stopPropagation();
@@ -54,7 +61,7 @@ const AboutMeContent = () => {
           design, and cutting-edge web technologies.
         </h2>
       </div>
-      {!isReadMoreOne ? (
+      {page === 0 ? (
         <>
           <div className={styles.description}>
             <p>
@@ -70,13 +77,10 @@ const AboutMeContent = () => {
               this emerging field will revolutionize the way we interact with
               the digital world, bringing a new level of depth and immersion to
               user experiences.
-              <span>
-                <button onClick={handleClickOne}>&nbsp; Read more...</button>
-              </span>
             </p>
           </div>
         </>
-      ) : !isReadMoreTwo ? (
+      ) : page === 1 ? (
         <>
           <div className={styles.description}>
             <p>
@@ -91,16 +95,10 @@ const AboutMeContent = () => {
               From prototyping to deployment, I approach every project with a
               meticulous attention to detail, keen problem-solving skills, and
               an eagerness to embrace new challenges.
-              <span>
-                <button onClick={handleClickTwo}>&nbsp; Read more...</button>
-              </span>
             </p>
           </div>
-          <div className={styles.back}>
-            <button onClick={handleClickBack}>&larr;Back.</button>
-          </div>
         </>
-      ) : (
+      ) : page === 2 ? (
         <>
           <div className={styles.description}>
             <p>
@@ -119,10 +117,9 @@ const AboutMeContent = () => {
               shapes this future.
             </p>
           </div>
-          <div className={styles.back}>
-            <button onClick={handleClickBack}> &larr;Back.</button>
-          </div>
         </>
+      ) : (
+        ""
       )}
     </div>
   );
