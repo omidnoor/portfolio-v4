@@ -55,7 +55,7 @@ const ImageFrames = () => {
               <Fragment key={`${index}-${subIndex}`}>
                 <ImageFrame {...subProps} />
                 <mesh ref={plateRef} {...subProps}>
-                  <Plate matcapTexture={matcapTexture} {...subProps} />
+                  <Plate matcapTexture={matcapTexture} />
                 </mesh>
               </Fragment>
             );

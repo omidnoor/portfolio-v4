@@ -7,6 +7,7 @@ const Plate = ({ matcapTexture }) => {
   const [isAboutMe, setIsAboutMe] = useState(false);
   const [plateWidth, setPlateWidth] = useState([9.5, 12.5]);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
+
   useEffect(() => {
     if (activeMenuButton === "About Me") {
       setIsAboutMe(true);
@@ -18,26 +19,11 @@ const Plate = ({ matcapTexture }) => {
   }, [activeMenuButton]);
 
   return (
-    <group>
-      <mesh position={[isAboutMe ? 21 : 15, 0, 0.15]}>
-        <planeGeometry
-          args={[
-            plateWidth[0] - (isAboutMe ? 2 : 1),
-            plateWidth[1] - (isAboutMe ? 2 : 1),
-          ]}
-        />
-        <meshStandardMaterial
-          color="#fcfcdc"
-          roughness={0.8}
-          metalness={0.05}
-        />
-        <PlateContent isAboutMe={isAboutMe} />
-      </mesh>
-      <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
-        <planeGeometry args={plateWidth} />
-        <meshMatcapMaterial matcap={matcapTexture} />
-      </mesh>
-    </group>
+    <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
+      <PlateContent isAboutMe={isAboutMe} />
+      <planeGeometry args={plateWidth} />
+      <meshMatcapMaterial matcap={matcapTexture} />
+    </mesh>
   );
 };
 export default memo(Plate);

@@ -7,6 +7,7 @@ import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
 import { animated, useSprings } from "react-spring";
 import { useAnimatedScaleOnHover } from "@/components/utilComponents/Animations/useAnimatedScaleOnHover ";
+import AboutMeContent from "@/components/pageComponents/aboutMe/aboutMeocntent/AboutMeContent";
 
 const PlateContent = ({ isAboutMe }) => {
   const [activeSub, setActiveSub] = useState(null);
@@ -63,7 +64,7 @@ const PlateContent = ({ isAboutMe }) => {
     <Html
       zIndexRange={[0, 0]}
       position={[0, 0, 0.1]}
-      wrapperClass={styles.wrapper}
+      // wrapperClass={styles.wrapper}
       transform
       occlude
       style={{
@@ -155,6 +156,7 @@ const PlateContent = ({ isAboutMe }) => {
           </>
         )}
       </div>
+      {activeMenuButton === "About Me" && <AboutMeContent />}
     </Html>
   );
 };
