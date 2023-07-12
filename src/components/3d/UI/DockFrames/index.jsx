@@ -14,12 +14,12 @@ export default function DockMenu() {
   return (
     <Suspense fallback={<CustomLoader />}>
       <Dock>
-        <DockCard>
-          <BackButton />
-        </DockCard>
-        <DockCard type="left">
-          <DockArrow type="left" />
-        </DockCard>
+        <BackButton />
+        {/* <DockCard> */}
+        {/* </DockCard> */}
+        {/* <DockCard type="left"> */}
+        {/* <DockArrow type="left" /> */}
+        {/* </DockCard> */}
         <DockDivider />
         {pages.map((page, index) => (
           <DockCard key={page.name}>
@@ -27,9 +27,9 @@ export default function DockMenu() {
           </DockCard>
         ))}
         <DockDivider />
-        <DockCard type="right">
-          <DockArrow type="right" />
-        </DockCard>
+        {/* <DockCard type="right"> */}
+        {/* <DockArrow type="right" /> */}
+        {/* </DockCard> */}
         <ContentMenu />
       </Dock>
     </Suspense>

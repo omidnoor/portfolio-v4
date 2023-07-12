@@ -2,8 +2,9 @@
 
 .container {
   position: absolute;
-  width: 150px;
+  width: 300px;
   left: 50%;
+  transform: translateX(50%);
   bottom: 70px;
   display: flex;
   align-items: center;

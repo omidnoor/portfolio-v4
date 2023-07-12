@@ -5,6 +5,7 @@ import NoteContent from "./NoteContent";
 import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 import { useEffect, useState } from "react";
+import DockArrow from "../Card/DockArrow";
 
 const ContentMenu = () => {
   const [display, setDisplay] = useState(false);
@@ -57,8 +58,10 @@ const ContentMenu = () => {
         e.stopPropagation();
       }}
     >
+      <DockArrow type="left" />
       <ImageContent />
       <NoteContent />
+      <DockArrow type="right" />
     </animated.div>
   );
 };
