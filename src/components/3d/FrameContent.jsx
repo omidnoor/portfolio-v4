@@ -19,7 +19,6 @@ const FrameContent = ({ props, frameRef }) => {
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const setDollyCount = useStore((state) => state.setDollyCount);
   const setLastClick = useStore((state) => state.setLastClick);
 
   useEffect(() => {
@@ -36,13 +35,11 @@ const FrameContent = ({ props, frameRef }) => {
     e.stopPropagation();
     setHtmlClicked(true);
     setPlateClicked(false);
-    setDollyCount(1);
     setLastClick("html");
   };
 
   useEffect(() => {
     setHtmlClicked(false);
-    setDollyCount(0);
   }, [isSceneClicked, activeMenuButton, arrowCount]);
 
   const handleEnter = (e) => {

@@ -36,7 +36,7 @@ export default function HomeCard() {
         <h2>Developer & Desinger</h2>
       </div>
       <div className={styles.HomeCard__actions}>
-        <ButtonUI type="primary">let's talk</ButtonUI>
+        <ButtonUI type="primary">let&apos;s talk</ButtonUI>
         <ButtonUI type="secondary">Resume</ButtonUI>
       </div>
       <br />

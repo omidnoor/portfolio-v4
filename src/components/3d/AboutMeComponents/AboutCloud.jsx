@@ -56,9 +56,10 @@ const AboutCloud = ({ count = 17, radius = 30, wordColor }) => {
       key={index}
       position={pos}
       wordType={wordType}
-      children={word}
       wordColor={wordColor}
-    />
+    >
+      {word}
+    </AboutWord>
   ));
 };
 export default AboutCloud;

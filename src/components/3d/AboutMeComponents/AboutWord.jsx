@@ -77,9 +77,10 @@ const AboutWord = ({ children, wordType, wordColor, ...props }) => {
       {...fontProps}
       onPointerOver={handleMouseOver}
       onPointerOut={handleMouseOut}
-      children={children}
       {...props}
-    />
+    >
+      {children}
+    </Text>
   );
 };
 export default AboutWord;

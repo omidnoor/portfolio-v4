@@ -46,11 +46,11 @@ const AboutMeContent = () => {
           <div className={styles.description}>
             <p>
               As evidence, look no further than this virtual gallery you are
-              navigating - a portfolio I've developed using react-three-fiber,
-              where you can engage with my projects in a metaverse-like
-              experience. This challenging project not only underscores my
-              technical capabilities but also exemplifies my innovative approach
-              to web development.
+              navigating - a portfolio I&apos;ve developed using
+              react-three-fiber, where you can engage with my projects in a
+              metaverse-like experience. This challenging project not only
+              underscores my technical capabilities but also exemplifies my
+              innovative approach to web development.
             </p>
             <p>
               From prototyping to deployment, I approach every project with a
@@ -64,11 +64,11 @@ const AboutMeContent = () => {
           <div className={styles.description}>
             <p>
               Diverse disciplines, including Mechanical Engineering and
-              Neuroscience, where I've earned Master's degrees, contribute to my
-              unique background. They've honed my analytical thinking and
-              fostered an appreciation for the intricate mechanisms that
-              underpin both machines and the human mind, skills that I find
-              incredibly useful in the realm of web development.
+              Neuroscience, where I&apos;ve earned Master&apos;s degrees,
+              contribute to my unique background. They&apos;ve honed my
+              analytical thinking and fostered an appreciation for the intricate
+              mechanisms that underpin both machines and the human mind, skills
+              that I find incredibly useful in the realm of web development.
             </p>
             <p>
               I envision a future where technology and creativity converge in

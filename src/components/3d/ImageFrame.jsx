@@ -1,7 +1,4 @@
-import {
-
-  useMatcapTexture,
-} from "@react-three/drei";
+import { useMatcapTexture } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { memo } from "react";
 import FrameContent from "./FrameContent";
@@ -17,7 +14,7 @@ const ImageFrame = ({ ...props }) => {
   const setPlateRef = useStore((state) => state.setPlateRef);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
 
-const width = useWindowWidth()
+  const width = useWindowWidth();
 
   useEffect(() => {
     setPlaneWidth(Math.max(9, Math.min(12, width / 62)));
@@ -33,11 +30,11 @@ const width = useWindowWidth()
   const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
 
   return (
-      <mesh ref={frameRef} {...props}>
-        <planeGeometry args={[2 * worldScale, 2.5 * worldScale]} />
-        <meshMatcapMaterial matcap={matcapTexture} />
-        <FrameContent frameRef={frameRef} props={...props} />
-      </mesh>
+    <mesh ref={frameRef} {...props}>
+      <planeGeometry args={[2 * worldScale, 2.5 * worldScale]} />
+      <meshMatcapMaterial matcap={matcapTexture} />
+      <FrameContent frameRef={frameRef} props={props} />
+    </mesh>
   );
 };
 export default memo(ImageFrame);
