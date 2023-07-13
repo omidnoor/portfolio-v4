@@ -1,4 +1,5 @@
 import { Html, useProgress } from "@react-three/drei";
+import styles from "./styles.module.scss";
 
 const CustomLoader = () => {
   const { active, progress, errors, item, loader, total } = useProgress();
@@ -18,7 +19,7 @@ const CustomLoader = () => {
   // );
 
   return (
-    <Html center>
+    <div className={styles.container}>
       <h1>Loading...</h1>
 
       {active && (
@@ -40,7 +41,7 @@ const CustomLoader = () => {
           ></div>
         </div>
       )}
-    </Html>
+    </div>
   );
 };
 export default CustomLoader;
