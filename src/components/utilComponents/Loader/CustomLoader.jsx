@@ -19,29 +19,31 @@ const CustomLoader = () => {
   // );
 
   return (
-    <div className={styles.container}>
-      <h1>Loading...</h1>
+    <Html>
+      <div className={styles.container}>
+        <h1>Loading...</h1>
 
-      {active && (
-        <div
-          style={{
-            width: "100%",
-            height: "5px",
-            background: "#ccc",
-            position: "absolute",
-            top: "0",
-          }}
-        >
+        {active && (
           <div
             style={{
-              width: `${progress}%`,
+              width: "100%",
               height: "5px",
-              background: "#4caf50",
+              background: "#ccc",
+              position: "absolute",
+              top: "0",
             }}
-          ></div>
-        </div>
-      )}
-    </div>
+          >
+            <div
+              style={{
+                width: `${progress}%`,
+                height: "5px",
+                background: "#4caf50",
+              }}
+            ></div>
+          </div>
+        )}
+      </div>
+    </Html>
   );
 };
 export default CustomLoader;

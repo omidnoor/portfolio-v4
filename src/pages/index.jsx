@@ -12,14 +12,14 @@ import Effect from "@/components/effect/Effect";
 const HomePage = () => {
   return (
     <>
-      <Suspense fallback={<CustomLoader />}>
-        <Menu />
-        <Layout>
+      <Layout>
+        <Suspense fallback={<CustomLoader />}>
           <Navigation />
           <SceneModel />
           <ImageFrames />
-        </Layout>
-      </Suspense>
+        </Suspense>
+      </Layout>
+      <Menu />
     </>
   );
 };
