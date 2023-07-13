@@ -1,16 +1,26 @@
 import styles from "./styles.module.scss";
 import { useFormik } from "formik";
 import { Button } from "@mui/material";
+import { useEffect } from "react";
+import { useState } from "react";
 
 const ContactForm = ({ setHtmlClicked = true }) => {
+  const [msg, setMsg] = useState([]);
   const { values, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: {
       name: "",
       email: "",
       message: "",
     },
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      const res = await fetch(`/api/contact`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(values),
+      });
+      return res.json();
     },
   });
 
