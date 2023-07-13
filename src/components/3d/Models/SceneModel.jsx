@@ -1,6 +1,7 @@
 import { useFBX, useGLTF } from "@react-three/drei";
 import { useStore } from "@/stores/store";
 import { worldScale } from "@/stores/variables";
+import { Suspense } from "react";
 
 useGLTF.preload("./models/SceneModel.glb");
 
@@ -24,9 +25,11 @@ const SceneModel = () => {
   console.log(model.nodes.ceiling);
   return (
     <mesh scale={worldScale} onClick={handleClick}>
-      <primitive object={model.nodes.ceiling} />
+      <Suspense fallback={null}>
+        <primitive object={model.nodes.ceiling} />
+        <primitive object={model.nodes.post} />
+      </Suspense>
       <primitive object={model.nodes.floor} />
-      <primitive object={model.nodes.post} />
       <primitive object={model.nodes.walls} />
     </mesh>
   );
