@@ -12,17 +12,14 @@ import Effect from "@/components/effect/Effect";
 const HomePage = () => {
   return (
     <>
-      <Menu />
-      <Layout>
-        <Effect />
-        <Suspense fallback={<CustomLoader />}>
+      <Suspense fallback={<CustomLoader />}>
+        <Menu />
+        <Layout>
           <Navigation />
-          <group position={[0, 0, 0]}>
-            <SceneModel />
-            <ImageFrames />
-          </group>
-        </Suspense>
-      </Layout>
+          <SceneModel />
+          <ImageFrames />
+        </Layout>
+      </Suspense>
     </>
   );
 };
