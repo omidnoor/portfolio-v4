@@ -6,3 +6,5 @@ const Walls = () => {
   return <primitive object={model.scene} />;
 };
 export default Walls;
+
+useGLTF.preload("./models/walls.glb");
