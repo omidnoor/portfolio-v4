@@ -30,9 +30,9 @@ const SceneModel = () => {
   return (
     <mesh scale={worldScale} onClick={handleClick}>
       <Floor />
-      {/* <Ceiling /> */}
+      <Ceiling />
       <Walls />
-      {/* <Post /> */}
+      <Post />
       {/* <primitive object={model.nodes.ceiling} />
       <primitive object={model.nodes.post} />
       <primitive object={model.nodes.floor} />
