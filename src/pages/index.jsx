@@ -10,14 +10,15 @@ import Menu from "@/components/utilComponents/UI/Menu/Menu";
 const HomePage = () => {
   return (
     <>
-      <Layout>
-        <Suspense fallback={<CustomLoader />}>
+      <Suspense fallback={null}>
+        <Layout>
           <Navigation />
           <SceneModel />
           <ImageFrames />
-        </Suspense>
-      </Layout>
-      <Menu />
+        </Layout>
+        <Menu />
+      </Suspense>
+      <CustomLoader />
     </>
   );
 };

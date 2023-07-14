@@ -6,6 +6,7 @@ import { useState } from "react";
 
 const ContactForm = ({ setHtmlClicked = true }) => {
   const [msg, setMsg] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const { values, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: {
       name: "",
@@ -13,6 +14,7 @@ const ContactForm = ({ setHtmlClicked = true }) => {
       message: "",
     },
     onSubmit: async (values) => {
+      setIsLoading(true);
       const res = await fetch(`/api/contact`, {
         method: "POST",
         headers: {
@@ -20,6 +22,7 @@ const ContactForm = ({ setHtmlClicked = true }) => {
         },
         body: JSON.stringify(values),
       });
+      setIsLoading(false);
       return res.json();
     },
   });
@@ -77,7 +80,7 @@ const ContactForm = ({ setHtmlClicked = true }) => {
             className={`${styles.btn} ${styles.btnContained}`}
             type="submit"
           >
-            Send
+            {isLoading ? <div>loading...</div> : `Send`}
           </Button>
         </div>
       </form>
