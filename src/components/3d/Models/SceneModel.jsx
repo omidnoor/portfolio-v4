@@ -3,9 +3,9 @@ import { useStore } from "@/stores/store";
 import { worldScale } from "@/stores/variables";
 // import { Suspense } from "react";
 import Floor from "./Floor";
-// import Ceiling from "./Ceiling";
+import Ceiling from "./Ceiling";
 import Walls from "./Walls";
-// import Post from "./Post";
+import Post from "./Post";
 
 // useGLTF.preload("./models/SceneModel.glb");
 
