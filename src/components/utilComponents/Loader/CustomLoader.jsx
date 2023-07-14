@@ -22,8 +22,8 @@ const CustomLoader = () => {
     <Html>
       <div className={styles.container}>
         <h1>Loading...</h1>
-        <h3>{`item: ${item}`}</h3>
-        <h3>{`loader: ${loader}`}</h3>
+        {/* <h3>{`item: ${item}`}</h3>
+        <h3>{`loader: ${loader}`}</h3> */}
         {active && (
           <div
             style={{

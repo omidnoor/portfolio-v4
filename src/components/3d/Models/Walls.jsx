@@ -1,8 +1,8 @@
 import { useGLTF } from "@react-three/drei";
 
-const Floor = () => {
-  const model = useGLTF("./models/floor.glb");
+const Walls = () => {
+  const model = useGLTF("./models/walls.glb");
 
   return <primitive object={model.scene} />;
 };
-export default Floor;
+export default Walls;
