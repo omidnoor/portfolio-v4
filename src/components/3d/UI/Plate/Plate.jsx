@@ -22,7 +22,7 @@ const Plate = ({ matcapTexture }) => {
     <mesh position={[isAboutMe ? 21 : 15, 0, 0.1]}>
       <PlateContent isAboutMe={isAboutMe} />
       <planeGeometry args={plateWidth} />
-      {/* <meshMatcapMaterial matcap={matcapTexture} /> */}
+      <meshMatcapMaterial matcap={matcapTexture} />
     </mesh>
   );
 };

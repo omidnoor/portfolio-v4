@@ -8,17 +8,16 @@ import { useStore } from "@/stores/store";
 import { useWindowWidth } from "./Utils/useWindowWidth";
 
 const ImageFrame = ({ matcapTexture, ...props }) => {
-  const [planeWidth, setPlaneWidth] = useState(11);
+  // const [planeWidth, setPlaneWidth] = useState(11);
 
   const setFrameRef = useStore((state) => state.setFrameRef);
   const setPlateRef = useStore((state) => state.setPlateRef);
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
 
-  const width = useWindowWidth();
+  // const width = useWindowWidth();
 
-  useEffect(() => {
-    setPlaneWidth(Math.max(9, Math.min(12, width / 62)));
-  }, [width]);
+  // useEffect(() => {
+  //   setPlaneWidth(Math.max(9, Math.min(12, width / 62)));
+  // }, [width]);
 
   useEffect(() => {
     setFrameRef(frameRef?.current);
