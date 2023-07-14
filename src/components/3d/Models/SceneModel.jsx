@@ -7,7 +7,7 @@ import Ceiling from "./Ceiling";
 import Walls from "./Walls";
 import Post from "./Post";
 
-useGLTF.preload("./models/SceneModel.glb");
+// useGLTF.preload("./models/SceneModel.glb");
 
 const SceneModel = () => {
   // const model = useGLTF("./models/SceneModel.glb");
