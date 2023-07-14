@@ -13,7 +13,7 @@ const HomePage = () => {
       <Layout>
         <Suspense fallback={<CustomLoader />}>
           <Navigation />
-          {/* <SceneModel /> */}
+          <SceneModel />
           <ImageFrames />
         </Suspense>
       </Layout>
