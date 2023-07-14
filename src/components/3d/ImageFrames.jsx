@@ -17,7 +17,8 @@ const ImageFrames = () => {
   const setImageClicked = useStore((state) => state.setImageClicked);
   const setNoteClicked = useStore((state) => state.setNoteClicked);
 
-  const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
+  // const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
+  const [matcapTexture] = null;
 
   useEffect(() => {
     framesRef.current.frustumCulled = false;
