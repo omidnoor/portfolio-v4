@@ -8,8 +8,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@emotion/react": "^11.10.8",
-    "@emotion/styled": "^11.10.8",
     "@mui/material": "^5.13.4",
     "@next/font": "^13.3.2",
     "@react-spring/three": "^9.7.2",
