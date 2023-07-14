@@ -7,7 +7,7 @@ import { worldScale } from "@/stores/variables";
 import { useStore } from "@/stores/store";
 import { useWindowWidth } from "./Utils/useWindowWidth";
 
-const ImageFrame = ({ ...props }) => {
+const ImageFrame = ({ matcapTexture, ...props }) => {
   const [planeWidth, setPlaneWidth] = useState(11);
 
   const setFrameRef = useStore((state) => state.setFrameRef);
@@ -27,12 +27,11 @@ const ImageFrame = ({ ...props }) => {
 
   const frameRef = useRef(null);
   const plateRef = useRef(null);
-  // const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
 
   return (
     <mesh ref={frameRef} {...props}>
       <planeGeometry args={[2 * worldScale, 2.5 * worldScale]} />
-      {/* <meshMatcapMaterial matcap={matcapTexture} /> */}
+      <meshMatcapMaterial matcap={matcapTexture} />
       <FrameContent frameRef={frameRef} props={props} />
     </mesh>
   );

@@ -17,8 +17,7 @@ const ImageFrames = () => {
   const setImageClicked = useStore((state) => state.setImageClicked);
   const setNoteClicked = useStore((state) => state.setNoteClicked);
 
-  // const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
-  // const [matcapTexture] = null;
+  const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
 
   useEffect(() => {
     framesRef.current.frustumCulled = false;
@@ -41,10 +40,10 @@ const ImageFrames = () => {
         if (!props.sub) {
           return (
             <Fragment key={index}>
-              <ImageFrame {...props} />
+              <ImageFrame {...props} matcapTexture={matcapTexture} />
               {props.name === "About Me" && (
                 <mesh ref={plateRef} {...props}>
-                  <Plate />
+                  <Plate matcapTexture={matcapTexture} />
                 </mesh>
               )}
             </Fragment>
@@ -54,9 +53,9 @@ const ImageFrames = () => {
           return props.sub.map((subProps, subIndex) => {
             return (
               <Fragment key={`${index}-${subIndex}`}>
-                <ImageFrame {...subProps} />
+                <ImageFrame {...subProps} matcapTexture={matcapTexture} />
                 <mesh ref={plateRef} {...subProps}>
-                  <Plate />
+                  <Plate matcapTexture={matcapTexture} />
                 </mesh>
               </Fragment>
             );
