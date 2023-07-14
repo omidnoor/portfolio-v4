@@ -14,56 +14,56 @@
   align-items: center;
 
   .form {
-    width: 100%;
+    width: min(500px, 95%);
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    input,
-    textarea,
-    label {
-      margin: 0 auto;
-      width: min(500px, 95%);
-    }
-    input {
-      height: 70px;
-    }
-    label {
-      margin-bottom: 0.5rem;
-      margin-top: 1.5rem;
-      font-size: 24px;
-      color: $tertiary-color;
-    }
-
-    .input,
-    .textarea {
-      &::placeholder,
-      &::-webkit-input-placeholder,
-      &::-moz-placeholder,
-      &:-moz-placeholder,
-      &::-ms-input-placeholder {
-        padding-left: 1rem;
-        font-family: $font-inter;
+    .inputBlock {
+      .error {
+        color: #f00;
       }
-      font-family: $font-inter;
-      background-color: #ffffef;
-      border: none;
-      color: $tertiary-color;
-      font-size: 20px;
-      padding: 0.5rem;
-    }
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
 
-    .textarea {
-      resize: none;
-      height: 230px;
+      input {
+        height: 70px;
+      }
+      label {
+        margin-bottom: 0.5rem;
+        margin-top: 1.5rem;
+        font-size: 24px;
+        color: $tertiary-color;
+      }
+      .input,
+      .textarea {
+        &::placeholder,
+        &::-webkit-input-placeholder,
+        &::-moz-placeholder,
+        &:-moz-placeholder,
+        &::-ms-input-placeholder {
+          padding-left: 1rem;
+          font-family: $font-inter;
+        }
+        font-family: $font-inter;
+        background-color: #ffffef;
+        border: none;
+        color: $tertiary-color;
+        font-size: 20px;
+        padding: 0.5rem;
+      }
+      .textarea {
+        resize: none;
+        height: 230px;
+      }
     }
 
     .button {
-      margin: 0 auto;
-      width: min(500px, 95%);
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      min-height: 100px;
+      // display: flex;
+      // justify-content: center;
+      // align-items: center;
       margin-top: 36px;
       button {
         // padding: 15px 0;
@@ -95,6 +95,11 @@
           }
         }
       }
+    }
+    .msg {
+      min-height: 50px;
+      font-size: 18px;
+      color: rgb(26, 64, 230);
     }
   }
 }

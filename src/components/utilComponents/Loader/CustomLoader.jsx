@@ -15,7 +15,7 @@ const barStyles = {
   color: "#f8ff5f",
 };
 const dataStyles = {
-  color: "#fd1025",
+  color: "#fff",
   fontSize: "20px",
   textAlign: "center",
 };
