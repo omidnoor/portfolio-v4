@@ -13,7 +13,7 @@ export const pages = [
     position: [2, 25, 200],
     rotation: [0, Math.PI * 0.5, 0],
     imageUrl: "/icons/about-icon-v1.png",
-    url: "http://localhost:3000/PageAboutMe",
+    url: "/PageAboutMe",
     componentUrl: null,
   },
   // {
@@ -21,7 +21,7 @@ export const pages = [
   //   position: [2, 25, 180],
   //   rotation: [0, Math.PI * 0.5, 0],
   //   imageUrl: "/icons/about-icon-v1.png",
-  //   url: "http://localhost:3000/PageAboutMe",
+  //   url: "/PageAboutMe",
   //   componentUrl: null,
   // },
   {
@@ -39,7 +39,7 @@ export const pages = [
   //   rotation: [0, -Math.PI * 0.5, 0],
   //   imageUrl:
   //     "https://products.ls.graphics/mesh-gradients/images/03.-Snowy-Mint_1-p-130x130q80.jpeg",
-  //   url: "http://localhost:3000/PageTestimonials",
+  //   url: "/PageTestimonials",
   //   sub: null,
   // },
   {
@@ -47,7 +47,7 @@ export const pages = [
     position: [-190, 25, 150],
     rotation: [0, -Math.PI * 1, 0],
     imageUrl: "/icons/portfolio-icon-v1.png",
-    url: "http://localhost:3000/PageProjects",
+    url: "/PageProjects",
     componentUrl: null,
     sub: [
       {

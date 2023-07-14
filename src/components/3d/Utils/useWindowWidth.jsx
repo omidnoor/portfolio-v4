@@ -1,4 +1,3 @@
-// hooks/useWindowWidth.js
 import { useState, useEffect } from "react";
 
 export function useWindowWidth() {
