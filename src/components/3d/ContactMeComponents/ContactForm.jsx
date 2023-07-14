@@ -21,7 +21,10 @@ const ContactForm = () => {
   const [msg, setMsg] = useState("");
 
   useEffect(() => {
-    // if
+    if (msg) {
+      const msgTimeout = setTimeout(() => setMsg(""), 3000);
+      return () => clearTimeout(msgTimeout);
+    }
   }, [isLoading]);
 
   return (
@@ -58,11 +61,9 @@ const ContactForm = () => {
                 name="name"
                 id="name"
               />
-              <ErrorMessage
-                name="name"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.error}>
+                <ErrorMessage name="name" component="div" />
+              </div>
             </div>
             <div className={styles.inputBlock}>
               <label htmlFor="email" className={styles.label}>
@@ -75,11 +76,9 @@ const ContactForm = () => {
                 name="email"
                 id="email"
               />
-              <ErrorMessage
-                name="email"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.error}>
+                <ErrorMessage name="email" component="div" />
+              </div>
             </div>
             <div className={styles.inputBlock}>
               <label htmlFor="message" className={styles.label}>
@@ -95,11 +94,9 @@ const ContactForm = () => {
                 cols={500}
                 rows={15}
               />
-              <ErrorMessage
-                name="message"
-                component="div"
-                className={styles.error}
-              />
+              <div className={styles.error}>
+                <ErrorMessage name="message" component="div" />
+              </div>
             </div>
 
             <div className={styles.button}>

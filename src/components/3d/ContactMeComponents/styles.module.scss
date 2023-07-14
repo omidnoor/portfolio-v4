@@ -22,16 +22,19 @@
     .inputBlock {
       .error {
         color: #f00;
+        min-height: 16px;
+        margin-top: 5px;
       }
       display: flex;
       flex-direction: column;
       justify-content: center;
 
       input {
-        height: 70px;
+        min-height: 70px;
       }
       label {
-        margin-bottom: 0.5rem;
+        min-height: 32px;
+        // margin-bottom: 0.5rem;
         margin-top: 1.5rem;
         font-size: 24px;
         color: $tertiary-color;
