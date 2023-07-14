@@ -13,11 +13,11 @@ const HomePage = () => {
   return (
     <>
       <Layout>
-        <Suspense fallback={<CustomLoader />}>
-          <Navigation />
-          <SceneModel />
-          <ImageFrames />
-        </Suspense>
+        {/* <Suspense fallback={<CustomLoader />}> */}
+        <Navigation />
+        <SceneModel />
+        <ImageFrames />
+        {/* </Suspense> */}
       </Layout>
       <Menu />
     </>
