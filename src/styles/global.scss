@@ -50,9 +50,15 @@ $h-xl: 3rem;
 
 $btn-primary-color: #ffc400;
 $md-dark-blue: rgba(1, 65, 255, 0.4);
-
+$primary-glow: radial-gradient(rgba(1, 65, 255, 0.4), rgba(1, 65, 255, 0));
+$secondary-glow: linear-gradient(
+  to bottom right,
+  rgba(1, 65, 255, 0),
+  rgba(1, 65, 255, 0),
+  rgba(1, 65, 255, 0.3)
+);
 .blueGlow::before {
-  background: var(--secondary-glow);
+  background: $secondary-glow;
   border-radius: 50%;
   width: 380px;
   height: 380px;
@@ -60,7 +66,7 @@ $md-dark-blue: rgba(1, 65, 255, 0.4);
 }
 
 .blueGlow::after {
-  background: var(--primary-glow);
+  background: $primary-glow;
   width: 380px;
   height: 380px;
   z-index: -1;
