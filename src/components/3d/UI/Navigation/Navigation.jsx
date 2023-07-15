@@ -8,12 +8,13 @@ import { Vector3 } from "three";
 import { useWindowWidth } from "../../Utils/useWindowWidth";
 import { useHandleClicks } from "./useHandleClicks";
 import useCameraFreez from "./useCameraFreez";
+import ResponsiveCamera from "./ResponsiveCamera";
+import { useThree } from "@react-three/fiber";
 // import useCameraFreez from "./useCameraFreez";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
   const width = useWindowWidth();
-
   useCameraFreez(cameraControlsRef);
 
   const setCameraLookAt = useCallback(

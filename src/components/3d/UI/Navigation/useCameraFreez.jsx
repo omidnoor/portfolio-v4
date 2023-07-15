@@ -6,7 +6,7 @@ const useCameraFreez = (cameraControlsRef) => {
   const frameHovered = useStore((state) => state.frameHovered);
   const isLetsTalk = useStore((state) => state.isLetsTalk);
   const [cameraSleeped, setCameraSleeped] = useState(false);
-  console.log(isLetsTalk, cameraSleeped, frameHovered);
+  //   console.log(isLetsTalk, cameraSleeped, frameHovered);
   useEffect(() => {
     if (cameraControlsRef.current) {
       if (frameHovered && cameraSleeped) {

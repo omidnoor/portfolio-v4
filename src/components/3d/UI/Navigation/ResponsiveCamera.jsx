@@ -10,29 +10,23 @@ const maxFov = 200;
 
 const ResponsiveCamera = ({ cameraControlsRef }) => {
   const { camera, size } = useThree();
-  // console.log(
-  //   Math.max(
-  //     minFov,
-  //     Math.min(
-  //       maxFov,
-  //       ((-size.width + maxWidth) / (maxWidth - minWidth)) * (maxFov - minFov) +
-  //         minFov,
-  //     ),
-  //   ),
-  // );
-  // useEffect(() => {
-  //   const newFov =
-  //     ((-size.width + minWidth) / (maxWidth - minWidth)) * (maxFov - minFov) +
-  //     minFov;
-  //   camera.fov = Math.max(minFov, Math.min(maxFov, newFov));
-  //   camera.aspect = size.width / size.height;
-  //   camera.updateProjectionMatrix();
-  // }, [size, camera]);
+
+  useEffect(() => {
+    const handleResize = () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      // renderer.setSize(window.innerWidth, window.innerHeight);
+    };
+    handleResize();
+    console.log(camera.aspect);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   // useEffect(() => {
-  //   // cameraControlsRef.current?.forward(-5, true);
-  //   // cameraControlsRef.current?.zoom(0.5, true);
-  // }, [size]);
+  //   cameraControlsRef.current?.forward(-5, true);
+  //   cameraControlsRef.current?.zoom(0.5, true);
+  // }, []);
 
   return null;
 };
