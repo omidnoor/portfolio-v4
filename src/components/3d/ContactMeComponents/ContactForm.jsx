@@ -19,11 +19,16 @@ const contactFormSchema = Yup.object().shape({
 const ContactForm = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [msg, setMsg] = useState("");
+  const [error, setError] = useState("");
 
   useEffect(() => {
     if (msg) {
       const msgTimeout = setTimeout(() => setMsg(""), 3000);
       return () => clearTimeout(msgTimeout);
+    }
+    if (error) {
+      const errorTimeout = setTimeout(() => setError(""), 3000);
+      return () => clearTimeout(errorTimeout);
     }
   }, [isLoading]);
 
@@ -33,19 +38,32 @@ const ContactForm = () => {
         initialValues={{ name: "", email: "", message: "" }}
         validationSchema={contactFormSchema}
         onSubmit={async (values, { resetForm }) => {
-          setIsLoading(true);
-          setMsg("");
-          const res = await fetch(`/api/contact`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(values),
-          });
-          setIsLoading(false);
-          resetForm();
-          setMsg("Message sent successfully!");
-          return res.json();
+          try {
+            setIsLoading(true);
+            setMsg("");
+            const res = await fetch(`/api/contact`, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                // Accept: "application/json",
+              },
+              body: JSON.stringify(values),
+            });
+            console.log(res);
+            if (!res.ok) {
+              setIsLoading(false);
+              setError("Something went wrong. Please try again later.");
+              // throw new Error("Something went wrong. Please try again later.");
+            }
+            setIsLoading(false);
+            resetForm();
+            setMsg("Message sent successfully!");
+            setError("");
+            return res.json();
+          } catch (error) {
+            setIsLoading(false);
+            setError("Something went wrong. Please try again later.");
+          }
         }}
       >
         {() => (
@@ -110,7 +128,13 @@ const ContactForm = () => {
                 {isLoading ? <div>Sending...</div> : `Send`}
               </Button>
             </div>
-            <div className={styles.msg}>{msg}</div>
+            <div
+              className={styles.msg}
+              style={{ color: error ? "#f00" : "#00f" }}
+            >
+              {msg.length > 0 && msg}
+              {error.length > 0 && error}
+            </div>
           </Form>
         )}
       </Formik>
