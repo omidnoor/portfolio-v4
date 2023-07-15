@@ -42,9 +42,9 @@ export default async function handler(req, res) {
     const mailToUser = transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: email,
-      subject: "Thank you for contacting us",
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      html: `<p>Name: ${name}</p><p>Email: ${email}</p><p>Message: ${message}</p>`,
+      subject: "Thank you for contacting me",
+      text: `Dear ${name},\n\nThank you for reaching out and contacting me through my portfolio. Here's a recap of the message you sent:\n\nMessage: ${message}\n\nI value your time and I will make sure to review your message and respond as soon as possible.`,
+      html: `<p>Dear ${name},</p><p>Thank you for reaching out and contacting me through my portfolio. Here's a recap of the message you sent:</p><p>Message: ${message}</p><p>I value your time and I will make sure to review your message and respond as soon as possible.`,
     });
 
     await Promise.all([mailToAdmin, mailToUser]);
