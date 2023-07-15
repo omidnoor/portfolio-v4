@@ -65,7 +65,7 @@ const FrameContent = ({ props, frameRef }) => {
         zIndexRange={[0, 0]}
         wrapperClass={styles.wrapper}
         transform
-        occlude
+        occlude={props.name === "Contact Me" ? false : true}
       >
         <div
           className={styles.main}
