@@ -3,6 +3,7 @@ import { create } from "zustand";
 export const useStore = create((set) => ({
   activeFrame: { name: "" },
   activeFrames: [],
+  frameHovered: false,
   htmlClicked: false,
   isMenuClicked: false,
   isSceneClicked: false,
@@ -21,6 +22,8 @@ export const useStore = create((set) => ({
   isContentIcons: false,
   frameRef: [],
   plateRef: [],
+
+  setFrameHovered: (value) => set((state) => ({ frameHovered: value })),
 
   setPlateRef: (ref) =>
     set((state) => {

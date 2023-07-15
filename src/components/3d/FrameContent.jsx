@@ -20,6 +20,8 @@ const FrameContent = ({ props, frameRef }) => {
   const arrowCount = useStore((state) => state.arrowCount);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const setLastClick = useStore((state) => state.setLastClick);
+  const setFrameHovered = useStore((state) => state.setFrameHovered);
+  const frameHovered = useStore((state) => state.frameHovered);
 
   useEffect(() => {
     if (frameRef.current) {
@@ -45,11 +47,13 @@ const FrameContent = ({ props, frameRef }) => {
   const handleEnter = (e) => {
     e.stopPropagation();
     document.body.style.cursor = "pointer";
+    setFrameHovered(true);
   };
 
   const handleLeave = (e) => {
     e.stopPropagation();
     document.body.style.cursor = "auto";
+    setFrameHovered(false);
   };
 
   return (
@@ -67,14 +71,16 @@ const FrameContent = ({ props, frameRef }) => {
           className={styles.main}
           name={props.name}
           onClick={(e) => e.stopPropagation(e)}
+          onMouseEnter={handleEnter}
+          onMouseLeave={handleLeave}
         >
           {props.name === "About Me" && <iframe src={props.url} />}
           {props.name === "Home" && <Home />}
           {props.contentUrl && (
             <div
               onClick={handleClick}
-              onMouseEnter={handleEnter}
-              onMouseLeave={handleLeave}
+              // onMouseEnter={handleEnter}
+              // onMouseLeave={handleLeave}
             >
               <Image
                 src={props.contentUrl}

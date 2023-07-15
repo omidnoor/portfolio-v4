@@ -7,10 +7,15 @@ import { cameraInitCoor, camerainitLookAt } from "@/stores/variables";
 import { Vector3 } from "three";
 import { useWindowWidth } from "../../Utils/useWindowWidth";
 import { useHandleClicks } from "./useHandleClicks";
+import useCameraFreez from "./useCameraFreez";
+// import useCameraFreez from "./useCameraFreez";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
   const width = useWindowWidth();
+
+  useCameraFreez(cameraControlsRef);
+
   const setCameraLookAt = useCallback(
     (
       cameraControlsRef,
