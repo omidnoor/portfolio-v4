@@ -6,7 +6,6 @@ const useCameraFreez = (cameraControlsRef) => {
   useEffect(() => {
     if (cameraControlsRef.current && frameHovered) {
       cameraControlsRef.current.enabled = false;
-      console.log(frameHovered);
     } else {
       cameraControlsRef.current.enabled = true;
     }
