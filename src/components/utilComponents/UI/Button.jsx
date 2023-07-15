@@ -5,6 +5,7 @@ import { useStore } from "@/stores/store";
 
 export default function ButtonUI({ children, type }) {
   const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
+  const setIsLetsTalk = useStore((state) => state.setIsLetsTalk);
 
   const hanldeClick = (e) => {
     e.stopPropagation();
@@ -14,7 +15,11 @@ export default function ButtonUI({ children, type }) {
   };
 
   return (
-    <div onClick={hanldeClick}>
+    <div
+      onClick={hanldeClick}
+      onMouseEnter={() => setIsLetsTalk(true)}
+      onMouseLeave={() => setIsLetsTalk(false)}
+    >
       {type === "primary" ? (
         <Button
           variant="contained"

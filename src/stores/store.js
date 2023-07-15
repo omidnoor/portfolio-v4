@@ -22,7 +22,9 @@ export const useStore = create((set) => ({
   isContentIcons: false,
   frameRef: [],
   plateRef: [],
+  isLetsTalk: false,
 
+  setIsLetsTalk: (value) => set((state) => ({ isLetsTalk: value })),
   setFrameHovered: (value) => set((state) => ({ frameHovered: value })),
 
   setPlateRef: (ref) =>
