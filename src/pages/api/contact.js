@@ -44,8 +44,8 @@ export default async function handler(req, res) {
       from: process.env.GMAIL_USER,
       to: email,
       subject: "Thank you for contacting me",
-      text: emailTemplate,
-      html: emailTemplate,
+      text: emailTemplateemailTemplate(name, email, message),
+      html: emailTemplateemailTemplate(name, email, message),
     });
 
     await Promise.all([mailToAdmin, mailToUser]);
