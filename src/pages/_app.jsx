@@ -1,6 +1,5 @@
 import "../styles/variables.scss";
 import "../styles/global.scss";
-import "../styles/global.css";
 import "../styles/styles.scss";
 import Head from "next/head";
 
