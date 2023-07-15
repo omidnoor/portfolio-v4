@@ -45,24 +45,26 @@ const ContactForm = () => {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                // Accept: "application/json",
+                Accept: "application/json",
               },
               body: JSON.stringify(values),
             });
-            console.log(res);
+
             if (!res.ok) {
-              setIsLoading(false);
-              setError("Something went wrong. Please try again later.");
-              // throw new Error("Something went wrong. Please try again later.");
+              throw new Error("Something went wrong. Please try again later.");
             }
+
+            const jsonData = await res.json();
+
             setIsLoading(false);
             resetForm();
             setMsg("Message sent successfully!");
             setError("");
-            return res.json();
+
+            return jsonData;
           } catch (error) {
             setIsLoading(false);
-            setError("Something went wrong. Please try again later.");
+            setError(error.message);
           }
         }}
       >
