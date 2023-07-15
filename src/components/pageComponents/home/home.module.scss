@@ -76,15 +76,15 @@
   &__intro {
     width: 100%;
     h2 {
-      font-size: map-get(text-size-xxl);
+      font-size: map-get($text-size, xxl);
       display: flex;
       justify-content: center;
       span {
-        color: map-get(primary-accent-color);
+        color: $primary-accent-color;
       }
     }
     h3 {
-      font-size: map-get(text-size-xl);
+      font-size: map-get($text-size, xl);
       display: flex;
       justify-content: center;
       span {
@@ -92,19 +92,19 @@
       }
     }
     &__skills {
-      min-height: map-get(m, xxxl);
+      min-height: map-get($m, xxxl);
       min-width: $bp-sm/1.4;
-      margin-top: map-get(gap, lg);
+      margin-top: map-get($gap, lg);
       h1 {
-        font-size: map-get(text-size, xxl);
+        font-size: map-get($text-size, xxl);
         display: flex;
         justify-content: center;
         color: $primary-accent-color;
       }
     }
     p {
-      font-size: map-get(text-size, md);
-      margin-top: map-get(gap, lg);
+      font-size: map-get($text-size, md);
+      margin-top: map-get($gap, lg);
     }
   }
   &__actions {
@@ -115,6 +115,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: map-get(gap, xl);
+    gap: map-get($gap, xl);
   }
 }
