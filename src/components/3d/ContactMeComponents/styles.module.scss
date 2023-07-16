@@ -19,17 +19,16 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    .msg {
+      min-height: 30px;
+      font-size: 18px;
+    }
     .inputBlock {
       .error {
         color: #f00;
         min-height: 18px;
         font-size: 18px;
         margin-top: 5px;
-      }
-      .msg {
-        min-height: 18px;
-        font-size: 18px;
-        color: rgb(26, 64, 230);
       }
       display: flex;
       flex-direction: column;

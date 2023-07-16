@@ -109,7 +109,7 @@ export const pages = [
             "Auth0",
           ],
           deployed: "Vercel",
-          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+          deployUrl: "https://nextjs-openai-app.uw.r.appspot.com/",
           githubUrl: "https://github.com/omidnoor/nextjs-openai-app",
         },
       },

@@ -37,7 +37,9 @@ export default function HomeCard() {
       </div>
       <div className={styles.HomeCard__actions}>
         <ButtonUI type="primary">let&apos;s talk</ButtonUI>
-        <ButtonUI type="secondary">Resume</ButtonUI>
+        <Link href="/files/Omid_Noorshams_Web_Dev_Resume.pdf" target="_blank">
+          <ButtonUI type="secondary">Resume</ButtonUI>
+        </Link>
       </div>
       <br />
       <div className={styles.HomeCard__wrapper}>
@@ -49,7 +51,7 @@ export default function HomeCard() {
             transform: props[0].scale?.to((s) => `scale(${s})`),
           }}
         >
-          <Link href="https://github.com/omidnoor">
+          <Link href="https://github.com/omidnoor" target="_blank">
             <FaGithub />
           </Link>
         </animated.div>
@@ -61,7 +63,10 @@ export default function HomeCard() {
             transform: props[1].scale?.to((s) => `scale(${s})`),
           }}
         >
-          <Link href="https://www.aedin.com/in/omidnoorshams/" target="_blank">
+          <Link
+            href="https://www.linkedin.com/in/omidnoorshams/"
+            target="_blank"
+          >
             <FaLinkedin />
           </Link>
         </animated.div>

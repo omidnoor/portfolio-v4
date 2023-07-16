@@ -131,8 +131,8 @@ const ContactForm = () => {
               </Button>
             </div>
             <div
-              className={styles.msg}
               style={{ color: error ? "#f00" : "#00f" }}
+              className={styles.msg}
             >
               {msg.length > 0 && msg}
               {error.length > 0 && error}
