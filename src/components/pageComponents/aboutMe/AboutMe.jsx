@@ -35,29 +35,29 @@ const AboutMe = () => {
   );
 
   return (
-    <a.div
-      style={{
-        background,
-        margin: "0",
-        padding: "0",
-        width: "100%",
-        height: "100%",
-      }}
-    >
-      <Canvas
-        // colorManagement
-        dpr={[1, 2]}
-        camera={{ position: [0, 0, 125], fov: 100 }}
+    <Suspense fallback={<CustomLoader />}>
+      <a.div
+        style={{
+          background,
+          margin: "0",
+          padding: "0",
+          width: "100%",
+          height: "100%",
+        }}
       >
-        <Suspense fallback={<CustomLoader />}>
+        <Canvas
+          // colorManagement
+          dpr={[1, 2]}
+          camera={{ position: [0, 0, 125], fov: 100 }}
+        >
           <ambientLight intensity={1} />
           <AboutCloud count={15} radius={60} wordColor={wordColor} />
           <AboutSphere setBg={set} wordColor={wordColor} colors={colors} />
           <TrackballControls />
           <AboutMeEffect />
-        </Suspense>
-      </Canvas>
-    </a.div>
+        </Canvas>
+      </a.div>
+    </Suspense>
   );
 };
 export default AboutMe;

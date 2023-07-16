@@ -43,7 +43,7 @@ export default async function handler(req, res) {
     const mailToUser = transporter.sendMail({
       from: process.env.GMAIL_USER,
       to: email,
-      subject: "Thank you for contacting me",
+      subject: `Thank You for Reaching Out!`,
       text: emailTemplate(name, email, message),
       html: emailTemplate(name, email, message),
     });

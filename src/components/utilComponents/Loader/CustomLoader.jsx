@@ -1,11 +1,16 @@
-import { Html, Loader, useProgress } from "@react-three/drei";
-import styles from "./styles.module.scss";
+import { Loader } from "@react-three/drei";
 
 const containerStyles = {
-  backgroundColor: "aqua",
+  backgroundImage: `url("/textures/bg-gradients-v1.jpg")`,
+  backgroundImageSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center",
   display: "flex",
   flexDirection: "column",
-  height: "100vh",
+  height: "100%",
+  width: "100%",
+  margin: "0",
+  padding: "0",
   justifyContent: "center",
   alignItems: "center",
 };

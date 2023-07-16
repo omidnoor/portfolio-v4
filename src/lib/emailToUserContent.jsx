@@ -28,7 +28,6 @@ const emailTemplate = (name, email, message) => {
     </head>
     <body>
       <div class="email-container">
-        <h1>Thank You for Reaching Out!</h1>
         <p>Hi ${name},</p>
         <p>Thank you for getting in touch with me and exploring my portfolio. I have received your message and am excited to read your thoughts and questions.</p>
         <div class="message">
