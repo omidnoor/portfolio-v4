@@ -5,27 +5,38 @@ import { useState } from "react";
 import { useSpring, animated } from "react-spring";
 
 const Notification = () => {
-  const [isProjects, setIsProjects] = useState(false);
+  const [text, setText] = useState("");
   const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const plateClicked = useStore((state) => state.plateClicked);
 
   const [props, api] = useSpring(() => ({
     from: { opacity: 0 },
-    config: { mass: 1, tension: 200, friction: 100 },
+    config: { mass: 0.1, tension: 200, friction: 50 },
   }));
 
   useEffect(() => {
     if (activeMenuButton === "Projects") {
-      setIsProjects(true);
+      setText("Click on arrows to navigate through projects");
       api.start({ opacity: 1 });
       const timeout = setTimeout(() => {
         api.start({ opacity: 0 });
-      }, 500000);
+      }, 5000);
       return () => clearTimeout(timeout);
     } else {
-      setIsProjects(false);
       api.start({ opacity: 0 });
     }
   }, [activeMenuButton]);
+  console.log(plateClicked);
+  useEffect(() => {
+    if (plateClicked && activeMenuButton === "About Me") {
+      setText("Click on arrows to navigate through about me pages");
+      api.start({ opacity: 1 });
+      const timeout = setTimeout(() => {
+        api.start({ opacity: 0 });
+      }, 5000);
+      return () => clearTimeout(timeout);
+    }
+  }, [activeMenuButton, plateClicked]);
 
   return (
     <animated.div
@@ -34,7 +45,7 @@ const Notification = () => {
         opacity: props.opacity.to((s) => `${s}`),
       }}
     >
-      <p>Click on arrows to navigate through projects</p>
+      <p>{text}</p>
     </animated.div>
   );
 };
