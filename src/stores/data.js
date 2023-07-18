@@ -51,12 +51,13 @@ export const pages = [
         plate: {
           title: "Instagram Clone App",
           description: [
-            "Build a Next/React JS app",
-            "Use Firebase for database and storage.",
-            "Style with Tailwind CSS.",
-            "Authenticate using next-auth.",
-            "Apply like and comment functionality.",
-            "Deploy on Vercel",
+            "Built with Next.js and React.js, delivering a server-side rendered application for enhanced SEO and better performance.",
+            "Incorporated Firebase for backend services, including real-time database functionality and user authentication.",
+            "Utilized Moment.js for handling and manipulating dates, ensuring proper time stamping on user posts and comments.",
+            "Adopted Recoil for efficient state management across the application, facilitating seamless user experiences.",
+            "Integrated TailwindCSS as a utility-first CSS framework, allowing for rapid UI development.",
+            "Enabled features such as user authentication, photo posting, commenting on posts, and user info viewing, replicating key aspects of the original Instagram platform.",
+            "Implemented Material-UI and Emotion for effective and responsive styling of the application.",
           ],
           frameWorks: [
             "Reactjs",
@@ -82,13 +83,15 @@ export const pages = [
         plate: {
           title: "Content Creator App Using OpenAI API",
           description: [
-            "Build a Next/React JS app powered by AI and Next JS.",
-            "Use OpenAI's GPT to implement AI generated content.",
-            "Authenticate the Next/React JS app with Auth0.",
-            "Style the app with Tailwind CSS.",
-            "Store data for the app with MongoDB.",
-            "Charge customers using stripe.",
-            "Deploy on Google Cloud",
+            "Developed a content generation application leveraging OpenAI's GPT-3 API.",
+            "Users provide specific subjects and keywords for custom content creation.",
+            "Application uses Stripe API to handle e-commerce functionality, allowing users to purchase tokens for content generation.",
+            "Utilized MongoDB for robust data management, including storing user credentials and content history.",
+            "Deployed application on Google Cloud to manage long-wait responses from the OpenAI API.",
+            "Implemented Auth0 for secure user authentication and access control.",
+            "Built an intuitive and user-friendly interface using Material-UI, enhancing the overall user experience.",
+            "Incorporated features such as content archiving, allowing users to review their previously generated content.",
+            "Managed API endpoints for seamless handling of tokens, user data, and OpenAI API connections.",
           ],
           frameWorks: [
             "Reactjs",
