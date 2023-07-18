@@ -8,7 +8,7 @@ const AboutMeContent = () => {
   const arrowCount = useStore((state) => state.arrowCount);
 
   useEffect(() => {
-    setPage(arrowCount % 3);
+    setPage(Math.abs(arrowCount % 3));
   }, [arrowCount]);
 
   return (

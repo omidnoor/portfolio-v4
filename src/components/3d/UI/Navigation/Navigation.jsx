@@ -153,23 +153,14 @@ const Navigation = () => {
         offsetX,
         dist,
       );
-      if (htmlClicked) {
+      if (htmlClicked || plateClicked) {
         setCameraLookAt(
           cameraControlsRef,
           subPosition,
           normal,
           offsetY,
-          offsetX,
+          offsetX + (plateClicked ? 21 : 0),
           dist - Math.max(33, Math.min(43.5, width / 14)),
-        );
-      } else if (plateClicked) {
-        setCameraLookAt(
-          cameraControlsRef,
-          subPosition,
-          normal,
-          offsetY,
-          offsetX + 15,
-          dist - Math.max(47.5, Math.min(51.5, width / 14)),
         );
       }
     }

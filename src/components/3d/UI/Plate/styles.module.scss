@@ -1,10 +1,9 @@
 @import "@/styles/variables.scss";
 
 .container {
-  width: 338px;
-  height: 456px;
+  height: 900px;
   font-family: $font-inter;
-  padding: 8px;
+  padding: 4px;
   display: flex;
   flex-direction: column;
   // background-image: url("/textures/bg-gradients-v1.jpg");
@@ -12,7 +11,7 @@
     cursor: pointer;
   }
   p {
-    font-size: 12px;
+    font-size: 24px;
     color: #3c4a4a;
     margin-bottom: 4px;
   }
@@ -20,17 +19,17 @@
   h3,
   ul {
     color: #3c4a4a;
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
-
+    line-height: 1.5;
     padding: 2px 0 2px 16px;
   }
 
   .lib,
   .name,
   .description {
-    margin: 4px 0;
-    padding-bottom: 8px;
+    margin: 0;
+    padding-bottom: 4px;
     border-bottom: 1px solid #a6a6ab;
     display: flex;
     flex-direction: column;
