@@ -16,3 +16,23 @@
   width: 100%;
   display: flex;
 }
+
+.notification {
+  position: absolute;
+  top: -65px;
+  right: 10px;
+
+  background-color: $tertiary-color;
+  padding: 10px;
+  font-family: $font-inter;
+  border-radius: 10px;
+  p {
+    color: aliceblue;
+  }
+  @media (max-width: 950px) {
+    top: -125px;
+    right: 50%;
+    transform: translateX(50%);
+    width: min(350px, 90%);
+  }
+}
