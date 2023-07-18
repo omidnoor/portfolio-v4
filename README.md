@@ -1,34 +1,46 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Omid's 3D Web Portfolio
+
+This is my personal portfolio project where I showcase my technical skills as a Web Developer. The project was built using a blend of traditional front-end technologies and innovative 3D rendering libraries.
+
+## Technologies
+
+- React.js
+- Next.js
+- Three.js
+- React Fiber
+- MongoDB
+- Blender
+- Modular SCSS
+- React-spring
+- CameraControls
+
+## Features
+
+- **React.js & Next.js:** Utilized for creating the main application structure and server-side rendering.
+- **Three.js & React Fiber:** Used for rendering 3D models and providing interactive UI components.
+- **MongoDB:** Used as the main database to manage form submissions.
+- **Server-Side & Client-Side Error Handling:** Ensures seamless user experience and data integrity.
+- **API Endpoints:** Connects the client-side to the server-side and MongoDB.
+- **Blender:** Used for developing procedural materials and 3D models to enhance the depth and interactivity of the website.
+- **Modular SCSS:** Provides scalability and maintainability of the styles across the project.
+- **React-spring:** Used for animating UI elements, providing a more engaging and responsive user experience.
+- **CameraControls:** Integrated for smooth camera movements in 3D spaces, enhancing user navigation and interaction.
+- **Email Transporter:** Incorporated to receive emails directly from users, ensuring immediate and efficient communication.
 
 ## Getting Started
 
-First, run the development server:
+To get started with this project, follow these steps:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+# Clone the repository
+git clone https://github.com/yourgithubusername/yourrepositoryname
+
+# Navigate into the directory
+cd yourrepositoryname
+
+# Install dependencies
+npm install
+
+# Start the project
+npm start
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.

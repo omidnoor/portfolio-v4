@@ -66,9 +66,7 @@ const PlateContent = ({ plate }) => {
           <>
             <div className={styles.name}>
               <p>Name: </p>
-              <span>
-                <h3>{plate.title}</h3>
-              </span>
+              <h3>{plate.title}</h3>
             </div>
             {plate.frameWorks && (
               <div className={styles.lib}>
