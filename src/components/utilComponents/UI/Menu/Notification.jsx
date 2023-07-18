@@ -8,35 +8,41 @@ const Notification = () => {
   const [text, setText] = useState("");
   const activeMenuButton = useStore((state) => state.activeMenuButton);
   const plateClicked = useStore((state) => state.plateClicked);
-
+  const htmlClicked = useStore((state) => state.htmlClicked);
   const [props, api] = useSpring(() => ({
     from: { opacity: 0 },
     config: { mass: 0.1, tension: 200, friction: 50 },
   }));
 
   useEffect(() => {
+    let timeout;
+
     if (activeMenuButton === "Projects") {
       setText("Click on arrows to navigate through projects");
       api.start({ opacity: 1 });
-      const timeout = setTimeout(() => {
+      timeout = setTimeout(() => {
         api.start({ opacity: 0 });
       }, 5000);
-      return () => clearTimeout(timeout);
+    } else if (plateClicked && activeMenuButton === "About Me") {
+      setText("Click on arrows to navigate through about me pages");
+      api.start({ opacity: 1 });
+      timeout = setTimeout(() => {
+        api.start({ opacity: 0 });
+      }, 5000);
+    } else if (htmlClicked && activeMenuButton === "About Me") {
+      setText("Click on blub and zoom in to see more");
+      api.start({ opacity: 1 });
+      timeout = setTimeout(() => {
+        api.start({ opacity: 0 });
+      }, 5000);
     } else {
       api.start({ opacity: 0 });
     }
-  }, [activeMenuButton]);
-  console.log(plateClicked);
-  useEffect(() => {
-    if (plateClicked && activeMenuButton === "About Me") {
-      setText("Click on arrows to navigate through about me pages");
-      api.start({ opacity: 1 });
-      const timeout = setTimeout(() => {
-        api.start({ opacity: 0 });
-      }, 5000);
-      return () => clearTimeout(timeout);
-    }
-  }, [activeMenuButton, plateClicked]);
+
+    return () => {
+      clearTimeout(timeout);
+    };
+  }, [activeMenuButton, plateClicked, htmlClicked]);
 
   return (
     <animated.div

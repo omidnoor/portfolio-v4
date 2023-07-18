@@ -43,7 +43,7 @@ export const pages = [
     sub: [
       {
         name: "Project1",
-        position: [-190, 25, 248],
+        position: [-180, 25, 248],
         rotation: [0, Math.PI * 1, 0],
         imageUrl: "/icons/portfolio-icon-v1.png",
         url: null,

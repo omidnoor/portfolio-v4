@@ -61,7 +61,7 @@ const FrameContent = ({ props, frameRef }) => {
       {/* {props.name !== "Home" && ( */}
       <Html
         as="div"
-        position={[0, 0, 1.05]}
+        position={[0, 0, 0.1]}
         zIndexRange={[0, 0]}
         wrapperClass={styles.wrapper}
         transform
