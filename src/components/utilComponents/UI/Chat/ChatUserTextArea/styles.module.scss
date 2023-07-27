@@ -1,0 +1,26 @@
+@import "@/styles/variables.scss";
+
+.userTextarea {
+  position: absolute;
+  min-height: 70px;
+  padding: 12px;
+  bottom: 0;
+  width: 100%;
+  background-color: rgb(236, 235, 231);
+  border-radius: 0 0 12px 12px;
+  display: flex;
+  align-items: baseline;
+  border-top: 1px sold #000;
+  &__textarea {
+    font-family: $font-inter;
+    font-size: 16px;
+    width: 100%;
+    height: 100%;
+    border: none;
+    background-color: transparent;
+    resize: none;
+    &:focus {
+      outline: none;
+    }
+  }
+}

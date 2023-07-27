@@ -2,7 +2,8 @@ import { useStore } from "@/stores/store";
 import ChatHeder from "./ChatHeder";
 import styles from "./styles.module.scss";
 import { useSpring, animated, config } from "react-spring";
-import ChatTextArea from "./ChatTextArea";
+import ChatUserTextArea from "./ChatUserTextArea/ChatUserTextArea";
+import ChatTextArea from "./ChatTextArea/ChatTextArea";
 
 const ChatMessageArea = () => {
   const setIsChatClicked = useStore((state) => state.setIsChatClicked);
@@ -24,6 +25,7 @@ const ChatMessageArea = () => {
     >
       <ChatHeder />
       <ChatTextArea />
+      <ChatUserTextArea />
     </animated.div>
   );
 };

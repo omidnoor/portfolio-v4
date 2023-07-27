@@ -28,11 +28,8 @@
     background-color: rgb(255, 255, 255);
     height: 400px;
     border-radius: 12px;
-    .textarea {
-      margin: 50px 6px 6px 6px;
-      padding: 6px;
-      // background-color: #d5bebe;
-    }
+    display: flex;
+    flex-direction: column;
 
     .chatHeader {
       position: absolute;

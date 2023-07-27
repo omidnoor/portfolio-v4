@@ -1,0 +1,17 @@
+.textarea {
+  margin: 48px 0px 70px 0px;
+  padding: 6px;
+  display: flex;
+  flex-direction: column-reverse;
+  height: 100%;
+  gap: 6px;
+  overflow: auto;
+  //   background-color: #72726a;
+  .message {
+    padding: 6px;
+    background-color: rgb(177, 215, 215);
+    p {
+      line-height: 1.5;
+    }
+  }
+}
