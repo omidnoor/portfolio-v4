@@ -11,7 +11,7 @@ const ChatMessageArea = () => {
 
   const props = useSpring({
     opacity: isChatClicked ? 1 : 0,
-    y: isChatClicked ? 0 : 70,
+    y: isChatClicked ? 0 : 500,
     config: config.stiff,
   });
   return (
@@ -20,7 +20,7 @@ const ChatMessageArea = () => {
       style={{
         transform: props.y.to((y) => `translate3d(0,${y}px,0)`),
         opacity: props.opacity.to((opacity) => opacity),
-        zIndex: -1,
+        zIndex: 10,
       }}
     >
       <ChatHeder />

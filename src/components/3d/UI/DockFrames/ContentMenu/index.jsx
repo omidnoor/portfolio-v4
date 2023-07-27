@@ -42,7 +42,7 @@ const ContentMenu = () => {
     if (isContentIcons) {
       api.start({ y: 0, opacity: 1 });
     } else {
-      api.start({ y: 10, opacity: 0 });
+      api.start({ y: 200, opacity: 0 });
     }
   }, [isContentIcons, api]);
 
@@ -53,6 +53,7 @@ const ContentMenu = () => {
         transform: props.y.to((y) => `translate3d(-50%,${y}px,0)`),
         opacity: props.opacity,
         display: display ? "none" : "flex",
+        zIndex: -1,
       }}
       onMouseEnter={(e) => {
         e.stopPropagation();

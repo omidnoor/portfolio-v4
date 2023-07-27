@@ -2,16 +2,36 @@
 
 .userTextarea {
   position: absolute;
-  min-height: 70px;
-  padding: 12px;
+  // min-height: 70px;
+  padding: 0 0 0 12px;
   bottom: 0;
   width: 100%;
   background-color: rgb(236, 235, 231);
-  border-radius: 0 0 12px 12px;
+  border-radius: 12px;
   display: flex;
   align-items: baseline;
-  border-top: 1px sold #000;
+  // border-top: 1px sold #000;
+  &__form {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    // align-items: center;
+    button {
+      // width: 100%;
+      padding: 12px;
+      border: none;
+      background-color: $secondary-accent-color;
+      border-radius: 0 12px 12px 0;
+      margin: 0;
+      transition: all 0.2s ease;
+      &:hover {
+        cursor: pointer;
+        filter: brightness(1.05);
+      }
+    }
+  }
   &__textarea {
+    background-color: rgb(47, 152, 117);
     font-family: $font-inter;
     font-size: 16px;
     width: 100%;
@@ -19,6 +39,8 @@
     border: none;
     background-color: transparent;
     resize: none;
+    padding-top: 6px;
+    line-height: 1.5;
     &:focus {
       outline: none;
     }
