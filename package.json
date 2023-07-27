@@ -10,6 +10,7 @@
   "dependencies": {
     "@mui/material": "^5.13.4",
     "@next/font": "^13.3.2",
+    "@pinecone-database/pinecone": "^0.1.6",
     "@react-spring/three": "^9.7.2",
     "@react-three/drei": "^9.76.0",
     "@react-three/fiber": "^8.13.3",

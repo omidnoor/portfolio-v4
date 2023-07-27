@@ -2,6 +2,7 @@ import { TextareaAutosize } from "@mui/material";
 import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 import { useEffect, useState } from "react";
+import { v4 as uuid } from "uuid";
 
 const ChatUserTextArea = () => {
   const messages = useStore((state) => state.messages);
