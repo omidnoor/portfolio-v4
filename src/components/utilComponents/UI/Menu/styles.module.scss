@@ -10,29 +10,33 @@
   justify-content: center;
   align-items: center;
   z-index: 1;
-}
-
-.menu {
-  width: 100%;
-  display: flex;
-}
-
-.notification {
-  position: absolute;
-  top: -65px;
-  right: 10px;
-
-  background-color: $tertiary-color;
-  padding: 10px;
-  font-family: $font-inter;
-  border-radius: 10px;
-  p {
-    color: aliceblue;
+  .menu {
+    width: 100%;
+    display: flex;
   }
-  @media (max-width: 1100px) {
-    top: -140px;
-    right: 50%;
-    transform: translateX(50%);
-    width: min(350px, 90%);
+
+  .notification {
+    position: absolute;
+    top: -65px;
+    right: 10px;
+
+    background-color: $tertiary-color;
+    padding: 10px;
+    font-family: $font-inter;
+    border-radius: 10px;
+    p {
+      color: aliceblue;
+    }
+    @media (max-width: 1100px) {
+      top: -140px;
+      right: 50%;
+      transform: translateX(50%);
+      width: min(350px, 90%);
+    }
+  }
+
+  .chat {
+    position: absolute;
+    right: 20px;
   }
 }
