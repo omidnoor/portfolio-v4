@@ -1,16 +1,14 @@
 import { useStore } from "@/stores/store";
 import Message from "./Message";
 import styles from "./styles.module.scss";
-import { useEffect } from "react";
-import { useSpring, animated, config } from "react-spring";
 import { BsRobot } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 
 const ChatTextArea = () => {
   const messages = useStore((state) => state.messages);
-  console.log(messages);
+
   return (
-    <animated.div className={styles.textarea}>
+    <div className={styles.textarea}>
       {!!messages &&
         messages.length > 0 &&
         messages.map(
@@ -44,7 +42,7 @@ const ChatTextArea = () => {
               </div>
             ),
         )}
-    </animated.div>
+    </div>
   );
 };
 export default ChatTextArea;

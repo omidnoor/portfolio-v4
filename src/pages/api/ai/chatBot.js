@@ -32,7 +32,7 @@ export default async function handler(req, res) {
     );
 
     const chain = VectorDBQAChain.fromLLM(model, vectorStore, {
-      k: 15,
+      k: 8,
       // returnSourceDocuments: true,
     });
 
