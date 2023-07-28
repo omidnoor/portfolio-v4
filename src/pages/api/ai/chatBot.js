@@ -33,8 +33,8 @@ export default async function handler(req, res) {
       );
 
       const chain = VectorDBQAChain.fromLLM(model, vectorStore, {
-        k: 1,
-        returnSourceDocuments: true,
+        k: 15,
+        // returnSourceDocuments: true,
       });
 
       const response = await chain.call({
