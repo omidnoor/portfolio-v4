@@ -12,8 +12,8 @@ export default async function (req, res) {
       }
       const splitter = new CharacterTextSplitter({
         separator: " ",
-        chunkSize: 250,
-        chunkOverlap: 10,
+        chunkSize: 300,
+        chunkOverlap: 20,
       });
 
       const splitTexts = await splitter.splitText(aboutmeContent);
