@@ -1,17 +1,28 @@
 .textarea {
   margin: 48px 0px 48px 0px;
-  padding: 6px;
+  padding: 20px;
   display: flex;
   flex-direction: column-reverse;
   height: 100%;
-  gap: 6px;
+  gap: 20px;
   overflow: auto;
   //   background-color: #72726a;
-  .message {
-    padding: 6px;
-    background-color: rgb(177, 215, 215);
-    p {
-      line-height: 1.5;
+  .messageWrapper {
+    .message {
+      padding: 16px;
+      display: flex;
+      line-height: 1.7;
     }
+  }
+  .avatar {
+    align-self: flex-end;
+    background-color: rgb(219, 219, 215);
+    padding: 8px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
   }
 }
