@@ -13,7 +13,9 @@ const Message = ({ children, role }) => {
     <animated.div
       className={styles.message}
       style={{
-        borderRadius: `12px 12px 0 12px`,
+        borderRadius: `${
+          role === "user" ? "32px 32px 0 32px" : "32px 32px 32px 0"
+        }`,
         backgroundColor: role === "user" ? "#FFee88" : "#FFff88",
         ...props,
       }}

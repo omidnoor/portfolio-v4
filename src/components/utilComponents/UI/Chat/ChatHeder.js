@@ -48,7 +48,7 @@ const ChatHeder = () => {
           Upload
         </button>
       )}
-      <ChatDots />
+      {/* <ChatDots /> */}
     </div>
   );
 };

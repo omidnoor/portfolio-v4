@@ -1,6 +1,7 @@
 import { useStore } from "@/stores/store";
 import styles from "./styles.module.scss";
 import { useSpring, animated, config } from "react-spring";
+import Image from "next/image";
 
 const ChatButton = () => {
   const setIsChatClicked = useStore((state) => state.setIsChatClicked);
@@ -24,7 +25,14 @@ const ChatButton = () => {
       className={styles.chatButton}
       onClick={handleClick}
       style={{ borderRadius: `50% 50% 0 50%`, ...props }}
-    ></animated.div>
+    >
+      {!isChatClicked && (
+        <Image src="/icons/chat.png" alt="Chat" width={30} height={30} />
+      )}
+      {isChatClicked && (
+        <Image src="/icons/close.png" alt="Chat" width={30} height={30} />
+      )}
+    </animated.div>
   );
 };
 export default ChatButton;

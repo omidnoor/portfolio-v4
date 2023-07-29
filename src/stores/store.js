@@ -25,7 +25,9 @@ export const useStore = create((set) => ({
   isLetsTalk: false,
   isChatClicked: false,
   messages: [{ role: "", content: "" }],
+  isChatLoading: false,
 
+  setIsChatLoading: (value) => set((state) => ({ isChatLoading: value })),
   setMessages: (value) =>
     set((state) => ({ messages: [value, ...state.messages] })),
   setIsChatClicked: (value) => set((state) => ({ isChatClicked: value })),

@@ -11,8 +11,8 @@ const ChatMessageArea = () => {
 
   const props = useSpring({
     opacity: isChatClicked ? 1 : 0,
-    y: isChatClicked ? 0 : 500,
-    config: config.stiff,
+    y: isChatClicked ? 0 : 800,
+    config: config.wobbly,
   });
   return (
     <animated.div

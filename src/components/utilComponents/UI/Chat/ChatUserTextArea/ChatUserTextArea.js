@@ -3,11 +3,13 @@ import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
+import Loader from "@/components/utilComponents/Loader/Loader";
 
 const ChatUserTextArea = () => {
   const messages = useStore((state) => state.messages);
   const setMessages = useStore((state) => state.setMessages);
   const [currentMessage, setCurrentMessage] = useState("");
+  const setIsChatLoading = useStore((state) => state.setIsChatLoading);
 
   const handleChange = (e) => {
     setCurrentMessage(e.target.value);
@@ -15,6 +17,7 @@ const ChatUserTextArea = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsChatLoading(true);
     setMessages({ role: "user", content: currentMessage });
     const response = await fetch("/api/ai/chatBot", {
       method: "POST",
@@ -28,9 +31,9 @@ const ChatUserTextArea = () => {
       }),
     });
     const data = await response.json();
-    console.log(data.content);
     setMessages({ role: "assistant", content: data.content });
     setCurrentMessage("");
+    setIsChatLoading(false);
   };
 
   return (
