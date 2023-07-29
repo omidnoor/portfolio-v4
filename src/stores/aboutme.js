@@ -208,4 +208,67 @@ A:{ Omid has a comprehensive understanding of various data structures including 
 
 Q:{ Can you elaborate on Omid's knowledge about graphs and related algorithms?}
 A:{Omid has gained knowledge about graphs, a crucial abstract data type used in many real-world applications. He can effectively perform various operations on graphs, such as traversal, and has a solid grasp of Dijkstra's algorithm, a popular algorithm for finding the shortest paths in a graph.}
+
+Q:{What types of Git objects has Omid learned about, and what are their roles?}
+A:{Omid has gained knowledge on four primary Git objects: trees, blobs, commits, and annotated tags. Trees represent directory entries, blobs signify file data, commits point to a tree and a parent commit and have associated metadata, while annotated tags are specific commit references used mainly for software releases.}
+
+Q:{Can you describe the Git workflow Omid has mastered?}
+A:{Omid has adeptly mastered the essential Git workflow, which includes 'add' and 'commit' operations. First, Omid 'adds' changes to a staging area, then 'commits' them, preserving the changes in his local repository.}
+
+Q:{How does Omid handle merge conflicts in Git?}
+A:{Omid resolves merge conflicts by manually altering the conflict markers in the file(s), subsequently adding the rectified files with 'git add', and finally sealing the resolved merge with 'git commit'.}
+
+Q:{What is Git stashing and how has Omid used it?}
+A:{Git stashing is a feature Omid has utilized to save changes that he doesn't want to commit immediately. It has proven valuable when Omid requires a clean workspace or needs to switch branches without committing his current work in progress.}
+
+Q:{How does Omid distinguish between 'git restore', 'git revert', and 'git reset'?}
+A:{Omid applies 'git restore' to restore file contents from a specific commit, 'git revert' to create a new commit that undoes changes made in a previous commit, and 'git reset' to reset his current HEAD to a certain state.}
+
+Q:{What is a pull request and how has Omid employed it in collaboration?}
+A:{A pull request is a method Omid has used to contribute to a project. He's found it useful when he's forked a repository, made changes, and desired those alterations to be included in the original repository.}
+
+Q:{How has the 'git reflog' command been beneficial to Omid?}
+A:{'git reflog' has served Omid by showing a list of every alteration to the head of the branches in his repository, which has allowed him to view the previous points of HEAD and branch references.}
+
+Q:{What are Git tags and how has Omid found them useful?}
+A:{Git tags are markers Omid uses to capture a point in history as a checkpoint or a version release. They have been particularly beneficial when Omid wanted to label specific version releases or other significant points in his project history.}
+
+Q:{What is Github Pages and how has Omid utilized it?}
+A:{Github Pages is a service from Github that Omid has exploited to host static web pages directly from his Github repository. He's used it to host project pages, portfolio sites, and documentation.}
+
+Q:{What does Omid share using Github Gists and how do they differ from repositories?}
+A:{Github Gists are a feature Omid has used to share code snippets, notes, etc. They are akin to mini-repositories that can be forked and cloned but are better suited for smaller pieces of code or standalone files.}
+
+Q:{Can you explain the difference between an Interpreter, Compiler, and JIT Compiler as Omid has learned in the course?}
+A:{Omid has studied that an Interpreter translates code line by line, a Compiler converts the entire code into machine code beforehand, while a JIT Compiler is a blend of the two, compiling code during execution for optimization.}
+
+Q:{How did Omid learn to write optimized code in JavaScript?}
+A:{Omid has learned to write optimized code by utilizing JIT compilers, managing memory leaks, avoiding global variables, minimizing DOM operations, and implementing efficient algorithms and data structures.}
+
+Q:{What did Omid learn about Garbage Collection in JavaScript?}
+A:{Omid learned that Garbage Collection is an automatic memory management feature of JavaScript, responsible for finding data objects that are no longer in use and freeing the memory occupied by them.}
+
+Q:{Can you explain the Single Threaded Model in JavaScript?}
+A:{Omid knows that JavaScript follows a Single Threaded Model, meaning it can process one task at a time or maintain a single call stack. However, due to its non-blocking asynchronous nature, it can still handle concurrent operations.}
+
+Q:{How does JavaScript's Hoisting work?}
+A:{Omid learned that Hoisting in JavaScript is a behavior in which variable and function declarations are moved to the top of their containing scope during the compile phase.}
+
+Q:{What are the differences between Function Scope and Block Scope?}
+A:{Function Scope means that parameters and variables defined in a function are visible everywhere within the function, while Block Scope, introduced in ES6 with 'let' and 'const', restricts the visibility within the nearest set of curly braces.}
+
+Q:{How has Omid learned to handle errors in JavaScript?}
+A:{Omid has learned various error handling mechanisms in JavaScript, including try/catch/finally blocks for synchronous code and .catch() or .finally() methods for Promises. For async/await, errors can be caught inside a try/catch block.}
+
+Q:{What are Callbacks, Promises, and Async/Await?}
+A:{Callbacks are functions passed as arguments and invoked to continue code execution. Promises are objects representing the eventual completion or failure of an asynchronous operation. Async/Await are syntactic sugar for Promises, making asynchronous code look like synchronous.}
+
+Q:{Prototypal Inheritance in JavaScript?}
+A:{Prototypal Inheritance is a form of object-oriented inheritance where objects inherit directly from other objects. This is different from class-based inheritance as there's no concept of classes but instead, objects make clones of themselves.}
+
+Q:{Can you explain Concurrency and Parallelism in JavaScript?}
+A:{Concurrency is about dealing with multiple tasks at the same time but not necessarily simultaneously, made possible in JavaScript with the help of Web APIs, the Callback Queue, and the Event Loop. Parallelism, on the other hand, is about executing multiple tasks simultaneously, which is not directly possible in JavaScript but can be achieved with Web Workers.}
+
+Q:{the differences between Imperative and Declarative code in JavaScript?}
+A:{Imperative code tells the machine how to do something and as a result what it should do, usually involving detailed steps. Declarative code, on the other hand, tells the machine what to do and lets the machine figure out how to do it, often resulting in more readable and concise code.}
 `;
