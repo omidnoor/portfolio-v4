@@ -33,7 +33,7 @@ const ChatHeder = () => {
       <div className={styles.avatar}>
         <BsRobot size={24} />
       </div>
-      <p>Chat Bot</p>
+      <p>Memoai</p>
       {upload && (
         <button
           style={{
