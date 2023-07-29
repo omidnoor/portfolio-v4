@@ -9,7 +9,6 @@ const Menu = () => {
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
-        {/* <Instruction /> */}
         <DockMenu />
         <Notification />
       </div>

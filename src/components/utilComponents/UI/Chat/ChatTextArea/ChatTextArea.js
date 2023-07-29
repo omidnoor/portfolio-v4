@@ -7,6 +7,7 @@ import Loader from "@/components/utilComponents/Loader/Loader";
 import { useTransition, animated, config } from "react-spring";
 import { useState } from "react";
 import { useEffect } from "react";
+import ChatWelcomeContainer from "../ChatWelcome/ChatWelcomeContainer";
 
 const ChatTextArea = () => {
   const messages = useStore((state) => state.messages);
@@ -35,20 +36,7 @@ const ChatTextArea = () => {
           <Loader />
         </div>
       )}
-      {noMessages && (
-        <div className={styles.noMessages}>
-          <p>👋 Hello! I'm Omid's assistant bot.</p>
-          <p>
-            I can provide information about his skills, projects, experiences,
-            and much more.
-          </p>
-          <p>Feel free to ask me anything about Omid!</p>
-          <p>
-            However, please note that while I strive for accuracy, there may be
-            some discrepancies.
-          </p>
-        </div>
-      )}
+      {noMessages && <ChatWelcomeContainer />}
       {transitions((props, message, index) =>
         message.content ? (
           <animated.div

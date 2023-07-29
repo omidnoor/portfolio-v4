@@ -35,6 +35,16 @@ const Notification = () => {
       timeout = setTimeout(() => {
         api.start({ opacity: 0 });
       }, 5000);
+    } else if (
+      activeMenuButton === "About Me" &&
+      plateClicked === false &&
+      htmlClicked === false
+    ) {
+      setText("Click on image icon or text icon to move closer");
+      api.start({ opacity: 1 });
+      timeout = setTimeout(() => {
+        api.start({ opacity: 0 });
+      }, 5000);
     } else {
       api.start({ opacity: 0 });
     }

@@ -226,10 +226,10 @@ const Navigation = () => {
       ref={cameraControlsRef}
       enabled={true}
       makeDefault={false}
-      verticalDragToForward={false}
-      dollyToCursor={false}
-      dollyDragInverted={false}
-      infinityDolly={false}
+      verticalDragToForward={true}
+      dollyToCursor={true}
+      dollyDragInverted={true}
+      infinityDolly={true}
       // minZoom={10}
       // maxZoom={20}
     />

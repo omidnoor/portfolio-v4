@@ -13,13 +13,11 @@ import { useEffect } from "react";
 
 const HomePage = () => {
   const [initPage, setInitPage] = useState(true);
-  const isMenuButtonClicked = useStore((state) => state.isMenuButtonClicked);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
 
   useEffect(() => {
     const time = setTimeout(() => {
       setInitPage(false);
-    }, 5000);
+    }, 10000);
     return () => clearTimeout(time);
   }, []);
   return (
