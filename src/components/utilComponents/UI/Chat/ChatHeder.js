@@ -34,7 +34,7 @@ const ChatHeder = () => {
         <BsRobot size={24} />
       </div>
       <p>Memoai</p>
-      {upload && (
+      {/* {upload && (
         <button
           style={{
             border: "none",
@@ -47,7 +47,7 @@ const ChatHeder = () => {
         >
           Upload
         </button>
-      )}
+      )} */}
       {/* <ChatDots /> */}
     </div>
   );

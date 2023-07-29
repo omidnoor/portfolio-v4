@@ -19,6 +19,7 @@ const ChatUserTextArea = () => {
     e.preventDefault();
     setIsChatLoading(true);
     setMessages({ role: "user", content: currentMessage });
+    setCurrentMessage("");
     const response = await fetch("/api/ai/chatBot", {
       method: "POST",
       headers: {
@@ -32,7 +33,7 @@ const ChatUserTextArea = () => {
     });
     const data = await response.json();
     setMessages({ role: "assistant", content: data.content });
-    setCurrentMessage("");
+
     setIsChatLoading(false);
   };
 
