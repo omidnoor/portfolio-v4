@@ -226,12 +226,12 @@ const Navigation = () => {
       ref={cameraControlsRef}
       enabled={true}
       makeDefault={false}
-      verticalDragToForward={true}
-      dollyToCursor={true}
-      dollyDragInverted={true}
+      verticalDragToForward={false}
+      dollyToCursor={false}
+      dollyDragInverted={false}
       infinityDolly={true}
-      // minZoom={10}
-      // maxZoom={20}
+      minZoom={0}
+      maxZoom={0}
     />
   );
 };
