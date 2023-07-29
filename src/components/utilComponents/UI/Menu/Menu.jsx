@@ -3,11 +3,13 @@ import { memo } from "react";
 import styles from "./styles.module.scss";
 import Notification from "./Notification";
 import ChatContainer from "../Chat/ChatContainer";
+import Instruction from "../Instruction/Instruction";
 
 const Menu = () => {
   return (
     <div className={styles.container}>
       <div className={styles.menu}>
+        {/* <Instruction /> */}
         <DockMenu />
         <Notification />
       </div>
