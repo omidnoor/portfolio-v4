@@ -146,12 +146,12 @@ export const pages = [
       },
       {
         name: "Project4",
-        position: [-248, 25, 100],
+        position: [-248, 25, -18],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
         url: null,
-        contentUrl: "/content-images/portfoli-v4-project-showcase-2.jpg",
+        contentUrl: "/content-images/chatgpt-clone-project-showcase-1.jpg",
         plate: {
           title: "ChatGPT Clone App Using OpenAI API",
           description: [
@@ -163,7 +163,7 @@ export const pages = [
             "Used 'react-markdown' package for rendering the AI's responses in markdown format, providing a richer chat interface.",
             "Implemented 'uuid' for generating unique identifiers, ensuring every chat session and user interaction is accurately tracked and managed.",
             "Structured application with server-side rendering using Next.js for better SEO performance and faster page load times.",
-            "Included '@tailwindcss/typography' for streamlined typographic styles, contributing to consistent and elegant UI.",
+            "Included tailwindcss for streamlined typographic styles, contributing to consistent and elegant UI.",
           ],
           frameWorks: [
             "Reactjs",
