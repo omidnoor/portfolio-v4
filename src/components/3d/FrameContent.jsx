@@ -75,6 +75,7 @@ const FrameContent = ({ props, frameRef }) => {
           onMouseLeave={handleLeave}
         >
           {props.name === "About Me" && <iframe src={props.url} />}
+          {props.name === "Contact Me" && <iframe src={props.url} />}
           {props.name === "Home" && <Home />}
           {props.contentUrl && (
             <div
@@ -90,7 +91,7 @@ const FrameContent = ({ props, frameRef }) => {
               />
             </div>
           )}
-          {props.name === "Contact Me" && <ContactForm />}
+          {/* {props.name === "Contact Me" && <ContactForm />} */}
         </div>
       </Html>
       {/* )} */}
