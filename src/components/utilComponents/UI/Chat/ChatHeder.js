@@ -33,7 +33,7 @@ const ChatHeder = () => {
     <div className={styles.chatHeader}>
       <div className={styles.avatar}>
         {/* <BsRobot size={24} /> */}
-        <Image src="/icons/robot-v1.jpg" width={40} height={40} />
+        <Image src="/icons/robot-v1.jpg" width={40} height={40} alt="chatbot" />
       </div>
       <p>Memoai</p>
       {/* {upload && (

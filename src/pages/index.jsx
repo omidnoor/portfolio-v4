@@ -8,7 +8,6 @@ import ImageFrames from "@/components/3d/ImageFrames";
 import Menu from "@/components/utilComponents/UI/Menu/Menu";
 import Instruction from "@/components/utilComponents/UI/Instruction/Instruction";
 import { useState } from "react";
-import { useStore } from "@/stores/store";
 import { useEffect } from "react";
 
 const HomePage = () => {

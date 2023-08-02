@@ -15,12 +15,16 @@ const containerStyles = {
   alignItems: "center",
 };
 const barStyles = {
+  marginLeft: "-50%",
   height: "20px",
-  width: "50%",
+  width: "200%",
   color: "#f8ff5f",
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
 };
 const dataStyles = {
-  color: "#fff",
+  color: "#0c121c",
   fontSize: "20px",
   textAlign: "center",
 };
@@ -28,9 +32,9 @@ const dataStyles = {
 const CustomLoader = () => {
   return (
     <Loader
-      containerStyles={containerStyles}
-      barStyles={barStyles}
-      dataStyles={dataStyles}
+      containerStyles={...containerStyles}
+      barStyles={...barStyles}
+      dataStyles={...dataStyles}
       dataInterpolation={(p) => `Loading ${p.toFixed(0)}%`}
       initialState={(active) => active}
     />
