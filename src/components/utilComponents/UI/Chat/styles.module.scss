@@ -50,11 +50,13 @@
       justify-content: flex-start;
       align-items: center;
       .avatar {
-        width: 36px;
-        height: 36px;
+        width: 40px;
+        height: 40px;
         margin-left: 20px;
-        border-radius: 50%;
-        background-color: rgb(254, 255, 255);
+        img {
+          border-radius: 50%;
+        }
+        // background-color: rgb(254, 255, 255);
         display: grid;
         place-items: center;
         color: #262626;

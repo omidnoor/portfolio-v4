@@ -3,6 +3,7 @@ import ChatDots from "./ChatDots";
 import styles from "./styles.module.scss";
 import { BsRobot } from "react-icons/bs";
 import { aboutmeContent } from "@/stores/aboutme";
+import Image from "next/image";
 
 const ChatHeder = () => {
   const [upload, setUpload] = useState(false);
@@ -31,7 +32,8 @@ const ChatHeder = () => {
   return (
     <div className={styles.chatHeader}>
       <div className={styles.avatar}>
-        <BsRobot size={24} />
+        {/* <BsRobot size={24} /> */}
+        <Image src="/icons/robot-v1.jpg" width={40} height={40} />
       </div>
       <p>Memoai</p>
       {/* {upload && (
