@@ -15,25 +15,37 @@ const containerStyles = {
   alignItems: "center",
 };
 const barStyles = {
-  marginLeft: "-50%",
+  // marginLeft: "-50%",
   height: "20px",
-  width: "200%",
+  width: "100%",
   color: "#f8ff5f",
+  backgroundColor: "#200000",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
 };
 const dataStyles = {
-  color: "#0c121c",
+  color: "#fff",
   fontSize: "20px",
+  fontweight: "bold",
   textAlign: "center",
 };
+
+const inner= {
+//   marginLeft: "-50%",
+//   // height: "100%",
+//   width: "200%",
+// backgroundColor: "#200000",
+// color: "#f00",
+
+}
 
 const CustomLoader = () => {
   return (
     <Loader
       containerStyles={...containerStyles}
       barStyles={...barStyles}
+      innerStyles={...inner}
       dataStyles={...dataStyles}
       dataInterpolation={(p) => `Loading ${p.toFixed(0)}%`}
       initialState={(active) => active}
