@@ -8,6 +8,7 @@ import { useTransition, animated, config } from "react-spring";
 import { useState } from "react";
 import { useEffect } from "react";
 import ChatWelcomeContainer from "../ChatWelcome/ChatWelcomeContainer";
+import Image from "next/image";
 
 const ChatTextArea = () => {
   const messages = useStore((state) => state.messages);
@@ -58,7 +59,12 @@ const ChatTextArea = () => {
             </div>
             {message.role === "assistant" && (
               <div className={styles.avatar}>
-                <BsRobot size={24} />
+                <Image
+                  src="/icons/robot-v1.jpg"
+                  width={32}
+                  height={32}
+                  alt="chatbot"
+                />{" "}
               </div>
             )}
             {message.role === "user" && (
