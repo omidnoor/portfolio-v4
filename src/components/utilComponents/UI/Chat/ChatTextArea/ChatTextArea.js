@@ -22,7 +22,7 @@ const ChatTextArea = () => {
       setNoMessages(false);
     }
   });
-  console.log(messages.length);
+  // console.log(messages.length);
   const transitions = useTransition(messages, {
     from: { opacity: 0, y: 50 },
     enter: { opacity: 1, y: 0 },

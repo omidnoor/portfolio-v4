@@ -18,7 +18,7 @@ const ResponsiveCamera = ({ cameraControlsRef }) => {
       // renderer.setSize(window.innerWidth, window.innerHeight);
     };
     handleResize();
-    console.log(camera.aspect);
+    // console.log(camera.aspect);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
