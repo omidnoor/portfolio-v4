@@ -16,7 +16,7 @@ const HomePage = () => {
   useEffect(() => {
     const time = setTimeout(() => {
       setInitPage(false);
-    }, 10000);
+    }, 100000);
     return () => clearTimeout(time);
   }, []);
   return (

@@ -3,7 +3,13 @@ import styles from "./styles.module.scss";
 const Instruction = () => {
   return (
     <div className={styles.instruction}>
-      <p style={{ borderBottom: "1px solid #000", width: "70%" }}>
+      <p
+        style={{
+          borderBottom: "1px solid #000",
+          width: "100%",
+          paddingBottom: "12px",
+        }}
+      >
         Welcome to my gallery
       </p>
       <br />
