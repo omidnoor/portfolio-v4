@@ -9,6 +9,7 @@ import Menu from "@/components/utilComponents/UI/Menu/Menu";
 import Instruction from "@/components/utilComponents/UI/Instruction/Instruction";
 import { useState } from "react";
 import { useEffect } from "react";
+import Nominne from "@/components/utilComponents/UI/Nominee/Nominne";
 
 const HomePage = () => {
   const [initPage, setInitPage] = useState(true);
@@ -29,7 +30,7 @@ const HomePage = () => {
         </Layout>
         {initPage && <Instruction />}
         <Menu />
-        <Nominne/>
+        <Nominne />
       </Suspense>
       <CustomLoader />
     </>
