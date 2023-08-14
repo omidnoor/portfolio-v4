@@ -29,6 +29,7 @@ const HomePage = () => {
         </Layout>
         {initPage && <Instruction />}
         <Menu />
+        <Nominne/>
       </Suspense>
       <CustomLoader />
     </>
