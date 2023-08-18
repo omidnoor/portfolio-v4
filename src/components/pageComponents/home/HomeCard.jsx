@@ -33,7 +33,7 @@ export default function HomeCard() {
           </h1>
         </div>
         {/* <p> front end and backend operations</p> */}
-        <h2>Developer & Desinger</h2>
+        <h2>Developer & Designer</h2>
       </div>
       <div className={styles.HomeCard__actions}>
         <ButtonUI type="primary">let&apos;s talk</ButtonUI>
