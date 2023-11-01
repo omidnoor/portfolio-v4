@@ -10,7 +10,7 @@ $h-md: 1.25rem;
 $h-lg: 2rem;
 $h-xl: 3rem;
 
-$btn-primary-color: #bda036;
+$btn-primary-color: #ffc800;
 $md-dark-blue: rgba(1, 65, 255, 0.4);
 $md-light-blue: rgba(129, 159, 246, 0.4);
 
@@ -64,7 +64,7 @@ $screen: (
   xxxl: 1600px,
 );
 
-$backgrount-gradient: url("/textures/bg-gradients-v1.jpg");
+// $background-gradient: url("/textures/bg-gradients-v1.jpg");
 
 $font-inter: "Inter Regular", sans-serif;
 
@@ -73,7 +73,8 @@ $background-start-rgb: 214, 219, 220;
 $background-end-rgb: 255, 255, 255;
 
 $tertiary-color: #3c4a4a;
-$primary-accent-color: #bda036;
+$primary-accent-color: #ffc800;
+// $primary-accent-color: #fb00ff;
 $secondary-accent-color: #ffc400;
 $primary-glow: conic-gradient(
   from 180deg at 50% 50%,
@@ -90,12 +91,13 @@ $secondary-glow: radial-gradient(
 
 $tertiary-glow: radial-gradient(
   circle at 50% 50%,
-  #16abff33 0%,
-  #0885ff33 25%,
-  #54d6ff33 50%,
-  #94b7e333 75%,
-  transparent 100%
+  #220b28 0%,
+  #1b071f 25%,
+  #0c020e 50%,
+  #050105 75%,
+  #000000 100%
 );
+$background-gradient: $tertiary-glow;
 
 $tile-start-rgb: 239, 245, 249;
 $tile-end-rgb: 228, 232, 233;

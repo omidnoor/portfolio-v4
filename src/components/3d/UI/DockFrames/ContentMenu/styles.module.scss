@@ -2,20 +2,22 @@
 
 .container {
   position: absolute;
-  width: 300px;
+  width: 200px;
   left: 50%;
   transform: translateX(50%);
-  bottom: 70px;
+  // bottom: 70px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  gap: 10px;
+  // padding: 10px;
+  gap: 100px;
   will-change: contents;
   box-sizing: content-box;
   z-index: 100;
+  // background-color: #262626;
+  display: none;
   @media (max-width: 500px) {
-    gap: 5px;
+    gap: 50px;
   }
 
   .card {

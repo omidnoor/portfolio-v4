@@ -6,11 +6,14 @@ import { iconsSize } from "@/stores/variables";
 import { useEffect } from "react";
 
 const BackButton = () => {
-  const setBackClicked = useStore((state) => state.setBackClicked);
-  const backClicked = useStore((state) => state.backClicked);
-  const setImageClicked = useStore((state) => state.setImageClicked);
-  const setNoteClicked = useStore((state) => state.setNoteClicked);
-  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
+  const {
+    setActiveMenuButton,
+    setImageClicked,
+    setNoteClicked,
+    setActiveMenu,
+    setBackClicked,
+    backClicked,
+  } = useStore();
 
   const [props, api] = useSpring(() => ({
     from: { scale: 1 },

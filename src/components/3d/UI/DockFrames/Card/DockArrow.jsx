@@ -1,12 +1,12 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
 import { pages } from "@/stores/data";
 import { useDock } from "../Dock/DockContext";
 import { iconsSize } from "@/stores/variables";
-import { useSpring, animated } from "react-spring";
+import { useSpring, a } from "react-spring";
 
 const DockArrow = ({ type }) => {
   const arrowButton = useStore((state) => state.arrowButton);
@@ -15,6 +15,7 @@ const DockArrow = ({ type }) => {
   const setArrowCount = useStore((state) => state.setArrowCount);
   const isSceneClicked = useStore((state) => state.isSceneClicked);
   const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const [isHovered, setIsHovered] = useState(false);
 
   const dock = useDock();
 
@@ -34,72 +35,69 @@ const DockArrow = ({ type }) => {
     setArrowCount(0);
   }, [isSceneClicked]);
 
-  const [props, api] = useSpring(() => ({
-    from: { scale: 1 },
+  const { scale } = useSpring({
+    scale: isHovered ? 1.2 : 1,
     config: {
       mass: 1,
       tension: 100,
       friction: 5,
     },
-  }));
-
+  });
   const handleEnter = () => {
-    api.start({ scale: 1.2 });
+    setIsHovered(true);
   };
 
   const handleLeave = () => {
-    api.start({ scale: 1 });
+    setIsHovered(false);
   };
 
   return (
     <>
       {(activeMenuButton === "Projects" || activeMenuButton === "About Me") &&
         (type === "left" ? (
-          <animated.div
-            className={styles.card}
+          <a.div
+            className={`${styles.card} ${styles.arrows}`}
             onClick={handleClick}
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
-            style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
+            style={{ transform: scale?.to((s) => `scale(${s})`) }}
           >
-            <Image
+            {/* <img
+              style={{ width: "80px", height: "80px" }}
               src="/icons/arrow-left.png"
-              width={iconsSize}
-              height={iconsSize}
               className={styles.card__blur}
               alt="left"
-            />
-            <Image
+            /> */}
+            <img
+              style={{ width: "80px", height: "80px" }}
               src="/icons/arrow-left.png"
-              width={iconsSize}
-              height={iconsSize}
               className={styles.card__img}
               alt="left"
             />
-          </animated.div>
+          </a.div>
         ) : (
-          <animated.div
-            className={styles.card}
+          <a.div
+            className={`${styles.card} ${styles.arrows}`}
             onClick={handleClick}
             onMouseEnter={handleEnter}
             onMouseLeave={handleLeave}
-            style={{ transform: props.scale?.to((s) => `scale(${s})`) }}
+            style={{
+              transform: scale?.to((s) => `scale(${s})`),
+            }}
           >
-            <Image
+            {/* <img
+              style={{ width: "80px", height: "80px" }}
               src="/icons/arrow-right.png"
-              width={iconsSize}
-              height={iconsSize}
               className={styles.card__blur}
               alt="right"
-            />
-            <Image
+            /> */}
+            <img
+              style={{ width: "80px", height: "80px" }}
               src="/icons/arrow-right.png"
-              width={iconsSize}
-              height={iconsSize}
               className={styles.card__img}
               alt="right"
             />
-          </animated.div>
+          </a.div>
         ))}
     </>
   );

@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo, useEffect, useRef, useState } from "react";
 
 import styles from "./content-embed.module.scss";
 import { Html } from "@react-three/drei";
@@ -10,18 +10,34 @@ import { pages } from "@/stores/data";
 import Image from "next/image";
 import ContactForm from "./ContactMeComponents/ContactForm";
 import Home from "../pageComponents/home/Home";
+import Iframe from "react-iframe";
+import Projects from "../pageComponents/Projects";
+import { useRouter } from "next/router";
+import { useWindowWidth } from "./Utils/useWindowWidth";
+import AboutMe from "../pageComponents/aboutMe/AboutMe";
+import PageAboutMe from "@/pages/PageAboutMe";
 
 const FrameContent = ({ props, frameRef }) => {
-  const geoNormalArray = useStore((state) => state.geoNormalArray);
-  const setGeoNormalArray = useStore((state) => state.setGeoNormalArray);
-  const setHtmlClicked = useStore((state) => state.setHtmlClicked);
-  const setPlateClicked = useStore((state) => state.setPlateClicked);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const arrowCount = useStore((state) => state.arrowCount);
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const setLastClick = useStore((state) => state.setLastClick);
-  const setFrameHovered = useStore((state) => state.setFrameHovered);
-  const frameHovered = useStore((state) => state.frameHovered);
+  const router = useRouter();
+  const [isIframeHovered, setIsIframeHovered] = useState(false);
+  const {
+    geoNormalArray,
+    setGeoNormalArray,
+    setHtmlClicked,
+    setPlateClicked,
+    isSceneClicked,
+    arrowCount,
+    activeMenuButton,
+    setActiveMenuButton,
+    setLastClick,
+    setFrameHovered,
+    frameHovered,
+    setWidth,
+    width,
+  } = useStore((state) => state);
+
+  const widthState = useWindowWidth();
+  const iframeRef = useRef(null);
 
   useEffect(() => {
     if (frameRef.current) {
@@ -56,6 +72,24 @@ const FrameContent = ({ props, frameRef }) => {
     setFrameHovered(false);
   };
 
+  useEffect(() => {
+    if (activeMenuButton === "Contact Me") {
+      router.push("/PageContactMe");
+    }
+  }, [activeMenuButton]);
+
+  useEffect(() => {
+    const handleReceiveMessage = (e) => {
+      if (e.data.type === "updateState") {
+        setActiveMenuButton(e.data.payload);
+      }
+    };
+    window.addEventListener("message", handleReceiveMessage);
+    return () => {
+      window.removeEventListener("message", handleReceiveMessage);
+    };
+  }, [setActiveMenuButton]);
+
   return (
     <>
       {/* {props.name !== "Home" && ( */}
@@ -74,22 +108,34 @@ const FrameContent = ({ props, frameRef }) => {
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
         >
-          {props.name === "About Me" && <iframe src={props.url} />}
-          {props.name === "Contact Me" && <iframe src={props.url} />}
-          {props.name === "Home" && <Home />}
-          {props.contentUrl && (
+          {/* {props.name === "About Me" && <Iframe src={props.url} />} */}
+          {props.name === "About Me" && <PageAboutMe />}
+          {props.name === "Contact Me" && <Iframe src={props.url} />}
+          {/* {props.name === "Home" && <Home />} */}
+          {props.name === "Home" && (
             <div
-              onClick={handleClick}
-              // onMouseEnter={handleEnter}
-              // onMouseLeave={handleLeave}
+              // style={{ zIndex: 100 }}
+              onMouseOver={() => setIsIframeHovered(true)}
+              onMouseLeave={() => setIsIframeHovered(false)}
             >
-              <Image
-                src={props.contentUrl}
-                width={700}
-                height={900}
-                alt="project content image"
-              />
+              <Iframe src={props.url} />
             </div>
+          )}
+          {props.contentUrl && props.plate && (
+            // <div
+            //   onClick={handleClick}
+            //   onMouseEnter={handleEnter}
+            //   onMouseLeave={handleLeave}
+            //   className={styles.projects}
+            // >
+            <Projects plate={props.plate} image={props.contentUrl} />
+            // <Image
+            //   src={props.contentUrl}
+            //   width={700}
+            //   height={900}
+            //   alt="project content image"
+            // />
+            // </div>
           )}
           {/* {props.name === "Contact Me" && <ContactForm />} */}
         </div>

@@ -10,9 +10,11 @@ import Instruction from "@/components/utilComponents/UI/Instruction/Instruction"
 import { useState } from "react";
 import { useEffect } from "react";
 import Nominne from "@/components/utilComponents/UI/Nominee/Nominne";
+import { useStore } from "@/stores/store";
 
 const HomePage = () => {
   const [initPage, setInitPage] = useState(true);
+  const { setActiveMenuButton } = useStore((state) => state);
 
   useEffect(() => {
     const time = setTimeout(() => {
@@ -20,6 +22,7 @@ const HomePage = () => {
     }, 10000);
     return () => clearTimeout(time);
   }, []);
+
   return (
     <>
       <Suspense fallback={null}>
@@ -28,7 +31,7 @@ const HomePage = () => {
           <SceneModel />
           <ImageFrames />
         </Layout>
-        {initPage && <Instruction />}
+        {/* {initPage && <Instruction />} */}
         <Menu />
         <Nominne />
       </Suspense>

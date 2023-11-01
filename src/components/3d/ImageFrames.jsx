@@ -10,14 +10,7 @@ const ImageFrames = () => {
   const framesRef = useRef({});
   const plateRef = useRef(null);
 
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const setActiveFrame = useStore((state) => state.setActiveFrame);
-  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
-  const setBackClicked = useStore((state) => state.setBackClicked);
-  const setImageClicked = useStore((state) => state.setImageClicked);
-  const setNoteClicked = useStore((state) => state.setNoteClicked);
-
-  const [matcapTexture] = useMatcapTexture("36220C_C6C391_8C844A_8B7B4C", 256);
+  const [matcapTexture] = useMatcapTexture("28292A_D3DAE5_A3ACB8_818183", 128);
 
   useEffect(() => {
     framesRef.current.frustumCulled = false;
@@ -27,13 +20,13 @@ const ImageFrames = () => {
     <group
       ref={framesRef}
       onPointerMissed={() => {
-        if (isSceneClicked) {
-          setActiveFrame({ name: "" });
-          setActiveMenuButton("");
-          setBackClicked(false);
-          setImageClicked(false);
-          setNoteClicked(false);
-        }
+        // if (isSceneClicked) {
+        //   setActiveFrame({ name: "" });
+        //   setActiveMenuButton("");
+        //   setBackClicked(false);
+        //   setImageClicked(false);
+        //   setNoteClicked(false);
+        // }
       }}
     >
       {pages?.map((props, index) => {
@@ -41,11 +34,11 @@ const ImageFrames = () => {
           return (
             <Fragment key={index}>
               <ImageFrame {...props} matcapTexture={matcapTexture} />
-              {props.name === "About Me" && (
+              {/* {props.name === "About Me" && (
                 <mesh ref={plateRef} {...props}>
                   <Plate matcapTexture={matcapTexture} plate={props.plate} />
                 </mesh>
-              )}
+              )} */}
             </Fragment>
           );
         }
@@ -54,9 +47,9 @@ const ImageFrames = () => {
             return (
               <Fragment key={`${index}-${subIndex}`}>
                 <ImageFrame {...subProps} matcapTexture={matcapTexture} />
-                <mesh ref={plateRef} {...subProps}>
+                {/* <mesh ref={plateRef} {...subProps}>
                   <Plate matcapTexture={matcapTexture} plate={subProps.plate} />
-                </mesh>
+                </mesh> */}
               </Fragment>
             );
           });

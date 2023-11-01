@@ -5,10 +5,10 @@ import * as THREE from "three";
 
 const fontProps = {
   font: "/Inter-Bold.woff",
-  fontSize: 1.2,
+  fontSize: 2,
   letterSpacing: -0.05,
   lineHeight: 1,
-  "material-toneMapped": true,
+  "material-toneMapped": false,
 };
 
 const AboutWord = ({ children, wordType, wordColor, ...props }) => {
@@ -70,7 +70,6 @@ const AboutWord = ({ children, wordType, wordColor, ...props }) => {
     }
     textRef.current.scale.lerp(targetScale, 0.1);
   });
-  // console.log(textRef.current);
   return (
     <Text
       ref={textRef}

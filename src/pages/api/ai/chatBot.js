@@ -11,7 +11,6 @@ export default async function handler(req, res) {
       return;
     }
     const { chatId, role, content, isFirstMessage } = req.body;
-    // console.log(chatId, role, content, isFirstMessage);
     if (!content || !chatId || !role) {
       res.status(400).json({ error: "Bad Request" });
       return;
@@ -39,7 +38,6 @@ export default async function handler(req, res) {
     const response = await chain.call({
       query: content,
     });
-    // console.log(" response: ", response);
     res.status(200).json({ content: response.text });
   } catch (error) {
     res.status(500).json({ error: error.message });

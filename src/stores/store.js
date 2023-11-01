@@ -22,7 +22,7 @@ export const useStore = create((set) => ({
   isContentIcons: false,
   frameRef: [],
   plateRef: [],
-  isLetsTalk: false,
+
   isChatClicked: false,
   messages: [{ role: "", content: "" }],
   isChatLoading: false,
@@ -31,7 +31,6 @@ export const useStore = create((set) => ({
   setMessages: (value) =>
     set((state) => ({ messages: [value, ...state.messages] })),
   setIsChatClicked: (value) => set((state) => ({ isChatClicked: value })),
-  setIsLetsTalk: (value) => set((state) => ({ isLetsTalk: value })),
   setFrameHovered: (value) => set((state) => ({ frameHovered: value })),
 
   setPlateRef: (ref) =>
@@ -111,4 +110,19 @@ export const useStore = create((set) => ({
     set((state) => ({ ...state, isMenuClicked })),
 
   setHtmlClicked: (htmlClicked) => set((state) => ({ ...state, htmlClicked })),
+
+  mode: false,
+  setMode: (mode) => set((state) => ({ ...state, mode: mode })),
+
+  isLetsTalk: false,
+  setIsLetsTalk: (isLetsTalk) => set((state) => ({ ...state, isLetsTalk })),
+
+  isServices: false,
+  setIsServices: (isServices) => set((state) => ({ ...state, isServices })),
+
+  width: 1000,
+  setWidth: (width) => set((state) => ({ ...state, width })),
+
+  isDragging: false,
+  setIsDragging: (isDragging) => set((state) => ({ ...state, isDragging })),
 }));

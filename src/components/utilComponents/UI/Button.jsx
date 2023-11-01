@@ -13,7 +13,6 @@ export default function ButtonUI({ children, type }) {
       setActiveMenuButton("Contact Me");
     }
   };
-
   return (
     <div
       onClick={hanldeClick}

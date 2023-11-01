@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 import { useEffect, useState } from "react";
 import DockArrow from "../Card/DockArrow";
+import { useWindowWidth } from "@/components/3d/Utils/useWindowWidth";
 
 const ContentMenu = () => {
   const [display, setDisplay] = useState(false);
@@ -23,8 +24,14 @@ const ContentMenu = () => {
     },
   }));
 
+  const width = useWindowWidth();
+
   useEffect(() => {
-    if (activeMenuButton === "Projects" || activeMenuButton === "About Me") {
+    if (activeMenuButton === "About Me" && width < 500) {
+      setIsContentIcons(true);
+      setDisplay(false);
+    }
+    if (activeMenuButton === "Projects") {
       setIsContentIcons(true);
       setDisplay(false);
     } else if (
@@ -32,25 +39,32 @@ const ContentMenu = () => {
       activeMenuButton === "Contact Me"
     ) {
       setDisplay(true);
+    } else if (activeMenuButton === "About Me" && width < 500) {
+      setIsContentIcons(true);
+      setDisplay(false);
     } else {
       setIsContentIcons(false);
       setDisplay(false);
     }
-  }, [activeMenuButton, isSceneClicked]);
+  }, [activeMenuButton, isSceneClicked, width]);
 
-  useEffect(() => {
-    if (isContentIcons) {
-      api.start({ y: 0, opacity: 1 });
-    } else {
-      api.start({ y: 200, opacity: 0 });
-    }
-  }, [isContentIcons, api]);
+  useEffect(
+    () => {
+      if (isContentIcons) {
+        api.start({ y: 0, opacity: 1 });
+      } else {
+        api.start({ y: 200, opacity: 0 });
+      }
+    },
+    [isContentIcons, api],
+    width,
+  );
 
   return (
     <animated.div
       className={styles.container}
       style={{
-        transform: props.y.to((y) => `translate3d(-50%,${y}px,0)`),
+        transform: props.y.to((y) => `translate3d(-50%,${y - 80}px,0)`),
         opacity: props.opacity,
         display: display ? "none" : "flex",
         zIndex: -1,
@@ -60,8 +74,8 @@ const ContentMenu = () => {
       }}
     >
       <DockArrow type="left" />
-      <ImageContent />
-      <NoteContent />
+      {/* <ImageContent /> */}
+      {/* <NoteContent /> */}
       <DockArrow type="right" />
     </animated.div>
   );

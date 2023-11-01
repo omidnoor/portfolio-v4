@@ -13,9 +13,11 @@ import {
 import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
 import { useSpring } from "react-spring";
+import Services from "./Services";
+import styles from "./aboutme.module.scss";
 
 const colors = {
-  background: "#000000",
+  background: "#ffffff00",
   fill: "#ffffff",
   wordColors: {
     tech: "#2dbbf0",
@@ -24,7 +26,7 @@ const colors = {
   },
 };
 
-const AboutMe = () => {
+const AboutMe = ({ style }) => {
   const [{ background, fill, wordColor }, set] = useSpring(
     {
       background: colors.background,
@@ -35,29 +37,11 @@ const AboutMe = () => {
   );
 
   return (
-    <Suspense fallback={<CustomLoader />}>
-      <a.div
-        style={{
-          background,
-          margin: "0",
-          padding: "0",
-          width: "100%",
-          height: "100%",
-        }}
-      >
-        <Canvas
-          // colorManagement
-          dpr={[1, 2]}
-          camera={{ position: [0, 0, 125], fov: 100 }}
-        >
-          <ambientLight intensity={1} />
-          <AboutCloud count={15} radius={60} wordColor={wordColor} />
-          <AboutSphere setBg={set} wordColor={wordColor} colors={colors} />
-          <TrackballControls />
-          <AboutMeEffect />
-        </Canvas>
-      </a.div>
-    </Suspense>
+    // <Suspense fallback={<CustomLoader />}>
+    <a.div className={styles.container}>
+      <Services />
+    </a.div>
+    // </Suspense>
   );
 };
 export default AboutMe;

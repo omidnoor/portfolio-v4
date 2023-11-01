@@ -21,10 +21,10 @@ const SceneModel = () => {
 
   const handleClick = (e) => {
     e.stopPropagation();
-    setIsSceneClicked(!isSceneClicked);
-    setActiveMenuButton("");
-    setImageClicked(false);
-    setNoteClicked(false);
+    // setIsSceneClicked(!isSceneClicked);
+    // setActiveMenuButton("");
+    // setImageClicked(false);
+    // setNoteClicked(false);
   };
   // console.log(model.nodes.ceiling);
   return (

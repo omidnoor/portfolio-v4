@@ -121,8 +121,8 @@ const ContactForm = () => {
 
             <div className={styles.button}>
               <Button
-                variant="contained"
-                color="primary"
+                // variant="contained"
+                // color="primary"
                 className={`${styles.btn} ${styles.btnContained}`}
                 type="submit"
                 disabled={isLoading}
@@ -131,7 +131,7 @@ const ContactForm = () => {
               </Button>
             </div>
             <div
-              style={{ color: error ? "#f00" : "#00f" }}
+              style={{ color: error ? "#f00" : "#f0f8ff" }}
               className={styles.msg}
             >
               {msg.length > 0 && msg}

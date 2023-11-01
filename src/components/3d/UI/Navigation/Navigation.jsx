@@ -15,16 +15,28 @@ import { useThree } from "@react-three/fiber";
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
   const width = useWindowWidth();
-  useCameraFreez(cameraControlsRef);
+  // useCameraFreez(cameraControlsRef);
+  const {
+    isLetsTalk,
+    isServices,
+    plateClicked,
+    htmlClicked,
+    geoNormalArray,
+    activeMenuButton,
+    arrowCount,
+    isSceneClicked,
+    isDragging,
+    backClicked,
+  } = useStore();
 
   const setCameraLookAt = useCallback(
     (
       cameraControlsRef,
-      position = [0, 25, -50],
+      position = [0, 25, -44],
       normal = new Vector3(0, 0, 1),
       offset1 = 1,
       offset2 = 0,
-      dist = 50,
+      dist = 70,
     ) => {
       const toPos = new Vector3(...position);
       const lookAtPos = new Vector3(...position);
@@ -39,7 +51,6 @@ const Navigation = () => {
       toPos.add(offsetVector);
       lookAtPos.add(offsetVector);
 
-      // console.log(cross, normal);
       cameraControlsRef.current?.setLookAt(
         lookAtPos.x,
         lookAtPos.y - offset1,
@@ -52,19 +63,11 @@ const Navigation = () => {
     },
     [],
   );
-
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const arrowCount = useStore((state) => state.arrowCount);
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const geoNormalArray = useStore((state) => state.geoNormalArray);
-  const htmlClicked = useStore((state) => state.htmlClicked);
-  const plateClicked = useStore((state) => state.plateClicked);
-
+  console.log(backClicked);
   const active = useMemo(
     () => pages.find((page) => page.name === activeMenuButton),
     [activeMenuButton],
   );
-
   const normals = useMemo(
     () =>
       active?.sub
@@ -122,16 +125,17 @@ const Navigation = () => {
       cameraControlsRef,
       activePosition,
       normal?.normal,
-      offsetY,
+      offsetY - 1,
       offsetX,
       activeMenuButton === "Home"
-        ? dist - Math.max(33, Math.min(43.5, width / 14))
+        ? dist - Math.max(20, Math.min(46, width / 40)) + 12
         : activeMenuButton === "Contact Me"
-        ? dist - Math.max(33, Math.min(43.5, width / 14))
+        ? dist - Math.max(20, Math.min(43, width / 8))
+        : !activeMenuButton
+        ? 100 - Math.max(10, Math.min(40, width / 30))
         : dist,
     );
-  }, [activeMenuButton, width]);
-
+  }, [activeMenuButton, width, backClicked]);
   // useHandleClicks(cameraControlsRef, setCameraLookAt, activeMenuButton, width);
 
   useEffect(() => {
@@ -149,31 +153,32 @@ const Navigation = () => {
         cameraControlsRef,
         subPosition,
         normal,
-        offsetY,
+        offsetY - 1.2,
         offsetX,
-        dist,
+        dist - Math.max(10, Math.min(35, width / 35)),
       );
-      if (htmlClicked || plateClicked) {
-        setCameraLookAt(
-          cameraControlsRef,
-          subPosition,
-          normal,
-          offsetY,
-          offsetX + (plateClicked ? 21 : 0),
-          dist - Math.max(33, Math.min(43.5, width / 14)),
-        );
-      }
+      // if (htmlClicked || plateClicked) {
+      //   setCameraLookAt(
+      //     cameraControlsRef,
+      //     subPosition,
+      //     normal,
+      //     offsetY,
+      //     offsetX + (plateClicked ? 21 : 0),
+      //     dist - Math.max(10, Math.min(40, width / 30)),
+      //   );
+      // }
     }
   }, [
     arrowCount,
     activeMenuButton,
     plateClicked,
     htmlClicked,
+    isLetsTalk,
+    isServices,
     width,
     normal,
     subPosition,
   ]);
-
   useEffect(() => {
     if (normalAboutMe && active?.position) {
       const position = active?.position;
@@ -181,23 +186,25 @@ const Navigation = () => {
         cameraControlsRef,
         position,
         normalAboutMe,
-        offsetY,
+        offsetY - 0.5,
         offsetX,
-        dist,
+        dist - Math.max(2, Math.min(33, width / 50)),
       );
-      if (htmlClicked || plateClicked) {
-        setCameraLookAt(
-          cameraControlsRef,
-          position,
-          normalAboutMe,
-          offsetY,
-          offsetX + (plateClicked ? 21 : 0),
-          dist - Math.max(33, Math.min(43.5, width / 14)),
-        );
-      }
+      // if (htmlClicked || plateClicked) {
+      //   setCameraLookAt(
+      //     cameraControlsRef,
+      //     position,
+      //     normalAboutMe,
+      //     offsetY,
+      //     offsetX + (plateClicked ? 21 : 0),
+      //     dist - Math.max(33, Math.min(43.5, width / 14)),
+      //   );
+      // }
     }
   }, [
     // arrowCount,
+    isServices,
+    isLetsTalk,
     activeMenuButton,
     plateClicked,
     htmlClicked,
@@ -214,17 +221,23 @@ const Navigation = () => {
         cameraControlsRef,
         position,
         normalContactMe,
-        offsetY,
+        offsetY - 2,
         offsetX,
         dist - Math.max(33, Math.min(43.5, width / 14)),
       );
     }
-  }, [activeMenuButton, normalContactMe, width, normalContactMe]);
-
+  }, [
+    activeMenuButton,
+    normalContactMe,
+    width,
+    normalContactMe,
+    isServices,
+    isLetsTalk,
+  ]);
   return (
     <CameraControls
       ref={cameraControlsRef}
-      enabled={true}
+      enabled={!isDragging}
       makeDefault={false}
       verticalDragToForward={false}
       dollyToCursor={false}

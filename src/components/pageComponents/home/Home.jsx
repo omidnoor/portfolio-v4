@@ -1,13 +1,126 @@
 import styles from "./home.module.scss";
 import HomeCard from "../home/HomeCard";
 import HomeImage from "../home/HomeImage";
-import { memo } from "react";
+import { memo, useEffect, useRef, useState } from "react";
+import HomeCanvas from "./HomeCanvas";
+import AboutMe from "../aboutMe/AboutMe";
+import { Canvas } from "@react-three/fiber";
+import AboutSphere from "@/components/3d/AboutMeComponents/AboutSphere";
+import { useSpring, animated, config } from "react-spring";
+import { a } from "@react-spring/web";
+import {
+  OrbitControls,
+  PerspectiveCamera,
+  TrackballControls,
+} from "@react-three/drei";
+import AboutMeEffect from "@/components/3d/AboutMeComponents/AboutMeEffect";
+import { useStore } from "@/stores/store";
+import AboutCloud from "@/components/3d/AboutMeComponents/AboutCloud";
+import ThreeDActions from "./ThreeDActions";
+import { Bloom, EffectComposer } from "@react-three/postprocessing";
+
+const colors = {
+  background: "#ffffff00",
+  fill: "#ffffff",
+  wordColors: {
+    tech: "#f05fff",
+    education: "#02ff10",
+    general: "#006239",
+  },
+};
 
 const Home = () => {
+  const { mode, setMode } = useStore((state) => state);
+  const cameraRef = useRef();
+
+  const cardSpring = useSpring({
+    from: {
+      opacity: 1,
+      transform: "translateY(0%)",
+    },
+    to: {
+      opacity: !mode ? 1 : 0,
+      transform: !mode ? "translateY(0%)" : "translateY(-100%)",
+    },
+    config: { mass: 1, tension: 1000, friction: 60 },
+  });
+
+  useEffect(() => {
+    if (cameraRef?.current) {
+      cameraRef.current.position.x = !mode ? -0 : 0;
+      cameraRef.current.position.y = !mode ? -0 : 0;
+      cameraRef.current.position.z = 110;
+      cameraRef.current.lookAt(0, 0, 0);
+      cameraRef.current.updateProjectionMatrix();
+    }
+  }, [mode]);
+
+  const [{ background, fill, wordColor }, set] = useSpring(
+    {
+      background: colors.background,
+      fill: colors.fill,
+      wordColor: colors.wordColors,
+    },
+    [],
+  );
+
   return (
     <div className={`${styles.homeSection}`}>
-      <HomeImage />
-      <HomeCard />
+      <a.div
+        className={styles.card}
+        style={{
+          // display: "flex",
+          width: "100%",
+          height: "100%",
+          position: "absolute",
+          zIndex: 1,
+        }}
+      >
+        <Canvas
+          // dpr={[1, 1.5]}
+          // camera={{
+          //   position: [0, 0, 80],
+          //   fov: 60,
+          //   near: 0.1,
+          //   far: 1000,
+          // }}
+          flat={mode}
+          linear
+          style={{ backgroundColor: background }}
+        >
+          {/* <EffectComposer>
+            <Bloom
+              intensity={2}
+              luminanceThreshold={0.5}
+              luminanceSmoothing={1}
+              height={300}
+            />
+          </EffectComposer> */}
+          <PerspectiveCamera
+            makeDefault
+            position={[0, 0, 100]}
+            ref={cameraRef}
+            fov={52}
+            // near={0.1}
+            // far={1000}
+          />
+          {mode && (
+            <AboutCloud
+              count={5}
+              radius={40}
+              wordColor={wordColor}
+              colors={colors}
+            />
+          )}
+          <AboutSphere setBg={set} wordColor={wordColor} colors={colors} />
+          {!mode && <ThreeDActions />}
+          {/* <AboutMeEffect /> */}
+          {mode && <OrbitControls noZoom={!mode} enabled={mode} />}
+        </Canvas>
+      </a.div>
+      <animated.div style={cardSpring}>
+        <HomeCard />
+      </animated.div>
     </div>
   );
 };

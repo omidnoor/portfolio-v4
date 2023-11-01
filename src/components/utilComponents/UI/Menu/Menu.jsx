@@ -10,7 +10,7 @@ const Menu = () => {
     <div className={styles.container}>
       <div className={styles.menu}>
         <DockMenu />
-        <Notification />
+        {/* <Notification /> */}
       </div>
       <div className={styles.chat}>
         <ChatContainer />

@@ -1,13 +1,13 @@
 @import "@/styles/variables.scss";
 
 .wrapper {
-  width: 700px;
-  height: 900px;
-  background-image: $backgrount-gradient;
+  width: 100%;
+  height: 100%;
+  // filter: brightness(150%);
+  background: $tertiary-glow;
   padding: 0;
   font-family: $font-inter;
   padding: 10px;
-  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -24,6 +24,9 @@
       font-size: 18px;
     }
     .inputBlock {
+      .label {
+        color: aliceblue;
+      }
       .error {
         color: #f00;
         min-height: 18px;
@@ -93,14 +96,13 @@
       }
 
       .btnContained {
+        // border-radius: 15px !important;
         background-color: $btn-primary-color !important;
         color: #2c2525 !important;
-        @media (hover: hover) and (pointer: fine) {
-          &:hover {
-            background-color: transparent !important;
-            border: 2px solid $btn-primary-color !important;
-            // color: #fff !important;
-          }
+        &:hover {
+          background-color: transparent !important;
+          border: 3px solid $btn-primary-color !important;
+          color: #f0f8ff !important;
         }
       }
     }

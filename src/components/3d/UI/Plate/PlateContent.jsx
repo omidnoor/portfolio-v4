@@ -18,7 +18,7 @@ const PlateContent = ({ plate }) => {
     isSceneClicked,
     setLastClick,
   } = useStore((state) => state);
-
+  console.log(plate);
   const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
 
   const active = pages.find((page) => page.name === activeMenuButton);
@@ -114,7 +114,7 @@ const PlateContent = ({ plate }) => {
             </div>
           </>
         )}
-        {activeMenuButton === "About Me" && <AboutMeContent />}
+        {/* {activeMenuButton === "About Me" && <AboutMeContent />} */}
       </div>
     </Html>
   );

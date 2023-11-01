@@ -8,15 +8,15 @@ const texts = ["First text", "Second text"];
 const MagicWriter = ({ texts }) => {
   const [textIndex, setTextIndex] = useState(0);
   const textToShow = useTypewriter(texts[textIndex], {
-    typingSpeed: 100,
-    deleteSpeed: 50,
+    typingSpeed: 300,
+    deleteSpeed: 300,
   });
 
   useEffect(() => {
     if (textToShow === texts[textIndex]) {
       setTimeout(() => {
         setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
-      }, 2000);
+      }, 1000);
     }
   }, [textToShow, textIndex]);
   return <span>{textToShow}</span>;

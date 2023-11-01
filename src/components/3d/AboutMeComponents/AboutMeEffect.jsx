@@ -4,11 +4,11 @@ const AboutMeEffect = () => {
   return (
     <EffectComposer multisampling={4}>
       <Bloom
-        intensity={0.5}
-        // blurPass={undefined}
+        intensity={0.7}
+        blurPass={undefined}
         luminanceThreshold={0}
         luminanceSmoothing={0.9}
-        // mipmapBlur={false}
+        mipmapBlur={false}
       />
     </EffectComposer>
   );
