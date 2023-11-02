@@ -63,7 +63,7 @@ const Navigation = () => {
     },
     [],
   );
-  console.log(backClicked);
+  // console.log(backClicked);
   const active = useMemo(
     () => pages.find((page) => page.name === activeMenuButton),
     [activeMenuButton],
@@ -140,14 +140,18 @@ const Navigation = () => {
 
   useEffect(() => {
     if (active?.sub && normal && subPosition) {
+      const l = active.sub.length;
+      console.log((Math.ceil(Math.abs(arrowCount / l)) * l + arrowCount) % l);
       let normal = geoNormalArray
         .filter((geo) =>
           active.sub.some((subItem) => subItem.name === geo.name),
         )
         .map((item) => item.normal);
       const subPosition =
-        active.sub[Math.abs(arrowCount % active.sub.length)]?.position;
-      normal = normal[Math.abs(arrowCount % active.sub.length)];
+        active.sub[(Math.ceil(Math.abs(arrowCount / l)) * l + arrowCount) % l]
+          ?.position;
+      normal =
+        normal[(Math.ceil(Math.abs(arrowCount / l)) * l + arrowCount) % l];
 
       setCameraLookAt(
         cameraControlsRef,

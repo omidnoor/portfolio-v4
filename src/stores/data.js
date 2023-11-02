@@ -42,15 +42,15 @@ export const pages = [
     componentUrl: null,
     sub: [
       {
-        name: "Project4",
-        position: [-180, 25, 248],
-        rotation: [0, Math.PI * 1, 0],
+        name: "Project1",
+        position: [-127, 25, 200],
+        rotation: [0, -Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
         url: null,
         contentUrl: "/content-images/chatgpt-clone-project-showcase-1.jpg",
         plate: {
-          title: "MemoAI App Using OpenAI API",
+          title: "Document Management System",
           description: [
             // "Built a ChatGPT clone using a combination of React.js and Next.js for a modern, performant, and scalable frontend.",
             // "Leveraged MongoDB for data storage, allowing for flexible and robust data management, including user sessions and chat history.",
@@ -61,7 +61,78 @@ export const pages = [
             // "Implemented 'uuid' for generating unique identifiers, ensuring every chat session and user interaction is accurately tracked and managed.",
             // "Structured application with server-side rendering using Next.js for better SEO performance and faster page load times.",
             // "Included tailwindcss for streamlined typographic styles, contributing to consistent and elegant UI.",
-            "Developed a MemoAI Chat with a modern interface, integrated with OpenAI for real-time AI conversations. The platform manages user sessions and chat histories efficiently, offers dynamic AI-generated responses, and ensures quick page load times with a polished UI.",
+            "Developed a Document Management System, allowing users to create credentials and upload PDF files to AWS S3. The system extracts text, tables, and forms from the files, enhancing search performance by storing data in Elasticsearch. Admin have capabilities to manage user accounts, including creation and deletion. Leveraged AWS services like Lambda, SNS, Elasticsearch, S3, and Textract for backend operations, ensuring robust extraction and search functionality. The UI is user-friendly and responsive.",
+          ],
+          frameWorks: [
+            "Reactjs",
+            "Nextjs",
+            "PrimeReact",
+            "Next-Auth",
+            "AWS Services ",
+            "(SNS, Lambda, S3, Elasticsearch, Textract)",
+          ],
+          deployed: "Vercel",
+          deployUrl: "https://www.clientportalaircraftlogsolutions.com/",
+          // githubUrl: "https://github.com/omidnoor/portfolio-v4",
+        },
+      },
+      {
+        name: "Project2",
+        position: [-180, 25, 248],
+        rotation: [0, Math.PI * 1, 0],
+        imageUrl:
+          "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
+        url: null,
+        contentUrl: "/content-images/chatgpt-clone-project-showcase-1.jpg",
+        plate: {
+          title: "MemoAI Chat, Personal AI Assistant",
+          description: [
+            // "Built a ChatGPT clone using a combination of React.js and Next.js for a modern, performant, and scalable frontend.",
+            // "Leveraged MongoDB for data storage, allowing for flexible and robust data management, including user sessions and chat history.",
+            // "Utilized 'openai-edge-stream' package to establish a seamless connection with the OpenAI language model, facilitating real-time conversation with AI.",
+            // "Created API endpoints to interact with the OpenAI API, enabling the application to generate dynamic AI responses.",
+            // "Developed API endpoints for fetching and writing data from/to the MongoDB database, ensuring consistent and real-time data operations.",
+            // "Used 'react-markdown' package for rendering the AI's responses in markdown format, providing a richer chat interface.",
+            // "Implemented 'uuid' for generating unique identifiers, ensuring every chat session and user interaction is accurately tracked and managed.",
+            // "Structured application with server-side rendering using Next.js for better SEO performance and faster page load times.",
+            // "Included tailwindcss for streamlined typographic styles, contributing to consistent and elegant UI.",
+            "Developed a chatbot using Langchain, Pinecone, and OpenAI API. This chatbot answers questions about me (Omid), my projects, education, and more. Feel free to try it out and, if you're interested, I'd be happy to develop a customized chatbot for your needs as well.",
+          ],
+          frameWorks: [
+            "Reactjs",
+            "Nextjs",
+            "Langchain",
+            "OpenAI API",
+            "PineCone",
+            "React-Spring",
+          ],
+          deployed: "Vercel",
+          deployUrl: "https://memoai-iota.vercel.app/",
+          githubUrl: "https://github.com/omidnoor/portfolio-v4",
+        },
+      },
+
+      {
+        name: "Project3",
+        position: [-248, 25, 190],
+        rotation: [0, Math.PI * 0.5, 0],
+        imageUrl:
+          "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
+        url: null,
+        contentUrl: "/content-images/chatgpt-clone-project-showcase-1.jpg",
+        plate: {
+          title: "AI Chat App Using OpenAI API",
+          description: [
+            // "Built a ChatGPT clone using a combination of React.js and Next.js for a modern, performant, and scalable frontend.",
+            // "Leveraged MongoDB for data storage, allowing for flexible and robust data management, including user sessions and chat history.",
+            // "Utilized 'openai-edge-stream' package to establish a seamless connection with the OpenAI language model, facilitating real-time conversation with AI.",
+            // "Created API endpoints to interact with the OpenAI API, enabling the application to generate dynamic AI responses.",
+            // "Developed API endpoints for fetching and writing data from/to the MongoDB database, ensuring consistent and real-time data operations.",
+            // "Used 'react-markdown' package for rendering the AI's responses in markdown format, providing a richer chat interface.",
+            // "Implemented 'uuid' for generating unique identifiers, ensuring every chat session and user interaction is accurately tracked and managed.",
+            // "Structured application with server-side rendering using Next.js for better SEO performance and faster page load times.",
+            // "Included tailwindcss for streamlined typographic styles, contributing to consistent and elegant UI.",
+            "Developed an AI Chat application with a modern interface, integrated with OpenAI for real-time AI conversations. The platform manages user sessions and chat histories efficiently, offers dynamic AI-generated responses, and ensures quick page load times with a polished UI.",
           ],
           frameWorks: [
             "Reactjs",
@@ -80,8 +151,8 @@ export const pages = [
       },
 
       {
-        name: "Project2",
-        position: [-248, 25, 190],
+        name: "Project4",
+        position: [-248, 25, 65],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/15.-Perfume_1-p-130x130q80.jpeg",
@@ -116,8 +187,8 @@ export const pages = [
         },
       },
       {
-        name: "Project3",
-        position: [-248, 25, 65],
+        name: "Project5",
+        position: [-248, 25, -65],
         rotation: [0, Math.PI * 0.5, 0],
         imageUrl:
           "https://products.ls.graphics/mesh-gradients/images/06.-Wisteria-p-130x130q80.jpeg",
@@ -153,10 +224,44 @@ export const pages = [
           githubUrl: "https://github.com/omidnoor/portfolio-v4",
         },
       },
+
       {
-        name: "Project1",
-        position: [-248, 25, -65],
+        name: "Project6",
+        position: [-248, 25, -185],
         rotation: [0, Math.PI * 0.5, 0],
+
+        imageUrl: "/icons/portfolio-icon-v1.png",
+        url: null,
+        contentUrl: "/content-images/insta-v1.jpg",
+        plate: {
+          title: "Instagram Clone App",
+          description: [
+            // "Built with Next.js and React.js, delivering a server-side rendered application for enhanced SEO and better performance.",
+            // "Incorporated Firebase for backend services, including real-time database functionality and user authentication.",
+            // "Utilized Moment.js for handling and manipulating dates, ensuring proper time stamping on user posts and comments.",
+            // "Adopted Recoil for efficient state management across the application, facilitating seamless user experiences.",
+            // "Integrated TailwindCSS as a utility-first CSS framework, allowing for rapid UI development.",
+            // "Enabled features such as user authentication, photo posting, commenting on posts, and user info viewing, replicating key aspects of the original Instagram platform.",
+            // "Implemented Material-UI and Emotion for effective and responsive styling of the application.",
+            "The project offers robust features such as user sign-in, photo posting, commenting, and profile viewing. It mirrors key Instagram functionalities, ensuring a smooth and responsive user experience.",
+          ],
+          frameWorks: [
+            "Reactjs",
+            "Nextjs",
+            "Tailwind CSS",
+            "Recoil",
+            "next-auth",
+            "Firebase",
+          ],
+          deployed: "Vercel",
+          deployUrl: "https://nextjs-app-instagram.vercel.app/",
+          githubUrl: "https://github.com/omidnoor/nextjs-app-instagram",
+        },
+      },
+      {
+        name: "Project7",
+        position: [-180, 25, -244],
+        rotation: [0, -Math.PI * 0, 0],
 
         imageUrl: "/icons/portfolio-icon-v1.png",
         url: null,

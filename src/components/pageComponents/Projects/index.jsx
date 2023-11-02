@@ -15,6 +15,8 @@ const Projects = ({ plate, image }) => {
     setHtmlClicked,
     isSceneClicked,
     setLastClick,
+    setIsChatClicked,
+    isChatClicked,
   } = useStore((state) => state);
 
   const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
@@ -53,12 +55,12 @@ const Projects = ({ plate, image }) => {
         >
           <div className={styles.content}>
             <div className={styles.name}>
-              <p>Name: </p>
-              <h3>{plate.title}</h3>
+              {/* <p>Name: </p> */}
+              <h2>{plate.title}</h2>
             </div>
             {plate.frameWorks && (
               <div className={styles.lib}>
-                <p>Frameworks / Libraries:</p>
+                <h3>Frameworks / Libraries:</h3>
                 <ul>
                   {plate.frameWorks.map((frame, index) => (
                     <li key={index}> {frame}</li>
@@ -68,12 +70,13 @@ const Projects = ({ plate, image }) => {
             )}
             {plate.description && (
               <div className={styles.description}>
-                <p>Description: </p>
-                <ul>
-                  {plate.description.map((item, index) => (
+                <h3>Description: </h3>
+                <p>
+                  {plate.description}
+                  {/* {plate.description.map((item, index) => (
                     <li key={index}>{item}</li>
-                  ))}
-                </ul>
+                  ))} */}
+                </p>
               </div>
             )}
           </div>
@@ -95,9 +98,15 @@ const Projects = ({ plate, image }) => {
                 transform: props[1].scale?.to((s) => `scale(${s})`),
               }}
             >
-              <Link href={plate.deployUrl || `/`}>
-                <FaLink />
-              </Link>
+              {!plate.title.includes("MemoAI Chat") ? (
+                <Link target="_blank" href={plate.deployUrl || `/`}>
+                  <FaLink />
+                </Link>
+              ) : (
+                <Link href="#" onClick={() => setIsChatClicked(!isChatClicked)}>
+                  <FaLink />
+                </Link>
+              )}
             </animated.div>
             <animated.div
               onMouseLeave={() => handleLeaveLink(0)}
@@ -106,9 +115,11 @@ const Projects = ({ plate, image }) => {
                 transform: props[0].scale?.to((s) => `scale(${s})`),
               }}
             >
-              <Link href={plate.githubUrl || `/`}>
-                <FaGithub />
-              </Link>
+              {plate.githubUrl && (
+                <Link target="_blank" href={plate.githubUrl || `/`}>
+                  <FaGithub />
+                </Link>
+              )}
             </animated.div>
           </div>
         </div>

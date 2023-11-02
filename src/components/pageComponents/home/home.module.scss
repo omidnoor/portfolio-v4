@@ -13,7 +13,7 @@
   flex-direction: column;
   // background-color: #839f9f;
   position: relative;
-  // background-image: $background-gradient;
+  background-image: $background-gradient;
   // background-color: #fff6ff;
   font-family: $font-inter;
   // .card {
@@ -112,7 +112,7 @@
       h1 {
         font-size: map-get($text-size, xxl);
         font-size: 80px;
-        color: #302f30;
+        color: #d2d1d2;
         span {
           // color: $primary-accent-color;
           color: #a90ff6;
