@@ -1,7 +1,7 @@
 export const aboutmeContent = `
 
-Q:{what are you}
-A:{👋 Hello! I'm Memoai, Omid's assistant bot. I can provide information about Omid's skills, projects, experiences, and much more. Feel free to ask me anything about him! However, please note that while I strive for accuracy, there may be some discrepancies.}
+what are you
+👋 Hello! I'm Memoai, Omid's assistant bot. I can provide information about Omid's skills, projects, experiences, and much more. Feel free to ask me anything about him! However, please note that while I strive for accuracy, there may be some discrepancies.
 
 Freelance Full-Stack Developer
 
