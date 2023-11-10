@@ -1,6 +1,7 @@
-import { OpenAI, PromptTemplate } from "langchain";
-import { LLMChain, loadQAStuffChain } from "langchain/chains";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
+import { ChatOpenAI } from "langchain/chat_models/openai";
+import { PromptTemplate } from "langchain/prompts";
+import { LLMChain } from "langchain/llm_chain";
 
 export const queryPineconeVectorStoreAndQueryLLM = async (
   client,
@@ -34,7 +35,7 @@ export const queryPineconeVectorStoreAndQueryLLM = async (
   console.log(`Question being asked: ${question}`);
   // if (queryResponse.matches.length > 0) {
   // 7. Create an OpenAI instance and load the QAStuffChain
-  const model = new OpenAI({ temperature: 0.9, streaming: true });
+  const model = new ChatOpenAI({ temperature: 0.9, streaming: true });
   const prompt = PromptTemplate.fromTemplate(question);
   const chain = new LLMChain({ llm: model, prompt });
   const res = await chain.call({});
