@@ -31,13 +31,7 @@ const FrameContent = ({ props, frameRef }) => {
     setActiveMenuButton,
     setLastClick,
     setFrameHovered,
-    frameHovered,
-    setWidth,
-    width,
   } = useStore((state) => state);
-
-  const widthState = useWindowWidth();
-  const iframeRef = useRef(null);
 
   useEffect(() => {
     if (frameRef.current) {
@@ -48,17 +42,6 @@ const FrameContent = ({ props, frameRef }) => {
       }
     }
   }, []);
-
-  const handleClick = (e) => {
-    e.stopPropagation();
-    setHtmlClicked(true);
-    setPlateClicked(false);
-    setLastClick("html");
-  };
-
-  useEffect(() => {
-    setHtmlClicked(false);
-  }, [isSceneClicked, activeMenuButton, arrowCount]);
 
   const handleEnter = (e) => {
     e.stopPropagation();
@@ -92,14 +75,13 @@ const FrameContent = ({ props, frameRef }) => {
 
   return (
     <>
-      {/* {props.name !== "Home" && ( */}
       <Html
         as="div"
         position={[0, 0, 0.1]}
         zIndexRange={[0, 0]}
         wrapperClass={styles.wrapper}
         transform
-        occlude={props.name === "Contact Me" ? false : true}
+        occlude={props.name === "Contact Me" ? true : true}
       >
         <div
           className={styles.main}
@@ -108,10 +90,8 @@ const FrameContent = ({ props, frameRef }) => {
           onMouseEnter={handleEnter}
           onMouseLeave={handleLeave}
         >
-          {/* {props.name === "About Me" && <Iframe src={props.url} />} */}
           {props.name === "About Me" && <PageAboutMe />}
           {props.name === "Contact Me" && <Iframe src={props.url} />}
-          {/* {props.name === "Home" && <Home />} */}
           {props.name === "Home" && (
             <div
               // style={{ zIndex: 100 }}
@@ -122,25 +102,10 @@ const FrameContent = ({ props, frameRef }) => {
             </div>
           )}
           {props.contentUrl && props.plate && (
-            // <div
-            //   onClick={handleClick}
-            //   onMouseEnter={handleEnter}
-            //   onMouseLeave={handleLeave}
-            //   className={styles.projects}
-            // >
             <Projects plate={props.plate} image={props.contentUrl} />
-            // <Image
-            //   src={props.contentUrl}
-            //   width={700}
-            //   height={900}
-            //   alt="project content image"
-            // />
-            // </div>
           )}
-          {/* {props.name === "Contact Me" && <ContactForm />} */}
         </div>
       </Html>
-      {/* )} */}
     </>
   );
 };

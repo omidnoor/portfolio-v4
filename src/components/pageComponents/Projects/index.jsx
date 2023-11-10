@@ -1,7 +1,7 @@
 import { useAnimatedScaleOnHover } from "@/components/utilComponents/Animations/useAnimatedScaleOnHover ";
 import { useStore } from "@/stores/store";
-import { useCallback, useEffect } from "react";
-import { animated, useSprings } from "react-spring";
+import { memo, useCallback, useEffect } from "react";
+import { animated } from "react-spring";
 import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
 import styles from "./projects.module.scss";
@@ -20,8 +20,6 @@ const Projects = ({ plate, image }) => {
   } = useStore((state) => state);
 
   const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
-
-  //   const active = pages.find((page) => page.name === activeMenuButton);
 
   const handleClick = useCallback((e) => {
     e.stopPropagation();
@@ -55,7 +53,6 @@ const Projects = ({ plate, image }) => {
         >
           <div className={styles.content}>
             <div className={styles.name}>
-              {/* <p>Name: </p> */}
               <h2>{plate.title}</h2>
             </div>
             {plate.frameWorks && (
@@ -71,20 +68,13 @@ const Projects = ({ plate, image }) => {
             {plate.description && (
               <div className={styles.description}>
                 <h3>Description: </h3>
-                <p>
-                  {plate.description}
-                  {/* {plate.description.map((item, index) => (
-                    <li key={index}>{item}</li>
-                  ))} */}
-                </p>
+                <p>{plate.description}</p>
               </div>
             )}
           </div>
           <div className={styles.image}>
             <Image
               src={image}
-              // style={{ objectFit: "contain" }}
-              // fill={true}
               width={925}
               height={1250}
               alt="project content image"
@@ -127,4 +117,4 @@ const Projects = ({ plate, image }) => {
     </>
   );
 };
-export default Projects;
+export default memo(Projects);

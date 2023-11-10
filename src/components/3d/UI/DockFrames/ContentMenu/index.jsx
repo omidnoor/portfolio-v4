@@ -10,10 +10,8 @@ import { useWindowWidth } from "@/components/3d/Utils/useWindowWidth";
 
 const ContentMenu = () => {
   const [display, setDisplay] = useState(false);
-  const setIsContentIcons = useStore((state) => state.setIsContentIcons);
-  const isContentIcons = useStore((state) => state.isContentIcons);
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
+
+  const { isContentIcons, setIsContentIcons, activeMenuButton } = useStore();
 
   const [props, api] = useSpring(() => ({
     from: { y: 10, opacity: 1 },
@@ -46,7 +44,7 @@ const ContentMenu = () => {
       setIsContentIcons(false);
       setDisplay(false);
     }
-  }, [activeMenuButton, isSceneClicked, width]);
+  }, [activeMenuButton, width]);
 
   useEffect(
     () => {

@@ -5,7 +5,6 @@ const Message = ({ children, role }) => {
   const props = useSpring({
     from: { opacity: 0 },
     to: { opacity: 1 },
-    // y: isChatClicked ? 0 : 500,
     config: config.stiff,
   });
 

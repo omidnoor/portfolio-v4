@@ -1,7 +1,5 @@
 import { PerspectiveCamera } from "@react-three/drei";
 import { memo, useEffect, useRef } from "react";
-import { cameraInitCoor, camerainitLookAt } from "@/stores/variables";
-import { useStore } from "@/stores/store";
 
 const ResponsiveCamera = () => {
   const cameraRef = useRef();

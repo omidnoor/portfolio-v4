@@ -1,7 +1,7 @@
 import { CharacterTextSplitter } from "langchain/text_splitter";
 import { PineconeStore } from "langchain/vectorstores/pinecone";
 import { OpenAIEmbeddings } from "langchain/embeddings/openai";
-import { PineconeClient } from "@pinecone-database/pinecone";
+import { Pinecone } from "@pinecone-database/pinecone";
 
 export default async function (req, res) {
   if (req.method === "POST") {
@@ -18,12 +18,28 @@ export default async function (req, res) {
 
       const splitTexts = await splitter.splitText(aboutmeContent);
 
-      const client = new PineconeClient();
+      const client = new Pinecone();
 
+      const existingIndexes = await client.listIndexes();
+
+      if (!existingIndexes.includes(process.env.PINECONE_API_KEY)) {
+        await client.createIndex({
+          createRequest: {
+            name: process.env.PINECONE_INDEX,
+            dimension: 1536,
+            metric: "cosine",
+            waitUntilReady: true,
+          },
+        });
+
+        console.log("Successfully created index");
+      } else {
+      }
       await client.init({
         apiKey: process.env.PINECONE_API_KEY,
         environment: process.env.PINECONE_ENVIRONMENT,
       });
+
       const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
       await PineconeStore.fromTexts(splitTexts, {}, new OpenAIEmbeddings(), {
         pineconeIndex,

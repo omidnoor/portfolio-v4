@@ -10,8 +10,7 @@ import { useWindowWidth } from "./Utils/useWindowWidth";
 const ImageFrame = ({ matcapTexture, ...props }) => {
   const [planeWidth, setPlaneWidth] = useState(11);
 
-  const setFrameRef = useStore((state) => state.setFrameRef);
-  const setPlateRef = useStore((state) => state.setPlateRef);
+  const { setFrameRef, setPlateRef } = useStore();
 
   const width = useWindowWidth();
 
@@ -26,7 +25,6 @@ const ImageFrame = ({ matcapTexture, ...props }) => {
 
   const frameRef = useRef(null);
   const plateRef = useRef(null);
-  console.log(props.name);
   return (
     <mesh ref={frameRef} {...props}>
       {props.name.includes("Project") ? (

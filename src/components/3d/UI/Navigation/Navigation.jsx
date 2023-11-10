@@ -183,6 +183,7 @@ const Navigation = () => {
     normal,
     subPosition,
   ]);
+
   useEffect(() => {
     if (normalAboutMe && active?.position) {
       const position = active?.position;

@@ -8,7 +8,6 @@ import { useStore } from "@/stores/store";
 
 export const DockCard = ({ children, type }) => {
   const cardRef = useRef();
-  const [initialWidth, setInitialWidth] = useState(50);
   const [hasSub, setHasSub] = useState(false);
 
   const activeMenuButton = useStore((state) => state.activeMenuButton);
@@ -28,8 +27,6 @@ export const DockCard = ({ children, type }) => {
     },
   }));
 
-  const handleClick = (e) => {};
-
   const handleEnter = () => {
     api.start({ scale: 1.2 });
   };
@@ -46,7 +43,6 @@ export const DockCard = ({ children, type }) => {
         className={styles["dock-card"]}
         onMouseEnter={handleEnter}
         onMouseLeave={handleLeave}
-        onClick={handleClick}
         style={{
           transform: props.scale?.to((s) => `scale(${s})`),
           filter:

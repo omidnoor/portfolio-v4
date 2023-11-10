@@ -1,4 +1,3 @@
-import { useStore } from "@/stores/store";
 import { Canvas } from "@react-three/fiber";
 import { memo } from "react";
 

@@ -1,18 +1,16 @@
 import { useStore } from "@/stores/store";
 import Message from "./Message";
 import styles from "./styles.module.scss";
-import { BsRobot } from "react-icons/bs";
 import { AiOutlineUser } from "react-icons/ai";
 import Loader from "@/components/utilComponents/Loader/Loader";
 import { useTransition, animated, config } from "react-spring";
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useEffect } from "react";
 import ChatWelcomeContainer from "../ChatWelcome/ChatWelcomeContainer";
 import Image from "next/image";
 
 const ChatTextArea = () => {
-  const messages = useStore((state) => state.messages);
-  const isChatLoading = useStore((state) => state.isChatLoading);
+  const { isChatLoading, messages } = useStore();
   const [noMessages, setNoMessages] = useState(false);
 
   useEffect(() => {
@@ -77,4 +75,4 @@ const ChatTextArea = () => {
     </div>
   );
 };
-export default ChatTextArea;
+export default memo(ChatTextArea);

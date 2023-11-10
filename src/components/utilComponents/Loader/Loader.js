@@ -7,7 +7,7 @@ const Loader = () => {
       width="32"
       color="#ffe000"
       ariaLabel="grid-loading"
-      radius="4"
+      radius="1"
       wrapperStyle={{}}
       wrapperClass=""
       visible={true}

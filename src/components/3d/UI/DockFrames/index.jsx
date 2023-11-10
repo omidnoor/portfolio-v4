@@ -5,10 +5,10 @@ import { DockDivider } from "./DockDivider/DockDivider";
 import { pages } from "@/stores/data";
 import BackButton from "./Card/BackButton";
 import ContentMenu from "./ContentMenu";
-import { Suspense } from "react";
+import { Suspense, memo } from "react";
 import CustomLoader from "@/components/utilComponents/Loader/CustomLoader";
 
-export default function DockMenu() {
+const DockMenu = () => {
   return (
     <Suspense fallback={<CustomLoader />}>
       <Dock>
@@ -24,4 +24,6 @@ export default function DockMenu() {
       </Dock>
     </Suspense>
   );
-}
+};
+
+export default memo(DockMenu);

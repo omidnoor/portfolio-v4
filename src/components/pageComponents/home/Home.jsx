@@ -1,19 +1,11 @@
 import styles from "./home.module.scss";
 import HomeCard from "../home/HomeCard";
-import HomeImage from "../home/HomeImage";
-import { memo, useEffect, useRef, useState } from "react";
-import HomeCanvas from "./HomeCanvas";
-import AboutMe from "../aboutMe/AboutMe";
+import { memo, useEffect, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import AboutSphere from "@/components/3d/AboutMeComponents/AboutSphere";
-import { useSpring, animated, config } from "react-spring";
+import { useSpring, animated } from "react-spring";
 import { a } from "@react-spring/web";
-import {
-  OrbitControls,
-  PerspectiveCamera,
-  TrackballControls,
-} from "@react-three/drei";
-import AboutMeEffect from "@/components/3d/AboutMeComponents/AboutMeEffect";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { useStore } from "@/stores/store";
 import AboutCloud from "@/components/3d/AboutMeComponents/AboutCloud";
 import ThreeDActions from "./ThreeDActions";
@@ -30,7 +22,7 @@ const colors = {
 };
 
 const Home = () => {
-  const { mode, setMode } = useStore((state) => state);
+  const { mode } = useStore((state) => state);
   const cameraRef = useRef();
 
   const cardSpring = useSpring({
@@ -69,25 +61,13 @@ const Home = () => {
       <a.div
         className={styles.card}
         style={{
-          // display: "flex",
           width: "100%",
           height: "100%",
           position: "absolute",
           zIndex: 1,
         }}
       >
-        <Canvas
-          // dpr={[1, 1.5]}
-          // camera={{
-          //   position: [0, 0, 80],
-          //   fov: 60,
-          //   near: 0.1,
-          //   far: 1000,
-          // }}
-          flat={mode}
-          linear
-          style={{ backgroundColor: background }}
-        >
+        <Canvas flat={mode} linear style={{ backgroundColor: background }}>
           {/* <EffectComposer>
             <Bloom
               intensity={2}
@@ -101,8 +81,8 @@ const Home = () => {
             position={[0, 0, 100]}
             ref={cameraRef}
             fov={52}
-            // near={0.1}
-            // far={1000}
+            near={0.1}
+            far={1000}
           />
           {mode && (
             <AboutCloud

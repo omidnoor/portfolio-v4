@@ -1,23 +1,20 @@
-import Image from "next/image";
 import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
-import { useEffect, useState } from "react";
-import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
-import { pages } from "@/stores/data";
-import { useDock } from "../Dock/DockContext";
-import { iconsSize } from "@/stores/variables";
+import { memo, useEffect, useState } from "react";
 import { useSpring, a } from "react-spring";
 
 const DockArrow = ({ type }) => {
-  const arrowButton = useStore((state) => state.arrowButton);
-  const setArrowButton = useStore((state) => state.setArrowButton);
-  const arrowCount = useStore((state) => state.arrowCount);
-  const setArrowCount = useStore((state) => state.setArrowCount);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
+  const {
+    setArrowButton,
+    arrowCount,
+    setArrowCount,
+    isSceneClicked,
+    activeMenuButton,
+  } = useStore();
+
   const [isHovered, setIsHovered] = useState(false);
 
-  const dock = useDock();
+  // const dock = useDock();
 
   const handleClick = (e) => {
     e.stopPropagation();
@@ -102,4 +99,4 @@ const DockArrow = ({ type }) => {
     </>
   );
 };
-export default DockArrow;
+export default memo(DockArrow);

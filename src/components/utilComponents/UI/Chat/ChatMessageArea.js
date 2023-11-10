@@ -6,7 +6,6 @@ import ChatUserTextArea from "./ChatUserTextArea/ChatUserTextArea";
 import ChatTextArea from "./ChatTextArea/ChatTextArea";
 
 const ChatMessageArea = () => {
-  const setIsChatClicked = useStore((state) => state.setIsChatClicked);
   const isChatClicked = useStore((state) => state.isChatClicked);
 
   const props = useSpring({

@@ -1,22 +1,15 @@
 import Image from "next/image";
 import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
-import { useEffect } from "react";
-import { BiRightArrow, BiLeftArrow } from "react-icons/bi";
+import { memo } from "react";
 import { iconsSize } from "@/stores/variables";
 
 const Card = ({ page }) => {
-  const activeMenuButton = useStore((state) => state.activeMenuButton);
-  const setActiveMenuButton = useStore((state) => state.setActiveMenuButton);
-  const isSceneClicked = useStore((state) => state.isSceneClicked);
+  const { setActiveMenuButton, isSceneClicked } = useStore();
 
   const handleClick = () => {
     setActiveMenuButton(page.name);
   };
-
-  useEffect(() => {
-    // setActiveMenuButton("");
-  }, [isSceneClicked]);
 
   return (
     <>
@@ -41,4 +34,4 @@ const Card = ({ page }) => {
     </>
   );
 };
-export default Card;
+export default memo(Card);

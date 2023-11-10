@@ -37,6 +37,13 @@ const ChatUserTextArea = () => {
     setIsChatLoading(false);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      handleSubmit(e);
+    }
+  };
+
   return (
     <div className={styles.userTextarea}>
       <form onSubmit={handleSubmit} className={styles.userTextarea__form}>
@@ -47,6 +54,7 @@ const ChatUserTextArea = () => {
           placeholder="Ask a question from chat bot..."
           value={currentMessage}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
         <button type="submit">Send</button>
       </form>

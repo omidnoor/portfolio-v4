@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 import { useSpring, animated } from "react-spring";
 import { useStore } from "@/stores/store";
 import { iconsSize } from "@/stores/variables";
-import { useEffect } from "react";
+import { memo, useEffect } from "react";
 
 const BackButton = () => {
   const {
@@ -69,4 +69,4 @@ const BackButton = () => {
     </animated.div>
   );
 };
-export default BackButton;
+export default memo(BackButton);
