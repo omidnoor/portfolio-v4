@@ -39,10 +39,10 @@ export default async function handler(req, res) {
       chunkSize: 1000,
     });
     const docs = await textSplitter.createDocuments([aboutmeContent]);
+    const embeddings = new OpenAIEmbeddings();
     await PineconeStore.fromDocuments(docs, embeddings, {
       pineconeIndex,
     });
-    const embeddings = new OpenAIEmbeddings();
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
       pineconeIndex,
     });
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
     const answer = await chain.invoke(content);
     res.status(200).json({ content: answer });
 
-    // res.status(200).json({ content: response.text });
+    res.status(200).json({ content: response.text });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
