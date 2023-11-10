@@ -68,7 +68,7 @@ const Services = () => {
         <>
           {windowWidth < 500 ? (
             <animated.div
-              key={index}
+              key={`${index}-${x}`}
               style={{
                 x,
                 scale,

@@ -31,22 +31,21 @@ const dataStyles = {
   textAlign: "center",
 };
 
-const inner= {
-//   marginLeft: "-50%",
-//   // height: "100%",
-//   width: "200%",
-// backgroundColor: "#200000",
-// color: "#f00",
-
-}
+const inner = {
+  //   marginLeft: "-50%",
+  //   // height: "100%",
+  //   width: "200%",
+  // backgroundColor: "#200000",
+  // color: "#f00",
+};
 
 const CustomLoader = () => {
   return (
     <Loader
-      containerStyles={...containerStyles}
-      barStyles={...barStyles}
-      innerStyles={...inner}
-      dataStyles={...dataStyles}
+      containerStyles={containerStyles}
+      barStyles={barStyles}
+      innerStyles={inner}
+      dataStyles={dataStyles}
       dataInterpolation={(p) => `Loading ${p.toFixed(0)}%`}
       initialState={(active) => active}
     />
