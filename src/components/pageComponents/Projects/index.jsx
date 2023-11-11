@@ -6,6 +6,7 @@ import Link from "next/link";
 import { FaGithub, FaLink } from "react-icons/fa";
 import styles from "./projects.module.scss";
 import Image from "next/image";
+import { useWindowWidth } from "@/components/3d/Utils/useWindowWidth";
 
 const Projects = ({ plate, image }) => {
   const {
@@ -20,7 +21,7 @@ const Projects = ({ plate, image }) => {
   } = useStore((state) => state);
 
   const { props, handleEnterLink, handleLeaveLink } = useAnimatedScaleOnHover();
-
+  const width = useWindowWidth();
   const handleClick = useCallback((e) => {
     e.stopPropagation();
     setPlateClicked(true);
@@ -85,7 +86,8 @@ const Projects = ({ plate, image }) => {
               onMouseLeave={() => handleLeaveLink(1)}
               onMouseEnter={() => handleEnterLink(1)}
               style={{
-                transform: props[1].scale?.to((s) => `scale(${s})`),
+                transform:
+                  width > 500 ? props[1].scale?.to((s) => `scale(${s})`) : "",
               }}
             >
               {!plate.title.includes("MemoAI Chat") ? (

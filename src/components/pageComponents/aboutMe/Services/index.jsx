@@ -10,29 +10,34 @@ import useMeasure from "react-use-measure";
 const servicesData = [
   {
     icon: "FaCode",
-    title: "Full Stack Web Application Dev",
-    subtitle: "From Concept to Deployment",
-    description: "Craft tailored web apps for seamless user experiences.",
+    title: "Custom Web App Development",
+    subtitle: "Bespoke Solutions, Front to Back",
+    description:
+      "Developing unique web applications optimized for performance and user engagement.",
   },
   {
     icon: "FaSearch",
-    title: "Advanced Data Search Solutions",
-    subtitle: "Effortless Data Retrieval",
-    description: "Retrieve insights from databases, PDFs, and images rapidly.",
+    title: "Data Search and Extraction",
+    subtitle: "Unlocking Data Potential",
+    description:
+      "Efficient extraction of valuable insights from databases, documents, and digital media.",
   },
   {
     icon: "FaCube",
-    title: "Web Dev & 3D Web Experience",
-    subtitle: "Digital Designs that Come to Life",
-    description: "Blend web design with interactive 3D landscapes.",
+    title: "Interactive Web and 3D Design",
+    subtitle: "Engaging Digital Environments",
+    description:
+      "Creating immersive web experiences with cutting-edge 3D visualization techniques.",
   },
   {
     icon: "FaRobot",
-    title: "Chatbot & AI Automation",
-    subtitle: "Smart Interactions & Processes",
-    description: "Launch smart chatbots and automate routine tasks.",
+    title: "Generative AI Solutions",
+    subtitle: "Innovative AI-Driven Content",
+    description:
+      "Utilize AI to generate dynamic content, enhance creativity, and streamline processes.",
   },
 ];
+
 const Services = () => {
   const { arrowCount } = useStore();
   const width = useWindowWidth();

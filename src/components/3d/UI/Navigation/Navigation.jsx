@@ -6,26 +6,16 @@ import { offsetY, offsetX, dist } from "@/stores/variables";
 import { cameraInitCoor, camerainitLookAt } from "@/stores/variables";
 import { Vector3 } from "three";
 import { useWindowWidth } from "../../Utils/useWindowWidth";
-import { useHandleClicks } from "./useHandleClicks";
-import useCameraFreez from "./useCameraFreez";
-import ResponsiveCamera from "./ResponsiveCamera";
-import { useThree } from "@react-three/fiber";
-// import useCameraFreez from "./useCameraFreez";
 
 const Navigation = () => {
   const cameraControlsRef = useRef(null);
   const width = useWindowWidth();
-  // useCameraFreez(cameraControlsRef);
   const {
     isLetsTalk,
     isServices,
-    plateClicked,
-    htmlClicked,
     geoNormalArray,
     activeMenuButton,
     arrowCount,
-    isSceneClicked,
-    isDragging,
     backClicked,
   } = useStore();
 
@@ -117,7 +107,7 @@ const Navigation = () => {
       ...camerainitLookAt,
       true,
     );
-  }, [isSceneClicked, activeMenuButton]);
+  }, [activeMenuButton]);
 
   useEffect(() => {
     const activePosition = active?.position;
@@ -175,8 +165,6 @@ const Navigation = () => {
   }, [
     arrowCount,
     activeMenuButton,
-    plateClicked,
-    htmlClicked,
     isLetsTalk,
     isServices,
     width,
@@ -211,8 +199,6 @@ const Navigation = () => {
     isServices,
     isLetsTalk,
     activeMenuButton,
-    plateClicked,
-    htmlClicked,
     width,
     normalAboutMe,
     active,
@@ -231,18 +217,11 @@ const Navigation = () => {
         dist - Math.max(33, Math.min(43.5, width / 14)),
       );
     }
-  }, [
-    activeMenuButton,
-    normalContactMe,
-    width,
-    normalContactMe,
-    isServices,
-    isLetsTalk,
-  ]);
+  }, [activeMenuButton, width, normalContactMe, isServices, isLetsTalk]);
   return (
     <CameraControls
       ref={cameraControlsRef}
-      enabled={!isDragging}
+      enabled={true}
       makeDefault={false}
       verticalDragToForward={false}
       dollyToCursor={false}

@@ -1,6 +1,8 @@
 export const wordsTech = [
   "ReactJS",
   "NextJS",
+  "Generative AI",
+  "Deep Learning",
   "Redux",
   "NodeJS",
   "AWS",

@@ -12,7 +12,7 @@ export const pages = [
     name: "About Me",
     position: [2, 25, 200],
     rotation: [0, Math.PI * 0.5, 0],
-    imageUrl: "/icons/about-icon-v1.png",
+    imageUrl: "/icons/services.png",
     url: "/PageAboutMe",
     componentUrl: null,
   },
