@@ -38,7 +38,7 @@
       justify-content: center;
 
       input {
-        min-height: 70px;
+        min-height: 50px;
       }
       label {
         min-height: 24px;
@@ -66,7 +66,7 @@
       }
       .textarea {
         resize: none;
-        height: 230px;
+        height: 220px;
       }
     }
 
@@ -75,7 +75,7 @@
       // display: flex;
       // justify-content: center;
       // align-items: center;
-      margin-top: 36px;
+      margin-top: 16px;
       button {
         // padding: 15px 0;
         width: 100%;

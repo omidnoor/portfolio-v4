@@ -5,6 +5,7 @@ export const wordsTech = [
   "Deep Learning",
   "Redux",
   "NodeJS",
+  "Python",
   "AWS",
   "Data Structures",
   "Algorithms",

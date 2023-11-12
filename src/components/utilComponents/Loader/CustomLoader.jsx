@@ -1,7 +1,15 @@
 import { Loader } from "@react-three/drei";
 
 const containerStyles = {
-  backgroundImage: `url("/textures/bg-gradients-v1.jpg")`,
+  // backgroundImage: `url("/textures/bg-gradients-v1.jpg")`,
+  backgroundImage: `radial-gradient(
+    circle at 50% 50%,
+    #220b28 0%,
+    #1b071f 25%,
+    #0c020e 50%,
+    #050105 75%,
+    #000000 100%
+  )`,
   backgroundImageSize: "cover",
   backgroundRepeat: "no-repeat",
   backgroundPosition: "center",
@@ -18,8 +26,8 @@ const barStyles = {
   // marginLeft: "-50%",
   height: "20px",
   width: "100%",
-  color: "#f8ff5f",
-  backgroundColor: "#200000",
+  color: "#a90ff6",
+  backgroundColor: "#a90ff6",
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
