@@ -35,25 +35,25 @@ export default async function handler(req, res) {
     });
 
     const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
-    const textSplitter = new RecursiveCharacterTextSplitter({
-      chunkSize: 1000,
-    });
-    const docs = await textSplitter.createDocuments([aboutmeContent]);
+    // const textSplitter = new RecursiveCharacterTextSplitter({
+    //   chunkSize: 1000,
+    // });
+    // const docs = await textSplitter.createDocuments([aboutmeContent]);
     const embeddings = new OpenAIEmbeddings();
-    await PineconeStore.fromDocuments(docs, embeddings, {
-      pineconeIndex,
-    });
+    // await PineconeStore.fromDocuments(docs, embeddings, {
+    //   pineconeIndex,
+    // });
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
       pineconeIndex,
     });
     const vectorStoreRetriever = vectorStore.asRetriever();
-    const SYSTEM_TEMPLATE = `You are Omid's personal assitant that can answer questions about him. Use the following pieces of context to answer the question at the end. He is a freelance software developer. Be positive and promote him to the potential clients and recruiters. Do not answer questions with very long sentences, be concise as much as possible but informative. If it is needed use lists, short terms. Be witty and encourage others to answer questions.
+    const SYSTEM_TEMPLATE = `You are MemoAI, Omid's personal assitant that can answer questions about him. Use the following pieces of context to answer the question at the end. He is a freelance software and AI developer and. Be positive and promote him to the potential clients and recruiters. Do not answer questions with very long sentences, be concise as much as possible but informative. If it is needed use lists, short terms. Be witty and funny.
       If you don't know the answer, just say that you don't know, don't try to make up an answer.
       ----------------
       {context}`;
 
     const model = new ChatOpenAI({
-      modelName: "gpt-4",
+      modelName: "gpt-4-1106-preview",
     });
 
     const messages = [
@@ -75,7 +75,7 @@ export default async function handler(req, res) {
     const answer = await chain.invoke(content);
     res.status(200).json({ content: answer });
 
-    res.status(200).json({ content: response.text });
+    // res.status(200).json({ content: response.text });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

@@ -5,7 +5,56 @@ what are you
 
 Freelance Full-Stack Developer
 
+freelance services: Generative AI Solutions:
+
+Offer custom development of AI-driven applications using generative models like GPT and other OpenAI technologies.
+Expertise in building chatbots, content generators, and AI tools that enhance user experience, streamline processes, and provide intelligent automation.
+Tailored AI solutions for unique business needs, from data analysis to creative content creation.
+Search Engine Using Elasticsearch:
+
+Development of powerful, scalable search engines for websites and applications using Elasticsearch.
+Capabilities include implementing advanced search features, real-time data indexing, and analytics to enhance data retrieval and user search experience.
+Customizable search solutions suitable for e-commerce, content management systems, and enterprise-level applications.
+Cloud, AWS and Azure:
+
+Proficient in cloud services and architecture, focusing on AWS and Azure platforms.
+Services include cloud migration, infrastructure setup, serverless architecture, and cloud-native application development.
+Expertise in optimizing cloud resources for cost-efficiency, scalability, and security.
+3D Web Development:
+
+Creating interactive 3D web experiences using technologies like WebGL and Three.js.
+Development of engaging, visually appealing 3D models and environments for websites, product visualizations, and educational tools.
+Innovative solutions that bring products and concepts to life in an immersive web environment.
+Full Stack Development:
+
+Comprehensive development services covering both front-end and back-end technologies.
+Proficiency in a wide range of programming languages and frameworks to build robust, efficient, and scalable web applications.
+Solutions ranging from simple websites to complex web applications, tailored to meet specific business requirements.
+
 Key Projects:
+
+AI Projects:
+In my innovative work with ChatGPT and OpenAI's technologies, I've concentrated on a few key projects that exemplify the depth and breadth of AI applications:
+
+MemoAI Personal Chatbot: An advanced chatbot that understands and processes legal documents, retrieves information, and offers suggestions. It can also create documents on complex subjects, serving as a sophisticated assistant. Imagine a bot that not only comprehends your legal needs but also acts proactively to manage them.
+
+SEO-Friendly Content Creator App: This application generates blog content based on user-specified titles and keywords. Integrated with the OpenAI API, it combines AI-driven content creation with a user-friendly interface, making it an invaluable tool for digital marketing.
+
+AI-Integrated Chat Application: A platform where users can interact with AI in a conversational manner. This project showcases the seamless integration of AI in enhancing user engagement and experience.
+
+Additionally, I have developed several custom GPT models for specific purposes, such as:
+
+NextJS Code Assistant
+GPT Finder
+Job Explorer
+Samantha (AI Companion)
+Lawyer GPT
+Doctor GPT
+Noam Chomsky Chat Bot
+Canadian Immigration Guide
+Zapier AI Helper
+DiagnoseMeAI
+Each of these projects and custom GPT models highlights my commitment to leveraging AI for diverse, practical applications, demonstrating how AI can be tailored to meet specific user needs and solve complex problems.
 
 Aircraft Maintenance Portal Web App
 
