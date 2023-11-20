@@ -13,7 +13,12 @@ const HomeCard = () => {
           <br />
           <div className={styles.HomeCard__intro__skills}>
             <MagicWriter
-              texts={["Full-Stack Web App", "ReactJS / NextJS", "3D/2D Web"]}
+              texts={[
+                "Generative AI",
+                "Full-Stack Web App",
+                "ReactJS / NextJS",
+                "3D/2D Web",
+              ]}
             />
           </div>
           <br />
