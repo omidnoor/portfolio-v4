@@ -125,4 +125,7 @@ export const useStore = create((set) => ({
 
   isDragging: false,
   setIsDragging: (isDragging) => set((state) => ({ ...state, isDragging })),
+
+  question: "",
+  setQuestion: (question) => set((state) => ({ ...state, question })),
 }));

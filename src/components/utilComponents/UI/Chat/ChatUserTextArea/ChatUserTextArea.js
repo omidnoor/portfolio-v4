@@ -6,20 +6,30 @@ import { v4 as uuid } from "uuid";
 import Loader from "@/components/utilComponents/Loader/Loader";
 
 const ChatUserTextArea = () => {
-  const messages = useStore((state) => state.messages);
-  const setMessages = useStore((state) => state.setMessages);
   const [currentMessage, setCurrentMessage] = useState("");
-  const setIsChatLoading = useStore((state) => state.setIsChatLoading);
+  const { setIsChatLoading, setMessages, question, setQuestion } = useStore();
 
   const handleChange = (e) => {
     setCurrentMessage(e.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  useEffect(() => {
+    const submitQuestion = async () => {
+      if (question) {
+        // console.log(`submitting question: ${question}`);
+        setCurrentMessage(question);
+        await handleSubmit(question);
+        setQuestion("");
+      }
+    };
+    submitQuestion();
+  }, [question]);
+
+  const handleSubmit = async (message = currentMessage, e) => {
+    if (e) e.preventDefault();
     setIsChatLoading(true);
-    setMessages({ role: "user", content: currentMessage });
-    setCurrentMessage("");
+    setMessages({ role: "user", content: message });
+    console.log(`submitting message: ${message}`);
     const response = await fetch("/api/ai/chatBot", {
       method: "POST",
       headers: {
@@ -28,12 +38,12 @@ const ChatUserTextArea = () => {
       body: JSON.stringify({
         chatId: uuid(),
         role: "user",
-        content: currentMessage,
+        content: message,
       }),
     });
     const data = await response.json();
     setMessages({ role: "assistant", content: data.content });
-
+    setCurrentMessage("");
     setIsChatLoading(false);
   };
 

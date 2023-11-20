@@ -1,3 +1,4 @@
+import ExampleQuestions from "./ExampleQuestions";
 import styles from "./styles.module.scss";
 
 const ChatWelcomeContainer = () => {
@@ -8,11 +9,7 @@ const ChatWelcomeContainer = () => {
         I can provide information about Omid's skills, projects, experiences,
         and much more.
       </p>
-      <p>Feel free to ask me anything about him!</p>
-      <p>
-        However, please note that while I strive for accuracy, there may be some
-        discrepancies.
-      </p>
+      <ExampleQuestions />
     </div>
   );
 };

@@ -26,4 +26,24 @@
       color: #051a2b;
     }
   }
+
+  .questionsContainer {
+    display: flex;
+    margin-top: auto;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: #ffffff;
+    color: rgb(0, 0, 0);
+    padding: 0.5rem 1.5rem;
+
+    .question {
+      cursor: pointer;
+      margin: 0.75rem 0;
+      // background-color: #a90ff6;
+      border: solid 1px #a90ff6;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.5rem;
+    }
+  }
 }
