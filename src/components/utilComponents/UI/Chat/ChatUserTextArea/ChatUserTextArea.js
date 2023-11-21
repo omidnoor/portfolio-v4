@@ -15,24 +15,24 @@ const ChatUserTextArea = () => {
 
   useEffect(() => {
     const submitQuestion = async () => {
-      if (question && currentMessage) {
+      if (question) {
         await handleSubmit();
       }
     };
     submitQuestion();
     setQuestion("");
-  }, [currentMessage]);
+  }, [currentMessage, question]);
 
-  useEffect(() => {
-    if (question) {
-      setCurrentMessage(question);
-    }
-  }, [question]);
+  // useEffect(() => {
+  //   if (question) {
+  //     setCurrentMessage(question);
+  //   }
+  // }, [question]);
 
   const handleSubmit = async (e) => {
     if (e) e.preventDefault();
     setIsChatLoading(true);
-    setMessages({ role: "user", content: currentMessage });
+    setMessages({ role: "user", content: question || currentMessage });
 
     try {
       const response = await fetch("/api/ai/chatBot", {
@@ -43,7 +43,7 @@ const ChatUserTextArea = () => {
         body: JSON.stringify({
           chatId: uuid(),
           role: "user",
-          content: currentMessage,
+          content: question || currentMessage,
         }),
       });
 
