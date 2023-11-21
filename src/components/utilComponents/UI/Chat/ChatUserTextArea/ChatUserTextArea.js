@@ -3,11 +3,11 @@ import styles from "./styles.module.scss";
 import { useStore } from "@/stores/store";
 import { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
-import Loader from "@/components/utilComponents/Loader/Loader";
 
 const ChatUserTextArea = () => {
   const [currentMessage, setCurrentMessage] = useState("");
-  const { setIsChatLoading, setMessages, question, setQuestion } = useStore();
+  const { setIsChatLoading, setMessages, question, setQuestion, messages } =
+    useStore();
 
   const handleChange = (e) => {
     setCurrentMessage(e.target.value);
@@ -16,7 +16,7 @@ const ChatUserTextArea = () => {
   useEffect(() => {
     const submitQuestion = async () => {
       if (question && currentMessage) {
-        await handleSubmit(question);
+        await handleSubmit();
       }
     };
     setQuestion("");
@@ -29,8 +29,8 @@ const ChatUserTextArea = () => {
     }
   }, [question]);
 
-  const handleSubmit = async (e, message = currentMessage) => {
-    if (typeof e === "object") e.preventDefault();
+  const handleSubmit = async (e) => {
+    if (e) e.preventDefault();
     setIsChatLoading(true);
     setMessages({ role: "user", content: currentMessage });
     setCurrentMessage("");
@@ -50,6 +50,44 @@ const ChatUserTextArea = () => {
 
     setIsChatLoading(false);
   };
+
+  // useEffect(() => {
+  //   if (messages.length > 0) {
+  //     const lastMessage = messages[0];
+  //     console.log(`Last message: ${lastMessage.content}`);
+  //     if (lastMessage.content.trim() === "") {
+  //       return;
+  //     }
+
+  //     const storeChat = async () => {
+  //       try {
+  //         console.log(`Storing chat message: ${lastMessage.content}`);
+  //         const response = await fetch("/api/ai/storeChat", {
+  //           method: "POST",
+  //           headers: {
+  //             "Content-Type": "application/json",
+  //           },
+  //           body: JSON.stringify({
+  //             chatId: uuid(),
+  //             role: lastMessage.role,
+  //             content: lastMessage.content,
+  //           }),
+  //         });
+
+  //         if (!response.ok) {
+  //           throw new Error(`HTTP error! Status: ${response.status}`);
+  //         }
+
+  //         // Handle the response if needed
+  //         const data = await response.json();
+  //         console.log(data); // or handle data as needed
+  //       } catch (error) {
+  //         console.error("Failed to store message:", error);
+  //       }
+  //     };
+  //     storeChat();
+  //   }
+  // }, [messages]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {

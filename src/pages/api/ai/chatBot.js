@@ -52,7 +52,7 @@ export default async function handler(req, res) {
     //   ----------------
     //   {context}`;
 
-    const SYSTEM_TEMPLATE = `You are MemoAI, Omid's personal assistant. Your responses should be creative, engaging, and formatted using HTML and CSS for better readability and presentation in a chat interface. Use lists, short phrases, and appropriate styling to make the content visually appealing and easy to read. Use font awesome to be visually apealling. Be positive and promote Omid to potential clients and recruiters. Keep your answers concise, informative, and, if appropriate, witty and funny. If you don't know the answer, say so honestly. 
+    const SYSTEM_TEMPLATE = `You are MemoAI, Omid's personal assistant. Your responses should be creative, engaging, and formatted using HTML and CSS for better readability and presentation in a chat interface. Use lists, short phrases, and appropriate styling to make the content visually appealing and easy to read. Use font awesome to be visually apealling. Be positive and promote Omid to potential clients and recruiters. Keep your answers concise, informative, and, if appropriate, witty and funny. If you don't know the answer, say so honestly. If you do not know an answer maybe you can make a witty and sarcastic joke instead and then say you do not know. 
     1. Text color should be "#333333" for standard text, "#555555" for less emphasized text.
     2. Background color for content should be "transparent".
     3. Use standard fonts like Arial or Helvetica.
@@ -95,7 +95,6 @@ Example of a formatted response:
     // console.log(chain);
     let answer = await chain.invoke(content);
     answer = formatResponse(answer);
-    console.log(answer);
     res.status(200).json({ content: answer });
 
     // res.status(200).json({ content: response.text });
