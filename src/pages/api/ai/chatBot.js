@@ -74,7 +74,8 @@ Example of a formatted response:
 {context}`;
 
     const model = new ChatOpenAI({
-      modelName: "gpt-4-1106-preview",
+      modelName: "gpt-3.5-turbo",
+      // modelName: "gpt-4-1106-preview",
     });
 
     const messages = [
@@ -93,7 +94,6 @@ Example of a formatted response:
       new StringOutputParser(),
     ]);
     let answer = await chain.invoke(content);
-    console.log(`Answer: ${answer}`);
     answer = formatResponse(answer);
     res.status(200).json({ content: answer });
 
