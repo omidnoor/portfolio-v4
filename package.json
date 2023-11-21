@@ -8,6 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
     "@mui/material": "^5.13.4",
     "@next/font": "^13.3.2",
     "@pinecone-database/pinecone": "^1.1.2",

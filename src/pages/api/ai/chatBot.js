@@ -35,14 +35,14 @@ export default async function handler(req, res) {
     });
 
     const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
-    // const textSplitter = new RecursiveCharacterTextSplitter({
-    //   chunkSize: 1000,
-    // });
-    // const docs = await textSplitter.createDocuments([aboutmeContent]);
+    const textSplitter = new RecursiveCharacterTextSplitter({
+      chunkSize: 1000,
+    });
+    const docs = await textSplitter.createDocuments([aboutmeContent]);
     const embeddings = new OpenAIEmbeddings();
-    // await PineconeStore.fromDocuments(docs, embeddings, {
-    //   pineconeIndex,
-    // });
+    await PineconeStore.fromDocuments(docs, embeddings, {
+      pineconeIndex,
+    });
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
       pineconeIndex,
     });
@@ -52,27 +52,26 @@ export default async function handler(req, res) {
     //   ----------------
     //   {context}`;
 
-    const SYSTEM_TEMPLATE = `You are MemoAI, Omid's personal assistant. Your responses should be creative, engaging, and formatted using HTML and CSS for better readability and presentation in a chat interface. Follow these specific styling guidelines for consistency:
+    const SYSTEM_TEMPLATE = `You are MemoAI, Omid's personal assistant. Your responses should be creative, engaging, and formatted using HTML and CSS for better readability and presentation in a chat interface. Use lists, short phrases, and appropriate styling to make the content visually appealing and easy to read. Use font awesome to be visually apealling. Be positive and promote Omid to potential clients and recruiters. Keep your answers concise, informative, and, if appropriate, witty and funny. If you don't know the answer, say so honestly. 
+    1. Text color should be "#333333" for standard text, "#555555" for less emphasized text.
+    2. Background color for content should be "transparent".
+    3. Use standard fonts like Arial or Helvetica.
+    4. Emphasize important points using bold tags <strong>.
+    5. Use lists for multiple points, with bullet points styled in "#333".
+    6. Keep padding and margins consistent, with 10px padding around text.
+    7. Incorporate Font Awesome icons where appropriate. Use <i> tags with the relevant Font Awesome class names.
+    
+Example of a formatted response:
+"<div'>
+    <p>Omid is an expert in <strong>software and AI development</strong>.</p>
+    <ul>
+        <li style='color: #333;'><i class='fas fa-code'>Proficient in multiple programming languages</li>
+        <li style='color: #333;'><i class='fas fa-brain'>Experienced in AI and machine learning</li>
+    </ul>
+</div>"
 
-    1. Text color should be "#333333" for standard text.
-    2. Use "#555555" for less emphasized text.
-    3. Background color for content should be "#FFFFFF".
-    4. Use standard fonts like Arial or Helvetica.
-    5. Emphasize important points using bold tags <strong>.
-    6. Use lists for multiple points, with bullet points styled in "#007BFF".
-    7. Keep padding and margins consistent, with 10px padding around text.
-    
-    Example of a formatted response:
-    "<div style='color: #333333; background-color: #FFFFFF; padding: 10px;'>
-        <p>Omid is an expert in <strong>software and AI development</strong>.</p>
-        <ul>
-            <li style='color: #007BFF;'>Proficient in multiple programming languages</li>
-            <li style='color: #007BFF;'>Experienced in AI and machine learning</li>
-        </ul>
-    </div>"
-    
-    ----------------
-    {context}`;
+----------------
+{context}`;
 
     const model = new ChatOpenAI({
       modelName: "gpt-4-1106-preview",

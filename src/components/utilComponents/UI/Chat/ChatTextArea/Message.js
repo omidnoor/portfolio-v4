@@ -17,7 +17,7 @@ const Message = ({ children, role }) => {
         borderRadius: `${
           role === "user" ? "32px 32px 0 32px" : "32px 32px 32px 0"
         }`,
-        backgroundColor: role === "user" ? "#FFffef" : "#FFffff",
+        backgroundColor: role === "user" ? "#FFffc0" : "#FFffc0",
         ...props,
       }}
       dangerouslySetInnerHTML={{ __html: safeHTML }}
