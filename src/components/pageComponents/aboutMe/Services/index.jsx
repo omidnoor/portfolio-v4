@@ -65,13 +65,11 @@ const Services = () => {
     });
   }, [arrowCount, width]);
 
-  const windowWidth = useWindowWidth();
-
   return (
     <div className={styles.container}>
       {props.map(({ x, scale, display }, index) => (
-        <>
-          {windowWidth < 500 ? (
+        <div key={index}>
+          {width < 500 ? (
             <animated.div
               key={`${index}-${x}`}
               style={{
@@ -93,7 +91,7 @@ const Services = () => {
           ) : (
             <Item {...servicesData[index]} />
           )}
-        </>
+        </div>
       ))}
     </div>
   );

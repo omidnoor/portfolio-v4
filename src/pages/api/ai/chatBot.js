@@ -92,8 +92,8 @@ Example of a formatted response:
       model,
       new StringOutputParser(),
     ]);
-    // console.log(chain);
     let answer = await chain.invoke(content);
+    console.log(`Answer: ${answer}`);
     answer = formatResponse(answer);
     res.status(200).json({ content: answer });
 

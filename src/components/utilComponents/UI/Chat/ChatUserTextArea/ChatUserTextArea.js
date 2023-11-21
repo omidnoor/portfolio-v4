@@ -19,8 +19,8 @@ const ChatUserTextArea = () => {
         await handleSubmit();
       }
     };
-    setQuestion("");
     submitQuestion();
+    setQuestion("");
   }, [currentMessage]);
 
   useEffect(() => {
@@ -33,22 +33,36 @@ const ChatUserTextArea = () => {
     if (e) e.preventDefault();
     setIsChatLoading(true);
     setMessages({ role: "user", content: currentMessage });
-    setCurrentMessage("");
-    const response = await fetch("/api/ai/chatBot", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        chatId: uuid(),
-        role: "user",
-        content: currentMessage,
-      }),
-    });
-    const data = await response.json();
-    setMessages({ role: "assistant", content: data.content });
 
-    setIsChatLoading(false);
+    try {
+      const response = await fetch("/api/ai/chatBot", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          chatId: uuid(),
+          role: "user",
+          content: currentMessage,
+        }),
+      });
+
+      if (!response.ok) {
+        // If the response status is not OK, throw an error
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      setMessages({ role: "assistant", content: data.content });
+    } catch (error) {
+      // Handle the error here
+      console.error("Error submitting message:", error);
+      // Optionally, update the UI to show an error message to the user
+      // setErrorMessage("Failed to send message. Please try again.");
+    } finally {
+      setCurrentMessage("");
+      setIsChatLoading(false);
+    }
   };
 
   // useEffect(() => {
