@@ -35,14 +35,14 @@ export default async function handler(req, res) {
     });
 
     const pineconeIndex = client.Index(process.env.PINECONE_INDEX);
-    const textSplitter = new RecursiveCharacterTextSplitter({
-      chunkSize: 1000,
-    });
-    const docs = await textSplitter.createDocuments([aboutmeContent]);
+    // const textSplitter = new RecursiveCharacterTextSplitter({
+    //   chunkSize: 1000,
+    // });
+    // const docs = await textSplitter.createDocuments([aboutmeContent]);
     const embeddings = new OpenAIEmbeddings();
-    await PineconeStore.fromDocuments(docs, embeddings, {
-      pineconeIndex,
-    });
+    // await PineconeStore.fromDocuments(docs, embeddings, {
+    //   pineconeIndex,
+    // });
     const vectorStore = await PineconeStore.fromExistingIndex(embeddings, {
       pineconeIndex,
     });
