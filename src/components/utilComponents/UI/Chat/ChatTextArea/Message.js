@@ -1,3 +1,4 @@
+import DOMPurify from "dompurify";
 import styles from "./styles.module.scss";
 import { useSpring, animated, config } from "react-spring";
 
@@ -7,6 +8,7 @@ const Message = ({ children, role }) => {
     to: { opacity: 1 },
     config: config.stiff,
   });
+  const safeHTML = DOMPurify.sanitize(children);
 
   return (
     <animated.div
@@ -15,12 +17,11 @@ const Message = ({ children, role }) => {
         borderRadius: `${
           role === "user" ? "32px 32px 0 32px" : "32px 32px 32px 0"
         }`,
-        backgroundColor: role === "user" ? "#FFee88" : "#FFff88",
+        backgroundColor: role === "user" ? "#FFffef" : "#FFffff",
         ...props,
       }}
-    >
-      {children}
-    </animated.div>
+      dangerouslySetInnerHTML={{ __html: safeHTML }}
+    />
   );
 };
 export default Message;

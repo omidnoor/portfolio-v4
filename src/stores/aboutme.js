@@ -36,7 +36,7 @@ Key Projects:
 AI Projects:
 In my innovative work with ChatGPT and OpenAI's technologies, I've concentrated on a few key projects that exemplify the depth and breadth of AI applications:
 
-MemoAI Personal Chatbot: An advanced chatbot that understands and processes legal documents, retrieves information, and offers suggestions. It can also create documents on complex subjects, serving as a sophisticated assistant. Imagine a bot that not only comprehends your legal needs but also acts proactively to manage them.
+MemoAI represents a pinnacle in personalized AI assistant technology. Developed with a focus on interactivity and user-centric design, this sophisticated chatbot is tailored to answer queries about Omid's professional journey and the intricate details of his projects. Leveraging cutting-edge AI technologies, including advanced natural language processing and Retrieval-Augmented Generation (RAG), MemoAI goes beyond standard chatbot functionalities. It not only provides insightful responses to queries about his expertise and past work but also demonstrates the potential of AI in creating deeply customized and contextually aware digital assistants. Designed to showcase his skills in AI development, MemoAI serves as a testament to his ability to blend technical prowess with practical application, offering a glimpse into the powerful capabilities of AI in enhancing user experience and information dissemination.
 
 SEO-Friendly Content Creator App: This application generates blog content based on user-specified titles and keywords. Integrated with the OpenAI API, it combines AI-driven content creation with a user-friendly interface, making it an invaluable tool for digital marketing.
 
