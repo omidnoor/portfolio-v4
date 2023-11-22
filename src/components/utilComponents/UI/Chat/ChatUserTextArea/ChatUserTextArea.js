@@ -60,7 +60,7 @@ const ChatUserTextArea = () => {
       }
       const data = await response.json();
       const body = JSON.parse(data.body);
-      console.log(JSON.parse(data.body));
+      // console.log(JSON.parse(data.body));
       // setMessages({ role: "assistant", content: data.content });
       setMessages({ role: "assistant", content: body.content });
     } catch (error) {
@@ -79,14 +79,14 @@ const ChatUserTextArea = () => {
   useEffect(() => {
     if (messages.length > 0) {
       const lastMessage = messages[0];
-      console.log(`Last message: ${lastMessage.content}`);
+      // console.log(`Last message: ${lastMessage.content}`);
       if (lastMessage.content.trim() === "") {
         return;
       }
 
       const storeChat = async () => {
         try {
-          console.log(`Storing chat message: ${lastMessage.content}`);
+          // console.log(`Storing chat message: ${lastMessage.content}`);
           const response = await fetch("/api/ai/storeChat", {
             method: "POST",
             headers: {
@@ -105,7 +105,7 @@ const ChatUserTextArea = () => {
 
           // Handle the response if needed
           const data = await response.json();
-          console.log(data); // or handle data as needed
+          // console.log(data); // or handle data as needed
         } catch (error) {
           console.error("Failed to store message:", error);
         }
