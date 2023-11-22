@@ -8,6 +8,7 @@ const ChatUserTextArea = () => {
   const [currentMessage, setCurrentMessage] = useState("");
   const { setIsChatLoading, setMessages, question, setQuestion, messages } =
     useStore();
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setCurrentMessage(e.target.value);
@@ -33,75 +34,85 @@ const ChatUserTextArea = () => {
     if (e) e.preventDefault();
     setIsChatLoading(true);
     setMessages({ role: "user", content: question || currentMessage });
-
+    setCurrentMessage("");
     try {
-      const response = await fetch("/api/ai/chatBot", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
+      // const response = await fetch("/api/ai/chatBot", {
+      const response = await fetch(
+        "https://ifr8ws9p16.execute-api.us-west-1.amazonaws.com/dev/query",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: uuid(),
+            role: "user",
+            content: question || currentMessage,
+          }),
         },
-        body: JSON.stringify({
-          chatId: uuid(),
-          role: "user",
-          content: question || currentMessage,
-        }),
-      });
+      );
 
+      // if (!response.ok) {
       if (!response.ok) {
         // If the response status is not OK, throw an error
+        setError("Failed to send message. Please try again.");
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
-
       const data = await response.json();
-      setMessages({ role: "assistant", content: data.content });
+      const body = JSON.parse(data.body);
+      console.log(JSON.parse(data.body));
+      // setMessages({ role: "assistant", content: data.content });
+      setMessages({ role: "assistant", content: body.content });
     } catch (error) {
       // Handle the error here
+      setError("Failed to send message. Please try again.");
       console.error("Error submitting message:", error);
       // Optionally, update the UI to show an error message to the user
       // setErrorMessage("Failed to send message. Please try again.");
     } finally {
       setCurrentMessage("");
+      setError("");
       setIsChatLoading(false);
     }
   };
 
-  // useEffect(() => {
-  //   if (messages.length > 0) {
-  //     const lastMessage = messages[0];
-  //     console.log(`Last message: ${lastMessage.content}`);
-  //     if (lastMessage.content.trim() === "") {
-  //       return;
-  //     }
+  useEffect(() => {
+    if (messages.length > 0) {
+      const lastMessage = messages[0];
+      console.log(`Last message: ${lastMessage.content}`);
+      if (lastMessage.content.trim() === "") {
+        return;
+      }
 
-  //     const storeChat = async () => {
-  //       try {
-  //         console.log(`Storing chat message: ${lastMessage.content}`);
-  //         const response = await fetch("/api/ai/storeChat", {
-  //           method: "POST",
-  //           headers: {
-  //             "Content-Type": "application/json",
-  //           },
-  //           body: JSON.stringify({
-  //             chatId: uuid(),
-  //             role: lastMessage.role,
-  //             content: lastMessage.content,
-  //           }),
-  //         });
+      const storeChat = async () => {
+        try {
+          console.log(`Storing chat message: ${lastMessage.content}`);
+          const response = await fetch("/api/ai/storeChat", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chatId: uuid(),
+              role: lastMessage.role,
+              content: lastMessage.content,
+            }),
+          });
 
-  //         if (!response.ok) {
-  //           throw new Error(`HTTP error! Status: ${response.status}`);
-  //         }
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
 
-  //         // Handle the response if needed
-  //         const data = await response.json();
-  //         console.log(data); // or handle data as needed
-  //       } catch (error) {
-  //         console.error("Failed to store message:", error);
-  //       }
-  //     };
-  //     storeChat();
-  //   }
-  // }, [messages]);
+          // Handle the response if needed
+          const data = await response.json();
+          console.log(data); // or handle data as needed
+        } catch (error) {
+          console.error("Failed to store message:", error);
+        }
+      };
+      storeChat();
+    }
+  }, [messages]);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
@@ -112,6 +123,7 @@ const ChatUserTextArea = () => {
 
   return (
     <div className={styles.userTextarea}>
+      {error && <p className={styles.userTextarea__error}>{error}</p>}
       <form onSubmit={handleSubmit} className={styles.userTextarea__form}>
         <TextareaAutosize
           className={styles.userTextarea__textarea}
