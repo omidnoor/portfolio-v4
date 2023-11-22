@@ -1,12 +1,14 @@
 import { Schema, mongoose } from "mongoose";
 
 const chatSchema = new Schema({
-  chat: {
+  content: {
     type: String,
-    // required: [true, "Please add a message"],
     trim: true,
-    // minLength: [1, "Message must be at least 1 characters"],
     maxLength: [500, "Message must be less than 500 characters"],
+  },
+  role: {
+    type: String,
+    trim: true,
   },
   date: {
     type: Date,
@@ -14,6 +16,6 @@ const chatSchema = new Schema({
   },
 });
 
-const Chat = mongoose.models.Contact || mongoose.model("Contact", chatSchema);
+const Chat = mongoose.models.chat || mongoose.model("chat", chatSchema);
 
 export default Chat;

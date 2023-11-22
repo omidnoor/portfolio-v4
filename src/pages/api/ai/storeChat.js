@@ -8,6 +8,7 @@ export default async function handler(req, res) {
   const { content, role } = await req.body;
   try {
     await db.connectDb();
+    console.log(role);
     const chat = await Chat.create({ role, content });
     console.log(`chat ${chat}`);
 

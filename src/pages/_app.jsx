@@ -3,7 +3,7 @@ import "../styles/global.scss";
 import "../styles/styles.scss";
 import Head from "next/head";
 import Script from "next/script";
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 function App({ Component, pageProps }) {
   return (
     <>

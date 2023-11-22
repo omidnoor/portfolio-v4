@@ -83,7 +83,7 @@ const ChatUserTextArea = () => {
       if (lastMessage.content.trim() === "") {
         return;
       }
-
+      console.log(lastMessage);
       const storeChat = async () => {
         try {
           // console.log(`Storing chat message: ${lastMessage.content}`);
@@ -93,7 +93,7 @@ const ChatUserTextArea = () => {
               "Content-Type": "application/json",
             },
             body: JSON.stringify({
-              chatId: uuid(),
+              id: uuid(),
               role: lastMessage.role,
               content: lastMessage.content,
             }),
@@ -134,7 +134,9 @@ const ChatUserTextArea = () => {
           onChange={handleChange}
           onKeyDown={handleKeyDown}
         />
-        <button type="submit">Send</button>
+        <button type="submit">
+          <i className="fa fa-paper-plane" style={{ color: "#a90ff6" }}></i>
+        </button>
       </form>
     </div>
   );
