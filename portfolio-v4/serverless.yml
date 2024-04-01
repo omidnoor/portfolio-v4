@@ -1,0 +1,19 @@
+org: omidnoor
+app: portfolio-v4
+service: portfolio-v4
+frameworkVersion: '3'
+
+nextApp:
+  component: '@sls-next/serverless-component@1.20.0'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: index.handler
+    events:
+      - httpApi:
+          path: /
+          method: get
