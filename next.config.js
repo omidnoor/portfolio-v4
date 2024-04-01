@@ -7,7 +7,7 @@ const nextConfig = {
       "products.ls.graphics",
     ],
   },
-  target: 'serverless',
+  // target: 'serverless',
 };
 
 module.exports = nextConfig;

@@ -1,0 +1,12 @@
+{
+  "version": 1,
+  "paths": {
+    "/ai": {
+      "name": "/ai",
+      "lambdaFunction": "AIQueryHandlerFunction",
+      "permissions": {
+        "setting": "open"
+      }
+    }
+  }
+}

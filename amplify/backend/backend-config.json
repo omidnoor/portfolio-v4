@@ -1,0 +1,43 @@
+{
+  "api": {
+    "aiQueryHandler": {
+      "dependsOn": [
+        {
+          "attributes": [
+            "Name",
+            "Arn"
+          ],
+          "category": "function",
+          "resourceName": "AIQueryHandlerFunction"
+        }
+      ],
+      "providerPlugin": "awscloudformation",
+      "service": "API Gateway"
+    }
+  },
+  "function": {
+    "AIQueryHandlerFunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
+  "parameters": {
+    "AMPLIFY_function_AIQueryHandlerFunction_deploymentBucketName": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AIQueryHandlerFunction"
+        }
+      ]
+    },
+    "AMPLIFY_function_AIQueryHandlerFunction_s3Key": {
+      "usedBy": [
+        {
+          "category": "function",
+          "resourceName": "AIQueryHandlerFunction"
+        }
+      ]
+    }
+  }
+}
